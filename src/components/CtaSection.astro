@@ -1,0 +1,25 @@
+---
+interface Props {
+	tag: string;
+	title: string;
+	text: string;
+	primaryHref: string;
+	primaryLabel: string;
+	secondaryHref: string;
+	secondaryLabel: string;
+}
+
+const { tag, title, text, primaryHref, primaryLabel, secondaryHref, secondaryLabel } = Astro.props;
+---
+
+<section class="cta-section">
+	<div class="cta-inner reveal">
+		<div class="section-tag">{tag}</div>
+		<h2 class="section-title">{title}</h2>
+		<p>{text}</p>
+		<div class="cta-btns">
+			<a href={primaryHref} class="btn btn-white">{primaryLabel}</a>
+			<a href={secondaryHref} class="btn btn-outline-white">{secondaryLabel}</a>
+		</div>
+	</div>
+</section>

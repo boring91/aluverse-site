@@ -1,3 +1,17 @@
+---
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import '../styles/site.css';
+
+interface Props {
+	title: string;
+	description: string;
+	activeNav?: 'home' | 'windows' | 'doors' | 'about' | 'contact';
+}
+
+const { title, description, activeNav } = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -5,19 +19,172 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
 	</head>
 	<body>
-		<slot />
+		<Header activeNav={activeNav} />
+		<main id="main-content">
+			<slot />
+		</main>
+		<Footer />
+
+		<script is:inline>
+			(() => {
+				const init = () => {
+					const header = document.getElementById('siteHeader');
+					const mobileToggle = document.getElementById('menuToggle');
+					const mobileNav = document.getElementById('mobileNav');
+
+					const setMobileNav = (isOpen) => {
+						if (!mobileToggle || !mobileNav) return;
+						mobileNav.classList.toggle('open', isOpen);
+						mobileToggle.setAttribute('aria-expanded', String(isOpen));
+						document.body.classList.toggle('menu-open', isOpen);
+					};
+
+					if (mobileToggle && mobileNav) {
+						mobileToggle.addEventListener('click', () => {
+							setMobileNav(!mobileNav.classList.contains('open'));
+						});
+
+						mobileNav.querySelectorAll('a').forEach((link) => {
+							link.addEventListener('click', () => setMobileNav(false));
+						});
+					}
+
+					document.querySelectorAll('[data-mobile-dropdown-toggle]').forEach((button) => {
+						button.addEventListener('click', () => {
+							const parent = button.parentElement;
+							if (!parent) return;
+							const isOpen = parent.classList.toggle('open');
+							button.setAttribute('aria-expanded', String(isOpen));
+						});
+					});
+
+					document.querySelectorAll('[data-carousel-target]').forEach((button) => {
+						button.addEventListener('click', () => {
+							const targetId = button.getAttribute('data-carousel-target');
+							const direction = Number(button.getAttribute('data-direction') || '1');
+							if (!targetId) return;
+
+							const track = document.getElementById(targetId);
+							const card = track?.querySelector('.carousel-card');
+							if (!track || !card) return;
+
+							const gap = Number.parseFloat(getComputedStyle(track).gap || '24') || 24;
+							track.scrollBy({ left: direction * (card.clientWidth + gap), behavior: 'smooth' });
+						});
+					});
+
+					const testimonialTrack = document.getElementById('testimonialTrack');
+					const testimonialDots = Array.from(document.querySelectorAll('[data-testimonial-dot]'));
+
+					if (testimonialTrack && testimonialDots.length > 0) {
+						let currentTestimonial = 0;
+						let testimonialTimer = 0;
+
+						const goToTestimonial = (index) => {
+							testimonialDots[currentTestimonial]?.classList.remove('active');
+							currentTestimonial = index;
+							testimonialTrack.style.transform = `translateX(-${currentTestimonial * 100}%)`;
+							testimonialDots[currentTestimonial]?.classList.add('active');
+						};
+
+						testimonialDots.forEach((dot, index) => {
+							dot.addEventListener('click', () => {
+								goToTestimonial(index);
+								window.clearInterval(testimonialTimer);
+								testimonialTimer = window.setInterval(() => {
+									goToTestimonial((currentTestimonial + 1) % testimonialDots.length);
+								}, 5000);
+							});
+						});
+
+						testimonialTimer = window.setInterval(() => {
+							goToTestimonial((currentTestimonial + 1) % testimonialDots.length);
+						}, 5000);
+					}
+
+					let countersDone = false;
+					const animateCounters = () => {
+						if (countersDone) return;
+						const counters = document.querySelectorAll('[data-target]');
+						if (!counters.length) return;
+
+						const firstCounter = counters[0];
+						const rect = firstCounter.getBoundingClientRect();
+
+						if (rect.top < window.innerHeight * 0.85) {
+							countersDone = true;
+							counters.forEach((counter) => {
+								const target = Number.parseInt(counter.getAttribute('data-target') || '0', 10);
+								const suffix = target === 100 ? '%' : '+';
+								const start = performance.now();
+
+								const updateCounter = (now) => {
+									const progress = Math.min((now - start) / 2000, 1);
+									const eased = 1 - Math.pow(1 - progress, 3);
+									counter.textContent = `${Math.floor(eased * target)}${suffix}`;
+									if (progress < 1) {
+										window.requestAnimationFrame(updateCounter);
+									}
+								};
+
+								window.requestAnimationFrame(updateCounter);
+							});
+						}
+					};
+
+					window.addEventListener('scroll', animateCounters, { passive: true });
+					animateCounters();
+
+					const revealItems = document.querySelectorAll('.reveal');
+					if (revealItems.length > 0) {
+						const observer = new IntersectionObserver(
+							(entries) => {
+								entries.forEach((entry) => {
+									if (entry.isIntersecting) {
+										entry.target.classList.add('visible');
+										observer.unobserve(entry.target);
+									}
+								});
+							},
+							{ threshold: 0.1, rootMargin: '0px 0px -50px 0px' },
+						);
+
+						revealItems.forEach((item) => observer.observe(item));
+					}
+
+					if (header) {
+						const syncHeader = () => {
+							header.classList.toggle('header-scrolled', window.scrollY > 50);
+						};
+
+						window.addEventListener('scroll', syncHeader, { passive: true });
+						syncHeader();
+					}
+
+					document.querySelectorAll('[data-static-form]').forEach((form) => {
+						form.addEventListener('submit', (event) => {
+							event.preventDefault();
+						});
+					});
+				};
+
+				if (document.readyState === 'loading') {
+					document.addEventListener('DOMContentLoaded', init, { once: true });
+				} else {
+					init();
+				}
+			})();
+		</script>
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

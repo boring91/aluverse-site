@@ -1,0 +1,133 @@
+---
+import { company, doorProducts, getProductHref, windowProducts } from '../data/site';
+
+interface Props {
+	activeNav?: 'home' | 'windows' | 'doors' | 'about' | 'contact';
+}
+
+const { activeNav } = Astro.props;
+
+const isActive = (nav: Props['activeNav']) => (activeNav === nav ? 'nav-link active' : 'nav-link');
+---
+
+<header class="site-header" id="siteHeader">
+	<div class="header-inner">
+		<a href="/" class="logo">
+			<div class="logo-mark">A</div>
+			<div>Alu<span class="logo-accent">verse</span></div>
+		</a>
+
+		<nav class="nav-links" aria-label="Primary navigation">
+			<a href="/" class={isActive('home')}>Home</a>
+
+			<div class="nav-dropdown">
+				<a href="/windows" class={isActive('windows')}>
+					Windows
+					<svg class="dropdown-arrow" viewBox="0 0 24 24" aria-hidden="true">
+						<polyline points="6 9 12 15 18 9"></polyline>
+					</svg>
+				</a>
+				<div class="dropdown-menu">
+					<a href="/windows" class="dropdown-item">All Windows</a>
+					{
+						windowProducts.map((product) => (
+							<a href={getProductHref(product.slug)} class="dropdown-item">
+								{product.title}
+							</a>
+						))
+					}
+				</div>
+			</div>
+
+			<div class="nav-dropdown">
+				<a href="/doors" class={isActive('doors')}>
+					Doors
+					<svg class="dropdown-arrow" viewBox="0 0 24 24" aria-hidden="true">
+						<polyline points="6 9 12 15 18 9"></polyline>
+					</svg>
+				</a>
+				<div class="dropdown-menu">
+					<a href="/doors" class="dropdown-item">All Doors</a>
+					{
+						doorProducts.map((product) => (
+							<a href={getProductHref(product.slug)} class="dropdown-item">
+								{product.title}
+							</a>
+						))
+					}
+				</div>
+			</div>
+
+			<a href="/about" class={isActive('about')}>About</a>
+			<a href="/contact" class={isActive('contact')}>Contact</a>
+		</nav>
+
+		<div class="header-cta">
+			<a href={company.phoneHref} class="header-phone">
+				<svg viewBox="0 0 24 24" aria-hidden="true">
+					<path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"></path>
+				</svg>
+				{company.phoneDisplay}
+			</a>
+			<a href="/quote" class="header-btn">Get Free Quote</a>
+			<button
+				type="button"
+				class="menu-toggle"
+				id="menuToggle"
+				aria-label="Open menu"
+				aria-controls="mobileNav"
+				aria-expanded="false"
+			>
+				<span></span><span></span><span></span>
+			</button>
+		</div>
+	</div>
+
+	<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+		<a href="/">Home</a>
+
+		<div class="mobile-dropdown">
+			<button
+				type="button"
+				class="mobile-dropdown-toggle"
+				data-mobile-dropdown-toggle
+				aria-expanded="false"
+			>
+				Windows
+				<svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+			</button>
+			<div class="mobile-dropdown-menu">
+				<a href="/windows">All Windows</a>
+				{
+					windowProducts.map((product) => (
+						<a href={getProductHref(product.slug)}>{product.title}</a>
+					))
+				}
+			</div>
+		</div>
+
+		<div class="mobile-dropdown">
+			<button
+				type="button"
+				class="mobile-dropdown-toggle"
+				data-mobile-dropdown-toggle
+				aria-expanded="false"
+			>
+				Doors
+				<svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+			</button>
+			<div class="mobile-dropdown-menu">
+				<a href="/doors">All Doors</a>
+				{
+					doorProducts.map((product) => (
+						<a href={getProductHref(product.slug)}>{product.title}</a>
+					))
+				}
+			</div>
+		</div>
+
+		<a href="/about">About</a>
+		<a href="/contact">Contact</a>
+		<a href="/quote">Get Free Quote</a>
+	</nav>
+</header>

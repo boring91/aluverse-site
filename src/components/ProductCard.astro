@@ -1,0 +1,27 @@
+---
+import type { Product } from '../data/site';
+import { getProductHref } from '../data/site';
+
+interface Props {
+	product: Product;
+	variant?: 'card' | 'carousel-card';
+	description?: string;
+	revealClass?: string;
+}
+
+const { product, variant = 'card', description = product.summary, revealClass = '' } = Astro.props;
+---
+
+<div class:list={[variant, revealClass]}>
+	<div class="card-img">
+		<img src={product.cardImage} alt={product.imageAlt} loading="lazy" />
+	</div>
+	<div class="card-body">
+		<h3>{product.title}</h3>
+		<p>{description}</p>
+		<a href={getProductHref(product.slug)} class="card-link">
+			Learn More
+			<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+		</a>
+	</div>
+</div>

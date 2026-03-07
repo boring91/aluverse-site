@@ -1,0 +1,77 @@
+---
+import ContactInfo from '../components/ContactInfo.astro';
+import CtaSection from '../components/CtaSection.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import StaticContactForm from '../components/StaticContactForm.astro';
+import { company } from '../data/site';
+---
+
+<Layout
+	title="Request a Free Quote - Aluverse | Aluminium Windows & Doors Sydney"
+	description="Request a free, no-obligation quote for premium aluminium windows and doors in Sydney. Tell us about your project and we'll respond within 24 hours."
+>
+	<PageHero
+		title="Request a Free Quote"
+		subtitle="Tell us about your project and we'll provide a detailed, no-obligation quote within 24 hours."
+		image="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=80"
+		imageAlt="Request a free quote from Aluverse"
+		breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Request a Quote' }]}
+	/>
+
+	<section class="section section-alt">
+		<div class="container-wide">
+			<div class="section-header section-header-center">
+				<div class="section-tag reveal">How It Works</div>
+				<h2 class="section-title reveal reveal-delay-1">Our Simple Process</h2>
+				<p class="section-subtitle reveal reveal-delay-2">
+					From enquiry to installation, we make it easy.
+				</p>
+			</div>
+			<div class="process-steps reveal">
+				<div class="process-step">
+					<h3>Submit Your Enquiry</h3>
+					<p>Fill out the form below with your project details, or give us a call.</p>
+				</div>
+				<div class="process-step">
+					<h3>Free Consultation</h3>
+					<p>We'll arrange a convenient time to visit your site and discuss your requirements.</p>
+				</div>
+				<div class="process-step">
+					<h3>Detailed Quote</h3>
+					<p>Receive a comprehensive, itemised quote with no hidden costs or surprises.</p>
+				</div>
+				<div class="process-step">
+					<h3>Professional Installation</h3>
+					<p>Our experienced team completes your project to the highest standards.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container-wide">
+			<div class="section-header section-header-center">
+				<div class="section-tag reveal">Your Project</div>
+				<h2 class="section-title reveal reveal-delay-1">Tell Us About Your Project</h2>
+				<p class="section-subtitle reveal reveal-delay-2">
+					The more detail you provide, the more accurate your quote will be.
+				</p>
+			</div>
+			<div class="contact-grid">
+				<ContactInfo />
+				<StaticContactForm variant="quote" />
+			</div>
+		</div>
+	</section>
+
+	<CtaSection
+		tag="Prefer to Talk?"
+		title="Call Us Directly"
+		text="Our friendly team is available 7 days a week to discuss your project requirements."
+		primaryHref={company.phoneHref}
+		primaryLabel={`Call ${company.phoneDisplay}`}
+		secondaryHref={company.emailHref}
+		secondaryLabel="Email Us"
+	/>
+</Layout>

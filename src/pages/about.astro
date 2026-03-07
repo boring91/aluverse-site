@@ -1,0 +1,145 @@
+---
+import CtaSection from '../components/CtaSection.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import StatsBar from '../components/StatsBar.astro';
+import { company } from '../data/site';
+---
+
+<Layout
+	title="About Us - Aluverse | Premium Aluminium Windows & Doors Sydney"
+	description="Learn about Aluverse, Sydney's trusted aluminium fabrication specialist with over a decade of experience across residential and commercial projects."
+	activeNav="about"
+>
+	<PageHero
+		title="About Aluverse"
+		subtitle="A decade of precision craftsmanship serving Sydney's residential and commercial markets."
+		image="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80"
+		imageAlt="Aluverse aluminium craftsmanship"
+		breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'About Us' }]}
+	/>
+
+	<section class="section">
+		<div class="container-wide">
+			<div class="about-grid">
+				<div class="about-img reveal">
+					<img
+						src="https://images.unsplash.com/photo-1547555706-54bcf05bbad1?w=1200&q=80"
+						alt="Aluminium fabrication workshop"
+						loading="lazy"
+					/>
+				</div>
+				<div class="reveal reveal-delay-1">
+					<div class="section-header">
+						<div class="section-tag">Our Story</div>
+						<h2 class="section-title">Built on Quality, Driven by Craft</h2>
+					</div>
+					<p style="font-size:0.95rem;color:var(--text-secondary);line-height:1.8;margin-bottom:1rem">
+						Founded over a decade ago, Aluverse has grown from a small workshop into one of
+						Sydney's most trusted aluminium fabrication specialists. Our journey has been defined
+						by an unwavering commitment to precision, quality materials, and honest service.
+					</p>
+					<p style="font-size:0.95rem;color:var(--text-secondary);line-height:1.8;margin-bottom:2rem">
+						Every project we undertake, from a single window replacement to a complete
+						commercial fit-out, receives the same meticulous attention to detail. We believe that
+						premium aluminium solutions should be accessible to every Sydney homeowner and
+						business.
+					</p>
+					<ul class="about-features">
+						<li>
+							<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Full-service:
+							removal, supply, install, finishing
+						</li>
+						<li>
+							<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Residential &
+							commercial expertise
+						</li>
+						<li>
+							<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Single &
+							double glazing options
+						</li>
+						<li>
+							<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Australian
+							Standards compliant
+						</li>
+						<li>
+							<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Custom designs
+							to your specification
+						</li>
+						<li>
+							<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Local Sydney
+							knowledge & expertise
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<StatsBar />
+
+	<section class="section section-alt">
+		<div class="container-wide">
+			<div class="section-header section-header-center">
+				<div class="section-tag reveal">Our Values</div>
+				<h2 class="section-title reveal reveal-delay-1">What Sets Us Apart</h2>
+				<p class="section-subtitle reveal reveal-delay-2">
+					The principles that guide every project we undertake.
+				</p>
+			</div>
+			<div class="about-values-grid">
+				<div class="about-value-card reveal">
+					<div class="about-value-icon">
+						<svg viewBox="0 0 24 24">
+							<circle cx="12" cy="8" r="7"></circle>
+							<polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+						</svg>
+					</div>
+					<h3>Quality Without Compromise</h3>
+					<p>
+						We use only premium-grade aluminium profiles and hardware from trusted Australian
+						suppliers. No shortcuts, no substitutes.
+					</p>
+				</div>
+				<div class="about-value-card reveal reveal-delay-1">
+					<div class="about-value-icon">
+						<svg viewBox="0 0 24 24">
+							<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+							<circle cx="9" cy="7" r="4"></circle>
+							<path d="M23 21v-2a4 4 0 00-3-3.87"></path>
+							<path d="M16 3.13a4 4 0 010 7.75"></path>
+						</svg>
+					</div>
+					<h3>Customer First</h3>
+					<p>
+						Your vision drives our work. We listen, advise honestly, and deliver solutions
+						tailored to your exact requirements and budget.
+					</p>
+				</div>
+				<div class="about-value-card reveal reveal-delay-2">
+					<div class="about-value-icon">
+						<svg viewBox="0 0 24 24">
+							<circle cx="12" cy="12" r="10"></circle>
+							<polyline points="12 6 12 12 16 14"></polyline>
+						</svg>
+					</div>
+					<h3>Reliable & On Time</h3>
+					<p>
+						We respect your time and property. Our team arrives when promised, works
+						efficiently, and leaves your space clean.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<CtaSection
+		tag="Get Started"
+		title="Ready to Transform Your Space?"
+		text="Get your free consultation and quote today. Let us craft the perfect aluminium solution for your home or business."
+		primaryHref={company.phoneHref}
+		primaryLabel={`Call ${company.phoneDisplay}`}
+		secondaryHref="/quote"
+		secondaryLabel="Request a Quote"
+	/>
+</Layout>

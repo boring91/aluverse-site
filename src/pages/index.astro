@@ -1,11 +1,331 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import CtaSection from '../components/CtaSection.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import ProductCard from '../components/ProductCard.astro';
+import SocialSection from '../components/SocialSection.astro';
+import StatsBar from '../components/StatsBar.astro';
+import {
+	company,
+	doorProducts,
+	testimonials,
+	windowProducts,
+} from '../data/site';
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+	title="Aluverse - Premium Aluminium Doors & Windows | Sydney"
+	description="Sydney's leading custom aluminium doors and windows specialist. Bespoke fabrication, premium materials and free quotes from Aluverse."
+	activeNav="home"
+>
+	<section class="hero-section">
+		<img
+			class="hero-photo"
+			src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
+			alt="Modern home with premium aluminium windows"
+			loading="eager"
+		/>
+		<div class="hero-overlay"></div>
+		<div class="hero-inner">
+			<div class="hero-tag reveal">Sydney's Premium Choice</div>
+			<h1 class="hero-title reveal reveal-delay-1">
+				Premium Aluminium <em>Windows & Doors</em>
+			</h1>
+			<p class="hero-subtitle reveal reveal-delay-2">
+				Meticulously crafted aluminium solutions for Sydney homes. Where architectural
+				precision meets enduring quality.
+			</p>
+			<div class="hero-ctas reveal reveal-delay-3">
+				<a href="/quote" class="btn btn-primary">
+					Request a Quote
+					<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2">
+						<path d="M5 12h14M12 5l7 7-7 7"></path>
+					</svg>
+				</a>
+				<a href="/windows" class="btn btn-secondary">View Products</a>
+			</div>
+		</div>
+		<div class="hero-scroll"><span class="scroll-line"></span>Scroll</div>
+	</section>
+
+	<StatsBar />
+
+	<section class="section">
+		<div class="container-wide">
+			<div class="carousel-header">
+				<div class="section-header">
+					<div class="section-tag reveal">Our Collection</div>
+					<h2 class="section-title reveal reveal-delay-1">Aluminium Windows</h2>
+					<p class="section-subtitle reveal reveal-delay-2">
+						Precision-engineered window systems for every architectural style.
+					</p>
+				</div>
+				<div class="carousel-controls">
+					<button type="button" data-carousel-target="windows-track" data-direction="-1" aria-label="Previous">
+						<svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+					</button>
+					<button type="button" data-carousel-target="windows-track" data-direction="1" aria-label="Next">
+						<svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"></polyline></svg>
+					</button>
+				</div>
+			</div>
+			<div class="carousel-track-wrapper reveal">
+				<div class="carousel-track" id="windows-track">
+					{
+						windowProducts.map((product) => <ProductCard product={product} variant="carousel-card" />)
+					}
+				</div>
+			</div>
+			<div style="text-align:center;margin-top:2.5rem" class="reveal">
+				<a href="/windows" class="btn btn-outline">
+					View All Windows
+					<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2">
+						<path d="M5 12h14M12 5l7 7-7 7"></path>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-dark">
+		<div class="container-wide">
+			<div class="carousel-header">
+				<div class="section-header">
+					<div class="section-tag reveal">Our Collection</div>
+					<h2 class="section-title reveal reveal-delay-1">Aluminium Doors</h2>
+					<p class="section-subtitle reveal reveal-delay-2" style="color:rgba(255,255,255,0.5)">
+						Secure, elegant door systems engineered for Australian conditions.
+					</p>
+				</div>
+				<div class="carousel-controls">
+					<button type="button" data-carousel-target="doors-track" data-direction="-1" aria-label="Previous">
+						<svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+					</button>
+					<button type="button" data-carousel-target="doors-track" data-direction="1" aria-label="Next">
+						<svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"></polyline></svg>
+					</button>
+				</div>
+			</div>
+			<div class="carousel-track-wrapper reveal">
+				<div class="carousel-track" id="doors-track">
+					{
+						doorProducts.map((product) => <ProductCard product={product} variant="carousel-card" />)
+					}
+				</div>
+			</div>
+			<div style="text-align:center;margin-top:2.5rem" class="reveal">
+				<a href="/doors" class="btn btn-outline-white">
+					View All Doors
+					<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2">
+						<path d="M5 12h14M12 5l7 7-7 7"></path>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-dark" style="border-top:1px solid var(--stat-border)">
+		<div class="container-wide">
+			<div class="section-header section-header-center">
+				<div class="section-tag reveal">What We Do</div>
+				<h2 class="section-title reveal reveal-delay-1">Our Services</h2>
+				<p class="section-subtitle reveal reveal-delay-2" style="color:rgba(255,255,255,0.5)">
+					Comprehensive aluminium solutions from start to finish.
+				</p>
+			</div>
+			<div class="services-grid">
+				<div class="service-card reveal">
+					<div class="service-icon">
+						<svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"></path></svg>
+					</div>
+					<h3>Removal, Supply, Install & Finishing</h3>
+					<p>
+						Complete end-to-end service from careful removal of existing fixtures to
+						professional installation and meticulous finishing touches.
+					</p>
+				</div>
+				<div class="service-card reveal reveal-delay-1">
+					<div class="service-icon">
+						<svg viewBox="0 0 24 24">
+							<circle cx="12" cy="12" r="3"></circle>
+							<path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"></path>
+						</svg>
+					</div>
+					<h3>Repair & Maintenance</h3>
+					<p>
+						Expert repair services for all aluminium doors and windows, extending the life
+						of your fixtures and restoring optimal performance.
+					</p>
+				</div>
+				<div class="service-card reveal reveal-delay-2">
+					<div class="service-icon">
+						<svg viewBox="0 0 24 24">
+							<path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+							<polyline points="9 22 9 12 15 12 15 22"></polyline>
+						</svg>
+					</div>
+					<h3>Residential Solutions</h3>
+					<p>
+						Tailored aluminium windows and doors for homes of all styles, from heritage
+						renovations to modern new builds.
+					</p>
+				</div>
+				<div class="service-card reveal reveal-delay-3">
+					<div class="service-icon">
+						<svg viewBox="0 0 24 24">
+							<rect x="2" y="7" width="20" height="14" rx="2"></rect>
+							<path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"></path>
+						</svg>
+					</div>
+					<h3>Commercial Fit-outs</h3>
+					<p>
+						Engineered aluminium systems for storefronts, offices, and commercial properties
+						compliant with Australian building codes.
+					</p>
+				</div>
+				<div class="service-card reveal reveal-delay-4">
+					<div class="service-icon">
+						<svg viewBox="0 0 24 24">
+							<rect x="3" y="3" width="18" height="18" rx="2"></rect>
+							<line x1="3" y1="9" x2="21" y2="9"></line>
+							<line x1="9" y1="21" x2="9" y2="9"></line>
+						</svg>
+					</div>
+					<h3>Single & Double Glazing</h3>
+					<p>
+						Quality glazing options for optimal thermal performance, noise reduction, and
+						energy efficiency in any application.
+					</p>
+				</div>
+				<div class="service-card reveal reveal-delay-5">
+					<div class="service-icon">
+						<svg viewBox="0 0 24 24">
+							<path d="M12 20h9"></path>
+							<path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+						</svg>
+					</div>
+					<h3>Custom Design Consultation</h3>
+					<p>
+						Free on-site consultations to design bespoke aluminium solutions that match your
+						exact architectural vision.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-alt">
+		<div class="container-wide">
+			<div class="about-grid">
+				<div class="about-img reveal">
+					<img
+						src="https://images.unsplash.com/photo-1547555706-54bcf05bbad1?w=1200&q=80"
+						alt="Aluminium fabrication workshop"
+						loading="lazy"
+					/>
+				</div>
+				<div class="reveal reveal-delay-1">
+					<div class="section-header">
+						<div class="section-tag">Who We Are</div>
+						<h2 class="section-title">A Decade of Precision Craftsmanship</h2>
+						<p class="section-subtitle">
+							With over a decade of experience, Aluverse delivers full-service aluminium
+							solutions tailored to your residential and commercial needs.
+						</p>
+					</div>
+					<ul class="about-features">
+						<li>
+							<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Full-service:
+							removal, supply, install, finishing
+						</li>
+						<li>
+							<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Residential &
+							commercial expertise
+						</li>
+						<li>
+							<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Single &
+							double glazing options
+						</li>
+						<li>
+							<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Australian
+							Standards compliant
+						</li>
+						<li>
+							<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Custom designs
+							to your specification
+						</li>
+						<li>
+							<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Local Sydney
+							knowledge & expertise
+						</li>
+					</ul>
+					<div style="margin-top:2rem">
+						<a href="/about" class="btn btn-outline">
+							Learn More About Us
+							<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2">
+								<path d="M5 12h14M12 5l7 7-7 7"></path>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="section-header section-header-center">
+				<div class="section-tag reveal">Client Feedback</div>
+				<h2 class="section-title reveal reveal-delay-1">What Our Clients Say</h2>
+				<p class="section-subtitle reveal reveal-delay-2">
+					Trusted by Sydney homeowners and businesses alike.
+				</p>
+			</div>
+			<div class="testimonials-wrapper reveal">
+				<div class="testimonial-track" id="testimonialTrack">
+					{
+						testimonials.map((testimonial) => (
+							<div class="testimonial-card">
+								<div class="testimonial-inner">
+									<div class="testimonial-stars">
+										{Array.from({ length: 5 }).map(() => (
+											<svg viewBox="0 0 24 24">
+												<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+											</svg>
+										))}
+									</div>
+									<p class="testimonial-text">"{testimonial.quote}"</p>
+									<div class="testimonial-author">{testimonial.author}</div>
+									<div class="testimonial-location">{testimonial.location}</div>
+								</div>
+							</div>
+						))
+					}
+				</div>
+				<div class="testimonial-dots">
+					{
+						testimonials.map((_, index) => (
+							<button
+								type="button"
+								class:list={[index === 0 && 'active']}
+								data-testimonial-dot
+								aria-label={`Testimonial ${index + 1}`}
+							></button>
+						))
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<CtaSection
+		tag="Get Started"
+		title="Ready to Transform Your Space?"
+		text="Get your free consultation and quote today. Let us craft the perfect aluminium solution for your home or business."
+		primaryHref={company.phoneHref}
+		primaryLabel={`Call ${company.phoneDisplay}`}
+		secondaryHref="/quote"
+		secondaryLabel="Request a Quote"
+	/>
+
+	<SocialSection />
 </Layout>

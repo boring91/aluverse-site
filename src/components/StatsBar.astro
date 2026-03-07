@@ -1,0 +1,16 @@
+---
+import { stats } from '../data/site';
+---
+
+<section class="stats-bar">
+	<div class="stats-inner">
+		{
+			stats.map((stat, index) => (
+				<div class:list={['stat-item', 'reveal', index > 0 && `reveal-delay-${index}`]}>
+					<div class="stat-number" data-target={stat.target}>0</div>
+					<div class="stat-label">{stat.label}</div>
+				</div>
+			))
+		}
+	</div>
+</section>

@@ -1,0 +1,47 @@
+---
+interface BreadcrumbItem {
+	label: string;
+	href?: string;
+}
+
+interface Props {
+	title: string;
+	subtitle?: string;
+	image: string;
+	imageAlt: string;
+	breadcrumbs: BreadcrumbItem[];
+	subtitleClass?: 'page-hero-subtitle' | 'hero-subtitle';
+}
+
+const {
+	title,
+	subtitle,
+	image,
+	imageAlt,
+	breadcrumbs,
+	subtitleClass = 'page-hero-subtitle',
+} = Astro.props;
+---
+
+<section class="page-hero">
+	<img class="hero-photo" src={image} alt={imageAlt} loading="eager" />
+	<div class="page-hero-overlay"></div>
+	<div class="page-hero-inner">
+		<nav class="breadcrumb reveal" aria-label="Breadcrumb">
+			{
+				breadcrumbs.map((item, index) => (
+					<>
+						{index > 0 && <span class="breadcrumb-sep">/</span>}
+						{item.href ? (
+							<a href={item.href}>{item.label}</a>
+						) : (
+							<span class="breadcrumb-current">{item.label}</span>
+						)}
+					</>
+				))
+			}
+		</nav>
+		<h1 class="page-hero-title reveal reveal-delay-1">{title}</h1>
+		{subtitle && <p class:list={[subtitleClass, 'reveal', 'reveal-delay-2']}>{subtitle}</p>}
+	</div>
+</section>

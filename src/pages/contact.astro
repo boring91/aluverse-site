@@ -1,0 +1,32 @@
+---
+import ContactInfo from '../components/ContactInfo.astro';
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import SocialSection from '../components/SocialSection.astro';
+import StaticContactForm from '../components/StaticContactForm.astro';
+---
+
+<Layout
+	title="Contact Us - Aluverse | Aluminium Windows & Doors Sydney"
+	description="Contact Aluverse for a free consultation and quote on premium aluminium windows and doors in Sydney. Call 0403 422 401 or send us a message."
+	activeNav="contact"
+>
+	<PageHero
+		title="Get In Touch"
+		subtitle="We'd love to discuss your project. Reach out for a free consultation and quote."
+		image="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=1920&q=80"
+		imageAlt="Contact Aluverse Sydney"
+		breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Contact' }]}
+	/>
+
+	<section class="section">
+		<div class="container-wide">
+			<div class="contact-grid">
+				<ContactInfo />
+				<StaticContactForm variant="contact" />
+			</div>
+		</div>
+	</section>
+
+	<SocialSection />
+</Layout>

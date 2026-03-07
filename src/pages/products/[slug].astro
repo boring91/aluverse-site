@@ -1,0 +1,118 @@
+---
+import CtaSection from '../../components/CtaSection.astro';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { company, getProductBySlug, getProductHref, products } from '../../data/site';
+
+export function getStaticPaths() {
+	return products.map((product) => ({
+		params: { slug: product.slug },
+		props: { product },
+	}));
+}
+
+const { product } = Astro.props;
+const relatedProducts = product.related
+	.map((slug: string) => getProductBySlug(slug))
+	.filter((item): item is NonNullable<typeof item> => Boolean(item));
+
+const categoryHref = product.category === 'windows' ? '/windows' : '/doors';
+const categoryLabel = product.category === 'windows' ? 'Windows' : 'Doors';
+const relatedHeading = product.category === 'windows' ? 'Other Window Systems' : 'Other Door Systems';
+---
+
+<Layout title={product.metaTitle} description={product.metaDescription} activeNav={product.category}>
+	<PageHero
+		title={product.title}
+		image={product.heroImage}
+		imageAlt={product.imageAlt}
+		breadcrumbs={[
+			{ label: 'Home', href: '/' },
+			{ label: categoryLabel, href: categoryHref },
+			{ label: product.title },
+		]}
+	/>
+
+	<section class="section">
+		<div class="container-wide">
+			<div class="product-detail-grid">
+				<div class="product-detail-img reveal">
+					<img src={product.heroImage} alt={product.imageAlt} loading="lazy" />
+				</div>
+				<div class="product-detail-info reveal reveal-delay-1">
+					<h1>{product.title}</h1>
+					<p class="product-desc">{product.detailDescription}</p>
+					<ul class="product-features">
+						{
+							product.features.map((feature) => (
+								<li>
+									<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+									{feature}
+								</li>
+							))
+						}
+					</ul>
+					<div class="product-detail-ctas">
+						<a href="/quote" class="btn btn-primary">
+							Get a Quote
+							<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2">
+								<path d="M5 12h14M12 5l7 7-7 7"></path>
+							</svg>
+						</a>
+						<a href={company.phoneHref} class="btn btn-outline">Call Us</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-alt">
+		<div class="container">
+			<div class="section-header section-header-center">
+				<div class="section-tag reveal">Specifications</div>
+				<h2 class="section-title reveal reveal-delay-1">Technical Details</h2>
+			</div>
+			<div class="specs-grid reveal">
+				{
+					product.specs.map((spec) => (
+						<div class="spec-item">
+							<div class="spec-label">{spec.label}</div>
+							<div class="spec-value">{spec.value}</div>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<CtaSection
+		tag="Get Started"
+		title="Ready to Transform Your Space?"
+		text="Get your free consultation and quote today. Let us craft the perfect aluminium solution for your home or business."
+		primaryHref={company.phoneHref}
+		primaryLabel={`Call ${company.phoneDisplay}`}
+		secondaryHref="/quote"
+		secondaryLabel="Request a Quote"
+	/>
+
+	<section class="section">
+		<div class="container-wide">
+			<div class="section-header">
+				<div class="section-tag reveal">Related</div>
+				<h2 class="section-title reveal reveal-delay-1">{relatedHeading}</h2>
+			</div>
+			<div class="related-grid">
+				{
+					relatedProducts.map((relatedProduct, index) => (
+						<ProductCard
+							product={relatedProduct}
+							variant="carousel-card"
+							revealClass={index === 0 ? 'reveal' : `reveal reveal-delay-${Math.min(index, 2)}`}
+						/>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</Layout>
