@@ -6,133 +6,94 @@ type Props = {
 };
 
 const { activeNav } = Astro.props;
-
-function navClass(nav: Props['activeNav']) {
-	const base = 'nav-link-underline relative inline-flex items-center gap-1 text-[0.8rem] font-medium text-white/70 tracking-[0.05em] uppercase transition-all duration-300 hover:text-white';
-	return activeNav === nav ? `${base} active text-white` : base;
-}
 ---
 
-<header class="fixed top-0 left-0 right-0 z-100 bg-header-bg border-b border-header-border backdrop-blur-[20px] backdrop-saturate-150 transition-all duration-400 ease-[cubic-bezier(0.4,0,0.2,1)]" id="siteHeader">
-	<div class="flex items-center justify-between h-18 max-w-[1400px] mx-auto px-8 transition-[height] duration-300 [.header-scrolled_&]:h-15">
-		<a href="/" class="font-display font-bold text-2xl flex items-center gap-2.5 text-text-on-dark">
-			<div class="w-[38px] h-[38px] flex items-center justify-center bg-accent text-text-on-accent font-black text-[0.85rem] font-display transition-transform duration-300 hover:rotate-[15deg]">A</div>
-			<div>Alu<span class="text-anodise">verse</span></div>
+<header class="fixed top-0 left-0 right-0 z-50 bg-header-bg border-b border-header-border backdrop-blur-xl">
+	<div class="flex items-center justify-between h-16 max-w-7xl mx-auto px-6">
+		<a href="/" class="font-display text-2xl text-white flex items-center gap-2">
+			<span class="size-9 flex items-center justify-center bg-accent text-white text-sm font-black">A</span>
+			Alu<span class="text-anodise">verse</span>
 		</a>
 
-		<nav class="hidden min-[900px]:flex gap-8 items-center" aria-label="Primary navigation">
-			<a href="/" class={navClass('home')}>Home</a>
+		<nav class="hidden lg:flex gap-8 items-center">
+			<a href="/" class:list={['text-xs font-medium tracking-widest uppercase transition-colors', activeNav === 'home' ? 'text-white' : 'text-white/60 hover:text-white']}>Home</a>
 
 			<div class="group relative">
-				<a href="/windows" class={navClass('windows')}>
+				<a href="/windows" class:list={['text-xs font-medium tracking-widest uppercase transition-colors flex items-center gap-1', activeNav === 'windows' ? 'text-white' : 'text-white/60 hover:text-white']}>
 					Windows
-					<svg class="w-2.5 h-2.5 stroke-current fill-none stroke-[2.5] ml-px transition-transform duration-300 group-hover:rotate-180" viewBox="0 0 24 24" aria-hidden="true">
-						<polyline points="6 9 12 15 18 9"></polyline>
-					</svg>
+					<svg class="size-2.5 stroke-current fill-none stroke-2 transition-transform group-hover:rotate-180" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" /></svg>
 				</a>
-				<div class="dropdown-menu absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 translate-y-2 bg-[rgba(10,10,10,0.97)] backdrop-blur-[24px] border border-white/10 min-w-[220px] py-2.5 opacity-0 invisible transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] z-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
-					<a href="/windows" class="block px-6 py-2 text-[0.78rem] font-medium text-white/50 transition-all duration-200 tracking-[0.03em] hover:text-white hover:bg-white/[0.04] hover:pl-7">All Windows</a>
-					{
-						windowProducts.map((product) => (
-							<a href={getProductHref(product.slug)} class="block px-6 py-2 text-[0.78rem] font-medium text-white/50 transition-all duration-200 tracking-[0.03em] hover:text-white hover:bg-white/[0.04] hover:pl-7">
-								{product.title}
-							</a>
-						))
-					}
+				<div class="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+					<div class="bg-[rgba(10,10,10,0.97)] backdrop-blur-xl border border-white/10 min-w-52 py-2">
+						<a href="/windows" class="block px-5 py-2 text-xs text-white/50 hover:text-white hover:bg-white/5">All Windows</a>
+						{windowProducts.map(p => (
+							<a href={getProductHref(p.slug)} class="block px-5 py-2 text-xs text-white/50 hover:text-white hover:bg-white/5">{p.title}</a>
+						))}
+					</div>
 				</div>
 			</div>
 
 			<div class="group relative">
-				<a href="/doors" class={navClass('doors')}>
+				<a href="/doors" class:list={['text-xs font-medium tracking-widest uppercase transition-colors flex items-center gap-1', activeNav === 'doors' ? 'text-white' : 'text-white/60 hover:text-white']}>
 					Doors
-					<svg class="w-2.5 h-2.5 stroke-current fill-none stroke-[2.5] ml-px transition-transform duration-300 group-hover:rotate-180" viewBox="0 0 24 24" aria-hidden="true">
-						<polyline points="6 9 12 15 18 9"></polyline>
-					</svg>
+					<svg class="size-2.5 stroke-current fill-none stroke-2 transition-transform group-hover:rotate-180" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" /></svg>
 				</a>
-				<div class="dropdown-menu absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 translate-y-2 bg-[rgba(10,10,10,0.97)] backdrop-blur-[24px] border border-white/10 min-w-[220px] py-2.5 opacity-0 invisible transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] z-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
-					<a href="/doors" class="block px-6 py-2 text-[0.78rem] font-medium text-white/50 transition-all duration-200 tracking-[0.03em] hover:text-white hover:bg-white/[0.04] hover:pl-7">All Doors</a>
-					{
-						doorProducts.map((product) => (
-							<a href={getProductHref(product.slug)} class="block px-6 py-2 text-[0.78rem] font-medium text-white/50 transition-all duration-200 tracking-[0.03em] hover:text-white hover:bg-white/[0.04] hover:pl-7">
-								{product.title}
-							</a>
-						))
-					}
+				<div class="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+					<div class="bg-[rgba(10,10,10,0.97)] backdrop-blur-xl border border-white/10 min-w-52 py-2">
+						<a href="/doors" class="block px-5 py-2 text-xs text-white/50 hover:text-white hover:bg-white/5">All Doors</a>
+						{doorProducts.map(p => (
+							<a href={getProductHref(p.slug)} class="block px-5 py-2 text-xs text-white/50 hover:text-white hover:bg-white/5">{p.title}</a>
+						))}
+					</div>
 				</div>
 			</div>
 
-			<a href="/about" class={navClass('about')}>About</a>
-			<a href="/contact" class={navClass('contact')}>Contact</a>
+			<a href="/about" class:list={['text-xs font-medium tracking-widest uppercase transition-colors', activeNav === 'about' ? 'text-white' : 'text-white/60 hover:text-white']}>About</a>
+			<a href="/contact" class:list={['text-xs font-medium tracking-widest uppercase transition-colors', activeNav === 'contact' ? 'text-white' : 'text-white/60 hover:text-white']}>Contact</a>
 		</nav>
 
 		<div class="flex items-center gap-4">
-			<a href={company.phoneHref} class="hidden sm:inline-flex items-center gap-2 text-[0.85rem] font-medium text-text-on-dark opacity-80">
-				<svg class="w-4 h-4 stroke-anodise fill-none stroke-2" viewBox="0 0 24 24" aria-hidden="true">
-					<path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"></path>
-				</svg>
+			<a href={company.phoneHref} class="hidden sm:flex items-center gap-2 text-sm text-white/80">
+				<svg class="size-4 stroke-anodise fill-none stroke-2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z" /></svg>
 				{company.phoneDisplay}
 			</a>
-			<a href="/quote" class="btn-shine relative overflow-hidden px-5 py-2.5 text-xs font-bold bg-accent text-text-on-accent tracking-[0.06em] uppercase transition-all duration-300 hover:-translate-y-px hover:shadow-[0_4px_20px_var(--color-accent-light)]">Get Free Quote</a>
-			<button
-				type="button"
-				class="flex flex-col gap-[5px] bg-transparent border-none cursor-pointer p-1 min-[900px]:hidden"
-				id="menuToggle"
-				aria-label="Open menu"
-				aria-controls="mobileNav"
-				aria-expanded="false"
-			>
-				<span class="w-[22px] h-0.5 bg-text-on-dark block transition-all duration-300"></span>
-				<span class="w-[22px] h-0.5 bg-text-on-dark block transition-all duration-300"></span>
-				<span class="w-[22px] h-0.5 bg-text-on-dark block transition-all duration-300"></span>
+			<a href="/quote" class="px-5 py-2 text-xs font-bold bg-accent text-white tracking-wide uppercase hover:bg-accent-hover transition-colors">Get Free Quote</a>
+			<button type="button" class="flex flex-col gap-1 p-1 lg:hidden" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+				<span class="w-5 h-0.5 bg-white block"></span>
+				<span class="w-5 h-0.5 bg-white block"></span>
+				<span class="w-5 h-0.5 bg-white block"></span>
 			</button>
 		</div>
 	</div>
 
-	<nav class="mobile-nav hidden absolute top-18 left-0 right-0 bg-header-bg border-b border-header-border backdrop-blur-[20px] px-8 py-4 pb-6 max-h-[calc(100vh-72px)] overflow-y-auto" id="mobileNav" aria-label="Mobile navigation">
-		<a href="/" class="block py-3 text-[0.95rem] font-medium text-text-on-dark opacity-70 border-b border-white/[0.06] uppercase tracking-[0.04em]">Home</a>
-
-		<div class="mobile-dropdown">
-			<button
-				type="button"
-				class="mobile-dropdown-toggle flex justify-between items-center w-full text-left bg-transparent py-3 text-[0.95rem] font-medium text-text-on-dark opacity-70 border-b border-white/[0.06] uppercase tracking-[0.04em] cursor-pointer"
-				data-mobile-dropdown-toggle
-				aria-expanded="false"
-			>
+	<nav class="hidden lg:hidden bg-header-bg border-t border-header-border px-6 py-4 max-h-[calc(100vh-64px)] overflow-y-auto" id="mobileNav">
+		<a href="/" class="block py-3 text-sm text-white/70 border-b border-white/5 uppercase tracking-wide">Home</a>
+		<div>
+			<button type="button" class="flex justify-between items-center w-full py-3 text-sm text-white/70 border-b border-white/5 uppercase tracking-wide" data-dropdown-toggle aria-expanded="false">
 				Windows
-				<svg class="w-3 h-3 stroke-current fill-none stroke-[2.5] transition-transform duration-300" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+				<svg class="size-3 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" /></svg>
 			</button>
-			<div class="mobile-dropdown-menu hidden pl-4 pt-1 pb-2">
-				<a href="/windows" class="block py-2 text-[0.85rem] text-white/50 transition-colors duration-200 tracking-[0.02em] hover:text-white">All Windows</a>
-				{
-					windowProducts.map((product) => (
-						<a href={getProductHref(product.slug)} class="block py-2 text-[0.85rem] text-white/50 transition-colors duration-200 tracking-[0.02em] hover:text-white">{product.title}</a>
-					))
-				}
+			<div class="hidden pl-4 pb-2">
+				<a href="/windows" class="block py-2 text-sm text-white/50 hover:text-white">All Windows</a>
+				{windowProducts.map(p => (
+					<a href={getProductHref(p.slug)} class="block py-2 text-sm text-white/50 hover:text-white">{p.title}</a>
+				))}
 			</div>
 		</div>
-
-		<div class="mobile-dropdown">
-			<button
-				type="button"
-				class="mobile-dropdown-toggle flex justify-between items-center w-full text-left bg-transparent py-3 text-[0.95rem] font-medium text-text-on-dark opacity-70 border-b border-white/[0.06] uppercase tracking-[0.04em] cursor-pointer"
-				data-mobile-dropdown-toggle
-				aria-expanded="false"
-			>
+		<div>
+			<button type="button" class="flex justify-between items-center w-full py-3 text-sm text-white/70 border-b border-white/5 uppercase tracking-wide" data-dropdown-toggle aria-expanded="false">
 				Doors
-				<svg class="w-3 h-3 stroke-current fill-none stroke-[2.5] transition-transform duration-300" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+				<svg class="size-3 stroke-current fill-none stroke-2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" /></svg>
 			</button>
-			<div class="mobile-dropdown-menu hidden pl-4 pt-1 pb-2">
-				<a href="/doors" class="block py-2 text-[0.85rem] text-white/50 transition-colors duration-200 tracking-[0.02em] hover:text-white">All Doors</a>
-				{
-					doorProducts.map((product) => (
-						<a href={getProductHref(product.slug)} class="block py-2 text-[0.85rem] text-white/50 transition-colors duration-200 tracking-[0.02em] hover:text-white">{product.title}</a>
-					))
-				}
+			<div class="hidden pl-4 pb-2">
+				<a href="/doors" class="block py-2 text-sm text-white/50 hover:text-white">All Doors</a>
+				{doorProducts.map(p => (
+					<a href={getProductHref(p.slug)} class="block py-2 text-sm text-white/50 hover:text-white">{p.title}</a>
+				))}
 			</div>
 		</div>
-
-		<a href="/about" class="block py-3 text-[0.95rem] font-medium text-text-on-dark opacity-70 border-b border-white/[0.06] uppercase tracking-[0.04em]">About</a>
-		<a href="/contact" class="block py-3 text-[0.95rem] font-medium text-text-on-dark opacity-70 border-b border-white/[0.06] uppercase tracking-[0.04em]">Contact</a>
-		<a href="/quote" class="block py-3 text-[0.95rem] font-medium text-anodise border-none uppercase tracking-[0.04em]">Get Free Quote</a>
+		<a href="/about" class="block py-3 text-sm text-white/70 border-b border-white/5 uppercase tracking-wide">About</a>
+		<a href="/contact" class="block py-3 text-sm text-white/70 border-b border-white/5 uppercase tracking-wide">Contact</a>
+		<a href="/quote" class="block py-3 text-sm text-anodise uppercase tracking-wide font-medium">Get Free Quote</a>
 	</nav>
 </header>

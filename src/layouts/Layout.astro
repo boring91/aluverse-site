@@ -2,7 +2,6 @@
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import '../styles/global.css';
-import '../styles/site.css';
 
 type Props = {
 	title: string;
@@ -14,7 +13,7 @@ const { title, description, activeNav } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -30,9 +29,9 @@ const { title, description, activeNav } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="font-body text-text-primary bg-page antialiased overflow-x-hidden leading-relaxed">
 		<Header activeNav={activeNav} />
-		<main id="main-content">
+		<main>
 			<slot />
 		</main>
 		<Footer />
@@ -40,143 +39,58 @@ const { title, description, activeNav } = Astro.props;
 		<script is:inline>
 			(() => {
 				const init = () => {
-					const header = document.getElementById('siteHeader');
-					const mobileToggle = document.getElementById('menuToggle');
-					const mobileNav = document.getElementById('mobileNav');
-
-					const setMobileNav = (isOpen) => {
-						if (!mobileToggle || !mobileNav) return;
-						mobileNav.classList.toggle('open', isOpen);
-						mobileToggle.setAttribute('aria-expanded', String(isOpen));
-						document.body.classList.toggle('menu-open', isOpen);
-					};
-
-					if (mobileToggle && mobileNav) {
-						mobileToggle.addEventListener('click', () => {
-							setMobileNav(!mobileNav.classList.contains('open'));
+					const toggle = document.getElementById('menuToggle');
+					const nav = document.getElementById('mobileNav');
+					if (toggle && nav) {
+						toggle.addEventListener('click', () => {
+							const isHidden = nav.classList.toggle('hidden');
+							toggle.setAttribute('aria-expanded', String(!isHidden));
+							document.body.classList.toggle('overflow-hidden', !isHidden);
 						});
-
-						mobileNav.querySelectorAll('a').forEach((link) => {
-							link.addEventListener('click', () => setMobileNav(false));
-						});
-					}
-
-					document.querySelectorAll('[data-mobile-dropdown-toggle]').forEach((button) => {
-						button.addEventListener('click', () => {
-							const parent = button.parentElement;
-							if (!parent) return;
-							const isOpen = parent.classList.toggle('open');
-							button.setAttribute('aria-expanded', String(isOpen));
-						});
-					});
-
-					document.querySelectorAll('[data-carousel-target]').forEach((button) => {
-						button.addEventListener('click', () => {
-							const targetId = button.getAttribute('data-carousel-target');
-							const direction = Number(button.getAttribute('data-direction') || '1');
-							if (!targetId) return;
-
-							const track = document.getElementById(targetId);
-							const card = track?.querySelector('.carousel-card');
-							if (!track || !card) return;
-
-							const gap = Number.parseFloat(getComputedStyle(track).gap || '24') || 24;
-							track.scrollBy({ left: direction * (card.clientWidth + gap), behavior: 'smooth' });
-						});
-					});
-
-					const testimonialTrack = document.getElementById('testimonialTrack');
-					const testimonialDots = Array.from(document.querySelectorAll('[data-testimonial-dot]'));
-
-					if (testimonialTrack && testimonialDots.length > 0) {
-						let currentTestimonial = 0;
-						let testimonialTimer = 0;
-
-						const goToTestimonial = (index) => {
-							testimonialDots[currentTestimonial]?.classList.remove('active');
-							currentTestimonial = index;
-							testimonialTrack.style.transform = `translateX(-${currentTestimonial * 100}%)`;
-							testimonialDots[currentTestimonial]?.classList.add('active');
-						};
-
-						testimonialDots.forEach((dot, index) => {
-							dot.addEventListener('click', () => {
-								goToTestimonial(index);
-								window.clearInterval(testimonialTimer);
-								testimonialTimer = window.setInterval(() => {
-									goToTestimonial((currentTestimonial + 1) % testimonialDots.length);
-								}, 5000);
+						nav.querySelectorAll('a').forEach(link => {
+							link.addEventListener('click', () => {
+								nav.classList.add('hidden');
+								document.body.classList.remove('overflow-hidden');
 							});
 						});
-
-						testimonialTimer = window.setInterval(() => {
-							goToTestimonial((currentTestimonial + 1) % testimonialDots.length);
-						}, 5000);
 					}
+
+					document.querySelectorAll('[data-dropdown-toggle]').forEach(btn => {
+						btn.addEventListener('click', () => {
+							const menu = btn.nextElementSibling;
+							if (menu) menu.classList.toggle('hidden');
+							const expanded = btn.getAttribute('aria-expanded') === 'true';
+							btn.setAttribute('aria-expanded', String(!expanded));
+						});
+					});
 
 					let countersDone = false;
 					const animateCounters = () => {
 						if (countersDone) return;
 						const counters = document.querySelectorAll('[data-target]');
 						if (!counters.length) return;
-
-						const firstCounter = counters[0];
-						const rect = firstCounter.getBoundingClientRect();
-
+						const rect = counters[0].getBoundingClientRect();
 						if (rect.top < window.innerHeight * 0.85) {
 							countersDone = true;
-							counters.forEach((counter) => {
-								const target = Number.parseInt(counter.getAttribute('data-target') || '0', 10);
+							counters.forEach(counter => {
+								const target = parseInt(counter.getAttribute('data-target') || '0', 10);
 								const suffix = target === 100 ? '%' : '+';
 								const start = performance.now();
-
-								const updateCounter = (now) => {
-									const progress = Math.min((now - start) / 2000, 1);
-									const eased = 1 - Math.pow(1 - progress, 3);
-									counter.textContent = `${Math.floor(eased * target)}${suffix}`;
-									if (progress < 1) {
-										window.requestAnimationFrame(updateCounter);
-									}
+								const update = (now) => {
+									const p = Math.min((now - start) / 2000, 1);
+									const eased = 1 - Math.pow(1 - p, 3);
+									counter.textContent = Math.floor(eased * target) + suffix;
+									if (p < 1) requestAnimationFrame(update);
 								};
-
-								window.requestAnimationFrame(updateCounter);
+								requestAnimationFrame(update);
 							});
 						}
 					};
-
 					window.addEventListener('scroll', animateCounters, { passive: true });
 					animateCounters();
 
-					const revealItems = document.querySelectorAll('.reveal');
-					if (revealItems.length > 0) {
-						const observer = new IntersectionObserver(
-							(entries) => {
-								entries.forEach((entry) => {
-									if (entry.isIntersecting) {
-										entry.target.classList.add('visible');
-										observer.unobserve(entry.target);
-									}
-								});
-							},
-							{ threshold: 0.1, rootMargin: '0px 0px -50px 0px' },
-						);
-
-						revealItems.forEach((item) => observer.observe(item));
-					}
-
-					if (header) {
-						const syncHeader = () => {
-							header.classList.toggle('header-scrolled', window.scrollY > 50);
-						};
-
-						window.addEventListener('scroll', syncHeader, { passive: true });
-						syncHeader();
-					}
-
-					document.querySelectorAll('[data-static-form]').forEach((form) => {
-						form.addEventListener('submit', (event) => {
-							event.preventDefault();
-						});
+					document.querySelectorAll('[data-static-form]').forEach(form => {
+						form.addEventListener('submit', e => e.preventDefault());
 					});
 				};
 

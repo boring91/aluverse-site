@@ -2,71 +2,55 @@
 import { company } from '../data/site';
 ---
 
-<div class="reveal">
-	<h3 class="font-display text-[1.8rem] font-[400] mb-6">Contact Information</h3>
+<div>
+	<h3 class="font-display text-2xl mb-6">Contact Information</h3>
 
-	<div class="flex gap-4 py-5 border-b border-divider border-t border-t-divider">
-		<div class="w-11 h-11 border border-divider flex items-center justify-center shrink-0">
-			<svg class="w-5 h-5 stroke-accent stroke-[1.5] fill-none" viewBox="0 0 24 24" aria-hidden="true">
-				<path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"></path>
-			</svg>
+	<div class="flex gap-4 py-5 border-y border-divider">
+		<div class="size-11 border border-divider flex items-center justify-center shrink-0">
+			<svg class="size-5 stroke-accent stroke-[1.5] fill-none" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z" /></svg>
 		</div>
 		<div>
-			<h4 class="text-[0.88rem] font-semibold mb-0.5">Phone</h4>
-			<a href={company.phoneHref} class="text-[0.85rem] text-text-secondary leading-normal hover:text-accent">{company.phoneDisplay}</a>
+			<h4 class="text-sm font-semibold mb-0.5">Phone</h4>
+			<a href={company.phoneHref} class="text-sm text-text-secondary hover:text-accent">{company.phoneDisplay}</a>
 		</div>
 	</div>
 
 	<div class="flex gap-4 py-5 border-b border-divider">
-		<div class="w-11 h-11 border border-divider flex items-center justify-center shrink-0">
-			<svg class="w-5 h-5 stroke-accent stroke-[1.5] fill-none" viewBox="0 0 24 24" aria-hidden="true">
-				<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-				<polyline points="22,6 12,13 2,6"></polyline>
-			</svg>
+		<div class="size-11 border border-divider flex items-center justify-center shrink-0">
+			<svg class="size-5 stroke-accent stroke-[1.5] fill-none" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
 		</div>
 		<div>
-			<h4 class="text-[0.88rem] font-semibold mb-0.5">Email</h4>
-			<a href={company.emailHref} class="text-[0.85rem] text-text-secondary leading-normal hover:text-accent">{company.emailDisplay}</a>
+			<h4 class="text-sm font-semibold mb-0.5">Email</h4>
+			<a href={company.emailHref} class="text-sm text-text-secondary hover:text-accent">{company.emailDisplay}</a>
 		</div>
 	</div>
 
 	<div class="flex gap-4 py-5 border-b border-divider">
-		<div class="w-11 h-11 border border-divider flex items-center justify-center shrink-0">
-			<svg class="w-5 h-5 stroke-accent stroke-[1.5] fill-none" viewBox="0 0 24 24" aria-hidden="true">
-				<circle cx="12" cy="12" r="10"></circle>
-				<polyline points="12 6 12 12 16 14"></polyline>
-			</svg>
+		<div class="size-11 border border-divider flex items-center justify-center shrink-0">
+			<svg class="size-5 stroke-accent stroke-[1.5] fill-none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
 		</div>
 		<div>
-			<h4 class="text-[0.88rem] font-semibold mb-0.5">Business Hours</h4>
-			<p class="text-[0.85rem] text-text-secondary leading-normal">{company.hours}</p>
+			<h4 class="text-sm font-semibold mb-0.5">Business Hours</h4>
+			<p class="text-sm text-text-secondary">{company.hours}</p>
 		</div>
 	</div>
 
 	<div class="flex gap-4 py-5 border-b border-divider">
-		<div class="w-11 h-11 border border-divider flex items-center justify-center shrink-0">
-			<svg class="w-5 h-5 stroke-accent stroke-[1.5] fill-none" viewBox="0 0 24 24" aria-hidden="true">
-				<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
-				<circle cx="12" cy="10" r="3"></circle>
-			</svg>
+		<div class="size-11 border border-divider flex items-center justify-center shrink-0">
+			<svg class="size-5 stroke-accent stroke-[1.5] fill-none" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg>
 		</div>
 		<div>
-			<h4 class="text-[0.88rem] font-semibold mb-0.5">Service Area</h4>
-			<p class="text-[0.85rem] text-text-secondary leading-normal">{company.serviceArea}</p>
+			<h4 class="text-sm font-semibold mb-0.5">Service Area</h4>
+			<p class="text-sm text-text-secondary">{company.serviceArea}</p>
 		</div>
 	</div>
 
 	<div class="flex gap-3 mt-8">
-		<a href={company.socials[0].href} target="_blank" rel="noopener noreferrer" aria-label="hipages" class="w-11 h-11 border border-divider flex items-center justify-center transition-all duration-300 hover:border-accent hover:bg-accent-light">
-			<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-				<path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-				<polyline points="9 22 9 12 15 12 15 22"></polyline>
-			</svg>
+		<a href={company.socials[0].href} target="_blank" rel="noopener noreferrer" aria-label="hipages" class="size-11 border border-divider flex items-center justify-center hover:border-accent hover:bg-accent-light transition-colors">
+			<svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
 		</a>
-		<a href={company.socials[1].href} target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-11 h-11 border border-divider flex items-center justify-center transition-all duration-300 hover:border-accent hover:bg-accent-light">
-			<svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-				<path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 1.09.044 1.613.115V7.93h-1.143c-1.679 0-2.33.64-2.33 2.303v1.794h3.32l-.571 3.667h-2.749v8.23c5.375-.726 9.528-5.305 9.528-10.862C22.627 6.498 17.958 1.83 12.313 1.83S2 6.498 2 13.063c0 5.21 3.657 9.56 8.535 10.628h-.434z"></path>
-			</svg>
+		<a href={company.socials[1].href} target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="size-11 border border-divider flex items-center justify-center hover:border-accent hover:bg-accent-light transition-colors">
+			<svg class="size-5" viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 1.09.044 1.613.115V7.93h-1.143c-1.679 0-2.33.64-2.33 2.303v1.794h3.32l-.571 3.667h-2.749v8.23c5.375-.726 9.528-5.305 9.528-10.862C22.627 6.498 17.958 1.83 12.313 1.83S2 6.498 2 13.063c0 5.21 3.657 9.56 8.535 10.628h-.434z" /></svg>
 		</a>
 	</div>
 </div>

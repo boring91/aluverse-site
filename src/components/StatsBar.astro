@@ -2,19 +2,13 @@
 import { stats } from '../data/site';
 ---
 
-<section class="bg-stat-bg border-t border-b border-stat-border">
-	<div class="max-w-[1400px] mx-auto grid grid-cols-1 min-[481px]:grid-cols-2 md:grid-cols-4">
-		{
-			stats.map((stat, index) => (
-				<div class:list={[
-					'stat-item-divider relative px-6 py-10 text-center transition-colors duration-300 hover:bg-accent-light last:after:hidden max-md:[&:nth-child(2)]:after:hidden max-[480px]:after:!hidden',
-					'reveal',
-					index > 0 && `reveal-delay-${index}`,
-				]}>
-					<div class="font-display text-[length:clamp(1.8rem,3.5vw,3rem)] font-[400] text-anodise leading-none mb-1.5" data-target={stat.target}>0</div>
-					<div class="text-[0.72rem] font-medium text-white/50 tracking-[0.12em] uppercase">{stat.label}</div>
-				</div>
-			))
-		}
+<section class="bg-dark border-y border-white/10">
+	<div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4">
+		{stats.map((stat, i) => (
+			<div class:list={['px-6 py-10 text-center', i < stats.length - 1 && 'md:border-r md:border-white/10']}>
+				<div class="font-display text-3xl md:text-4xl text-anodise mb-1" data-target={stat.target}>0</div>
+				<div class="text-xs font-medium text-white/50 tracking-wider uppercase">{stat.label}</div>
+			</div>
+		))}
 	</div>
 </section>

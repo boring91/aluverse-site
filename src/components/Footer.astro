@@ -2,70 +2,51 @@
 import { company, footerProductSlugs, getProductBySlug, getProductHref } from '../data/site';
 
 const featuredProducts = footerProductSlugs
-	.map((slug) => getProductBySlug(slug))
-	.filter((product): product is NonNullable<typeof product> => Boolean(product));
+	.map(slug => getProductBySlug(slug))
+	.filter((p): p is NonNullable<typeof p> => Boolean(p));
 const year = new Date().getFullYear();
 ---
 
-<footer class="bg-dark text-text-on-dark pt-18 px-8">
-	<div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-12">
+<footer class="bg-dark text-white pt-16 px-6">
+	<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 		<div>
-			<a href="/" class="font-display font-bold text-[1.3rem] flex items-center gap-2.5 text-text-on-dark mb-4">
-				<div class="w-8 h-8 flex items-center justify-center bg-accent text-text-on-accent font-black text-xs font-display">A</div>
-				<div>Alu<span class="text-anodise">verse</span></div>
+			<a href="/" class="font-display text-xl text-white flex items-center gap-2 mb-4">
+				<span class="size-8 flex items-center justify-center bg-accent text-white text-xs font-black">A</span>
+				Alu<span class="text-anodise">verse</span>
 			</a>
-			<p class="text-[0.85rem] leading-relaxed opacity-60">{company.tagline}</p>
-			<div class="flex gap-2.5 mt-6">
-				<a href={company.socials[0].href} target="_blank" rel="noopener noreferrer" aria-label="hipages" class="w-9 h-9 border border-white/10 flex items-center justify-center transition-all duration-300 hover:border-anodise hover:bg-accent-light">
-					<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.5">
-						<path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-						<polyline points="9 22 9 12 15 12 15 22"></polyline>
-					</svg>
-				</a>
-				<a href={company.socials[1].href} target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 border border-white/10 flex items-center justify-center transition-all duration-300 hover:border-anodise hover:bg-accent-light">
-					<svg class="w-4 h-4" viewBox="0 0 24 24" fill="rgba(255,255,255,.5)">
-						<path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 1.09.044 1.613.115V7.93h-1.143c-1.679 0-2.33.64-2.33 2.303v1.794h3.32l-.571 3.667h-2.749v8.23c5.375-.726 9.528-5.305 9.528-10.862C22.627 6.498 17.958 1.83 12.313 1.83S2 6.498 2 13.063c0 5.21 3.657 9.56 8.535 10.628h-.434z"></path>
-					</svg>
-				</a>
-			</div>
+			<p class="text-sm text-white/60 leading-relaxed">{company.tagline}</p>
 		</div>
-
 		<div>
-			<h4 class="font-display text-[1.1rem] font-[400] mb-5">Quick Links</h4>
-			<ul>
-				<li class="mb-2"><a href="/" class="text-[0.85rem] opacity-50 transition-all duration-300 hover:opacity-100 hover:text-anodise">Home</a></li>
-				<li class="mb-2"><a href="/windows" class="text-[0.85rem] opacity-50 transition-all duration-300 hover:opacity-100 hover:text-anodise">Windows</a></li>
-				<li class="mb-2"><a href="/doors" class="text-[0.85rem] opacity-50 transition-all duration-300 hover:opacity-100 hover:text-anodise">Doors</a></li>
-				<li class="mb-2"><a href="/about" class="text-[0.85rem] opacity-50 transition-all duration-300 hover:opacity-100 hover:text-anodise">About Us</a></li>
-				<li class="mb-2"><a href="/contact" class="text-[0.85rem] opacity-50 transition-all duration-300 hover:opacity-100 hover:text-anodise">Contact</a></li>
-				<li class="mb-2"><a href="/quote" class="text-[0.85rem] opacity-50 transition-all duration-300 hover:opacity-100 hover:text-anodise">Request Quote</a></li>
+			<h4 class="font-display text-lg mb-4">Quick Links</h4>
+			<ul class="space-y-2 text-sm text-white/50">
+				<li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+				<li><a href="/windows" class="hover:text-white transition-colors">Windows</a></li>
+				<li><a href="/doors" class="hover:text-white transition-colors">Doors</a></li>
+				<li><a href="/about" class="hover:text-white transition-colors">About Us</a></li>
+				<li><a href="/contact" class="hover:text-white transition-colors">Contact</a></li>
+				<li><a href="/quote" class="hover:text-white transition-colors">Request Quote</a></li>
 			</ul>
 		</div>
-
 		<div>
-			<h4 class="font-display text-[1.1rem] font-[400] mb-5">Our Products</h4>
-			<ul>
-				{
-					featuredProducts.map((product) => (
-						<li class="mb-2"><a href={getProductHref(product.slug)} class="text-[0.85rem] opacity-50 transition-all duration-300 hover:opacity-100 hover:text-anodise">{product.title}</a></li>
-					))
-				}
+			<h4 class="font-display text-lg mb-4">Our Products</h4>
+			<ul class="space-y-2 text-sm text-white/50">
+				{featuredProducts.map(p => (
+					<li><a href={getProductHref(p.slug)} class="hover:text-white transition-colors">{p.title}</a></li>
+				))}
 			</ul>
 		</div>
-
 		<div>
-			<h4 class="font-display text-[1.1rem] font-[400] mb-5">Contact Info</h4>
-			<ul>
-				<li class="mb-2"><a href={company.phoneHref} class="text-[0.85rem] opacity-50 transition-all duration-300 hover:opacity-100 hover:text-anodise">{company.phoneDisplay}</a></li>
-				<li class="mb-2"><a href={company.emailHref} class="text-[0.85rem] opacity-50 transition-all duration-300 hover:opacity-100 hover:text-anodise">{company.emailDisplay}</a></li>
-				<li class="mb-2 text-[0.85rem] opacity-50">{company.shortHours}</li>
-				<li class="mb-2 text-[0.85rem] opacity-50">7 Days a Week</li>
-				<li class="mb-2 text-[0.85rem] opacity-50">{company.serviceArea}</li>
+			<h4 class="font-display text-lg mb-4">Contact Info</h4>
+			<ul class="space-y-2 text-sm text-white/50">
+				<li><a href={company.phoneHref} class="hover:text-white transition-colors">{company.phoneDisplay}</a></li>
+				<li><a href={company.emailHref} class="hover:text-white transition-colors">{company.emailDisplay}</a></li>
+				<li>{company.shortHours}</li>
+				<li>7 Days a Week</li>
+				<li>{company.serviceArea}</li>
 			</ul>
 		</div>
 	</div>
-
-	<div class="max-w-[1400px] mx-auto py-8 mt-12 border-t border-white/[0.06] flex flex-col md:flex-row justify-between items-center text-[0.72rem] opacity-30 gap-3 text-center md:text-left">
+	<div class="max-w-7xl mx-auto py-8 mt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-white/30 gap-2">
 		<span>&copy; {year} Aluverse Doors and Windows. All rights reserved.</span>
 		<span>Australian Standards Compliant | {company.location}</span>
 	</div>

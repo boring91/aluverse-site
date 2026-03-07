@@ -1,11 +1,11 @@
 export type ProductCategory = "windows" | "doors";
 
-export interface ProductSpec {
+export type ProductSpec = {
     label: string;
     value: string;
-}
+};
 
-export interface Product {
+export type Product = {
     slug: string;
     category: ProductCategory;
     title: string;
@@ -19,7 +19,7 @@ export interface Product {
     features: string[];
     specs: ProductSpec[];
     related: string[];
-}
+};
 
 export const company = {
     name: "Aluverse",

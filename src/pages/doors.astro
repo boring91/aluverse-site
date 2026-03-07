@@ -14,83 +14,60 @@ import { company, doorProducts } from '../data/site';
 	<PageHero
 		title="Aluminium Doors"
 		subtitle="Secure, elegant door systems engineered for Australian conditions. Custom-built to transform your living spaces."
-		subtitleClass="wide"
 		image="https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=1920&q=80"
 		imageAlt="Premium aluminium doors"
 		breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Doors' }]}
 	/>
 
-	<section class="py-22 relative bg-page">
-		<div class="max-w-[1400px] mx-auto px-6 md:px-8">
+	<section class="py-20 bg-page">
+		<div class="max-w-7xl mx-auto px-6">
 			<div class="text-center mb-12">
-				<div class="section-tag section-tag-center inline-flex items-center gap-2 text-[0.72rem] font-semibold tracking-[0.15em] uppercase text-accent mb-4 justify-center reveal">Our Range</div>
-				<h2 class="font-display text-[length:clamp(1.8rem,4vw,2.8rem)] font-[400] tracking-[0.01em] leading-tight mb-3 text-text-primary reveal reveal-delay-1">Door Systems</h2>
-				<p class="text-[0.95rem] text-text-secondary max-w-[550px] leading-relaxed mx-auto reveal reveal-delay-2">
-					From expansive bi-fold openings to classic French doors, every system is
-					precision-engineered.
+				<p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">Our Range</p>
+				<h2 class="font-display text-3xl md:text-4xl leading-tight mb-3">Door Systems</h2>
+				<p class="text-sm text-text-secondary max-w-lg leading-relaxed mx-auto">
+					From expansive bi-fold openings to classic French doors, every system is precision-engineered.
 				</p>
 			</div>
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-				{
-					doorProducts.map((product, index) => (
-						<ProductCard
-							product={product}
-							revealClass={index === 0 ? 'reveal' : `reveal reveal-delay-${Math.min(index, 3)}`}
-						/>
-					))
-				}
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+				{doorProducts.map(product => <ProductCard product={product} />)}
 			</div>
 		</div>
 	</section>
 
-	<section class="py-22 relative bg-dark text-text-on-dark">
-		<div class="max-w-[1400px] mx-auto px-6 md:px-8">
+	<section class="py-20 bg-dark text-white">
+		<div class="max-w-7xl mx-auto px-6">
 			<div class="text-center mb-12">
-				<div class="section-tag section-tag-center inline-flex items-center gap-2 text-[0.72rem] font-semibold tracking-[0.15em] uppercase text-anodise mb-4 justify-center reveal">Why Aluminium</div>
-				<h2 class="font-display text-[length:clamp(1.8rem,4vw,2.8rem)] font-[400] tracking-[0.01em] leading-tight mb-3 text-text-on-dark reveal reveal-delay-1">The Premium Choice for Sydney Homes</h2>
+				<p class="text-xs font-semibold tracking-widest uppercase text-anodise mb-3">Why Aluminium</p>
+				<h2 class="font-display text-3xl md:text-4xl leading-tight">The Premium Choice for Sydney Homes</h2>
 			</div>
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-				<div class="service-card-line relative overflow-hidden p-10 border border-service-card-border bg-service-card-bg backdrop-blur-[8px] transition-all duration-400 hover:bg-white/5 hover:border-accent-dim hover:-translate-y-1 reveal">
-					<div class="w-[52px] h-[52px] border border-anodise/30 flex items-center justify-center mb-6">
-						<svg class="w-6 h-6 stroke-anodise stroke-[1.5] fill-none" viewBox="0 0 24 24">
-							<rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-							<path d="M7 11V7a5 5 0 0110 0v4"></path>
+				<div class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+					<div class="size-12 border border-anodise/30 flex items-center justify-center mb-6">
+						<svg class="size-6 stroke-anodise stroke-[1.5] fill-none" viewBox="0 0 24 24">
+							<rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0110 0v4" />
 						</svg>
 					</div>
-					<h3 class="font-display text-[1.2rem] font-[400] text-text-on-dark mb-3 tracking-[0.01em]">Security</h3>
-					<p class="text-[0.85rem] text-white/45 leading-relaxed">
-						Heavy-duty aluminium frames with multi-point locking systems provide superior home
-						security.
-					</p>
+					<h3 class="font-display text-lg mb-3">Security</h3>
+					<p class="text-sm text-white/45 leading-relaxed">Heavy-duty aluminium frames with multi-point locking systems provide superior home security.</p>
 				</div>
-				<div class="service-card-line relative overflow-hidden p-10 border border-service-card-border bg-service-card-bg backdrop-blur-[8px] transition-all duration-400 hover:bg-white/5 hover:border-accent-dim hover:-translate-y-1 reveal reveal-delay-1">
-					<div class="w-[52px] h-[52px] border border-anodise/30 flex items-center justify-center mb-6">
-						<svg class="w-6 h-6 stroke-anodise stroke-[1.5] fill-none" viewBox="0 0 24 24">
-							<path d="M9.59 4.59A2 2 0 1111 8H2"></path>
-							<path d="M12.59 19.41A2 2 0 1014 16H2"></path>
-							<path d="M17.73 7.73A2.5 2.5 0 1019.5 12H2"></path>
+				<div class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+					<div class="size-12 border border-anodise/30 flex items-center justify-center mb-6">
+						<svg class="size-6 stroke-anodise stroke-[1.5] fill-none" viewBox="0 0 24 24">
+							<path d="M9.59 4.59A2 2 0 1111 8H2" /><path d="M12.59 19.41A2 2 0 1014 16H2" /><path d="M17.73 7.73A2.5 2.5 0 1019.5 12H2" />
 						</svg>
 					</div>
-					<h3 class="font-display text-[1.2rem] font-[400] text-text-on-dark mb-3 tracking-[0.01em]">Weather Resistance</h3>
-					<p class="text-[0.85rem] text-white/45 leading-relaxed">
-						Engineered seals and durable frames protect against Sydney's weather while
-						maintaining smooth operation.
-					</p>
+					<h3 class="font-display text-lg mb-3">Weather Resistance</h3>
+					<p class="text-sm text-white/45 leading-relaxed">Engineered seals and durable frames protect against Sydney's weather while maintaining smooth operation.</p>
 				</div>
-				<div class="service-card-line relative overflow-hidden p-10 border border-service-card-border bg-service-card-bg backdrop-blur-[8px] transition-all duration-400 hover:bg-white/5 hover:border-accent-dim hover:-translate-y-1 reveal reveal-delay-2">
-					<div class="w-[52px] h-[52px] border border-anodise/30 flex items-center justify-center mb-6">
-						<svg class="w-6 h-6 stroke-anodise stroke-[1.5] fill-none" viewBox="0 0 24 24">
-							<polyline points="15 3 21 3 21 9"></polyline>
-							<polyline points="9 21 3 21 3 15"></polyline>
-							<line x1="21" y1="3" x2="14" y2="10"></line>
-							<line x1="3" y1="21" x2="10" y2="14"></line>
+				<div class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+					<div class="size-12 border border-anodise/30 flex items-center justify-center mb-6">
+						<svg class="size-6 stroke-anodise stroke-[1.5] fill-none" viewBox="0 0 24 24">
+							<polyline points="15 3 21 3 21 9" /><polyline points="9 21 3 21 3 15" />
+							<line x1="21" y1="3" x2="14" y2="10" /><line x1="3" y1="21" x2="10" y2="14" />
 						</svg>
 					</div>
-					<h3 class="font-display text-[1.2rem] font-[400] text-text-on-dark mb-3 tracking-[0.01em]">Indoor-Outdoor Living</h3>
-					<p class="text-[0.85rem] text-white/45 leading-relaxed">
-						Create seamless transitions between your home and outdoor spaces with expansive
-						door openings.
-					</p>
+					<h3 class="font-display text-lg mb-3">Indoor-Outdoor Living</h3>
+					<p class="text-sm text-white/45 leading-relaxed">Create seamless transitions between your home and outdoor spaces with expansive door openings.</p>
 				</div>
 			</div>
 		</div>
