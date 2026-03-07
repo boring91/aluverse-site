@@ -1,5 +1,5 @@
 ---
-interface Props {
+type Props = {
 	tag: string;
 	title: string;
 	text: string;
@@ -7,19 +7,19 @@ interface Props {
 	primaryLabel: string;
 	secondaryHref: string;
 	secondaryLabel: string;
-}
+};
 
 const { tag, title, text, primaryHref, primaryLabel, secondaryHref, secondaryLabel } = Astro.props;
 ---
 
-<section class="cta-section">
-	<div class="cta-inner reveal">
-		<div class="section-tag">{tag}</div>
-		<h2 class="section-title">{title}</h2>
-		<p>{text}</p>
-		<div class="cta-btns">
-			<a href={primaryHref} class="btn btn-white">{primaryLabel}</a>
-			<a href={secondaryHref} class="btn btn-outline-white">{secondaryLabel}</a>
+<section class="cta-circle-top cta-circle-bottom bg-cta text-white px-8 py-24 relative overflow-hidden text-center">
+	<div class="max-w-[650px] mx-auto relative z-[1] reveal">
+		<div class="section-tag section-tag-center inline-flex items-center gap-2 text-[0.72rem] font-semibold tracking-[0.15em] uppercase text-anodise mb-4">{tag}</div>
+		<h2 class="font-display text-[length:clamp(1.8rem,4vw,2.8rem)] font-[400] tracking-[0.01em] leading-tight mb-4 text-white">{title}</h2>
+		<p class="text-base text-white/60 leading-relaxed mb-10">{text}</p>
+		<div class="flex justify-center gap-4 flex-wrap max-[480px]:flex-col max-[480px]:items-center">
+			<a href={primaryHref} class="btn-shine relative overflow-hidden inline-flex items-center justify-center gap-2 px-8 py-3.5 font-body text-[0.85rem] font-semibold tracking-[0.04em] uppercase cursor-pointer bg-white text-[#111] transition-all duration-300 hover:bg-[#eee] hover:-translate-y-0.5 max-[480px]:w-full max-[480px]:max-w-[300px]">{primaryLabel}</a>
+			<a href={secondaryHref} class="btn-shine relative overflow-hidden inline-flex items-center justify-center gap-2 px-8 py-3.5 font-body text-[0.85rem] font-semibold tracking-[0.04em] uppercase cursor-pointer bg-transparent text-white border border-white/30 transition-all duration-300 hover:border-white/70 hover:bg-white/5 max-[480px]:w-full max-[480px]:max-w-[300px]">{secondaryLabel}</a>
 		</div>
 	</div>
 </section>

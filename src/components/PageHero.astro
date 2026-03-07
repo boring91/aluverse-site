@@ -1,17 +1,17 @@
 ---
-interface BreadcrumbItem {
+type BreadcrumbItem = {
 	label: string;
 	href?: string;
-}
+};
 
-interface Props {
+type Props = {
 	title: string;
 	subtitle?: string;
 	image: string;
 	imageAlt: string;
 	breadcrumbs: BreadcrumbItem[];
-	subtitleClass?: 'page-hero-subtitle' | 'hero-subtitle';
-}
+	subtitleClass?: 'compact' | 'wide';
+};
 
 const {
 	title,
@@ -19,29 +19,33 @@ const {
 	image,
 	imageAlt,
 	breadcrumbs,
-	subtitleClass = 'page-hero-subtitle',
+	subtitleClass = 'compact',
 } = Astro.props;
+
+const subtitleStyles = subtitleClass === 'wide'
+	? 'text-base text-white/60 leading-relaxed max-w-[500px] font-light'
+	: 'text-base text-white/55 leading-relaxed max-w-[550px] font-light';
 ---
 
-<section class="page-hero">
-	<img class="hero-photo" src={image} alt={imageAlt} loading="eager" />
-	<div class="page-hero-overlay"></div>
-	<div class="page-hero-inner">
-		<nav class="breadcrumb reveal" aria-label="Breadcrumb">
+<section class="min-h-[40vh] md:min-h-[40vh] max-md:min-h-[35vh] flex items-end bg-hero text-text-on-dark relative pt-18 overflow-hidden">
+	<img class="absolute inset-0 w-full h-full object-cover z-0" src={image} alt={imageAlt} loading="eager" />
+	<div class="page-hero-overlay-gradient absolute inset-0 z-[1]"></div>
+	<div class="max-w-[1400px] mx-auto px-8 py-12 w-full relative z-[2]">
+		<nav class="flex flex-wrap items-center gap-1.5 text-[0.72rem] mb-5 reveal" aria-label="Breadcrumb">
 			{
 				breadcrumbs.map((item, index) => (
 					<>
-						{index > 0 && <span class="breadcrumb-sep">/</span>}
+						{index > 0 && <span class="text-white/25 mx-0.5">/</span>}
 						{item.href ? (
-							<a href={item.href}>{item.label}</a>
+							<a href={item.href} class="text-white/45 font-medium transition-colors duration-300 hover:text-white">{item.label}</a>
 						) : (
-							<span class="breadcrumb-current">{item.label}</span>
+							<span class="text-anodise font-semibold">{item.label}</span>
 						)}
 					</>
 				))
 			}
 		</nav>
-		<h1 class="page-hero-title reveal reveal-delay-1">{title}</h1>
-		{subtitle && <p class:list={[subtitleClass, 'reveal', 'reveal-delay-2']}>{subtitle}</p>}
+		<h1 class="font-display text-[length:clamp(2rem,5vw,3.2rem)] font-[400] tracking-[0.01em] leading-tight mb-2 reveal reveal-delay-1">{title}</h1>
+		{subtitle && <p class:list={[subtitleStyles, 'reveal', 'reveal-delay-2']}>{subtitle}</p>}
 	</div>
 </section>

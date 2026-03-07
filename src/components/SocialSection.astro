@@ -2,37 +2,34 @@
 import { company } from '../data/site';
 ---
 
-<section class="social-section">
-	<div class="container" style="text-align:center">
-		<div class="section-tag reveal" style="justify-content:center">Find Us Online</div>
-		<h2
-			class="reveal reveal-delay-1"
-			style="font-family:var(--font-display);font-size:1.6rem;font-weight:var(--display-weight);letter-spacing:var(--display-ls);color:var(--text-on-dark)"
-		>
+<section class="bg-dark text-text-on-dark py-14">
+	<div class="max-w-[1200px] mx-auto px-6 md:px-10 text-center">
+		<div class="section-tag section-tag-center inline-flex items-center gap-2 text-[0.72rem] font-semibold tracking-[0.15em] uppercase text-anodise mb-4 justify-center reveal">Find Us Online</div>
+		<h2 class="font-display text-[1.6rem] font-[400] tracking-[0.01em] text-text-on-dark reveal reveal-delay-1">
 			Connect With Us
 		</h2>
-		<div class="social-links reveal reveal-delay-2">
-			<a href={company.socials[0].href} target="_blank" rel="noopener noreferrer" class="social-link">
-				<div class="social-icon social-icon-hipages">
+		<div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mt-8 reveal reveal-delay-2">
+			<a href={company.socials[0].href} target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 px-6 py-4 bg-white/[0.03] border border-white/[0.06] min-w-60 transition-all duration-300 hover:bg-white/[0.06] hover:border-accent-dim hover:-translate-y-0.5">
+				<div class="w-11 h-11 flex items-center justify-center shrink-0 text-white bg-hipages">
 					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 						<path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
 						<polyline points="9 22 9 12 15 12 15 22"></polyline>
 					</svg>
 				</div>
 				<div>
-					<div class="social-name">{company.socials[0].label}</div>
-					<div class="social-sub">{company.socials[0].subtitle}</div>
+					<div class="font-semibold text-[0.9rem]">{company.socials[0].label}</div>
+					<div class="text-[0.72rem] opacity-50 mt-0.5">{company.socials[0].subtitle}</div>
 				</div>
 			</a>
-			<a href={company.socials[1].href} target="_blank" rel="noopener noreferrer" class="social-link">
-				<div class="social-icon social-icon-fb">
+			<a href={company.socials[1].href} target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 px-6 py-4 bg-white/[0.03] border border-white/[0.06] min-w-60 transition-all duration-300 hover:bg-white/[0.06] hover:border-accent-dim hover:-translate-y-0.5">
+				<div class="w-11 h-11 flex items-center justify-center shrink-0 text-white bg-facebook">
 					<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
 						<path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 1.09.044 1.613.115V7.93h-1.143c-1.679 0-2.33.64-2.33 2.303v1.794h3.32l-.571 3.667h-2.749v8.23c5.375-.726 9.528-5.305 9.528-10.862C22.627 6.498 17.958 1.83 12.313 1.83S2 6.498 2 13.063c0 5.21 3.657 9.56 8.535 10.628h-.434z"></path>
 					</svg>
 				</div>
 				<div>
-					<div class="social-name">{company.socials[1].label}</div>
-					<div class="social-sub">{company.socials[1].subtitle}</div>
+					<div class="font-semibold text-[0.9rem]">{company.socials[1].label}</div>
+					<div class="text-[0.72rem] opacity-50 mt-0.5">{company.socials[1].subtitle}</div>
 				</div>
 			</a>
 		</div>

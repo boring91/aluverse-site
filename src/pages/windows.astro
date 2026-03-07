@@ -1,111 +1,174 @@
 ---
-import CtaSection from '../components/CtaSection.astro';
-import Layout from '../layouts/Layout.astro';
-import PageHero from '../components/PageHero.astro';
-import ProductCard from '../components/ProductCard.astro';
-import { company, windowProducts } from '../data/site';
+import CtaSection from "../components/CtaSection.astro";
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import ProductCard from "../components/ProductCard.astro";
+import { company, windowProducts } from "../data/site";
 ---
 
 <Layout
-	title="Aluminium Windows - Aluverse | Sydney"
-	description="Premium aluminium windows for Sydney homes. Sliding, awning, casement, bi-fold, double glazing and double hung systems custom fabricated to your project."
-	activeNav="windows"
+    title="Aluminium Windows - Aluverse | Sydney"
+    description="Premium aluminium windows for Sydney homes. Sliding, awning, casement, bi-fold, double glazing and double hung systems custom fabricated to your project."
+    activeNav="windows"
 >
-	<PageHero
-		title="Aluminium Windows"
-		subtitle="Precision-engineered window systems designed for Australian conditions. Every window is custom-fabricated to your exact specifications."
-		subtitleClass="hero-subtitle"
-		image="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1920&q=80"
-		imageAlt="Premium aluminium windows"
-		breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Windows' }]}
-	/>
+    <PageHero
+        title="Aluminium Windows"
+        subtitle="Precision-engineered window systems designed for Australian conditions. Every window is custom-fabricated to your exact specifications."
+        subtitleClass="wide"
+        image="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1920&q=80"
+        imageAlt="Premium aluminium windows"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Windows" }]}
+    />
 
-	<section class="section">
-		<div class="container-wide">
-			<div class="section-header section-header-center">
-				<div class="section-tag reveal">Our Range</div>
-				<h2 class="section-title reveal reveal-delay-1">Window Systems</h2>
-				<p class="section-subtitle reveal reveal-delay-2">
-					From classic double hung to modern bi-fold, we offer the complete range of
-					aluminium window solutions.
-				</p>
-			</div>
-			<div class="product-grid">
-				{
-					windowProducts.map((product, index) => (
-						<ProductCard
-							product={product}
-							revealClass={index === 0 ? 'reveal' : `reveal reveal-delay-${Math.min(index, 3)}`}
-						/>
-					))
-				}
-			</div>
-		</div>
-	</section>
+    <section class="py-22 relative bg-page">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-8">
+            <div class="text-center mb-12">
+                <div
+                    class="section-tag section-tag-center inline-flex items-center gap-2 text-[0.72rem] font-semibold tracking-[0.15em] uppercase text-accent mb-4 justify-center reveal"
+                >
+                    Our Range
+                </div>
+                <h2
+                    class="font-display text-[clamp(1.8rem,4vw,2.8rem)] font-normal tracking-[0.01em] leading-tight mb-3 text-text-primary reveal reveal-delay-1"
+                >
+                    Window Systems
+                </h2>
+                <p
+                    class="text-[0.95rem] text-text-secondary max-w-[550px] leading-relaxed mx-auto reveal reveal-delay-2"
+                >
+                    From classic double hung to modern bi-fold, we offer the
+                    complete range of aluminium window solutions.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {
+                    windowProducts.map((product, index) => (
+                        <ProductCard
+                            product={product}
+                            revealClass={
+                                index === 0
+                                    ? "reveal"
+                                    : `reveal reveal-delay-${Math.min(index, 3)}`
+                            }
+                        />
+                    ))
+                }
+            </div>
+        </div>
+    </section>
 
-	<section class="section section-dark">
-		<div class="container-wide">
-			<div class="section-header section-header-center">
-				<div class="section-tag reveal">Why Aluminium</div>
-				<h2 class="section-title reveal reveal-delay-1">The Premium Choice for Sydney Homes</h2>
-			</div>
-			<div class="services-grid">
-				<div class="service-card reveal">
-					<div class="service-icon">
-						<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-					</div>
-					<h3>Durability</h3>
-					<p>
-						Aluminium frames resist corrosion, warping, and cracking. Built to withstand
-						Sydney's coastal climate for decades.
-					</p>
-				</div>
-				<div class="service-card reveal reveal-delay-1">
-					<div class="service-icon">
-						<svg viewBox="0 0 24 24">
-							<circle cx="12" cy="12" r="5"></circle>
-							<line x1="12" y1="1" x2="12" y2="3"></line>
-							<line x1="12" y1="21" x2="12" y2="23"></line>
-							<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-							<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-							<line x1="1" y1="12" x2="3" y2="12"></line>
-							<line x1="21" y1="12" x2="23" y2="12"></line>
-							<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-							<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-						</svg>
-					</div>
-					<h3>Energy Efficiency</h3>
-					<p>
-						Combined with quality glazing, aluminium windows provide excellent thermal
-						performance and reduce energy costs.
-					</p>
-				</div>
-				<div class="service-card reveal reveal-delay-2">
-					<div class="service-icon">
-						<svg viewBox="0 0 24 24">
-							<polyline points="15 3 21 3 21 9"></polyline>
-							<polyline points="9 21 3 21 3 15"></polyline>
-							<line x1="21" y1="3" x2="14" y2="10"></line>
-							<line x1="3" y1="21" x2="10" y2="14"></line>
-						</svg>
-					</div>
-					<h3>Slim Sightlines</h3>
-					<p>
-						Aluminium's inherent strength allows for slimmer frames, maximising glass area and
-						natural light.
-					</p>
-				</div>
-			</div>
-		</div>
-	</section>
+    <section class="py-22 relative bg-dark text-text-on-dark">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-8">
+            <div class="text-center mb-12">
+                <div
+                    class="section-tag section-tag-center inline-flex items-center gap-2 text-[0.72rem] font-semibold tracking-[0.15em] uppercase text-anodise mb-4 justify-center reveal"
+                >
+                    Why Aluminium
+                </div>
+                <h2
+                    class="font-display text-[clamp(1.8rem,4vw,2.8rem)] font-normal tracking-[0.01em] leading-tight mb-3 text-text-on-dark reveal reveal-delay-1"
+                >
+                    The Premium Choice for Sydney Homes
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div
+                    class="service-card-line relative overflow-hidden p-10 border border-service-card-border bg-service-card-bg backdrop-blur-sm transition-all duration-400 hover:bg-white/5 hover:border-accent-dim hover:-translate-y-1 reveal"
+                >
+                    <div
+                        class="w-[52px] h-[52px] border border-anodise/30 flex items-center justify-center mb-6"
+                    >
+                        <svg
+                            class="w-6 h-6 stroke-anodise stroke-[1.5] fill-none"
+                            viewBox="0 0 24 24"
+                            ><path
+                                d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+                            ></path></svg
+                        >
+                    </div>
+                    <h3
+                        class="font-display text-[1.2rem] font-normal text-text-on-dark mb-3 tracking-[0.01em]"
+                    >
+                        Durability
+                    </h3>
+                    <p class="text-[0.85rem] text-white/45 leading-relaxed">
+                        Aluminium frames resist corrosion, warping, and
+                        cracking. Built to withstand Sydney's coastal climate
+                        for decades.
+                    </p>
+                </div>
+                <div
+                    class="service-card-line relative overflow-hidden p-10 border border-service-card-border bg-service-card-bg backdrop-blur-sm transition-all duration-400 hover:bg-white/5 hover:border-accent-dim hover:-translate-y-1 reveal reveal-delay-1"
+                >
+                    <div
+                        class="w-[52px] h-[52px] border border-anodise/30 flex items-center justify-center mb-6"
+                    >
+                        <svg
+                            class="w-6 h-6 stroke-anodise stroke-[1.5] fill-none"
+                            viewBox="0 0 24 24"
+                        >
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"
+                            ></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"
+                            ></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"
+                            ></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"
+                            ></line>
+                        </svg>
+                    </div>
+                    <h3
+                        class="font-display text-[1.2rem] font-normal text-text-on-dark mb-3 tracking-[0.01em]"
+                    >
+                        Energy Efficiency
+                    </h3>
+                    <p class="text-[0.85rem] text-white/45 leading-relaxed">
+                        Combined with quality glazing, aluminium windows provide
+                        excellent thermal performance and reduce energy costs.
+                    </p>
+                </div>
+                <div
+                    class="service-card-line relative overflow-hidden p-10 border border-service-card-border bg-service-card-bg backdrop-blur-sm transition-all duration-400 hover:bg-white/5 hover:border-accent-dim hover:-translate-y-1 reveal reveal-delay-2"
+                >
+                    <div
+                        class="w-[52px] h-[52px] border border-anodise/30 flex items-center justify-center mb-6"
+                    >
+                        <svg
+                            class="w-6 h-6 stroke-anodise stroke-[1.5] fill-none"
+                            viewBox="0 0 24 24"
+                        >
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <polyline points="9 21 3 21 3 15"></polyline>
+                            <line x1="21" y1="3" x2="14" y2="10"></line>
+                            <line x1="3" y1="21" x2="10" y2="14"></line>
+                        </svg>
+                    </div>
+                    <h3
+                        class="font-display text-[1.2rem] font-normal text-text-on-dark mb-3 tracking-[0.01em]"
+                    >
+                        Slim Sightlines
+                    </h3>
+                    <p class="text-[0.85rem] text-white/45 leading-relaxed">
+                        Aluminium's inherent strength allows for slimmer frames,
+                        maximising glass area and natural light.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<CtaSection
-		tag="Get Started"
-		title="Ready to Transform Your Space?"
-		text="Get your free consultation and quote today. Let us craft the perfect aluminium solution for your home or business."
-		primaryHref={company.phoneHref}
-		primaryLabel={`Call ${company.phoneDisplay}`}
-		secondaryHref="/quote"
-		secondaryLabel="Request a Quote"
-	/>
+    <CtaSection
+        tag="Get Started"
+        title="Ready to Transform Your Space?"
+        text="Get your free consultation and quote today. Let us craft the perfect aluminium solution for your home or business."
+        primaryHref={company.phoneHref}
+        primaryLabel={`Call ${company.phoneDisplay}`}
+        secondaryHref="/quote"
+        secondaryLabel="Request a Quote"
+    />
 </Layout>

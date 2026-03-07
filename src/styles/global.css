@@ -1,1 +1,72 @@
 @import "tailwindcss";
+
+@theme {
+	--color-page: #ffffff;
+	--color-alt: #f2f3f4;
+	--color-card: #ffffff;
+	--color-hero: #0a0a0a;
+	--color-dark: #0a0a0a;
+	--color-cta: #2d2c2c;
+	--color-text-primary: #2d2c2c;
+	--color-text-secondary: #555;
+	--color-text-muted: #8a8e92;
+	--color-text-on-dark: #ffffff;
+	--color-text-on-accent: #ffffff;
+	--color-accent: #2d2c2c;
+	--color-accent-hover: #0a0a0a;
+	--color-accent-light: rgba(45, 44, 44, 0.06);
+	--color-accent-dim: rgba(45, 44, 44, 0.25);
+	--color-anodise: #b5b9bd;
+	--color-divider: #e0e2e4;
+	--color-placeholder: #e8eaec;
+	--color-stat-bg: #0a0a0a;
+	--color-stat-border: rgba(181, 185, 189, 0.2);
+	--color-service-card-bg: rgba(255, 255, 255, 0.05);
+	--color-service-card-border: rgba(255, 255, 255, 0.08);
+	--color-form-bg: #ffffff;
+	--color-form-border: #e0e2e4;
+	--color-form-input-bg: #f2f3f4;
+	--color-testimonial-bg: #ffffff;
+	--color-testimonial-border: #e0e2e4;
+	--color-header-bg: rgba(10, 10, 10, 0.94);
+	--color-header-border: rgba(181, 185, 189, 0.15);
+	--color-hipages: #ff7043;
+	--color-facebook: #1877f2;
+
+	--font-display: 'DM Serif Text', Georgia, serif;
+	--font-body: 'Manrope', sans-serif;
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		font-family: var(--font-body);
+		color: var(--color-text-primary);
+		background: var(--color-page);
+		-webkit-font-smoothing: antialiased;
+		overflow-x: hidden;
+		line-height: 1.6;
+	}
+
+	body.menu-open {
+		overflow: hidden;
+	}
+
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+
+	button {
+		border: none;
+		cursor: pointer;
+		font-family: inherit;
+	}
+
+	ul {
+		list-style: none;
+	}
+}
