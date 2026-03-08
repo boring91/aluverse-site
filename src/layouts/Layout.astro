@@ -1,12 +1,12 @@
 ---
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import '../styles/global.css';
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import "../styles/global.css";
 
 type Props = {
-	title: string;
-	description: string;
-	activeNav?: 'home' | 'windows' | 'doors' | 'about' | 'contact';
+    title: string;
+    description: string;
+    activeNav?: "home" | "windows" | "doors" | "about" | "contact";
 };
 
 const { title, description, activeNav } = Astro.props;
@@ -14,92 +14,130 @@ const { title, description, activeNav } = Astro.props;
 
 <!doctype html>
 <html lang="en" class="scroll-smooth">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap"
-			rel="stylesheet"
-		/>
-		<meta name="description" content={description} />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body class="font-body text-text-primary bg-page antialiased overflow-x-hidden leading-relaxed">
-		<Header activeNav={activeNav} />
-		<main>
-			<slot />
-		</main>
-		<Footer />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <meta name="description" content={description} />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body
+        class="font-body text-text-primary bg-page antialiased overflow-x-hidden leading-relaxed"
+    >
+        <div class="hidden lg:block">
+            <Header activeNav={activeNav} />
+            <main>
+                <slot />
+            </main>
+            <Footer />
+        </div>
 
-		<script is:inline>
-			(() => {
-				const init = () => {
-					const toggle = document.getElementById('menuToggle');
-					const nav = document.getElementById('mobileNav');
-					if (toggle && nav) {
-						toggle.addEventListener('click', () => {
-							const isHidden = nav.classList.toggle('hidden');
-							toggle.setAttribute('aria-expanded', String(!isHidden));
-							document.body.classList.toggle('overflow-hidden', !isHidden);
-						});
-						nav.querySelectorAll('a').forEach(link => {
-							link.addEventListener('click', () => {
-								nav.classList.add('hidden');
-								document.body.classList.remove('overflow-hidden');
-							});
-						});
-					}
+        <div class="w-full h-screen flex lg:hidden justify-center items-center">
+            <p class="font-bold text-4xl p-4 text-center">
+                I told you to open it from a computer!
+            </p>
+        </div>
 
-					document.querySelectorAll('[data-dropdown-toggle]').forEach(btn => {
-						btn.addEventListener('click', () => {
-							const menu = btn.nextElementSibling;
-							if (menu) menu.classList.toggle('hidden');
-							const expanded = btn.getAttribute('aria-expanded') === 'true';
-							btn.setAttribute('aria-expanded', String(!expanded));
-						});
-					});
+        <script is:inline>
+            (() => {
+                const init = () => {
+                    const toggle = document.getElementById("menuToggle");
+                    const nav = document.getElementById("mobileNav");
+                    if (toggle && nav) {
+                        toggle.addEventListener("click", () => {
+                            const isHidden = nav.classList.toggle("hidden");
+                            toggle.setAttribute(
+                                "aria-expanded",
+                                String(!isHidden)
+                            );
+                            document.body.classList.toggle(
+                                "overflow-hidden",
+                                !isHidden
+                            );
+                        });
+                        nav.querySelectorAll("a").forEach(link => {
+                            link.addEventListener("click", () => {
+                                nav.classList.add("hidden");
+                                document.body.classList.remove(
+                                    "overflow-hidden"
+                                );
+                            });
+                        });
+                    }
 
-					let countersDone = false;
-					const animateCounters = () => {
-						if (countersDone) return;
-						const counters = document.querySelectorAll('[data-target]');
-						if (!counters.length) return;
-						const rect = counters[0].getBoundingClientRect();
-						if (rect.top < window.innerHeight * 0.85) {
-							countersDone = true;
-							counters.forEach(counter => {
-								const target = parseInt(counter.getAttribute('data-target') || '0', 10);
-								const suffix = target === 100 ? '%' : '+';
-								const start = performance.now();
-								const update = (now) => {
-									const p = Math.min((now - start) / 2000, 1);
-									const eased = 1 - Math.pow(1 - p, 3);
-									counter.textContent = Math.floor(eased * target) + suffix;
-									if (p < 1) requestAnimationFrame(update);
-								};
-								requestAnimationFrame(update);
-							});
-						}
-					};
-					window.addEventListener('scroll', animateCounters, { passive: true });
-					animateCounters();
+                    document
+                        .querySelectorAll("[data-dropdown-toggle]")
+                        .forEach(btn => {
+                            btn.addEventListener("click", () => {
+                                const menu = btn.nextElementSibling;
+                                if (menu) menu.classList.toggle("hidden");
+                                const expanded =
+                                    btn.getAttribute("aria-expanded") ===
+                                    "true";
+                                btn.setAttribute(
+                                    "aria-expanded",
+                                    String(!expanded)
+                                );
+                            });
+                        });
 
-					document.querySelectorAll('[data-static-form]').forEach(form => {
-						form.addEventListener('submit', e => e.preventDefault());
-					});
-				};
+                    let countersDone = false;
+                    const animateCounters = () => {
+                        if (countersDone) return;
+                        const counters =
+                            document.querySelectorAll("[data-target]");
+                        if (!counters.length) return;
+                        const rect = counters[0].getBoundingClientRect();
+                        if (rect.top < window.innerHeight * 0.85) {
+                            countersDone = true;
+                            counters.forEach(counter => {
+                                const target = parseInt(
+                                    counter.getAttribute("data-target") || "0",
+                                    10
+                                );
+                                const suffix = target === 100 ? "%" : "+";
+                                const start = performance.now();
+                                const update = now => {
+                                    const p = Math.min((now - start) / 2000, 1);
+                                    const eased = 1 - Math.pow(1 - p, 3);
+                                    counter.textContent =
+                                        Math.floor(eased * target) + suffix;
+                                    if (p < 1) requestAnimationFrame(update);
+                                };
+                                requestAnimationFrame(update);
+                            });
+                        }
+                    };
+                    window.addEventListener("scroll", animateCounters, {
+                        passive: true,
+                    });
+                    animateCounters();
 
-				if (document.readyState === 'loading') {
-					document.addEventListener('DOMContentLoaded', init, { once: true });
-				} else {
-					init();
-				}
-			})();
-		</script>
-	</body>
+                    document
+                        .querySelectorAll("[data-static-form]")
+                        .forEach(form => {
+                            form.addEventListener("submit", e =>
+                                e.preventDefault()
+                            );
+                        });
+                };
+
+                if (document.readyState === "loading") {
+                    document.addEventListener("DOMContentLoaded", init, {
+                        once: true,
+                    });
+                } else {
+                    init();
+                }
+            })();
+        </script>
+    </body>
 </html>
