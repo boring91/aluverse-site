@@ -4,25 +4,29 @@ import tailwindcss from "@tailwindcss/vite";
 
 import vercel from "@astrojs/vercel";
 
+import react from "@astrojs/react";
+
 // https://astro.build/config
 export default defineConfig({
-    vite: {
-        plugins: [tailwindcss()],
-    },
+  vite: {
+      plugins: [tailwindcss()],
+  },
 
-    adapter: vercel(),
+  adapter: vercel(),
 
-    env: {
-        schema: {
-            RESEND_API_KEY: envField.string({
-                context: "server",
-                access: "secret",
-            }),
+  env: {
+      schema: {
+          RESEND_API_KEY: envField.string({
+              context: "server",
+              access: "secret",
+          }),
 
-            INFO_EMAIL_ADDRESS: envField.string({
-                context: "server",
-                access: "secret",
-            }),
-        },
-    },
+          INFO_EMAIL_ADDRESS: envField.string({
+              context: "server",
+              access: "secret",
+          }),
+      },
+  },
+
+  integrations: [react()],
 });

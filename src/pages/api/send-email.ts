@@ -2,26 +2,16 @@ import type { APIRoute } from "astro";
 import { Resend } from "resend";
 import { contactUsServices } from "../../data/site";
 import { INFO_EMAIL_ADDRESS, RESEND_API_KEY } from "astro:env/server";
-import z from "zod";
+import { contactSchema } from "../../lib/utils";
 
 export const prerender = false;
-
-const services = contactUsServices.map(x => x.id);
-
-const bodySchema = z.object({
-    name: z.string().min(3),
-    phone: z.string(),
-    email: z.email(),
-    serviceRequested: z.enum(services),
-    message: z.string().min(10),
-});
 
 export const POST = (async ({ request }) => {
     const resend = new Resend(RESEND_API_KEY);
 
     const body = await request.json();
 
-    const { data, error: parseError } = bodySchema.safeParse(body);
+    const { data, error: parseError } = contactSchema.safeParse(body);
 
     if (parseError) {
         return new Response(
