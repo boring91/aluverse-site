@@ -12,6 +12,10 @@ export default defineConfig({
       plugins: [tailwindcss()],
   },
 
+  security: {
+      checkOrigin: false,
+  },
+
   adapter: vercel(),
 
   env: {
