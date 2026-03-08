@@ -473,7 +473,7 @@ export const getProductHref = (slug: string) => `/products/${slug}`;
 export const getProductBySlug = (slug: string) =>
     products.find(product => product.slug === slug);
 
-export const contactUsServices = [
+export const services = [
     {
         id: "windows",
         label: "Windows",
@@ -498,4 +498,31 @@ export const contactUsServices = [
         id: "other",
         label: "Other",
     },
+] as const;
+
+export const propertyTypes = [
+    { id: "residential", label: "Residential" },
+    { id: "commercial", label: "Commercial" },
+    { id: "strata", label: "Strata" },
+] as const;
+
+export const contactPreferences = [
+    { id: "phone", label: "Phone" },
+    { id: "email", label: "Email" },
+    { id: "either", label: "Either" },
+] as const;
+
+export const timeframes = [
+    { id: "asap", label: "ASAP" },
+    { id: "one-three-months", label: "1-3 Months" },
+    { id: "three-six-months", label: "3-6 Months" },
+    { id: "exploring", label: "Just Exploring" },
+] as const;
+
+export const socialMedia = [
+    { id: "google", label: "Google" },
+    { id: "social-media", label: "Social Media" },
+    { id: "hipages", label: "hipages" },
+    { id: "referral", label: "Referral" },
+    { id: "other", label: "Other" },
 ] as const;

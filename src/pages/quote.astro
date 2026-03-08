@@ -1,75 +1,126 @@
 ---
-import ContactInfo from '../components/ContactInfo.astro';
-import CtaSection from '../components/CtaSection.astro';
-import Layout from '../layouts/Layout.astro';
-import PageHero from '../components/PageHero.astro';
-import StaticContactForm from '../components/StaticContactForm.astro';
-import { company } from '../data/site';
+import ContactInfo from "../components/ContactInfo.astro";
+import CtaSection from "../components/CtaSection.astro";
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import StaticContactForm from "../components/StaticContactForm.astro";
+import { company } from "../data/site";
+import { QuoteForm } from "../components/QuoteForm";
 
 const steps = [
-	{ number: '01', title: 'Submit Your Enquiry', text: 'Fill out the form below with your project details, or give us a call.' },
-	{ number: '02', title: 'Free Consultation', text: "We'll arrange a convenient time to visit your site and discuss your requirements." },
-	{ number: '03', title: 'Detailed Quote', text: 'Receive a comprehensive, itemised quote with no hidden costs or surprises.' },
-	{ number: '04', title: 'Professional Installation', text: 'Our experienced team completes your project to the highest standards.' },
+    {
+        number: "01",
+        title: "Submit Your Enquiry",
+        text: "Fill out the form below with your project details, or give us a call.",
+    },
+    {
+        number: "02",
+        title: "Free Consultation",
+        text: "We'll arrange a convenient time to visit your site and discuss your requirements.",
+    },
+    {
+        number: "03",
+        title: "Detailed Quote",
+        text: "Receive a comprehensive, itemised quote with no hidden costs or surprises.",
+    },
+    {
+        number: "04",
+        title: "Professional Installation",
+        text: "Our experienced team completes your project to the highest standards.",
+    },
 ];
 ---
 
 <Layout
-	title="Request a Free Quote - Aluverse | Aluminium Windows & Doors Sydney"
-	description="Request a free, no-obligation quote for premium aluminium windows and doors in Sydney. Tell us about your project and we'll respond within 24 hours."
+    title="Request a Free Quote - Aluverse | Aluminium Windows & Doors Sydney"
+    description="Request a free, no-obligation quote for premium aluminium windows and doors in Sydney. Tell us about your project and we'll respond within 24 hours."
 >
-	<PageHero
-		title="Request a Free Quote"
-		subtitle="Tell us about your project and we'll provide a detailed, no-obligation quote within 24 hours."
-		image="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=80"
-		imageAlt="Request a free quote from Aluverse"
-		breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Request a Quote' }]}
-	/>
+    <PageHero
+        title="Request a Free Quote"
+        subtitle="Tell us about your project and we'll provide a detailed, no-obligation quote within 24 hours."
+        image="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=80"
+        imageAlt="Request a free quote from Aluverse"
+        breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Request a Quote" },
+        ]}
+    />
 
-	<section class="py-20 bg-alt">
-		<div class="max-w-7xl mx-auto px-6">
-			<div class="text-center mb-12">
-				<p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">How It Works</p>
-				<h2 class="font-display text-3xl md:text-4xl leading-tight mb-3">Our Simple Process</h2>
-				<p class="text-sm text-text-secondary max-w-lg leading-relaxed mx-auto">
-					From enquiry to installation, we make it easy.
-				</p>
-			</div>
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-				{steps.map(step => (
-					<div class="text-center px-4 py-8">
-						<div class="font-display text-4xl text-anodise mb-4">{step.number}</div>
-						<h3 class="font-display text-lg mb-2">{step.title}</h3>
-						<p class="text-sm text-text-secondary leading-relaxed">{step.text}</p>
-					</div>
-				))}
-			</div>
-		</div>
-	</section>
+    <section class="py-20 bg-alt">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    How It Works
+                </p>
+                <h2
+                    class="font-display text-3xl md:text-4xl leading-tight mb-3"
+                >
+                    Our Simple Process
+                </h2>
+                <p
+                    class="text-sm text-text-secondary max-w-lg leading-relaxed mx-auto"
+                >
+                    From enquiry to installation, we make it easy.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {
+                    steps.map(step => (
+                        <div class="text-center px-4 py-8">
+                            <div class="font-display text-4xl text-anodise mb-4">
+                                {step.number}
+                            </div>
+                            <h3 class="font-display text-lg mb-2">
+                                {step.title}
+                            </h3>
+                            <p class="text-sm text-text-secondary leading-relaxed">
+                                {step.text}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
 
-	<section class="py-20 bg-page">
-		<div class="max-w-7xl mx-auto px-6">
-			<div class="text-center mb-12">
-				<p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">Your Project</p>
-				<h2 class="font-display text-3xl md:text-4xl leading-tight mb-3">Tell Us About Your Project</h2>
-				<p class="text-sm text-text-secondary max-w-lg leading-relaxed mx-auto">
-					The more detail you provide, the more accurate your quote will be.
-				</p>
-			</div>
-			<div class="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-16 max-md:gap-8">
-				<ContactInfo />
-				<StaticContactForm variant="quote" />
-			</div>
-		</div>
-	</section>
+    <section class="py-20 bg-page">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Your Project
+                </p>
+                <h2
+                    class="font-display text-3xl md:text-4xl leading-tight mb-3"
+                >
+                    Tell Us About Your Project
+                </h2>
+                <p
+                    class="text-sm text-text-secondary max-w-lg leading-relaxed mx-auto"
+                >
+                    The more detail you provide, the more accurate your quote
+                    will be.
+                </p>
+            </div>
+            <div
+                class="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-16 max-md:gap-8"
+            >
+                <ContactInfo />
+                <QuoteForm client:load />
+            </div>
+        </div>
+    </section>
 
-	<CtaSection
-		tag="Prefer to Talk?"
-		title="Call Us Directly"
-		text="Our friendly team is available 7 days a week to discuss your project requirements."
-		primaryHref={company.phoneHref}
-		primaryLabel={`Call ${company.phoneDisplay}`}
-		secondaryHref={company.emailHref}
-		secondaryLabel="Email Us"
-	/>
+    <CtaSection
+        tag="Prefer to Talk?"
+        title="Call Us Directly"
+        text="Our friendly team is available 7 days a week to discuss your project requirements."
+        primaryHref={company.phoneHref}
+        primaryLabel={`Call ${company.phoneDisplay}`}
+        secondaryHref={company.emailHref}
+        secondaryLabel="Email Us"
+    />
 </Layout>

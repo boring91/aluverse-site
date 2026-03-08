@@ -1,22 +1,28 @@
 import { useForm } from "@tanstack/react-form";
-import { contactSchema } from "../lib/utils";
+import { quoteSchema } from "../lib/utils";
 import { useMutation } from "@tanstack/react-query";
 import { useEffect } from "react";
 import type z from "zod";
-import { services } from "../data/site";
+import {
+    contactPreferences,
+    propertyTypes,
+    services,
+    socialMedia,
+    timeframes,
+} from "../data/site";
 import { ReactProviders } from "./ReactProviders";
 
-type SchemaType = z.infer<typeof contactSchema>;
+type SchemaType = z.infer<typeof quoteSchema>;
 
 function Component() {
     const { mutate, isPending, isSuccess, isError, reset } = useMutation({
         mutationFn: async (data: SchemaType) => {
-            const res = await fetch("/api/send-email", {
+            const res = await fetch("/api/send-quote", {
                 method: "POST",
                 body: JSON.stringify(data),
             });
             if (!res.ok) {
-                throw new Error("Failed to send message");
+                throw new Error("Failed to send quote request");
             }
         },
 
@@ -36,12 +42,15 @@ function Component() {
             name: "",
             phone: "",
             email: "",
-            serviceRequested: "" as SchemaType["serviceRequested"],
-            message: "",
+            propertyType: "" as SchemaType["propertyType"],
+            contactPreference: "" as SchemaType["contactPreference"],
+            interest: "" as SchemaType["interest"],
+            timeframe: "" as SchemaType["timeframe"],
+            socialMedia: "" as SchemaType["socialMedia"],
         },
 
         validators: {
-            onChange: contactSchema,
+            onChange: quoteSchema,
         },
 
         onSubmit: async ({ value }) => {
@@ -197,9 +206,125 @@ function Component() {
                 }}
             />
 
-            {/* Service required */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
+                {/* Property Type */}
+                <form.Field
+                    name="propertyType"
+                    children={field => {
+                        return (
+                            <div>
+                                <label
+                                    htmlFor={field.name}
+                                    className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
+                                >
+                                    Property Type*
+                                </label>
+                                <select
+                                    id={field.name}
+                                    name={field.name}
+                                    value={field.state.value}
+                                    onChange={e =>
+                                        field.handleChange(
+                                            e.target
+                                                .value as SchemaType["propertyType"]
+                                        )
+                                    }
+                                    onBlur={field.handleBlur}
+                                    className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors ${
+                                        !field.state.meta.isValid &&
+                                        (field.state.meta.isBlurred ||
+                                            field.form.state
+                                                .submissionAttempts > 0)
+                                            ? "border-rose-500"
+                                            : ""
+                                    }`}
+                                >
+                                    <option value="" disabled>
+                                        Select property type
+                                    </option>
+                                    {propertyTypes.map(x => (
+                                        <option key={x.id} value={x.id}>
+                                            {x.label}
+                                        </option>
+                                    ))}
+                                </select>
+                                {!field.state.meta.isValid &&
+                                    (field.state.meta.isBlurred ||
+                                        field.form.state.submissionAttempts >
+                                            0) && (
+                                        <p className="mt-1 text-xs text-rose-500">
+                                            {
+                                                field.state.meta.errors[0]
+                                                    ?.message
+                                            }
+                                        </p>
+                                    )}
+                            </div>
+                        );
+                    }}
+                />
+
+                {/* Contact Preference */}
+                <form.Field
+                    name="contactPreference"
+                    children={field => {
+                        return (
+                            <div>
+                                <label
+                                    htmlFor={field.name}
+                                    className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
+                                >
+                                    Preferred Contact Method*
+                                </label>
+                                <select
+                                    id={field.name}
+                                    name={field.name}
+                                    value={field.state.value}
+                                    onChange={e =>
+                                        field.handleChange(
+                                            e.target
+                                                .value as SchemaType["contactPreference"]
+                                        )
+                                    }
+                                    onBlur={field.handleBlur}
+                                    className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors ${
+                                        !field.state.meta.isValid &&
+                                        (field.state.meta.isBlurred ||
+                                            field.form.state
+                                                .submissionAttempts > 0)
+                                            ? "border-rose-500"
+                                            : ""
+                                    }`}
+                                >
+                                    <option value="" disabled>
+                                        Select preference
+                                    </option>
+                                    {contactPreferences.map(x => (
+                                        <option key={x.id} value={x.id}>
+                                            {x.label}
+                                        </option>
+                                    ))}
+                                </select>
+                                {!field.state.meta.isValid &&
+                                    (field.state.meta.isBlurred ||
+                                        field.form.state.submissionAttempts >
+                                            0) && (
+                                        <p className="mt-1 text-xs text-rose-500">
+                                            {
+                                                field.state.meta.errors[0]
+                                                    ?.message
+                                            }
+                                        </p>
+                                    )}
+                            </div>
+                        );
+                    }}
+                />
+            </div>
+
+            {/* Product Interest */}
             <form.Field
-                name="serviceRequested"
+                name="interest"
                 children={field => {
                     return (
                         <div className="mt-5">
@@ -207,7 +332,7 @@ function Component() {
                                 htmlFor={field.name}
                                 className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
                             >
-                                Service Required*
+                                Product Interest*
                             </label>
                             <select
                                 id={field.name}
@@ -215,8 +340,7 @@ function Component() {
                                 value={field.state.value}
                                 onChange={e =>
                                     field.handleChange(
-                                        e.target
-                                            .value as SchemaType["serviceRequested"]
+                                        e.target.value as SchemaType["interest"]
                                     )
                                 }
                                 onBlur={field.handleBlur}
@@ -229,7 +353,7 @@ function Component() {
                                 }`}
                             >
                                 <option value="" disabled>
-                                    Select a service
+                                    What are you interested in?
                                 </option>
                                 {services.map(x => (
                                     <option key={x.id} value={x.id}>
@@ -250,8 +374,9 @@ function Component() {
                 }}
             />
 
+            {/* Timeframe */}
             <form.Field
-                name="message"
+                name="timeframe"
                 children={field => {
                     return (
                         <div className="mt-5">
@@ -259,25 +384,36 @@ function Component() {
                                 htmlFor={field.name}
                                 className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
                             >
-                                Message*
+                                Preferred Timeframe*
                             </label>
-                            <textarea
+                            <select
                                 id={field.name}
                                 name={field.name}
                                 value={field.state.value}
                                 onChange={e =>
-                                    field.handleChange(e.target.value)
+                                    field.handleChange(
+                                        e.target
+                                            .value as SchemaType["timeframe"]
+                                    )
                                 }
                                 onBlur={field.handleBlur}
-                                placeholder="Tell us about your project..."
-                                className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors h-28 resize-y ${
+                                className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors ${
                                     !field.state.meta.isValid &&
                                     (field.state.meta.isBlurred ||
                                         field.form.state.submissionAttempts > 0)
                                         ? "border-rose-500"
                                         : ""
                                 }`}
-                            />
+                            >
+                                <option value="" disabled>
+                                    Select timeframe
+                                </option>
+                                {timeframes.map(x => (
+                                    <option key={x.id} value={x.id}>
+                                        {x.label}
+                                    </option>
+                                ))}
+                            </select>
                             {!field.state.meta.isValid &&
                                 (field.state.meta.isBlurred ||
                                     field.form.state.submissionAttempts >
@@ -290,6 +426,44 @@ function Component() {
                     );
                 }}
             />
+
+            {/* How Did You Hear About Us */}
+            <form.Field
+                name="socialMedia"
+                children={field => {
+                    return (
+                        <div className="mt-5">
+                            <label
+                                htmlFor={field.name}
+                                className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
+                            >
+                                How Did You Hear About Us?
+                            </label>
+                            <select
+                                id={field.name}
+                                name={field.name}
+                                value={field.state.value}
+                                onChange={e =>
+                                    field.handleChange(
+                                        e.target
+                                            .value as SchemaType["socialMedia"]
+                                    )
+                                }
+                                onBlur={field.handleBlur}
+                                className="w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors"
+                            >
+                                <option value="">Select an option</option>
+                                {socialMedia.map(x => (
+                                    <option key={x.id} value={x.id}>
+                                        {x.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    );
+                }}
+            />
+
             {(isSuccess || isError) && (
                 <div
                     className={`mt-6 px-4 py-3.5 text-sm flex items-start gap-3 ${
@@ -298,7 +472,7 @@ function Component() {
                             : "bg-rose-50 border border-rose-200 text-rose-800"
                     }`}
                     style={{
-                        animation: "contactFeedbackIn 0.3s ease-out",
+                        animation: "quoteFeedbackIn 0.3s ease-out",
                     }}
                 >
                     {isSuccess ? (
@@ -329,12 +503,12 @@ function Component() {
                     <div>
                         <p className="font-semibold leading-snug">
                             {isSuccess
-                                ? "Message sent successfully"
+                                ? "Quote request submitted"
                                 : "Something went wrong"}
                         </p>
                         <p className="mt-0.5 text-xs opacity-80">
                             {isSuccess
-                                ? "Thank you for reaching out. We'll get back to you shortly."
+                                ? "Thank you for your request. We'll get back to you with a quote shortly."
                                 : "Please try again or contact us directly at 0403 422 401."}
                         </p>
                     </div>
@@ -387,11 +561,11 @@ function Component() {
                         />
                     </svg>
                 )}
-                {isPending ? "Sending..." : "Send Message"}
+                {isPending ? "Submitting..." : "Submit Quote Request"}
             </button>
 
             <style>{`
-                @keyframes contactFeedbackIn {
+                @keyframes quoteFeedbackIn {
                     from {
                         opacity: 0;
                         transform: translateY(-6px);
@@ -406,7 +580,7 @@ function Component() {
     );
 }
 
-export function ContactForm() {
+export function QuoteForm() {
     return (
         <ReactProviders>
             <Component />
