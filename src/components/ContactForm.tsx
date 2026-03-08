@@ -11,7 +11,7 @@ type SchemaType = z.infer<typeof contactSchema>;
 function Component() {
     const { mutate, isPending, isSuccess, isError, reset } = useMutation({
         mutationFn: async (data: SchemaType) => {
-            const res = await fetch("/api/send-email", {
+            const res = await fetch("/api/send-contact", {
                 method: "POST",
                 body: JSON.stringify(data),
             });
