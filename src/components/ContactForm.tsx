@@ -1,10 +1,16 @@
 import { useForm } from "@tanstack/react-form";
 import { contactSchema } from "../lib/utils";
 import { useMutation } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import type z from "zod";
 import { services } from "../data/site";
 import { ReactProviders } from "./ReactProviders";
+import ReCAPTCHAModule, { ReCAPTCHA } from "react-google-recaptcha";
+
+// CJS/ESM interop: the module may resolve as { default: Component } during SSR
+const ReCAPTCHAField =
+    (ReCAPTCHAModule as unknown as { default: typeof ReCAPTCHAModule })
+        .default ?? ReCAPTCHAModule;
 
 type SchemaType = z.infer<typeof contactSchema>;
 
@@ -22,8 +28,11 @@ function Component() {
 
         onSuccess: () => {
             form.reset();
+            recaptchaRef.current?.reset();
         },
     });
+
+    const recaptchaRef = useRef<ReCAPTCHA>(null);
 
     useEffect(() => {
         if (!isSuccess) return;
@@ -38,6 +47,7 @@ function Component() {
             email: "",
             serviceRequested: "" as SchemaType["serviceRequested"],
             message: "",
+            recaptcha: "",
         },
 
         validators: {
@@ -250,6 +260,7 @@ function Component() {
                 }}
             />
 
+            {/* Message */}
             <form.Field
                 name="message"
                 children={field => {
@@ -290,6 +301,32 @@ function Component() {
                     );
                 }}
             />
+
+            {/* Recaptcha */}
+            <form.Field
+                name="recaptcha"
+                children={field => {
+                    return (
+                        <div className="mt-5">
+                            <ReCAPTCHAField
+                                ref={recaptchaRef}
+                                className="flex justify-center items-center"
+                                sitekey={import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY}
+                                onChange={token =>
+                                    field.handleChange(token ?? "")
+                                }
+                            />
+                            {!field.state.meta.isValid &&
+                                field.form.state.submissionAttempts > 0 && (
+                                    <p className="mt-1 text-xs text-rose-500 text-center">
+                                        {field.state.meta.errors[0]?.message}
+                                    </p>
+                                )}
+                        </div>
+                    );
+                }}
+            />
+
             {(isSuccess || isError) && (
                 <div
                     className={`mt-6 px-4 py-3.5 text-sm flex items-start gap-3 ${

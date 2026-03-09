@@ -3,6 +3,7 @@ import { Resend } from "resend";
 import { services } from "../../data/site";
 import { INFO_EMAIL_ADDRESS, RESEND_API_KEY } from "astro:env/server";
 import { contactSchema } from "../../lib/utils";
+import { verifyRecaptcha } from "../../lib/recaptcha";
 
 export const prerender = false;
 
@@ -13,6 +14,13 @@ export const POST = (async ({ request }) => {
 
     if (parseError) {
         return new Response(JSON.stringify({ error: parseError.issues }), {
+            status: 423,
+        });
+    }
+
+    const recaptchaResult = await verifyRecaptcha(data.recaptcha);
+    if (!recaptchaResult) {
+        return new Response(JSON.stringify({ error: "Invalid recaptcha" }), {
             status: 423,
         });
     }

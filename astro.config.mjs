@@ -8,29 +8,39 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {
-      plugins: [tailwindcss()],
-  },
+    vite: {
+        plugins: [tailwindcss()],
+    },
 
-  security: {
-      checkOrigin: false,
-  },
+    security: {
+        checkOrigin: false,
+    },
 
-  adapter: vercel(),
+    adapter: vercel(),
 
-  env: {
-      schema: {
-          RESEND_API_KEY: envField.string({
-              context: "server",
-              access: "secret",
-          }),
+    env: {
+        schema: {
+            PUBLIC_RECAPTCHA_SITE_KEY: envField.string({
+                context: "client",
+                access: "public",
+            }),
 
-          INFO_EMAIL_ADDRESS: envField.string({
-              context: "server",
-              access: "secret",
-          }),
-      },
-  },
+            RECAPTCHA_SECRET_KEY: envField.string({
+                context: "server",
+                access: "secret",
+            }),
 
-  integrations: [react()],
+            RESEND_API_KEY: envField.string({
+                context: "server",
+                access: "secret",
+            }),
+
+            INFO_EMAIL_ADDRESS: envField.string({
+                context: "server",
+                access: "secret",
+            }),
+        },
+    },
+
+    integrations: [react()],
 });
