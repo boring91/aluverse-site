@@ -9,6 +9,7 @@ import {
     socialMedia,
     timeframes,
 } from "../../data/site";
+import { verifyRecaptcha } from "../../lib/recaptcha";
 
 export const prerender = false;
 
@@ -19,6 +20,13 @@ export const POST = (async ({ request }) => {
 
     if (parseError) {
         return new Response(JSON.stringify({ error: parseError.issues }), {
+            status: 423,
+        });
+    }
+
+    const recaptchaResult = await verifyRecaptcha(data.recaptcha);
+    if (!recaptchaResult) {
+        return new Response(JSON.stringify({ error: "Invalid recaptcha" }), {
             status: 423,
         });
     }
