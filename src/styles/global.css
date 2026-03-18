@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@utility text-shadow-hero {
+	text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
 @theme {
 	--color-page: #ffffff;
 	--color-alt: #f2f3f4;

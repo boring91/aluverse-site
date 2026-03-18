@@ -38,14 +38,16 @@ const featureImageQuality = 62;
             quality={heroQuality}
             loading="eager"
             fetchpriority="high"
-            pictureAttributes={{ class: "absolute inset-0 block h-full w-full" }}
+            pictureAttributes={{
+                class: "absolute inset-0 block h-full w-full",
+            }}
             class="h-full w-full object-cover"
         />
         <div
-            class="absolute inset-0 bg-linear-to-r from-black/80 via-black/50 to-black/20"
+            class="absolute inset-0 bg-linear-to-r from-black/85 via-black/60 to-black/30"
         >
         </div>
-        <div class="max-w-7xl mx-auto px-6 py-20 w-full relative z-10">
+        <div class="max-w-7xl mx-auto px-6 py-20 w-full relative z-10 text-shadow-hero">
             <p
                 class="text-xs font-semibold tracking-widest uppercase text-anodise mb-6"
             >
@@ -58,14 +60,15 @@ const featureImageQuality = 62;
                     >Windows & Doors</em
                 >
             </h1>
-            <p class="text-lg text-white/60 leading-relaxed max-w-lg mb-10">
-                Meticulously crafted aluminium solutions for Sydney homes. Where
-                architectural precision meets enduring quality.
+            <p class="text-lg text-white/90 leading-relaxed max-w-lg mb-10">
+                Meticulously crafted aluminium doors and windows solutions for
+                Sydney homes. Where architectural precision meets enduring
+                quality.
             </p>
             <div class="flex flex-wrap gap-4">
                 <a
                     href="/quote"
-                    class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase bg-accent text-white hover:bg-accent-hover transition-colors inline-flex items-center gap-2"
+                    class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase bg-white text-dark hover:bg-anodise hover:text-dark transition-colors inline-flex items-center gap-2"
                 >
                     Request a Quote
                     <svg
@@ -76,7 +79,7 @@ const featureImageQuality = 62;
                 </a>
                 <a
                     href="/windows"
-                    class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase border border-white/30 hover:border-white hover:bg-white/10 transition-all"
+                    class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase border border-white/60 hover:border-white hover:bg-white/15 transition-all"
                     >View Products</a
                 >
             </div>
@@ -183,7 +186,8 @@ const featureImageQuality = 62;
                 <p
                     class="text-sm text-white/50 max-w-lg leading-relaxed mx-auto"
                 >
-                    Comprehensive aluminium solutions from start to finish.
+                    Comprehensive aluminium doors and windows solutions from
+                    start to finish.
                 </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -279,9 +283,9 @@ const featureImageQuality = 62;
                         Commercial Fit-outs
                     </h3>
                     <p class="text-sm text-white/45 leading-relaxed">
-                        Engineered aluminium systems for storefronts, offices,
-                        and commercial properties compliant with Australian
-                        building codes.
+                        Engineered aluminium doors and windows for storefronts,
+                        offices, and commercial properties compliant with
+                        Australian building codes.
                     </p>
                 </div>
                 <div
@@ -330,7 +334,8 @@ const featureImageQuality = 62;
                     </h3>
                     <p class="text-sm text-white/45 leading-relaxed">
                         Free on-site consultations to design bespoke aluminium
-                        solutions that match your exact architectural vision.
+                        doors and windows that match your exact architectural
+                        vision.
                     </p>
                 </div>
             </div>
@@ -344,7 +349,7 @@ const featureImageQuality = 62;
                 <div class="aspect-6/5 overflow-hidden">
                     <Image
                         src={pageImages.workshopPhoto}
-                        alt="Aluminium fabrication workshop"
+                        alt="Aluminium doors and windows fabrication workshop"
                         widths={featureImageWidths}
                         sizes="(min-width: 768px) calc((min(100vw, 80rem) - 7.5rem) / 2), calc(100vw - 3rem)"
                         quality={featureImageQuality}
@@ -368,7 +373,7 @@ const featureImageQuality = 62;
                         class="text-sm text-text-secondary max-w-lg leading-relaxed mb-8"
                     >
                         With over a decade of experience, Aluverse delivers
-                        full-service aluminium solutions tailored to your
+                        full-service aluminium doors and windows tailored to your
                         residential and commercial needs.
                     </p>
                     <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -465,7 +470,7 @@ const featureImageQuality = 62;
     <CtaSection
         tag="Get Started"
         title="Ready to Transform Your Space?"
-        text="Get your free consultation and quote today. Let us craft the perfect aluminium solution for your home or business."
+        text="Get your free consultation and quote today. Let us craft the perfect aluminium doors and windows for your home or business."
         primaryHref={company.phoneHref}
         primaryLabel={`Call ${company.phoneDisplay}`}
         secondaryHref="/quote"
