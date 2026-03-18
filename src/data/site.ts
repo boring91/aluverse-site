@@ -54,7 +54,7 @@ export const company = {
 } as const;
 
 export const stats = [
-    { target: 1000, label: "Projects Completed" },
+    { target: 500, label: "Projects Completed" },
     { target: 10, label: "Years Experience" },
     { target: 100, label: "Australian Standards" },
     { target: 7, label: "Days a Week Service" },
