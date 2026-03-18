@@ -62,19 +62,19 @@ export const stats = [
 
 export const testimonials = [
     {
-        quote: "Aluverse transformed our home with stunning bi-fold doors. The quality of workmanship is exceptional, and the team was professional from start to finish.",
-        author: "James & Sarah Mitchell",
-        location: "Bondi, Sydney",
+        quote: "Ahmed and his team did an excellent job. They arrived on time, were very professional, and explained everything to me clearly. I would highly recommend them.",
+        author: "Jessy",
+        location: "Redfern, Sydney",
     },
     {
-        quote: "We had all the windows replaced in our commercial office. The double glazing has made an incredible difference to noise and temperature.",
-        author: "David Chen",
-        location: "Parramatta, Sydney",
+        quote: "Ahmed was great to deal with, stuck to his timeline and worked very hard to get the job done. We appreciate his work and would highly recommend Ahmed and team.",
+        author: "Scott",
+        location: "Collaroy, Sydney",
     },
     {
-        quote: "Fantastic experience from quote to completion. The security screens look amazing and we feel so much safer. Above and beyond.",
-        author: "Maria Gonzalez",
-        location: "Sutherland Shire, Sydney",
+        quote: "He is a good communicator, hard working and listens carefully. Also very knowledgeable and professional. Did the job efficiently.",
+        author: "Paul C",
+        location: "Beecroft, Sydney",
     },
 ] as const;
 
