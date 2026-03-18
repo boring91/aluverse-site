@@ -85,9 +85,9 @@ export const products: Product[] = [
         metaDescription:
             "Premium aluminium sliding windows for Sydney homes. Smooth horizontal operation, maximum ventilation and natural light. Free quotes from Aluverse.",
         cardImage:
-            "https://images.unsplash.com/photo-1701422054542-4a160a0c459c?w=800&q=80",
+            "/images/sliding-window-card.webp",
         heroImage:
-            "https://images.unsplash.com/photo-1701422054542-4a160a0c459c?w=1920&q=80",
+            "/images/sliding-window-hero.webp",
         imageAlt: "Sliding windows",
         detailDescription:
             "Sliding windows offer smooth horizontal operation along precision-engineered tracks. Their streamlined design maximises ventilation and natural light while maintaining clean sightlines. Ideal for bedrooms, living areas, and kitchens where ease of use and unobstructed views are paramount.",
@@ -118,9 +118,9 @@ export const products: Product[] = [
         metaDescription:
             "Premium aluminium awning windows for Sydney homes. Ventilation even during rain with top-hinged outward design. Free quotes from Aluverse.",
         cardImage:
-            "https://images.unsplash.com/photo-1604014237800-1c9102c219da?w=800&q=80",
+            "/images/awning-window-card.webp",
         heroImage:
-            "https://images.unsplash.com/photo-1604014237800-1c9102c219da?w=1920&q=80",
+            "/images/awning-window-hero.webp",
         imageAlt: "Awning windows",
         detailDescription:
             "Awning windows are hinged at the top and push outward from the bottom, creating a canopy effect that allows fresh air to flow even during light rain. They're a favourite for Sydney homes, offering excellent weather protection without sacrificing ventilation.",
@@ -155,9 +155,9 @@ export const products: Product[] = [
         metaDescription:
             "Premium aluminium casement windows for Sydney homes. 100% clear opening for maximum airflow with side-hinged design. Free quotes from Aluverse.",
         cardImage:
-            "https://images.unsplash.com/photo-1495524455245-b0f961d738a9?w=800&q=80",
+            "/images/casement-window-card.webp",
         heroImage:
-            "https://images.unsplash.com/photo-1495524455245-b0f961d738a9?w=1920&q=80",
+            "/images/casement-window-hero.webp",
         imageAlt: "Casement windows",
         detailDescription:
             "Casement windows are side-hinged and swing outward, providing a full 100% clear opening for maximum airflow. Their design catches side breezes effectively, making them one of the best choices for natural ventilation in any room.",
@@ -188,9 +188,9 @@ export const products: Product[] = [
         metaDescription:
             "Premium aluminium bi-fold windows for Sydney homes. Wide servery-style openings for seamless indoor-outdoor connection. Free quotes from Aluverse.",
         cardImage:
-            "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80",
+            "/images/bifold-window-card.webp",
         heroImage:
-            "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1920&q=80",
+            "/images/bifold-window-hero.webp",
         imageAlt: "Bi-fold windows",
         detailDescription:
             "Bi-fold windows feature multiple panels that fold neatly to one side, creating a wide servery-style opening. Perfect for connecting kitchens to outdoor entertaining areas, they transform the relationship between your indoor and outdoor spaces.",
@@ -225,9 +225,9 @@ export const products: Product[] = [
         metaDescription:
             "Premium double glazed aluminium windows for Sydney homes. Superior thermal and acoustic insulation for year-round comfort. Free quotes from Aluverse.",
         cardImage:
-            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+            "/images/double-glazing-card.webp",
         heroImage:
-            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80",
+            "/images/double-glazing-hero.webp",
         imageAlt: "Double glazed windows",
         detailDescription:
             "Double glazed windows feature two panes of glass separated by an insulating gas-filled gap, delivering superior thermal and acoustic performance. They significantly reduce heat transfer and outside noise, creating a more comfortable and energy-efficient home year-round.",
@@ -258,9 +258,9 @@ export const products: Product[] = [
         metaDescription:
             "Premium aluminium double hung windows for Sydney homes. Dual sash vertical sliding for versatile ventilation control. Free quotes from Aluverse.",
         cardImage:
-            "https://images.unsplash.com/photo-1526842748204-cd64a90225bb?w=800&q=80",
+            "/images/double-hung-window-card.webp",
         heroImage:
-            "https://images.unsplash.com/photo-1526842748204-cd64a90225bb?w=1920&q=80",
+            "/images/double-hung-window-hero.webp",
         imageAlt: "Double hung windows",
         detailDescription:
             "Double hung windows feature both an upper and lower sash that slide vertically, offering versatile ventilation control. Open the top for warm air exhaust, the bottom for fresh air intake, or both for maximum airflow. A timeless design updated with modern aluminium engineering.",
@@ -295,9 +295,9 @@ export const products: Product[] = [
         metaDescription:
             "Premium aluminium sliding doors for Sydney homes. Smooth gliding operation, slim sightlines, maximum natural light. Free quotes. Call 0403 422 401.",
         cardImage:
-            "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80",
+            "/images/sliding-door-card.webp",
         heroImage:
-            "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=80",
+            "/images/sliding-door-hero.webp",
         imageAlt: "Sliding doors",
         detailDescription:
             "Sliding doors feature large glass panels that glide smoothly along precision-engineered tracks. With their slim aluminium frames and expansive glazing, they flood your home with natural light while creating a seamless visual connection to the outdoors. Available in 2 or 3 track configurations for flexible opening widths.",
@@ -328,9 +328,9 @@ export const products: Product[] = [
         metaDescription:
             "Premium aluminium bi-fold doors for Sydney homes. Wide-span openings, indoor-outdoor living, flexible panel configurations. Free quotes. Call 0403 422 401.",
         cardImage:
-            "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80",
+            "/images/bifold-door-card.webp",
         heroImage:
-            "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1920&q=80",
+            "/images/bifold-door-hero.webp",
         imageAlt: "Bi-fold doors",
         detailDescription:
             "Bi-fold doors are the ultimate solution for indoor-outdoor living. Multiple panels fold and stack neatly to one side, creating a dramatic wide-span opening that transforms your living space. Whether opening onto a deck, pool area, or garden, bi-fold doors blur the boundary between inside and out.",
@@ -361,9 +361,9 @@ export const products: Product[] = [
         metaDescription:
             "Premium aluminium French doors for Sydney homes. Timeless double-door elegance, modern aluminium strength. Free quotes. Call 0403 422 401.",
         cardImage:
-            "https://images.unsplash.com/photo-1610369525649-fe1c49d0f1e6?w=800&q=80",
+            "/images/french-door-card.webp",
         heroImage:
-            "https://images.unsplash.com/photo-1610369525649-fe1c49d0f1e6?w=1920&q=80",
+            "/images/french-door-hero.webp",
         imageAlt: "French doors",
         detailDescription:
             "French doors bring timeless elegance to any home. The classic double-door design swings open to create a wide, welcoming entry point while aluminium frames provide the strength and weather resistance that timber can't match. Perfect for balconies, patios, and as feature entry points.",
@@ -394,9 +394,9 @@ export const products: Product[] = [
         metaDescription:
             "Premium aluminium hinged doors for Sydney homes. Classic swing operation, heavy-duty hardware, superior weather sealing. Free quotes. Call 0403 422 401.",
         cardImage:
-            "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+            "/images/hinged-door-card.webp",
         heroImage:
-            "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80",
+            "/images/hinged-door-hero.webp",
         imageAlt: "Hinged doors",
         detailDescription:
             "Hinged doors offer classic swing operation paired with modern aluminium engineering. Available as single or double-leaf configurations, they're ideal for front entries, back doors, and laundry exits. Robust hardware and weather seals ensure reliable performance day after day.",
@@ -427,9 +427,9 @@ export const products: Product[] = [
         metaDescription:
             "Premium aluminium stacking doors for Sydney homes. Expansive openings, clean architectural lines, smooth-gliding hardware. Free quotes. Call 0403 422 401.",
         cardImage:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+            "/images/stacking-door-card.webp",
         heroImage:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80",
+            "/images/stacking-door-hero.webp",
         imageAlt: "Stacking doors",
         detailDescription:
             "Stacking doors feature multiple panels that slide and stack behind one another, creating expansive openings while maintaining clean architectural lines. Unlike bi-fold doors, all panels remain in a single plane when open, providing a more streamlined look for large openings.",

@@ -14,7 +14,7 @@ import { ContactForm } from "../components/ContactForm";
     <PageHero
         title="Get In Touch"
         subtitle="We'd love to discuss your project. Reach out for a free consultation and quote."
-        image="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=1920&q=80"
+        image="/images/contact-page-hero.webp"
         imageAlt="Contact Aluverse Sydney"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
     />
@@ -25,7 +25,6 @@ import { ContactForm } from "../components/ContactForm";
                 class="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-16 max-md:gap-8"
             >
                 <ContactInfo />
-                <!-- <StaticContactForm variant="contact" /> -->
                 <ContactForm client:load />
             </div>
         </div>

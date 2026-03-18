@@ -1,239 +1,459 @@
 ---
-import CtaSection from '../components/CtaSection.astro';
-import Layout from '../layouts/Layout.astro';
-import ProductCard from '../components/ProductCard.astro';
-import SocialSection from '../components/SocialSection.astro';
-import StatsBar from '../components/StatsBar.astro';
+import CtaSection from "../components/CtaSection.astro";
+import Layout from "../layouts/Layout.astro";
+import ProductCard from "../components/ProductCard.astro";
+import SocialSection from "../components/SocialSection.astro";
+import StatsBar from "../components/StatsBar.astro";
 import {
-	company,
-	doorProducts,
-	testimonials,
-	windowProducts,
-} from '../data/site';
+    company,
+    doorProducts,
+    testimonials,
+    windowProducts,
+} from "../data/site";
 ---
 
 <Layout
-	title="Aluverse - Premium Aluminium Doors & Windows | Sydney"
-	description="Sydney's leading custom aluminium doors and windows specialist. Bespoke fabrication, premium materials and free quotes from Aluverse."
-	activeNav="home"
+    title="Aluverse - Premium Aluminium Doors & Windows | Sydney"
+    description="Sydney's leading custom aluminium doors and windows specialist. Bespoke fabrication, premium materials and free quotes from Aluverse."
+    activeNav="home"
 >
-	<section class="min-h-[90vh] flex items-center text-white relative pt-16 overflow-hidden">
-		<img
-			class="absolute inset-0 w-full h-full object-cover"
-			src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
-			alt="Modern home with premium aluminium windows"
-			loading="eager"
-		/>
-		<div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20"></div>
-		<div class="max-w-7xl mx-auto px-6 py-20 w-full relative z-10">
-			<p class="text-xs font-semibold tracking-widest uppercase text-anodise mb-6">Sydney's Premium Choice</p>
-			<h1 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.08] mb-6 max-w-3xl">
-				Premium Aluminium <em class="not-italic text-anodise">Windows & Doors</em>
-			</h1>
-			<p class="text-lg text-white/60 leading-relaxed max-w-lg mb-10">
-				Meticulously crafted aluminium solutions for Sydney homes. Where architectural
-				precision meets enduring quality.
-			</p>
-			<div class="flex flex-wrap gap-4">
-				<a href="/quote" class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase bg-accent text-white hover:bg-accent-hover transition-colors inline-flex items-center gap-2">
-					Request a Quote
-					<svg viewBox="0 0 24 24" class="size-4 stroke-current fill-none stroke-2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-				</a>
-				<a href="/windows" class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase border border-white/30 hover:border-white hover:bg-white/10 transition-all">View Products</a>
-			</div>
-		</div>
-	</section>
+    <!-- Hero -->
+    <section
+        class="min-h-[90vh] flex items-center text-white relative pt-16 overflow-hidden"
+    >
+        <img
+            class="absolute inset-0 w-full h-full object-cover"
+            src="/images/stacking-door-hero.webp"
+            alt="Modern home with premium aluminium windows"
+            loading="eager"
+        />
+        <div
+            class="absolute inset-0 bg-linear-to-r from-black/80 via-black/50 to-black/20"
+        >
+        </div>
+        <div class="max-w-7xl mx-auto px-6 py-20 w-full relative z-10">
+            <p
+                class="text-xs font-semibold tracking-widest uppercase text-anodise mb-6"
+            >
+                Sydney's Premium Choice
+            </p>
+            <h1
+                class="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.08] mb-6 max-w-3xl"
+            >
+                Premium Aluminium <em class="not-italic text-anodise"
+                    >Windows & Doors</em
+                >
+            </h1>
+            <p class="text-lg text-white/60 leading-relaxed max-w-lg mb-10">
+                Meticulously crafted aluminium solutions for Sydney homes. Where
+                architectural precision meets enduring quality.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a
+                    href="/quote"
+                    class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase bg-accent text-white hover:bg-accent-hover transition-colors inline-flex items-center gap-2"
+                >
+                    Request a Quote
+                    <svg
+                        viewBox="0 0 24 24"
+                        class="size-4 stroke-current fill-none stroke-2"
+                        ><path d="M5 12h14M12 5l7 7-7 7"></path></svg
+                    >
+                </a>
+                <a
+                    href="/windows"
+                    class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase border border-white/30 hover:border-white hover:bg-white/10 transition-all"
+                    >View Products</a
+                >
+            </div>
+        </div>
+    </section>
 
-	<StatsBar />
+    <!-- Stats -->
+    <StatsBar />
 
-	<section class="py-20 bg-page">
-		<div class="max-w-7xl mx-auto px-6">
-			<div class="mb-10">
-				<p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">Our Collection</p>
-				<h2 class="font-display text-3xl md:text-4xl leading-tight mb-3">Aluminium Windows</h2>
-				<p class="text-sm text-text-secondary max-w-lg leading-relaxed">
-					Precision-engineered window systems for every architectural style.
-				</p>
-			</div>
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-				{windowProducts.map(product => <ProductCard product={product} />)}
-			</div>
-			<div class="text-center mt-10">
-				<a href="/windows" class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase text-accent border border-divider hover:border-accent hover:bg-accent-light transition-all inline-flex items-center gap-2">
-					View All Windows
-					<svg viewBox="0 0 24 24" class="size-4 stroke-current fill-none stroke-2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-				</a>
-			</div>
-		</div>
-	</section>
+    <!-- Windows -->
+    <section class="py-20 bg-page">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-10">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Our Collection
+                </p>
+                <h2
+                    class="font-display text-3xl md:text-4xl leading-tight mb-3"
+                >
+                    Aluminium Windows
+                </h2>
+                <p class="text-sm text-text-secondary max-w-lg leading-relaxed">
+                    Precision-engineered window systems for every architectural
+                    style.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {
+                    windowProducts.map(product => (
+                        <ProductCard product={product} />
+                    ))
+                }
+            </div>
+            <div class="text-center mt-10">
+                <a
+                    href="/windows"
+                    class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase text-accent border border-divider hover:border-accent hover:bg-accent-light transition-all inline-flex items-center gap-2"
+                >
+                    View All Windows
+                    <svg
+                        viewBox="0 0 24 24"
+                        class="size-4 stroke-current fill-none stroke-2"
+                        ><path d="M5 12h14M12 5l7 7-7 7"></path></svg
+                    >
+                </a>
+            </div>
+        </div>
+    </section>
 
-	<section class="py-20 bg-dark text-white">
-		<div class="max-w-7xl mx-auto px-6">
-			<div class="mb-10">
-				<p class="text-xs font-semibold tracking-widest uppercase text-anodise mb-3">Our Collection</p>
-				<h2 class="font-display text-3xl md:text-4xl leading-tight mb-3">Aluminium Doors</h2>
-				<p class="text-sm text-white/50 max-w-lg leading-relaxed">
-					Secure, elegant door systems engineered for Australian conditions.
-				</p>
-			</div>
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-				{doorProducts.map(product => <ProductCard product={product} />)}
-			</div>
-			<div class="text-center mt-10">
-				<a href="/doors" class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase text-white border border-white/30 hover:border-white/70 hover:bg-white/5 transition-all inline-flex items-center gap-2">
-					View All Doors
-					<svg viewBox="0 0 24 24" class="size-4 stroke-current fill-none stroke-2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-				</a>
-			</div>
-		</div>
-	</section>
+    <!-- Doors -->
+    <section class="py-20 bg-dark text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-10">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-anodise mb-3"
+                >
+                    Our Collection
+                </p>
+                <h2
+                    class="font-display text-3xl md:text-4xl leading-tight mb-3"
+                >
+                    Aluminium Doors
+                </h2>
+                <p class="text-sm text-white/50 max-w-lg leading-relaxed">
+                    Secure, elegant door systems engineered for Australian
+                    conditions.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {doorProducts.map(product => <ProductCard product={product} />)}
+            </div>
+            <div class="text-center mt-10">
+                <a
+                    href="/doors"
+                    class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase text-white border border-white/30 hover:border-white/70 hover:bg-white/5 transition-all inline-flex items-center gap-2"
+                >
+                    View All Doors
+                    <svg
+                        viewBox="0 0 24 24"
+                        class="size-4 stroke-current fill-none stroke-2"
+                        ><path d="M5 12h14M12 5l7 7-7 7"></path></svg
+                    >
+                </a>
+            </div>
+        </div>
+    </section>
 
-	<section class="py-20 bg-dark text-white border-t border-white/10">
-		<div class="max-w-7xl mx-auto px-6">
-			<div class="text-center mb-12">
-				<p class="text-xs font-semibold tracking-widest uppercase text-anodise mb-3">What We Do</p>
-				<h2 class="font-display text-3xl md:text-4xl leading-tight mb-3">Our Services</h2>
-				<p class="text-sm text-white/50 max-w-lg leading-relaxed mx-auto">
-					Comprehensive aluminium solutions from start to finish.
-				</p>
-			</div>
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-				<div class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
-					<div class="size-12 border border-anodise/30 flex items-center justify-center mb-6">
-						<svg class="size-6 stroke-anodise stroke-[1.5] fill-none" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" /></svg>
-					</div>
-					<h3 class="font-display text-lg mb-3">Removal, Supply, Install & Finishing</h3>
-					<p class="text-sm text-white/45 leading-relaxed">Complete end-to-end service from careful removal of existing fixtures to professional installation and meticulous finishing touches.</p>
-				</div>
-				<div class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
-					<div class="size-12 border border-anodise/30 flex items-center justify-center mb-6">
-						<svg class="size-6 stroke-anodise stroke-[1.5] fill-none" viewBox="0 0 24 24">
-							<circle cx="12" cy="12" r="3" />
-							<path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
-						</svg>
-					</div>
-					<h3 class="font-display text-lg mb-3">Repair & Maintenance</h3>
-					<p class="text-sm text-white/45 leading-relaxed">Expert repair services for all aluminium doors and windows, extending the life of your fixtures and restoring optimal performance.</p>
-				</div>
-				<div class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
-					<div class="size-12 border border-anodise/30 flex items-center justify-center mb-6">
-						<svg class="size-6 stroke-anodise stroke-[1.5] fill-none" viewBox="0 0 24 24">
-							<path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-							<polyline points="9 22 9 12 15 12 15 22" />
-						</svg>
-					</div>
-					<h3 class="font-display text-lg mb-3">Residential Solutions</h3>
-					<p class="text-sm text-white/45 leading-relaxed">Tailored aluminium windows and doors for homes of all styles, from heritage renovations to modern new builds.</p>
-				</div>
-				<div class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
-					<div class="size-12 border border-anodise/30 flex items-center justify-center mb-6">
-						<svg class="size-6 stroke-anodise stroke-[1.5] fill-none" viewBox="0 0 24 24">
-							<rect x="2" y="7" width="20" height="14" rx="2" />
-							<path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
-						</svg>
-					</div>
-					<h3 class="font-display text-lg mb-3">Commercial Fit-outs</h3>
-					<p class="text-sm text-white/45 leading-relaxed">Engineered aluminium systems for storefronts, offices, and commercial properties compliant with Australian building codes.</p>
-				</div>
-				<div class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
-					<div class="size-12 border border-anodise/30 flex items-center justify-center mb-6">
-						<svg class="size-6 stroke-anodise stroke-[1.5] fill-none" viewBox="0 0 24 24">
-							<rect x="3" y="3" width="18" height="18" rx="2" />
-							<line x1="3" y1="9" x2="21" y2="9" />
-							<line x1="9" y1="21" x2="9" y2="9" />
-						</svg>
-					</div>
-					<h3 class="font-display text-lg mb-3">Single & Double Glazing</h3>
-					<p class="text-sm text-white/45 leading-relaxed">Quality glazing options for optimal thermal performance, noise reduction, and energy efficiency in any application.</p>
-				</div>
-				<div class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
-					<div class="size-12 border border-anodise/30 flex items-center justify-center mb-6">
-						<svg class="size-6 stroke-anodise stroke-[1.5] fill-none" viewBox="0 0 24 24">
-							<path d="M12 20h9" />
-							<path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" />
-						</svg>
-					</div>
-					<h3 class="font-display text-lg mb-3">Custom Design Consultation</h3>
-					<p class="text-sm text-white/45 leading-relaxed">Free on-site consultations to design bespoke aluminium solutions that match your exact architectural vision.</p>
-				</div>
-			</div>
-		</div>
-	</section>
+    <!-- What we do -->
+    <section class="py-20 bg-dark text-white border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-anodise mb-3"
+                >
+                    What We Do
+                </p>
+                <h2
+                    class="font-display text-3xl md:text-4xl leading-tight mb-3"
+                >
+                    Our Services
+                </h2>
+                <p
+                    class="text-sm text-white/50 max-w-lg leading-relaxed mx-auto"
+                >
+                    Comprehensive aluminium solutions from start to finish.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div
+                    class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                >
+                    <div
+                        class="size-12 border border-anodise/30 flex items-center justify-center mb-6"
+                    >
+                        <svg
+                            class="size-6 stroke-anodise stroke-[1.5] fill-none"
+                            viewBox="0 0 24 24"
+                            ><path
+                                d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"
+                            ></path></svg
+                        >
+                    </div>
+                    <h3 class="font-display text-lg mb-3">
+                        Removal, Supply, Install & Finishing
+                    </h3>
+                    <p class="text-sm text-white/45 leading-relaxed">
+                        Complete end-to-end service from careful removal of
+                        existing fixtures to professional installation and
+                        meticulous finishing touches.
+                    </p>
+                </div>
+                <div
+                    class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                >
+                    <div
+                        class="size-12 border border-anodise/30 flex items-center justify-center mb-6"
+                    >
+                        <svg
+                            class="size-6 stroke-anodise stroke-[1.5] fill-none"
+                            viewBox="0 0 24 24"
+                        >
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path
+                                d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-lg mb-3">
+                        Repair & Maintenance
+                    </h3>
+                    <p class="text-sm text-white/45 leading-relaxed">
+                        Expert repair services for all aluminium doors and
+                        windows, extending the life of your fixtures and
+                        restoring optimal performance.
+                    </p>
+                </div>
+                <div
+                    class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                >
+                    <div
+                        class="size-12 border border-anodise/30 flex items-center justify-center mb-6"
+                    >
+                        <svg
+                            class="size-6 stroke-anodise stroke-[1.5] fill-none"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"
+                            ></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-lg mb-3">
+                        Residential Solutions
+                    </h3>
+                    <p class="text-sm text-white/45 leading-relaxed">
+                        Tailored aluminium windows and doors for homes of all
+                        styles, from heritage renovations to modern new builds.
+                    </p>
+                </div>
+                <div
+                    class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                >
+                    <div
+                        class="size-12 border border-anodise/30 flex items-center justify-center mb-6"
+                    >
+                        <svg
+                            class="size-6 stroke-anodise stroke-[1.5] fill-none"
+                            viewBox="0 0 24 24"
+                        >
+                            <rect x="2" y="7" width="20" height="14" rx="2"
+                            ></rect>
+                            <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-lg mb-3">
+                        Commercial Fit-outs
+                    </h3>
+                    <p class="text-sm text-white/45 leading-relaxed">
+                        Engineered aluminium systems for storefronts, offices,
+                        and commercial properties compliant with Australian
+                        building codes.
+                    </p>
+                </div>
+                <div
+                    class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                >
+                    <div
+                        class="size-12 border border-anodise/30 flex items-center justify-center mb-6"
+                    >
+                        <svg
+                            class="size-6 stroke-anodise stroke-[1.5] fill-none"
+                            viewBox="0 0 24 24"
+                        >
+                            <rect x="3" y="3" width="18" height="18" rx="2"
+                            ></rect>
+                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                            <line x1="9" y1="21" x2="9" y2="9"></line>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-lg mb-3">
+                        Single & Double Glazing
+                    </h3>
+                    <p class="text-sm text-white/45 leading-relaxed">
+                        Quality glazing options for optimal thermal performance,
+                        noise reduction, and energy efficiency in any
+                        application.
+                    </p>
+                </div>
+                <div
+                    class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                >
+                    <div
+                        class="size-12 border border-anodise/30 flex items-center justify-center mb-6"
+                    >
+                        <svg
+                            class="size-6 stroke-anodise stroke-[1.5] fill-none"
+                            viewBox="0 0 24 24"
+                        >
+                            <path d="M12 20h9"></path>
+                            <path
+                                d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-lg mb-3">
+                        Custom Design Consultation
+                    </h3>
+                    <p class="text-sm text-white/45 leading-relaxed">
+                        Free on-site consultations to design bespoke aluminium
+                        solutions that match your exact architectural vision.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<section class="py-20 bg-alt">
-		<div class="max-w-7xl mx-auto px-6">
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-				<div class="aspect-[6/5] overflow-hidden">
-					<img
-						src="https://images.unsplash.com/photo-1547555706-54bcf05bbad1?w=1200&q=80"
-						alt="Aluminium fabrication workshop"
-						loading="lazy"
-						class="w-full h-full object-cover"
-					/>
-				</div>
-				<div>
-					<p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">Who We Are</p>
-					<h2 class="font-display text-3xl md:text-4xl leading-tight mb-4">A Decade of Precision Craftsmanship</h2>
-					<p class="text-sm text-text-secondary max-w-lg leading-relaxed mb-8">
-						With over a decade of experience, Aluverse delivers full-service aluminium
-						solutions tailored to your residential and commercial needs.
-					</p>
-					<ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-						{['Full-service: removal, supply, install, finishing', 'Residential & commercial expertise', 'Single & double glazing options', 'Australian Standards compliant', 'Custom designs to your specification', 'Local Sydney knowledge & expertise'].map(item => (
-							<li class="flex items-start gap-2.5 text-sm text-text-secondary">
-								<svg class="size-4 stroke-accent stroke-2 fill-none shrink-0 mt-0.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
-								{item}
-							</li>
-						))}
-					</ul>
-					<div class="mt-8">
-						<a href="/about" class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase text-accent border border-divider hover:border-accent hover:bg-accent-light transition-all inline-flex items-center gap-2">
-							Learn More About Us
-							<svg viewBox="0 0 24 24" class="size-4 stroke-current fill-none stroke-2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+    <!-- Who we are -->
+    <section class="py-20 bg-alt">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="aspect-6/5 overflow-hidden">
+                    <img
+                        src="/images/workshop-photo.webp"
+                        alt="Aluminium fabrication workshop"
+                        loading="lazy"
+                        class="w-full h-full object-cover"
+                    />
+                </div>
+                <div>
+                    <p
+                        class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                    >
+                        Who We Are
+                    </p>
+                    <h2
+                        class="font-display text-3xl md:text-4xl leading-tight mb-4"
+                    >
+                        A Decade of Precision Craftsmanship
+                    </h2>
+                    <p
+                        class="text-sm text-text-secondary max-w-lg leading-relaxed mb-8"
+                    >
+                        With over a decade of experience, Aluverse delivers
+                        full-service aluminium solutions tailored to your
+                        residential and commercial needs.
+                    </p>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {
+                            [
+                                "Full-service: removal, supply, install, finishing",
+                                "Residential & commercial expertise",
+                                "Single & double glazing options",
+                                "Australian Standards compliant",
+                                "Custom designs to your specification",
+                                "Local Sydney knowledge & expertise",
+                            ].map(item => (
+                                <li class="flex items-start gap-2.5 text-sm text-text-secondary">
+                                    <svg
+                                        class="size-4 stroke-accent stroke-2 fill-none shrink-0 mt-0.5"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    {item}
+                                </li>
+                            ))
+                        }
+                    </ul>
+                    <div class="mt-8">
+                        <a
+                            href="/about"
+                            class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase text-accent border border-divider hover:border-accent hover:bg-accent-light transition-all inline-flex items-center gap-2"
+                        >
+                            Learn More About Us
+                            <svg
+                                viewBox="0 0 24 24"
+                                class="size-4 stroke-current fill-none stroke-2"
+                                ><path d="M5 12h14M12 5l7 7-7 7"></path></svg
+                            >
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<section class="py-20 bg-page">
-		<div class="max-w-7xl mx-auto px-6">
-			<div class="text-center mb-12">
-				<p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">Client Feedback</p>
-				<h2 class="font-display text-3xl md:text-4xl leading-tight mb-3">What Our Clients Say</h2>
-				<p class="text-sm text-text-secondary max-w-lg leading-relaxed mx-auto">
-					Trusted by Sydney homeowners and businesses alike.
-				</p>
-			</div>
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-				{testimonials.map(testimonial => (
-					<div class="p-8 bg-white border border-divider text-center">
-						<div class="flex justify-center gap-1 mb-5">
-							{Array.from({ length: 5 }).map(() => (
-								<svg class="size-4 fill-accent" viewBox="0 0 24 24">
-									<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-								</svg>
-							))}
-						</div>
-						<p class="font-display text-lg italic leading-relaxed mb-5">"{testimonial.quote}"</p>
-						<div class="text-sm font-bold">{testimonial.author}</div>
-						<div class="text-xs text-text-muted mt-1">{testimonial.location}</div>
-					</div>
-				))}
-			</div>
-		</div>
-	</section>
+    <!-- Client feedback -->
+    <section class="py-20 bg-page">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Client Feedback
+                </p>
+                <h2
+                    class="font-display text-3xl md:text-4xl leading-tight mb-3"
+                >
+                    What Our Clients Say
+                </h2>
+                <p
+                    class="text-sm text-text-secondary max-w-lg leading-relaxed mx-auto"
+                >
+                    Trusted by Sydney homeowners and businesses alike.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {
+                    testimonials.map(testimonial => (
+                        <div class="p-8 bg-white border border-divider text-center">
+                            <div class="flex justify-center gap-1 mb-5">
+                                {Array.from({ length: 5 }).map(() => (
+                                    <svg
+                                        class="size-4 fill-accent"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                    </svg>
+                                ))}
+                            </div>
+                            <p class="font-display text-lg italic leading-relaxed mb-5">
+                                "{testimonial.quote}"
+                            </p>
+                            <div class="text-sm font-bold">
+                                {testimonial.author}
+                            </div>
+                            <div class="text-xs text-text-muted mt-1">
+                                {testimonial.location}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
 
-	<CtaSection
-		tag="Get Started"
-		title="Ready to Transform Your Space?"
-		text="Get your free consultation and quote today. Let us craft the perfect aluminium solution for your home or business."
-		primaryHref={company.phoneHref}
-		primaryLabel={`Call ${company.phoneDisplay}`}
-		secondaryHref="/quote"
-		secondaryLabel="Request a Quote"
-	/>
+    <!-- Get started -->
+    <CtaSection
+        tag="Get Started"
+        title="Ready to Transform Your Space?"
+        text="Get your free consultation and quote today. Let us craft the perfect aluminium solution for your home or business."
+        primaryHref={company.phoneHref}
+        primaryLabel={`Call ${company.phoneDisplay}`}
+        secondaryHref="/quote"
+        secondaryLabel="Request a Quote"
+    />
 
-	<SocialSection />
+    <!-- Social -->
+    <SocialSection />
 </Layout>
