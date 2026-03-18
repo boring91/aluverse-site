@@ -1,85 +1,152 @@
 ---
-import CtaSection from '../components/CtaSection.astro';
-import Layout from '../layouts/Layout.astro';
-import PageHero from '../components/PageHero.astro';
-import ProductCard from '../components/ProductCard.astro';
-import { company, doorProducts } from '../data/site';
+import { pageImages } from "../assets/images";
+import CtaSection from "../components/CtaSection.astro";
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import ProductCard from "../components/ProductCard.astro";
+import { company, doorProducts } from "../data/site";
 ---
 
 <Layout
-	title="Aluminium Doors - Aluverse | Sydney"
-	description="Premium aluminium doors for Sydney homes. Sliding, bi-fold, French, hinged and stacking doors custom fabricated for your project."
-	activeNav="doors"
+    title="Aluminium Doors - Aluverse | Sydney"
+    description="Premium aluminium doors for Sydney homes. Sliding, bi-fold, French, hinged and stacking doors custom fabricated for your project."
+    activeNav="doors"
 >
-	<PageHero
-		title="Aluminium Doors"
-		subtitle="Secure, elegant door systems engineered for Australian conditions. Custom-built to transform your living spaces."
-		image="/images/doors-page-hero.webp"
-		imageAlt="Premium aluminium doors"
-		breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Doors' }]}
-	/>
+    <PageHero
+        title="Aluminium Doors"
+        subtitle="Secure, elegant door systems engineered for Australian conditions. Custom-built to transform your living spaces."
+        image={pageImages.doorsPageHero}
+        imageAlt="Premium aluminium doors"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Doors" }]}
+    />
 
-	<section class="py-20 bg-page">
-		<div class="max-w-7xl mx-auto px-6">
-			<div class="text-center mb-12">
-				<p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">Our Range</p>
-				<h2 class="font-display text-3xl md:text-4xl leading-tight mb-3">Door Systems</h2>
-				<p class="text-sm text-text-secondary max-w-lg leading-relaxed mx-auto">
-					From expansive bi-fold openings to classic French doors, every system is precision-engineered.
-				</p>
-			</div>
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-				{doorProducts.map(product => <ProductCard product={product} />)}
-			</div>
-		</div>
-	</section>
+    <section class="py-20 bg-page">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Our Range
+                </p>
+                <h2
+                    class="font-display text-3xl md:text-4xl leading-tight mb-3"
+                >
+                    Door Systems
+                </h2>
+                <p
+                    class="text-sm text-text-secondary max-w-lg leading-relaxed mx-auto"
+                >
+                    From expansive bi-fold openings to classic French doors,
+                    every system is precision-engineered.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {doorProducts.map(product => <ProductCard product={product} />)}
+            </div>
+        </div>
+    </section>
 
-	<section class="py-20 bg-dark text-white">
-		<div class="max-w-7xl mx-auto px-6">
-			<div class="text-center mb-12">
-				<p class="text-xs font-semibold tracking-widest uppercase text-anodise mb-3">Why Aluminium</p>
-				<h2 class="font-display text-3xl md:text-4xl leading-tight">The Premium Choice for Sydney Homes</h2>
-			</div>
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-				<div class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
-					<div class="size-12 border border-anodise/30 flex items-center justify-center mb-6">
-						<svg class="size-6 stroke-anodise stroke-[1.5] fill-none" viewBox="0 0 24 24">
-							<rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0110 0v4" />
-						</svg>
-					</div>
-					<h3 class="font-display text-lg mb-3">Security</h3>
-					<p class="text-sm text-white/45 leading-relaxed">Heavy-duty aluminium frames with multi-point locking systems provide superior home security.</p>
-				</div>
-				<div class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
-					<div class="size-12 border border-anodise/30 flex items-center justify-center mb-6">
-						<svg class="size-6 stroke-anodise stroke-[1.5] fill-none" viewBox="0 0 24 24">
-							<path d="M9.59 4.59A2 2 0 1111 8H2" /><path d="M12.59 19.41A2 2 0 1014 16H2" /><path d="M17.73 7.73A2.5 2.5 0 1019.5 12H2" />
-						</svg>
-					</div>
-					<h3 class="font-display text-lg mb-3">Weather Resistance</h3>
-					<p class="text-sm text-white/45 leading-relaxed">Engineered seals and durable frames protect against Sydney's weather while maintaining smooth operation.</p>
-				</div>
-				<div class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
-					<div class="size-12 border border-anodise/30 flex items-center justify-center mb-6">
-						<svg class="size-6 stroke-anodise stroke-[1.5] fill-none" viewBox="0 0 24 24">
-							<polyline points="15 3 21 3 21 9" /><polyline points="9 21 3 21 3 15" />
-							<line x1="21" y1="3" x2="14" y2="10" /><line x1="3" y1="21" x2="10" y2="14" />
-						</svg>
-					</div>
-					<h3 class="font-display text-lg mb-3">Indoor-Outdoor Living</h3>
-					<p class="text-sm text-white/45 leading-relaxed">Create seamless transitions between your home and outdoor spaces with expansive door openings.</p>
-				</div>
-			</div>
-		</div>
-	</section>
+    <section class="py-20 bg-dark text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-anodise mb-3"
+                >
+                    Why Aluminium
+                </p>
+                <h2 class="font-display text-3xl md:text-4xl leading-tight">
+                    The Premium Choice for Sydney Homes
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div
+                    class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                >
+                    <div
+                        class="size-12 border border-anodise/30 flex items-center justify-center mb-6"
+                    >
+                        <svg
+                            class="size-6 stroke-anodise stroke-[1.5] fill-none"
+                            viewBox="0 0 24 24"
+                        >
+                            <rect
+                                x="3"
+                                y="11"
+                                width="18"
+                                height="11"
+                                rx="2"
+                                ry="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-lg mb-3">Security</h3>
+                    <p class="text-sm text-white/45 leading-relaxed">
+                        Heavy-duty aluminium frames with multi-point locking
+                        systems provide superior home security.
+                    </p>
+                </div>
+                <div
+                    class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                >
+                    <div
+                        class="size-12 border border-anodise/30 flex items-center justify-center mb-6"
+                    >
+                        <svg
+                            class="size-6 stroke-anodise stroke-[1.5] fill-none"
+                            viewBox="0 0 24 24"
+                        >
+                            <path d="M9.59 4.59A2 2 0 1111 8H2"></path><path
+                                d="M12.59 19.41A2 2 0 1014 16H2"></path><path
+                                d="M17.73 7.73A2.5 2.5 0 1019.5 12H2"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-lg mb-3">
+                        Weather Resistance
+                    </h3>
+                    <p class="text-sm text-white/45 leading-relaxed">
+                        Engineered seals and durable frames protect against
+                        Sydney's weather while maintaining smooth operation.
+                    </p>
+                </div>
+                <div
+                    class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                >
+                    <div
+                        class="size-12 border border-anodise/30 flex items-center justify-center mb-6"
+                    >
+                        <svg
+                            class="size-6 stroke-anodise stroke-[1.5] fill-none"
+                            viewBox="0 0 24 24"
+                        >
+                            <polyline points="15 3 21 3 21 9"
+                            ></polyline><polyline points="9 21 3 21 3 15"
+                            ></polyline>
+                            <line x1="21" y1="3" x2="14" y2="10"></line><line
+                                x1="3"
+                                y1="21"
+                                x2="10"
+                                y2="14"></line>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-lg mb-3">
+                        Indoor-Outdoor Living
+                    </h3>
+                    <p class="text-sm text-white/45 leading-relaxed">
+                        Create seamless transitions between your home and
+                        outdoor spaces with expansive door openings.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<CtaSection
-		tag="Get Started"
-		title="Ready to Transform Your Space?"
-		text="Get your free consultation and quote today. Let us craft the perfect aluminium solution for your home or business."
-		primaryHref={company.phoneHref}
-		primaryLabel={`Call ${company.phoneDisplay}`}
-		secondaryHref="/quote"
-		secondaryLabel="Request a Quote"
-	/>
+    <CtaSection
+        tag="Get Started"
+        title="Ready to Transform Your Space?"
+        text="Get your free consultation and quote today. Let us craft the perfect aluminium solution for your home or business."
+        primaryHref={company.phoneHref}
+        primaryLabel={`Call ${company.phoneDisplay}`}
+        secondaryHref="/quote"
+        secondaryLabel="Request a Quote"
+    />
 </Layout>

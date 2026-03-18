@@ -1,3 +1,7 @@
+import type { ImageMetadata } from "astro";
+
+import { productImages } from "../assets/images";
+
 export type ProductCategory = "windows" | "doors";
 
 export type ProductSpec = {
@@ -12,8 +16,8 @@ export type Product = {
     summary: string;
     metaTitle: string;
     metaDescription: string;
-    cardImage: string;
-    heroImage: string;
+    cardImage: ImageMetadata;
+    heroImage: ImageMetadata;
     imageAlt: string;
     detailDescription: string;
     features: string[];
@@ -84,10 +88,8 @@ export const products: Product[] = [
         metaTitle: "Sliding Windows - Aluverse | Sydney",
         metaDescription:
             "Premium aluminium sliding windows for Sydney homes. Smooth horizontal operation, maximum ventilation and natural light. Free quotes from Aluverse.",
-        cardImage:
-            "/images/sliding-window-card.webp",
-        heroImage:
-            "/images/sliding-window-hero.webp",
+        cardImage: productImages.slidingWindows.card,
+        heroImage: productImages.slidingWindows.hero,
         imageAlt: "Sliding windows",
         detailDescription:
             "Sliding windows offer smooth horizontal operation along precision-engineered tracks. Their streamlined design maximises ventilation and natural light while maintaining clean sightlines. Ideal for bedrooms, living areas, and kitchens where ease of use and unobstructed views are paramount.",
@@ -117,10 +119,8 @@ export const products: Product[] = [
         metaTitle: "Awning Windows - Aluverse | Sydney",
         metaDescription:
             "Premium aluminium awning windows for Sydney homes. Ventilation even during rain with top-hinged outward design. Free quotes from Aluverse.",
-        cardImage:
-            "/images/awning-window-card.webp",
-        heroImage:
-            "/images/awning-window-hero.webp",
+        cardImage: productImages.awningWindows.card,
+        heroImage: productImages.awningWindows.hero,
         imageAlt: "Awning windows",
         detailDescription:
             "Awning windows are hinged at the top and push outward from the bottom, creating a canopy effect that allows fresh air to flow even during light rain. They're a favourite for Sydney homes, offering excellent weather protection without sacrificing ventilation.",
@@ -154,10 +154,8 @@ export const products: Product[] = [
         metaTitle: "Casement Windows - Aluverse | Sydney",
         metaDescription:
             "Premium aluminium casement windows for Sydney homes. 100% clear opening for maximum airflow with side-hinged design. Free quotes from Aluverse.",
-        cardImage:
-            "/images/casement-window-card.webp",
-        heroImage:
-            "/images/casement-window-hero.webp",
+        cardImage: productImages.casementWindows.card,
+        heroImage: productImages.casementWindows.hero,
         imageAlt: "Casement windows",
         detailDescription:
             "Casement windows are side-hinged and swing outward, providing a full 100% clear opening for maximum airflow. Their design catches side breezes effectively, making them one of the best choices for natural ventilation in any room.",
@@ -187,10 +185,8 @@ export const products: Product[] = [
         metaTitle: "Bi-Fold Windows - Aluverse | Sydney",
         metaDescription:
             "Premium aluminium bi-fold windows for Sydney homes. Wide servery-style openings for seamless indoor-outdoor connection. Free quotes from Aluverse.",
-        cardImage:
-            "/images/bifold-window-card.webp",
-        heroImage:
-            "/images/bifold-window-hero.webp",
+        cardImage: productImages.bifoldWindows.card,
+        heroImage: productImages.bifoldWindows.hero,
         imageAlt: "Bi-fold windows",
         detailDescription:
             "Bi-fold windows feature multiple panels that fold neatly to one side, creating a wide servery-style opening. Perfect for connecting kitchens to outdoor entertaining areas, they transform the relationship between your indoor and outdoor spaces.",
@@ -224,10 +220,8 @@ export const products: Product[] = [
         metaTitle: "Double Glazing Windows - Aluverse | Sydney",
         metaDescription:
             "Premium double glazed aluminium windows for Sydney homes. Superior thermal and acoustic insulation for year-round comfort. Free quotes from Aluverse.",
-        cardImage:
-            "/images/double-glazing-card.webp",
-        heroImage:
-            "/images/double-glazing-hero.webp",
+        cardImage: productImages.doubleGlazingWindows.card,
+        heroImage: productImages.doubleGlazingWindows.hero,
         imageAlt: "Double glazed windows",
         detailDescription:
             "Double glazed windows feature two panes of glass separated by an insulating gas-filled gap, delivering superior thermal and acoustic performance. They significantly reduce heat transfer and outside noise, creating a more comfortable and energy-efficient home year-round.",
@@ -257,10 +251,8 @@ export const products: Product[] = [
         metaTitle: "Double Hung Windows - Aluverse | Sydney",
         metaDescription:
             "Premium aluminium double hung windows for Sydney homes. Dual sash vertical sliding for versatile ventilation control. Free quotes from Aluverse.",
-        cardImage:
-            "/images/double-hung-window-card.webp",
-        heroImage:
-            "/images/double-hung-window-hero.webp",
+        cardImage: productImages.doubleHungWindows.card,
+        heroImage: productImages.doubleHungWindows.hero,
         imageAlt: "Double hung windows",
         detailDescription:
             "Double hung windows feature both an upper and lower sash that slide vertically, offering versatile ventilation control. Open the top for warm air exhaust, the bottom for fresh air intake, or both for maximum airflow. A timeless design updated with modern aluminium engineering.",
@@ -294,10 +286,8 @@ export const products: Product[] = [
         metaTitle: "Sliding Doors - Aluverse | Sydney",
         metaDescription:
             "Premium aluminium sliding doors for Sydney homes. Smooth gliding operation, slim sightlines, maximum natural light. Free quotes. Call 0403 422 401.",
-        cardImage:
-            "/images/sliding-door-card.webp",
-        heroImage:
-            "/images/sliding-door-hero.webp",
+        cardImage: productImages.slidingDoors.card,
+        heroImage: productImages.slidingDoors.hero,
         imageAlt: "Sliding doors",
         detailDescription:
             "Sliding doors feature large glass panels that glide smoothly along precision-engineered tracks. With their slim aluminium frames and expansive glazing, they flood your home with natural light while creating a seamless visual connection to the outdoors. Available in 2 or 3 track configurations for flexible opening widths.",
@@ -327,10 +317,8 @@ export const products: Product[] = [
         metaTitle: "Bi-Fold Doors - Aluverse | Sydney",
         metaDescription:
             "Premium aluminium bi-fold doors for Sydney homes. Wide-span openings, indoor-outdoor living, flexible panel configurations. Free quotes. Call 0403 422 401.",
-        cardImage:
-            "/images/bifold-door-card.webp",
-        heroImage:
-            "/images/bifold-door-hero.webp",
+        cardImage: productImages.bifoldDoors.card,
+        heroImage: productImages.bifoldDoors.hero,
         imageAlt: "Bi-fold doors",
         detailDescription:
             "Bi-fold doors are the ultimate solution for indoor-outdoor living. Multiple panels fold and stack neatly to one side, creating a dramatic wide-span opening that transforms your living space. Whether opening onto a deck, pool area, or garden, bi-fold doors blur the boundary between inside and out.",
@@ -360,10 +348,8 @@ export const products: Product[] = [
         metaTitle: "French Doors - Aluverse | Sydney",
         metaDescription:
             "Premium aluminium French doors for Sydney homes. Timeless double-door elegance, modern aluminium strength. Free quotes. Call 0403 422 401.",
-        cardImage:
-            "/images/french-door-card.webp",
-        heroImage:
-            "/images/french-door-hero.webp",
+        cardImage: productImages.frenchDoors.card,
+        heroImage: productImages.frenchDoors.hero,
         imageAlt: "French doors",
         detailDescription:
             "French doors bring timeless elegance to any home. The classic double-door design swings open to create a wide, welcoming entry point while aluminium frames provide the strength and weather resistance that timber can't match. Perfect for balconies, patios, and as feature entry points.",
@@ -393,10 +379,8 @@ export const products: Product[] = [
         metaTitle: "Hinged Doors - Aluverse | Sydney",
         metaDescription:
             "Premium aluminium hinged doors for Sydney homes. Classic swing operation, heavy-duty hardware, superior weather sealing. Free quotes. Call 0403 422 401.",
-        cardImage:
-            "/images/hinged-door-card.webp",
-        heroImage:
-            "/images/hinged-door-hero.webp",
+        cardImage: productImages.hingedDoors.card,
+        heroImage: productImages.hingedDoors.hero,
         imageAlt: "Hinged doors",
         detailDescription:
             "Hinged doors offer classic swing operation paired with modern aluminium engineering. Available as single or double-leaf configurations, they're ideal for front entries, back doors, and laundry exits. Robust hardware and weather seals ensure reliable performance day after day.",
@@ -426,10 +410,8 @@ export const products: Product[] = [
         metaTitle: "Stacking Doors - Aluverse | Sydney",
         metaDescription:
             "Premium aluminium stacking doors for Sydney homes. Expansive openings, clean architectural lines, smooth-gliding hardware. Free quotes. Call 0403 422 401.",
-        cardImage:
-            "/images/stacking-door-card.webp",
-        heroImage:
-            "/images/stacking-door-hero.webp",
+        cardImage: productImages.stackingDoors.card,
+        heroImage: productImages.stackingDoors.hero,
         imageAlt: "Stacking doors",
         detailDescription:
             "Stacking doors feature multiple panels that slide and stack behind one another, creating expansive openings while maintaining clean architectural lines. Unlike bi-fold doors, all panels remain in a single plane when open, providing a more streamlined look for large openings.",

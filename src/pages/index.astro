@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import ProductCard from "../components/ProductCard.astro";
 import SocialSection from "../components/SocialSection.astro";
 import StatsBar from "../components/StatsBar.astro";
+import { pageImages, productImages } from "../assets/images";
 import {
     company,
     doorProducts,
@@ -23,7 +24,7 @@ import {
     >
         <img
             class="absolute inset-0 w-full h-full object-cover"
-            src="/images/stacking-door-hero.webp"
+            src={productImages.stackingDoors.hero.src}
             alt="Modern home with premium aluminium windows"
             loading="eager"
         />
@@ -329,7 +330,7 @@ import {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                 <div class="aspect-6/5 overflow-hidden">
                     <img
-                        src="/images/workshop-photo.webp"
+                        src={pageImages.workshopPhoto.src}
                         alt="Aluminium fabrication workshop"
                         loading="lazy"
                         class="w-full h-full object-cover"

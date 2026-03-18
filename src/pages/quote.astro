@@ -4,6 +4,7 @@ import CtaSection from "../components/CtaSection.astro";
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
 import StaticContactForm from "../components/StaticContactForm.astro";
+import { pageImages } from "../assets/images";
 import { company } from "../data/site";
 import { QuoteForm } from "../components/QuoteForm";
 
@@ -38,7 +39,7 @@ const steps = [
     <PageHero
         title="Request a Free Quote"
         subtitle="Tell us about your project and we'll provide a detailed, no-obligation quote within 24 hours."
-        image="/images/quote-page-hero.webp"
+        image={pageImages.quotePageHero}
         imageAlt="Request a free quote from Aluverse"
         breadcrumbs={[
             { label: "Home", href: "/" },

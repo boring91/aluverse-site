@@ -1,104 +1,173 @@
 ---
-import CtaSection from '../../components/CtaSection.astro';
-import Layout from '../../layouts/Layout.astro';
-import PageHero from '../../components/PageHero.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import { company, getProductBySlug, products } from '../../data/site';
+import CtaSection from "../../components/CtaSection.astro";
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import ProductCard from "../../components/ProductCard.astro";
+import { company, getProductBySlug, products } from "../../data/site";
 
 export function getStaticPaths() {
-	return products.map((product) => ({
-		params: { slug: product.slug },
-		props: { product },
-	}));
+    return products.map(product => ({
+        params: { slug: product.slug },
+        props: { product },
+    }));
 }
 
 const { product } = Astro.props;
 const relatedProducts = product.related
-	.map((slug: string) => getProductBySlug(slug))
-	.filter((item): item is NonNullable<typeof item> => Boolean(item));
+    .map((slug: string) => getProductBySlug(slug))
+    .filter((item): item is NonNullable<typeof item> => Boolean(item));
 
-const categoryHref = product.category === 'windows' ? '/windows' : '/doors';
-const categoryLabel = product.category === 'windows' ? 'Windows' : 'Doors';
-const relatedHeading = product.category === 'windows' ? 'Other Window Systems' : 'Other Door Systems';
+const categoryHref = product.category === "windows" ? "/windows" : "/doors";
+const categoryLabel = product.category === "windows" ? "Windows" : "Doors";
+const relatedHeading =
+    product.category === "windows"
+        ? "Other Window Systems"
+        : "Other Door Systems";
 ---
 
-<Layout title={product.metaTitle} description={product.metaDescription} activeNav={product.category}>
-	<PageHero
-		title={product.title}
-		image={product.heroImage}
-		imageAlt={product.imageAlt}
-		breadcrumbs={[
-			{ label: 'Home', href: '/' },
-			{ label: categoryLabel, href: categoryHref },
-			{ label: product.title },
-		]}
-	/>
+<Layout
+    title={product.metaTitle}
+    description={product.metaDescription}
+    activeNav={product.category}
+>
+    <PageHero
+        title={product.title}
+        image={product.heroImage}
+        imageAlt={product.imageAlt}
+        breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: categoryLabel, href: categoryHref },
+            { label: product.title },
+        ]}
+    />
 
-	<section class="py-20 bg-page">
-		<div class="max-w-7xl mx-auto px-6">
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-				<div class="aspect-4/3 overflow-hidden border-t-[3px] border-t-anodise">
-					<img src={product.cardImage} alt={product.imageAlt} loading="lazy" class="w-full h-full object-cover" />
-				</div>
-				<div>
-					<h1 class="font-display text-3xl md:text-4xl mb-4">{product.title}</h1>
-					<p class="text-text-secondary leading-relaxed mb-8">{product.detailDescription}</p>
-					<ul class="mb-10">
-						{product.features.map((feature: string) => (
-							<li class="flex items-start gap-3 py-2.5 text-sm text-text-secondary border-b border-divider first:border-t">
-								<svg class="size-4 stroke-anodise stroke-2 fill-none shrink-0 mt-0.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
-								{feature}
-							</li>
-						))}
-					</ul>
-					<div class="flex gap-4 flex-wrap">
-						<a href="/quote" class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase bg-accent text-white hover:bg-accent-hover transition-colors inline-flex items-center gap-2">
-							Get a Quote
-							<svg viewBox="0 0 24 24" class="size-4 stroke-current fill-none stroke-2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-						</a>
-						<a href={company.phoneHref} class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase text-accent border border-divider hover:border-accent hover:bg-accent-light transition-all">Call Us</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+    <section class="py-20 bg-page">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+                <div
+                    class="aspect-4/3 overflow-hidden border-t-[3px] border-t-anodise"
+                >
+                    <img
+                        src={product.cardImage.src}
+                        alt={product.imageAlt}
+                        loading="lazy"
+                        class="w-full h-full object-cover"
+                    />
+                </div>
+                <div>
+                    <h1 class="font-display text-3xl md:text-4xl mb-4">
+                        {product.title}
+                    </h1>
+                    <p class="text-text-secondary leading-relaxed mb-8">
+                        {product.detailDescription}
+                    </p>
+                    <ul class="mb-10">
+                        {
+                            product.features.map((feature: string) => (
+                                <li class="flex items-start gap-3 py-2.5 text-sm text-text-secondary border-b border-divider first:border-t">
+                                    <svg
+                                        class="size-4 stroke-anodise stroke-2 fill-none shrink-0 mt-0.5"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    {feature}
+                                </li>
+                            ))
+                        }
+                    </ul>
+                    <div class="flex gap-4 flex-wrap">
+                        <a
+                            href="/quote"
+                            class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase bg-accent text-white hover:bg-accent-hover transition-colors inline-flex items-center gap-2"
+                        >
+                            Get a Quote
+                            <svg
+                                viewBox="0 0 24 24"
+                                class="size-4 stroke-current fill-none stroke-2"
+                                ><path d="M5 12h14M12 5l7 7-7 7"></path></svg
+                            >
+                        </a>
+                        <a
+                            href={company.phoneHref}
+                            class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase text-accent border border-divider hover:border-accent hover:bg-accent-light transition-all"
+                            >Call Us</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<section class="py-20 bg-alt">
-		<div class="max-w-5xl mx-auto px-6">
-			<div class="text-center mb-12">
-				<p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">Specifications</p>
-				<h2 class="font-display text-3xl md:text-4xl leading-tight">Technical Details</h2>
-			</div>
-			<div class="grid grid-cols-1 md:grid-cols-2 border border-divider">
-				{product.specs.map((spec: { label: string; value: string }, index: number) => (
-					<div class:list={['flex justify-between items-center px-6 py-4 border-b border-divider', index % 2 === 0 && 'md:border-r md:border-r-divider']}>
-						<div class="text-xs font-semibold uppercase tracking-wider text-text-muted">{spec.label}</div>
-						<div class="text-sm font-medium text-right">{spec.value}</div>
-					</div>
-				))}
-			</div>
-		</div>
-	</section>
+    <section class="py-20 bg-alt">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Specifications
+                </p>
+                <h2 class="font-display text-3xl md:text-4xl leading-tight">
+                    Technical Details
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 border border-divider">
+                {
+                    product.specs.map(
+                        (
+                            spec: { label: string; value: string },
+                            index: number
+                        ) => (
+                            <div
+                                class:list={[
+                                    "flex justify-between items-center px-6 py-4 border-b border-divider",
+                                    index % 2 === 0 &&
+                                        "md:border-r md:border-r-divider",
+                                ]}
+                            >
+                                <div class="text-xs font-semibold uppercase tracking-wider text-text-muted">
+                                    {spec.label}
+                                </div>
+                                <div class="text-sm font-medium text-right">
+                                    {spec.value}
+                                </div>
+                            </div>
+                        )
+                    )
+                }
+            </div>
+        </div>
+    </section>
 
-	<CtaSection
-		tag="Get Started"
-		title="Ready to Transform Your Space?"
-		text="Get your free consultation and quote today. Let us craft the perfect aluminium solution for your home or business."
-		primaryHref={company.phoneHref}
-		primaryLabel={`Call ${company.phoneDisplay}`}
-		secondaryHref="/quote"
-		secondaryLabel="Request a Quote"
-	/>
+    <CtaSection
+        tag="Get Started"
+        title="Ready to Transform Your Space?"
+        text="Get your free consultation and quote today. Let us craft the perfect aluminium solution for your home or business."
+        primaryHref={company.phoneHref}
+        primaryLabel={`Call ${company.phoneDisplay}`}
+        secondaryHref="/quote"
+        secondaryLabel="Request a Quote"
+    />
 
-	<section class="py-20 bg-page">
-		<div class="max-w-7xl mx-auto px-6">
-			<div class="mb-12">
-				<p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">Related</p>
-				<h2 class="font-display text-3xl md:text-4xl leading-tight">{relatedHeading}</h2>
-			</div>
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-				{relatedProducts.map(relatedProduct => <ProductCard product={relatedProduct} />)}
-			</div>
-		</div>
-	</section>
+    <section class="py-20 bg-page">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Related
+                </p>
+                <h2 class="font-display text-3xl md:text-4xl leading-tight">
+                    {relatedHeading}
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {
+                    relatedProducts.map(relatedProduct => (
+                        <ProductCard product={relatedProduct} />
+                    ))
+                }
+            </div>
+        </div>
+    </section>
 </Layout>
