@@ -20,6 +20,7 @@ const {
     priority = false,
 } = Astro.props;
 const heroWidths = [768, 1024, 1440, 1920];
+const heroQuality = 66;
 const loading = priority ? "eager" : "lazy";
 const fetchPriority = priority ? "high" : "auto";
 ---
@@ -34,6 +35,7 @@ const fetchPriority = priority ? "high" : "auto";
         fallbackFormat="webp"
         widths={heroWidths}
         sizes="100vw"
+        quality={heroQuality}
         loading={loading}
         fetchpriority={fetchPriority}
         pictureAttributes={{ class: "absolute inset-0 block h-full w-full" }}

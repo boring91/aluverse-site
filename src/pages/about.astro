@@ -8,6 +8,7 @@ import { pageImages } from "../assets/images";
 import { company } from "../data/site";
 
 const featureImageWidths = [480, 768, 960, 1280];
+const featureImageQuality = 62;
 ---
 
 <Layout
@@ -33,6 +34,7 @@ const featureImageWidths = [480, 768, 960, 1280];
                         alt="Aluminium fabrication workshop"
                         widths={featureImageWidths}
                         sizes="(min-width: 768px) calc((min(100vw, 80rem) - 7.5rem) / 2), calc(100vw - 3rem)"
+                        quality={featureImageQuality}
                         loading="lazy"
                         decoding="async"
                         class="w-full h-full object-cover"

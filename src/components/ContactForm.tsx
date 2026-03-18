@@ -5,7 +5,8 @@ import { useEffect, useRef } from "react";
 import type z from "zod";
 import { services } from "../data/site";
 import { ReactProviders } from "./ReactProviders";
-import ReCAPTCHAModule, { ReCAPTCHA } from "react-google-recaptcha";
+import ReCAPTCHAModule from "react-google-recaptcha";
+import type ReCAPTCHA from "react-google-recaptcha";
 
 // CJS/ESM interop: the module may resolve as { default: Component } during SSR
 const ReCAPTCHAField =

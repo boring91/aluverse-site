@@ -9,6 +9,7 @@ type Props = {
 
 const { product } = Astro.props;
 const cardWidths = [320, 480, 640, 768];
+const cardQuality = 60;
 ---
 
 <div
@@ -20,6 +21,7 @@ const cardWidths = [320, 480, 640, 768];
             alt={product.imageAlt}
             widths={cardWidths}
             sizes="(min-width: 1024px) calc((100vw - 8rem) / 3), (min-width: 768px) calc((100vw - 6rem) / 2), calc(100vw - 3rem)"
+            quality={cardQuality}
             loading="lazy"
             decoding="async"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
