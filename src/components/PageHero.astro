@@ -8,10 +8,20 @@ type Props = {
     image: ImageMetadata;
     imageAlt: string;
     breadcrumbs: { label: string; href?: string }[];
+    priority?: boolean;
 };
 
-const { title, subtitle, image, imageAlt, breadcrumbs } = Astro.props;
+const {
+    title,
+    subtitle,
+    image,
+    imageAlt,
+    breadcrumbs,
+    priority = false,
+} = Astro.props;
 const heroWidths = [768, 1024, 1440, 1920];
+const loading = priority ? "eager" : "lazy";
+const fetchPriority = priority ? "high" : "auto";
 ---
 
 <section
@@ -24,8 +34,8 @@ const heroWidths = [768, 1024, 1440, 1920];
         fallbackFormat="webp"
         widths={heroWidths}
         sizes="100vw"
-        loading="eager"
-        fetchpriority="high"
+        loading={loading}
+        fetchpriority={fetchPriority}
         pictureAttributes={{ class: "absolute inset-0 block h-full w-full" }}
         class="h-full w-full object-cover"
     />
