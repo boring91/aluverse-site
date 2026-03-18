@@ -7,9 +7,11 @@ type Props = {
     title: string;
     description: string;
     activeNav?: "home" | "windows" | "doors" | "about" | "contact";
+    canonical?: string;
 };
 
-const { title, description, activeNav } = Astro.props;
+const { title, description, activeNav, canonical } = Astro.props;
+const canonicalUrl = canonical ?? Astro.url.href;
 ---
 
 <!doctype html>
@@ -17,8 +19,35 @@ const { title, description, activeNav } = Astro.props;
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" href="/favicon.ico" />
+
+        <!-- Fallback first -->
+        <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" />
+        <link rel="icon" href="/favicon-light.ico" />
+
+        <!-- Media-specific variants override the fallback -->
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="/favicon-light.svg"
+            media="(prefers-color-scheme: light)"
+        />
+        <link
+            rel="icon"
+            href="/favicon-light.ico"
+            media="(prefers-color-scheme: light)"
+        />
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="/favicon-dark.svg"
+            media="(prefers-color-scheme: dark)"
+        />
+        <link
+            rel="icon"
+            href="/favicon-dark.ico"
+            media="(prefers-color-scheme: dark)"
+        />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -26,6 +55,7 @@ const { title, description, activeNav } = Astro.props;
             rel="stylesheet"
         />
         <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalUrl} />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
     </head>
@@ -45,99 +75,6 @@ const { title, description, activeNav } = Astro.props;
                 I told you to open it from a computer!
             </p>
         </div>
-
-        <script is:inline>
-            (() => {
-                const init = () => {
-                    const toggle = document.getElementById("menuToggle");
-                    const nav = document.getElementById("mobileNav");
-                    if (toggle && nav) {
-                        toggle.addEventListener("click", () => {
-                            const isHidden = nav.classList.toggle("hidden");
-                            toggle.setAttribute(
-                                "aria-expanded",
-                                String(!isHidden)
-                            );
-                            document.body.classList.toggle(
-                                "overflow-hidden",
-                                !isHidden
-                            );
-                        });
-                        nav.querySelectorAll("a").forEach(link => {
-                            link.addEventListener("click", () => {
-                                nav.classList.add("hidden");
-                                document.body.classList.remove(
-                                    "overflow-hidden"
-                                );
-                            });
-                        });
-                    }
-
-                    document
-                        .querySelectorAll("[data-dropdown-toggle]")
-                        .forEach(btn => {
-                            btn.addEventListener("click", () => {
-                                const menu = btn.nextElementSibling;
-                                if (menu) menu.classList.toggle("hidden");
-                                const expanded =
-                                    btn.getAttribute("aria-expanded") ===
-                                    "true";
-                                btn.setAttribute(
-                                    "aria-expanded",
-                                    String(!expanded)
-                                );
-                            });
-                        });
-
-                    let countersDone = false;
-                    const animateCounters = () => {
-                        if (countersDone) return;
-                        const counters =
-                            document.querySelectorAll("[data-target]");
-                        if (!counters.length) return;
-                        const rect = counters[0].getBoundingClientRect();
-                        if (rect.top < window.innerHeight * 0.85) {
-                            countersDone = true;
-                            counters.forEach(counter => {
-                                const target = parseInt(
-                                    counter.getAttribute("data-target") || "0",
-                                    10
-                                );
-                                const suffix = target === 100 ? "%" : "+";
-                                const start = performance.now();
-                                const update = now => {
-                                    const p = Math.min((now - start) / 2000, 1);
-                                    const eased = 1 - Math.pow(1 - p, 3);
-                                    counter.textContent =
-                                        Math.floor(eased * target) + suffix;
-                                    if (p < 1) requestAnimationFrame(update);
-                                };
-                                requestAnimationFrame(update);
-                            });
-                        }
-                    };
-                    window.addEventListener("scroll", animateCounters, {
-                        passive: true,
-                    });
-                    animateCounters();
-
-                    document
-                        .querySelectorAll("[data-static-form]")
-                        .forEach(form => {
-                            form.addEventListener("submit", e =>
-                                e.preventDefault()
-                            );
-                        });
-                };
-
-                if (document.readyState === "loading") {
-                    document.addEventListener("DOMContentLoaded", init, {
-                        once: true,
-                    });
-                } else {
-                    init();
-                }
-            })();
-        </script>
+        <script src="/scripts/site.js" defer></script>
     </body>
 </html>
