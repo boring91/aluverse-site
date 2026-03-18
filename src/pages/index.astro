@@ -1,4 +1,5 @@
 ---
+import { Image, Picture } from "astro:assets";
 import CtaSection from "../components/CtaSection.astro";
 import Layout from "../layouts/Layout.astro";
 import ProductCard from "../components/ProductCard.astro";
@@ -11,6 +12,9 @@ import {
     testimonials,
     windowProducts,
 } from "../data/site";
+
+const heroWidths = [768, 1024, 1440, 1920];
+const featureImageWidths = [480, 768, 960, 1280];
 ---
 
 <Layout
@@ -22,11 +26,17 @@ import {
     <section
         class="min-h-[90vh] flex items-center text-white relative pt-16 overflow-hidden"
     >
-        <img
-            class="absolute inset-0 w-full h-full object-cover"
-            src={productImages.stackingDoors.hero.src}
+        <Picture
+            src={productImages.stackingDoors.hero}
             alt="Modern home with premium aluminium windows"
+            formats={["avif", "webp"]}
+            fallbackFormat="webp"
+            widths={heroWidths}
+            sizes="100vw"
             loading="eager"
+            fetchpriority="high"
+            pictureAttributes={{ class: "absolute inset-0 block h-full w-full" }}
+            class="h-full w-full object-cover"
         />
         <div
             class="absolute inset-0 bg-linear-to-r from-black/80 via-black/50 to-black/20"
@@ -329,10 +339,13 @@ import {
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                 <div class="aspect-6/5 overflow-hidden">
-                    <img
-                        src={pageImages.workshopPhoto.src}
+                    <Image
+                        src={pageImages.workshopPhoto}
                         alt="Aluminium fabrication workshop"
+                        widths={featureImageWidths}
+                        sizes="(min-width: 768px) calc((min(100vw, 80rem) - 7.5rem) / 2), calc(100vw - 3rem)"
                         loading="lazy"
+                        decoding="async"
                         class="w-full h-full object-cover"
                     />
                 </div>

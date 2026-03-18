@@ -1,10 +1,13 @@
 ---
+import { Image } from "astro:assets";
 import CtaSection from "../components/CtaSection.astro";
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
 import StatsBar from "../components/StatsBar.astro";
 import { pageImages } from "../assets/images";
 import { company } from "../data/site";
+
+const featureImageWidths = [480, 768, 960, 1280];
 ---
 
 <Layout
@@ -24,10 +27,13 @@ import { company } from "../data/site";
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                 <div class="aspect-6/5 overflow-hidden">
-                    <img
-                        src={pageImages.workshopPhoto.src}
+                    <Image
+                        src={pageImages.workshopPhoto}
                         alt="Aluminium fabrication workshop"
+                        widths={featureImageWidths}
+                        sizes="(min-width: 768px) calc((min(100vw, 80rem) - 7.5rem) / 2), calc(100vw - 3rem)"
                         loading="lazy"
+                        decoding="async"
                         class="w-full h-full object-cover"
                     />
                 </div>
