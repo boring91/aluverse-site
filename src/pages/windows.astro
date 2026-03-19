@@ -4,13 +4,70 @@ import CtaSection from "../components/CtaSection.astro";
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
 import ProductCard from "../components/ProductCard.astro";
-import { company, windowProducts } from "../data/site";
+import { company, getProductHref, windowProducts } from "../data/site";
+import {
+    getBreadcrumbSchema,
+    getFaqSchema,
+    getItemListSchema,
+} from "../lib/seo";
+
+const windowGuides = [
+    {
+        title: "Choose by airflow",
+        text: "Casement windows suit rooms that need maximum breeze, while sliding windows work well where you want simple day-to-day ventilation without an outward opening sash.",
+    },
+    {
+        title: "Choose by exposure",
+        text: "Awning windows are useful when you still want to ventilate during light rain, and double glazing becomes more valuable in exposed rooms or noisy streets.",
+    },
+    {
+        title: "Choose by style and use",
+        text: "Double hung windows suit more traditional facades, while bi-fold windows are ideal for kitchen serveries and entertaining spaces that need a wider opening.",
+    },
+] as const;
+const windowFaqs = [
+    {
+        question: "Which aluminium window is best for ventilation?",
+        answer:
+            "That depends on the room. Casement windows are excellent for catching breezes, awning windows are practical when you want ventilation during light rain, and sliding windows are a simple choice for everyday use.",
+    },
+    {
+        question: "Can I get custom aluminium windows made to size?",
+        answer:
+            "Yes. Aluverse fabricates aluminium windows to suit the opening, the selected frame system, and the design requirements of the project rather than relying on one-size-fits-all stock sizes.",
+    },
+    {
+        question: "Should I choose single glazing or double glazing?",
+        answer:
+            "Single glazing can still suit some projects, but double glazing is often worth considering when comfort, noise reduction, or energy performance are a priority.",
+    },
+] as const;
+const windowSchema = [
+    getBreadcrumbSchema(
+        [
+            { label: "Home", href: "/" },
+            { label: "Windows", href: "/windows" },
+        ],
+        "/windows"
+    ),
+    getItemListSchema(
+        "Aluminium Windows",
+        windowProducts.map(product => ({
+            name: product.title,
+            href: getProductHref(product.slug),
+        }))
+    ),
+    getFaqSchema([...windowFaqs]),
+];
 ---
 
 <Layout
     title="Aluminium Windows - Aluverse | Sydney"
     description="Premium aluminium windows for Sydney homes. Sliding, awning, casement, bi-fold, double glazing and double hung systems custom fabricated to your project."
     activeNav="windows"
+    canonical="/windows"
+    ogImage={pageImages.windowsPageHero}
+    schema={windowSchema}
 >
     <PageHero
         title="Aluminium Windows"
@@ -152,6 +209,74 @@ import { company, windowProducts } from "../data/site";
                         maximising glass area and natural light.
                     </p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white border-t border-divider">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-3xl mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Buying Guide
+                </p>
+                <h2 class="font-display text-3xl md:text-4xl leading-tight mb-4">
+                    How to Choose the Right Aluminium Window
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                    Search intent on this page is usually practical: people are
+                    comparing window types, trying to match them to a room, and
+                    weighing comfort, ventilation, and glazing options. These
+                    quick notes make those comparisons easier.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {
+                    windowGuides.map(item => (
+                        <article class="p-8 border border-divider bg-page">
+                            <h3 class="font-display text-xl mb-3">
+                                {item.title}
+                            </h3>
+                            <p class="text-sm text-text-secondary leading-relaxed">
+                                {item.text}
+                            </p>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-page">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="max-w-3xl mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    FAQs
+                </p>
+                <h2 class="font-display text-3xl md:text-4xl leading-tight mb-4">
+                    Questions We Hear About Aluminium Windows
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                    These are the common decision-stage questions people ask
+                    before requesting a site visit or quote.
+                </p>
+            </div>
+            <div class="grid gap-6">
+                {
+                    windowFaqs.map(faq => (
+                        <article class="p-8 bg-white border border-divider">
+                            <h3 class="font-display text-xl mb-3">
+                                {faq.question}
+                            </h3>
+                            <p class="text-sm text-text-secondary leading-relaxed">
+                                {faq.answer}
+                            </p>
+                        </article>
+                    ))
+                }
             </div>
         </div>
     </section>

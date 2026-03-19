@@ -6,6 +6,7 @@ import PageHero from "../components/PageHero.astro";
 import StatsBar from "../components/StatsBar.astro";
 import { pageImages } from "../assets/images";
 import { company } from "../data/site";
+import { getBreadcrumbSchema } from "../lib/seo";
 
 const featureImageWidths = [480, 768, 960, 1280];
 const featureImageQuality = 62;
@@ -15,6 +16,15 @@ const featureImageQuality = 62;
     title="About Us - Aluverse | Premium Aluminium Windows & Doors Sydney"
     description="Learn about Aluverse, Sydney's trusted aluminium fabrication specialist with over a decade of experience across residential and commercial projects."
     activeNav="about"
+    canonical="/about"
+    ogImage={pageImages.aboutPageHero}
+    schema={getBreadcrumbSchema(
+        [
+            { label: "Home", href: "/" },
+            { label: "About Us", href: "/about" },
+        ],
+        "/about"
+    )}
 >
     <PageHero
         title="About Aluverse"

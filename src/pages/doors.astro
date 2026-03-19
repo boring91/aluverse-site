@@ -4,13 +4,70 @@ import CtaSection from "../components/CtaSection.astro";
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
 import ProductCard from "../components/ProductCard.astro";
-import { company, doorProducts } from "../data/site";
+import { company, doorProducts, getProductHref } from "../data/site";
+import {
+    getBreadcrumbSchema,
+    getFaqSchema,
+    getItemListSchema,
+} from "../lib/seo";
+
+const doorGuides = [
+    {
+        title: "Choose by opening width",
+        text: "If the goal is the biggest possible opening for entertaining, bi-fold or stacking doors are often the strongest options. Sliding doors are usually better for simple everyday access.",
+    },
+    {
+        title: "Choose by layout",
+        text: "Sliding and stacking doors suit tighter layouts because they do not need swing clearance, while hinged and French doors work well where a classic entry feel matters more.",
+    },
+    {
+        title: "Choose by style",
+        text: "French and hinged doors bring a more traditional profile, while sliding, bi-fold, and stacking systems suit cleaner modern openings with more glass and slimmer sightlines.",
+    },
+] as const;
+const doorFaqs = [
+    {
+        question: "What aluminium door is best for indoor-outdoor living?",
+        answer:
+            "Bi-fold, stacking, and sliding doors are the most common options. The right choice depends on whether you want the widest possible opening, the cleanest lines, or the simplest daily operation.",
+    },
+    {
+        question: "Are aluminium doors secure enough for everyday use?",
+        answer:
+            "Yes. Modern aluminium door systems can be fitted with robust frames, quality hardware, and multi-point locking depending on the product type and project requirements.",
+    },
+    {
+        question: "Can aluminium doors be custom built for my opening?",
+        answer:
+            "Yes. Aluverse fabricates aluminium doors to suit the opening dimensions, glazing needs, and style of the project, whether it is residential or commercial.",
+    },
+] as const;
+const doorSchema = [
+    getBreadcrumbSchema(
+        [
+            { label: "Home", href: "/" },
+            { label: "Doors", href: "/doors" },
+        ],
+        "/doors"
+    ),
+    getItemListSchema(
+        "Aluminium Doors",
+        doorProducts.map(product => ({
+            name: product.title,
+            href: getProductHref(product.slug),
+        }))
+    ),
+    getFaqSchema([...doorFaqs]),
+];
 ---
 
 <Layout
     title="Aluminium Doors - Aluverse | Sydney"
     description="Premium aluminium doors for Sydney homes. Sliding, bi-fold, French, hinged and stacking doors custom fabricated for your project."
     activeNav="doors"
+    canonical="/doors"
+    ogImage={pageImages.doorsPageHero}
+    schema={doorSchema}
 >
     <PageHero
         title="Aluminium Doors"
@@ -137,6 +194,74 @@ import { company, doorProducts } from "../data/site";
                         outdoor spaces with expansive door openings.
                     </p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white border-t border-divider">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-3xl mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Buying Guide
+                </p>
+                <h2 class="font-display text-3xl md:text-4xl leading-tight mb-4">
+                    How to Choose the Right Aluminium Door
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                    Most people landing here are comparing door systems for
+                    layout, security, and how they want the opening to feel in
+                    daily use. These points answer those questions more
+                    directly.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {
+                    doorGuides.map(item => (
+                        <article class="p-8 border border-divider bg-page">
+                            <h3 class="font-display text-xl mb-3">
+                                {item.title}
+                            </h3>
+                            <p class="text-sm text-text-secondary leading-relaxed">
+                                {item.text}
+                            </p>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-page">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="max-w-3xl mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    FAQs
+                </p>
+                <h2 class="font-display text-3xl md:text-4xl leading-tight mb-4">
+                    Questions We Hear About Aluminium Doors
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                    These answers are written for visitors who are actively
+                    comparing door types and planning a quote.
+                </p>
+            </div>
+            <div class="grid gap-6">
+                {
+                    doorFaqs.map(faq => (
+                        <article class="p-8 bg-white border border-divider">
+                            <h3 class="font-display text-xl mb-3">
+                                {faq.question}
+                            </h3>
+                            <p class="text-sm text-text-secondary leading-relaxed">
+                                {faq.answer}
+                            </p>
+                        </article>
+                    ))
+                }
             </div>
         </div>
     </section>

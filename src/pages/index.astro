@@ -12,17 +12,45 @@ import {
     testimonials,
     windowProducts,
 } from "../data/site";
+import { getBreadcrumbSchema, getFaqSchema } from "../lib/seo";
 
 const heroWidths = [768, 1024, 1440, 1920];
 const featureImageWidths = [480, 768, 960, 1280];
 const heroQuality = 66;
 const featureImageQuality = 62;
+const homeFaqs = [
+    {
+        question:
+            "What should I consider before replacing aluminium windows or doors?",
+        answer:
+            "The main factors are how you want the space to function, the level of ventilation you need, whether double glazing is worthwhile for comfort or noise, and the style of opening that best suits the room.",
+    },
+    {
+        question:
+            "Are double glazed aluminium windows worth it in Sydney?",
+        answer:
+            "For many homes they are. Double glazing can help reduce traffic noise, improve indoor comfort, and support better thermal performance in bedrooms, living areas, and exposed elevations.",
+    },
+    {
+        question:
+            "Does Aluverse handle supply and installation across Sydney?",
+        answer:
+            "Yes. Aluverse provides removal, supply, installation, and finishing for custom aluminium windows and doors across Sydney and surrounding areas.",
+    },
+] as const;
+const homeSchema = [
+    getBreadcrumbSchema([{ label: "Home", href: "/" }], "/"),
+    getFaqSchema([...homeFaqs]),
+];
 ---
 
 <Layout
     title="Aluverse - Premium Aluminium Doors & Windows | Sydney"
     description="Sydney's leading custom aluminium doors and windows specialist. Bespoke fabrication, premium materials and free quotes from Aluverse."
     activeNav="home"
+    canonical="/"
+    ogImage={productImages.stackingDoors.hero}
+    schema={homeSchema}
 >
     <!-- Hero -->
     <section
@@ -412,6 +440,41 @@ const featureImageQuality = 62;
                         </a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white border-y border-divider">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-3xl mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Planning Advice
+                </p>
+                <h2 class="font-display text-3xl md:text-4xl leading-tight mb-4">
+                    Common Questions About Aluminium Windows & Doors in Sydney
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                    Many homeowners start with the same questions: which system
+                    suits the room, whether double glazing is worth it, and how
+                    installation works. This section gives a clearer starting
+                    point before you compare products or request a quote.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {
+                    homeFaqs.map(faq => (
+                        <article class="p-8 border border-divider bg-page">
+                            <h3 class="font-display text-xl mb-3">
+                                {faq.question}
+                            </h3>
+                            <p class="text-sm text-text-secondary leading-relaxed">
+                                {faq.answer}
+                            </p>
+                        </article>
+                    ))
+                }
             </div>
         </div>
     </section>

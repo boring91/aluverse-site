@@ -7,10 +7,11 @@ import vercel from "@astrojs/vercel";
 import react from "@astrojs/react";
 
 import sitemap from "@astrojs/sitemap";
+import { siteUrl } from "./site-config.mjs";
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://www.aluverse.com.au",
+    site: siteUrl,
 
     vite: {
         plugins: [tailwindcss()],

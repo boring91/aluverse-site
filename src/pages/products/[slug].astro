@@ -5,6 +5,12 @@ import Layout from "../../layouts/Layout.astro";
 import PageHero from "../../components/PageHero.astro";
 import ProductCard from "../../components/ProductCard.astro";
 import { company, getProductBySlug, products } from "../../data/site";
+import {
+    createAbsoluteUrl,
+    createAbsoluteImageUrl,
+    getBreadcrumbSchema,
+    getFaqSchema,
+} from "../../lib/seo";
 
 export function getStaticPaths() {
     return products.map(product => ({
@@ -26,12 +32,51 @@ const relatedHeading =
         : "Other Door Systems";
 const detailImageWidths = [480, 768, 960, 1280];
 const detailImageQuality = 62;
+const productPath = `/products/${product.slug}`;
+const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.title,
+    description: product.metaDescription,
+    image: createAbsoluteImageUrl(product.heroImage),
+    url: createAbsoluteUrl(productPath),
+    brand: {
+        "@type": "Brand",
+        name: company.name,
+    },
+    manufacturer: {
+        "@type": "Organization",
+        name: company.name,
+    },
+    category:
+        product.category === "windows" ? "Aluminium Windows" : "Aluminium Doors",
+    additionalProperty: product.specs.map(spec => ({
+        "@type": "PropertyValue",
+        name: spec.label,
+        value: spec.value,
+    })),
+};
+const productPageSchema = [
+    getBreadcrumbSchema(
+        [
+            { label: "Home", href: "/" },
+            { label: categoryLabel, href: categoryHref },
+            { label: product.title, href: productPath },
+        ],
+        productPath
+    ),
+    productSchema,
+    getFaqSchema(product.seoFaqs),
+];
 ---
 
 <Layout
     title={product.metaTitle}
     description={product.metaDescription}
     activeNav={product.category}
+    canonical={productPath}
+    ogImage={product.heroImage}
+    schema={productPageSchema}
 >
     <PageHero
         title={product.title}
@@ -63,9 +108,9 @@ const detailImageQuality = 62;
                     />
                 </div>
                 <div>
-                    <h1 class="font-display text-3xl md:text-4xl mb-4">
-                        {product.title}
-                    </h1>
+                    <h2 class="font-display text-3xl md:text-4xl mb-4">
+                        Why Choose {product.title}?
+                    </h2>
                     <p class="text-text-secondary leading-relaxed mb-8">
                         {product.detailDescription}
                     </p>
@@ -107,6 +152,37 @@ const detailImageQuality = 62;
         </div>
     </section>
 
+    <section class="py-20 bg-white border-y border-divider">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-3xl mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Best For
+                </p>
+                <h2 class="font-display text-3xl md:text-4xl leading-tight mb-4">
+                    Where {product.title} Work Best
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                    Visitors landing on this product page are usually comparing
+                    options for a specific room or opening. These use cases make
+                    it easier to decide whether this system is the right fit.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {
+                    product.idealFor.map(item => (
+                        <article class="p-8 border border-divider bg-page">
+                            <p class="text-sm text-text-secondary leading-relaxed">
+                                {item}
+                            </p>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
     <section class="py-20 bg-alt">
         <div class="max-w-5xl mx-auto px-6">
             <div class="text-center mb-12">
@@ -142,6 +218,39 @@ const detailImageQuality = 62;
                             </div>
                         )
                     )
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-page">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="max-w-3xl mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Product FAQs
+                </p>
+                <h2 class="font-display text-3xl md:text-4xl leading-tight mb-4">
+                    Common Questions About {product.title}
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                    These answers are here for visitors comparing this product
+                    type against other aluminium window and door systems.
+                </p>
+            </div>
+            <div class="grid gap-6">
+                {
+                    product.seoFaqs.map(faq => (
+                        <article class="p-8 bg-white border border-divider">
+                            <h3 class="font-display text-xl mb-3">
+                                {faq.question}
+                            </h3>
+                            <p class="text-sm text-text-secondary leading-relaxed">
+                                {faq.answer}
+                            </p>
+                        </article>
+                    ))
                 }
             </div>
         </div>

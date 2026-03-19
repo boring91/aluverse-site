@@ -5,12 +5,44 @@ import PageHero from "../components/PageHero.astro";
 import SocialSection from "../components/SocialSection.astro";
 import { pageImages } from "../assets/images";
 import { ContactForm } from "../components/ContactForm";
+import { getBreadcrumbSchema, getFaqSchema } from "../lib/seo";
+
+const contactFaqs = [
+    {
+        question: "What information should I include in my contact enquiry?",
+        answer:
+            "The most useful details are the type of windows or doors you need, whether it is a replacement or a new opening, the suburb, and any goals around noise reduction, ventilation, or style.",
+    },
+    {
+        question: "Does Aluverse work across Sydney and surrounding areas?",
+        answer:
+            "Yes. Aluverse services Sydney and surrounding areas for aluminium window and door supply, installation, and related project enquiries.",
+    },
+    {
+        question: "Can I contact Aluverse about repairs as well as new installations?",
+        answer:
+            "Yes. The team handles both new projects and repair-focused enquiries, so the contact page is suitable whether you need a replacement, an upgrade, or maintenance support.",
+    },
+] as const;
+const contactSchema = [
+    getBreadcrumbSchema(
+        [
+            { label: "Home", href: "/" },
+            { label: "Contact", href: "/contact" },
+        ],
+        "/contact"
+    ),
+    getFaqSchema([...contactFaqs]),
+];
 ---
 
 <Layout
     title="Contact Us - Aluverse | Aluminium Windows & Doors Sydney"
     description="Contact Aluverse for a free consultation and quote on premium aluminium windows and doors in Sydney. Call 0403 422 401 or send us a message."
     activeNav="contact"
+    canonical="/contact"
+    ogImage={pageImages.contactPageHero}
+    schema={contactSchema}
 >
     <PageHero
         title="Get In Touch"
@@ -28,6 +60,40 @@ import { ContactForm } from "../components/ContactForm";
             >
                 <ContactInfo />
                 <ContactForm client:load />
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white border-y border-divider">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="max-w-3xl mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Contact FAQs
+                </p>
+                <h2 class="font-display text-3xl md:text-4xl leading-tight mb-4">
+                    Before You Send Your Enquiry
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                    This page is often used by people who are close to
+                    requesting a quote. These answers make it clearer what to
+                    send and what kind of projects we can help with.
+                </p>
+            </div>
+            <div class="grid gap-6">
+                {
+                    contactFaqs.map(faq => (
+                        <article class="p-8 border border-divider bg-page">
+                            <h3 class="font-display text-xl mb-3">
+                                {faq.question}
+                            </h3>
+                            <p class="text-sm text-text-secondary leading-relaxed">
+                                {faq.answer}
+                            </p>
+                        </article>
+                    ))
+                }
             </div>
         </div>
     </section>

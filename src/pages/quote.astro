@@ -3,10 +3,10 @@ import ContactInfo from "../components/ContactInfo.astro";
 import CtaSection from "../components/CtaSection.astro";
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
-import StaticContactForm from "../components/StaticContactForm.astro";
 import { pageImages } from "../assets/images";
 import { company } from "../data/site";
 import { QuoteForm } from "../components/QuoteForm";
+import { getBreadcrumbSchema, getFaqSchema } from "../lib/seo";
 
 const steps = [
     {
@@ -30,11 +30,44 @@ const steps = [
         text: "Our experienced team completes your project to the highest standards.",
     },
 ];
+const quoteFaqs = [
+    {
+        question:
+            "What details help make an aluminium windows and doors quote more accurate?",
+        answer:
+            "Room or opening type, approximate sizes, your suburb, preferred product style, and whether you want single or double glazing all help make the quote more precise from the start.",
+    },
+    {
+        question:
+            "Can I request a quote for replacement windows and doors?",
+        answer:
+            "Yes. The quote form is suitable for replacement projects, upgrades, and new installations. Mention whether existing frames need removal so the scope is clear.",
+    },
+    {
+        question:
+            "How quickly will someone respond to a quote request?",
+        answer:
+            "The page sets the expectation of a response within 24 hours, and the more complete the project information is, the faster the quote process usually moves.",
+    },
+] as const;
+const quoteSchema = [
+    getBreadcrumbSchema(
+        [
+            { label: "Home", href: "/" },
+            { label: "Request a Quote", href: "/quote" },
+        ],
+        "/quote"
+    ),
+    getFaqSchema([...quoteFaqs]),
+];
 ---
 
 <Layout
     title="Request a Free Quote - Aluverse | Aluminium Windows & Doors Sydney"
     description="Request a free, no-obligation quote for premium aluminium windows and doors in Sydney. Tell us about your project and we'll respond within 24 hours."
+    canonical="/quote"
+    ogImage={pageImages.quotePageHero}
+    schema={quoteSchema}
 >
     <PageHero
         title="Request a Free Quote"
@@ -112,6 +145,40 @@ const steps = [
             >
                 <ContactInfo />
                 <QuoteForm client:load />
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white border-y border-divider">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="max-w-3xl mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Quote FAQs
+                </p>
+                <h2 class="font-display text-3xl md:text-4xl leading-tight mb-4">
+                    What Helps Us Quote Your Project Properly
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                    People using this page are usually ready to compare options
+                    or costs. These answers clarify what details make the quote
+                    process faster and more accurate.
+                </p>
+            </div>
+            <div class="grid gap-6">
+                {
+                    quoteFaqs.map(faq => (
+                        <article class="p-8 border border-divider bg-page">
+                            <h3 class="font-display text-xl mb-3">
+                                {faq.question}
+                            </h3>
+                            <p class="text-sm text-text-secondary leading-relaxed">
+                                {faq.answer}
+                            </p>
+                        </article>
+                    ))
+                }
             </div>
         </div>
     </section>
