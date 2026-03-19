@@ -111,15 +111,10 @@ const canonicalUrl = canonical ?? Astro.url.href;
                             });
                         });
 
-                    let countersDone = false;
-                    const animateCounters = () => {
-                        if (countersDone) return;
-                        const counters =
-                            document.querySelectorAll("[data-target]");
-                        if (!counters.length) return;
-                        const rect = counters[0].getBoundingClientRect();
-                        if (rect.top < window.innerHeight * 0.85) {
-                            countersDone = true;
+                    const counters =
+                        document.querySelectorAll("[data-target]");
+                    if (counters.length) {
+                        const runCounterAnimation = () => {
                             counters.forEach(counter => {
                                 const target = parseInt(
                                     counter.getAttribute("data-target") || "0",
@@ -141,12 +136,25 @@ const canonicalUrl = canonical ?? Astro.url.href;
                                 };
                                 requestAnimationFrame(update);
                             });
-                        }
-                    };
-                    window.addEventListener("scroll", animateCounters, {
-                        passive: true,
-                    });
-                    animateCounters();
+                        };
+
+                        const observer = new IntersectionObserver(
+                            entries => {
+                                const isVisible = entries.some(
+                                    entry => entry.isIntersecting
+                                );
+                                if (!isVisible) return;
+                                runCounterAnimation();
+                                observer.disconnect();
+                            },
+                            {
+                                threshold: 0.2,
+                                rootMargin: "0px 0px -10% 0px",
+                            }
+                        );
+
+                        observer.observe(counters[0]);
+                    }
 
                     document
                         .querySelectorAll("[data-static-form]")
