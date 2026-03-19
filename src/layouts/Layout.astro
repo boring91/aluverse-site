@@ -33,7 +33,10 @@ const {
     schema,
 } = Astro.props;
 const siteOrigin = Astro.site ?? new URL(siteUrl);
-const canonicalUrl = new URL(canonical ?? Astro.url.pathname, siteOrigin).toString();
+const canonicalUrl = new URL(
+    canonical ?? Astro.url.pathname,
+    siteOrigin
+).toString();
 const socialImage = createAbsoluteImageUrl(
     ogImage ?? productImages.stackingDoors.hero
 );
@@ -51,8 +54,29 @@ const schemaNodes = [
 <!doctype html>
 <html lang="en" class="scroll-smooth bg-page">
     <head>
+        <!-- Google Tag Manager -->
+        <script is:inline>
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    "gtm.start": new Date().getTime(),
+                    event: "gtm.js",
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != "dataLayer" ? "&l=" + l : "";
+                j.async = true;
+                j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, "script", "dataLayer", "GTM-MG88NKTH");
+        </script>
+        <!-- End Google Tag Manager -->
+
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, viewport-fit=cover" />
+        <meta
+            name="viewport"
+            content="width=device-width, viewport-fit=cover"
+        />
 
         <!-- Fallback first -->
         <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" />
@@ -107,12 +131,22 @@ const schemaNodes = [
         <script
             type="application/ld+json"
             set:html={JSON.stringify(schemaNodes)}
-        ></script>
+        />
         <title>{title}</title>
     </head>
     <body
         class="font-body text-text-primary bg-page antialiased overflow-x-hidden leading-relaxed"
     >
+        <!-- Google Tag Manager (noscript) -->
+        <noscript
+            ><iframe
+                src="https://www.googletagmanager.com/ns.html?id=GTM-MG88NKTH"
+                height="0"
+                width="0"
+                style="display:none;visibility:hidden"></iframe></noscript
+        >
+        <!-- End Google Tag Manager (noscript) -->
+
         <Header activeNav={activeNav} />
         <main>
             <slot />
@@ -162,8 +196,7 @@ const schemaNodes = [
                             });
                         });
 
-                    const counters =
-                        document.querySelectorAll("[data-target]");
+                    const counters = document.querySelectorAll("[data-target]");
                     if (counters.length) {
                         const runCounterAnimation = () => {
                             counters.forEach(counter => {
