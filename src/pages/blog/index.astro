@@ -5,6 +5,7 @@ import CtaSection from "../../components/CtaSection.astro";
 import Layout from "../../layouts/Layout.astro";
 import PageHero from "../../components/PageHero.astro";
 import { pageImages, productImages } from "../../assets/images";
+import { company } from "../../data/site";
 import { getBreadcrumbSchema } from "../../lib/seo";
 import type { ImageMetadata } from "astro";
 
@@ -116,7 +117,7 @@ const blogSchema = [
         text="Tell us about your aluminium window or door requirements and we'll prepare a detailed, no-obligation quote."
         primaryHref="/quote"
         primaryLabel="Request a Quote"
-        secondaryHref="tel:+61403422401"
+        secondaryHref={company.phoneHref}
         secondaryLabel="Call Now"
     />
 </Layout>

@@ -4,6 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
 import type z from "zod";
 import {
+    company,
     contactPreferences,
     propertyTypes,
     services,
@@ -545,7 +546,7 @@ function Component() {
                         <p className="mt-0.5 text-xs opacity-80">
                             {isSuccess
                                 ? "Thank you for your request. We'll get back to you with a quote shortly."
-                                : "Please try again or contact us directly at 0403 422 401."}
+                                : `Please try again or contact us directly at ${company.phoneDisplay}.`}
                         </p>
                     </div>
                     {isError && (

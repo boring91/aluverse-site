@@ -555,7 +555,7 @@ export const products: Product[] = [
         metaTitle:
             "Aluminium Sliding Doors Sydney | Custom Made | Aluverse",
         metaDescription:
-            "Custom aluminium sliding doors for Sydney projects. Smooth gliding operation, slim sightlines and maximum natural light. Free quotes. Call 0403 422 401.",
+            `Custom aluminium sliding doors for Sydney projects. Smooth gliding operation, slim sightlines and maximum natural light. Free quotes. Call ${company.phoneDisplay}.`,
         cardImage: productImages.slidingDoors.card,
         heroImage: productImages.slidingDoors.hero,
         imageAlt: "Sliding doors",
@@ -630,7 +630,7 @@ export const products: Product[] = [
         metaTitle:
             "Aluminium Bi-Fold Doors Sydney | Custom Made | Aluverse",
         metaDescription:
-            "Custom aluminium bi-fold doors for Sydney projects. Wide-span openings up to 90% clear, indoor-outdoor living at its best. Free quotes. Call 0403 422 401.",
+            `Custom aluminium bi-fold doors for Sydney projects. Wide-span openings up to 90% clear, indoor-outdoor living at its best. Free quotes. Call ${company.phoneDisplay}.`,
         cardImage: productImages.bifoldDoors.card,
         heroImage: productImages.bifoldDoors.hero,
         imageAlt: "Bi-fold doors",
@@ -705,7 +705,7 @@ export const products: Product[] = [
         metaTitle:
             "Aluminium French Doors Sydney | Custom Made | Aluverse",
         metaDescription:
-            "Custom aluminium French doors for Sydney projects. Classic double-door elegance with modern aluminium strength and durability. Free quotes. Call 0403 422 401.",
+            `Custom aluminium French doors for Sydney projects. Classic double-door elegance with modern aluminium strength and durability. Free quotes. Call ${company.phoneDisplay}.`,
         cardImage: productImages.frenchDoors.card,
         heroImage: productImages.frenchDoors.hero,
         imageAlt: "French doors",
@@ -780,7 +780,7 @@ export const products: Product[] = [
         metaTitle:
             "Aluminium Hinged Doors Sydney | Custom Made | Aluverse",
         metaDescription:
-            "Custom aluminium hinged doors for Sydney projects. Single or double-leaf swing, heavy-duty hardware and superior weather sealing. Free quotes. Call 0403 422 401.",
+            `Custom aluminium hinged doors for Sydney projects. Single or double-leaf swing, heavy-duty hardware and superior weather sealing. Free quotes. Call ${company.phoneDisplay}.`,
         cardImage: productImages.hingedDoors.card,
         heroImage: productImages.hingedDoors.hero,
         imageAlt: "Hinged doors",
@@ -855,7 +855,7 @@ export const products: Product[] = [
         metaTitle:
             "Aluminium Stacking Doors Sydney | Custom Made | Aluverse",
         metaDescription:
-            "Custom aluminium stacking doors for Sydney projects. Expansive openings with clean architectural lines and smooth-gliding panels. Free quotes. Call 0403 422 401.",
+            `Custom aluminium stacking doors for Sydney projects. Expansive openings with clean architectural lines and smooth-gliding panels. Free quotes. Call ${company.phoneDisplay}.`,
         cardImage: productImages.stackingDoors.card,
         heroImage: productImages.stackingDoors.hero,
         imageAlt: "Stacking doors",
