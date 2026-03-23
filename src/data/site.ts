@@ -92,18 +92,19 @@ export const products: Product[] = [
         title: "Sliding Windows",
         summary:
             "Smooth horizontal sliding panels that glide effortlessly along tracks. Perfect for maximising ventilation and natural light.",
-        metaTitle: "Sliding Windows - Aluverse | Sydney",
+        metaTitle:
+            "Aluminium Sliding Windows Sydney | Custom Made | Aluverse",
         metaDescription:
-            "Premium aluminium sliding windows for Sydney homes. Smooth horizontal operation, maximum ventilation and natural light. Free quotes from Aluverse.",
+            "Custom aluminium sliding windows built for Sydney projects. Smooth horizontal operation, maximum ventilation and clean sightlines. Free quotes from Aluverse.",
         cardImage: productImages.slidingWindows.card,
         heroImage: productImages.slidingWindows.hero,
         imageAlt: "Sliding windows",
         detailDescription:
-            "Sliding windows offer smooth horizontal operation along precision-engineered tracks. Their streamlined design maximises ventilation and natural light while maintaining clean sightlines. Ideal for bedrooms, living areas, and kitchens where ease of use and unobstructed views are paramount.",
+            "Sliding windows offer smooth horizontal operation along precision-engineered aluminium tracks, delivering reliable day-to-day ventilation without any outward projection into walkways or landscaping. Their streamlined profile maximises natural light and maintains clean sightlines across wide openings, making them one of the most versatile window types for Sydney properties. Because the sashes glide within the frame rather than swinging open, sliding windows are particularly well suited to bedrooms, living areas, kitchens, and any opening that sits beside a deck, path, or balcony. For larger residential and commercial projects, multiple sliding panels can be configured side by side to cover expansive openings while keeping operation simple and low-maintenance. Every sliding window from Aluverse is custom fabricated to the exact dimensions of the opening, with weather seals engineered for Sydney's coastal and suburban conditions and a full powder-coat colour range to match any facade.",
         idealFor: [
-            "Bedrooms, kitchens, and living rooms that need easy day-to-day ventilation.",
-            "Openings beside decks, walkways, or landscaping where an outward sash would be impractical.",
-            "Projects that want wide glass areas with simple, low-maintenance operation.",
+            "Bedrooms, kitchens, and living rooms that need easy day-to-day ventilation. Sliding windows let occupants control airflow with one hand, and the horizontal action is intuitive for all ages and abilities.",
+            "Openings beside decks, walkways, or landscaping where an outward-swinging sash would obstruct foot traffic or garden beds. The sashes stay within the frame at all times, keeping exterior clearances free.",
+            "Large-scale residential and commercial projects that need wide glass areas with simple, low-maintenance operation. Multiple panels can span broad openings while maintaining a consistent, minimal profile across the facade.",
         ],
         features: [
             "Easy single-hand operation",
@@ -133,6 +134,30 @@ export const products: Product[] = [
                 answer:
                     "Yes. Aluverse can supply sliding windows with single or double glazing depending on the thermal, acoustic, and budget requirements of the project.",
             },
+            {
+                question:
+                    "How wide can aluminium sliding windows be made?",
+                answer:
+                    "Individual sliding window panels can be fabricated up to 3600 mm wide and 2400 mm high. For openings that exceed a single panel, multiple sashes can be configured on two or three track systems to cover the full width.",
+            },
+            {
+                question:
+                    "Are sliding windows suitable for multi-storey or commercial buildings?",
+                answer:
+                    "Yes. Sliding windows are a common specification for apartment complexes, office fitouts, and other commercial projects because they are easy to operate, require no external swing clearance, and can be bulk-ordered in consistent sizes across multiple floors.",
+            },
+            {
+                question:
+                    "What colours are available for aluminium sliding windows?",
+                answer:
+                    "Aluverse offers the full powder-coat colour range, so frames can be matched to virtually any facade. Popular choices for Sydney projects include matt black, surfmist, monument, and a range of anodised-look finishes.",
+            },
+            {
+                question:
+                    "How do sliding windows handle Sydney weather conditions?",
+                answer:
+                    "Each sliding window is fitted with weather seals designed for Sydney's mix of coastal humidity, wind-driven rain, and summer heat. Proper sealing and drainage channels help keep the interior dry and comfortable year-round.",
+            },
         ],
         related: ["awning-windows", "casement-windows", "double-hung-windows"],
     },
@@ -142,18 +167,19 @@ export const products: Product[] = [
         title: "Awning Windows",
         summary:
             "Hinged at the top, awning windows push outward from the bottom, allowing ventilation even during light rain.",
-        metaTitle: "Awning Windows - Aluverse | Sydney",
+        metaTitle:
+            "Aluminium Awning Windows Sydney | Custom Made | Aluverse",
         metaDescription:
-            "Premium aluminium awning windows for Sydney homes. Ventilation even during rain with top-hinged outward design. Free quotes from Aluverse.",
+            "Custom aluminium awning windows for Sydney projects. Ventilate even during rain with top-hinged outward design. Free quotes from Aluverse.",
         cardImage: productImages.awningWindows.card,
         heroImage: productImages.awningWindows.hero,
         imageAlt: "Awning windows",
         detailDescription:
-            "Awning windows are hinged at the top and push outward from the bottom, creating a canopy effect that allows fresh air to flow even during light rain. They're a favourite for Sydney homes, offering excellent weather protection without sacrificing ventilation.",
+            "Awning windows are hinged at the top and push outward from the bottom, creating a protective canopy effect that allows fresh air to flow into a room even during light rain. This makes them one of the most practical window types for Sydney's climate, where afternoon showers can arrive without warning and homeowners still want to keep rooms ventilated. The outward opening position also provides a natural layer of security, as the sash cannot be easily forced from outside when partially open. Awning windows pair exceptionally well with fixed glass panels, allowing designers to combine large areas of uninterrupted glass with smaller operable sections for airflow. For larger residential developments and commercial projects, rows of awning windows can be stacked or placed side by side to create a consistent ventilation strategy across multiple rooms or floors. Every awning window from Aluverse is custom fabricated to suit the opening, sealed for Sydney's coastal and suburban conditions, and available in the full powder-coat colour range.",
         idealFor: [
-            "Bathrooms, laundries, and kitchens where secure everyday ventilation matters.",
-            "Openings that need fresh air even during light rain.",
-            "Pairing with fixed glass panels to bring in more light without giving up opening sections.",
+            "Bathrooms, laundries, and kitchens where secure everyday ventilation is essential. The partially open sash limits external access while still allowing moisture and cooking odours to escape.",
+            "Openings that need fresh air even during light rain. The top-hinged canopy design deflects water away from the interior, so windows can stay open through passing Sydney showers.",
+            "Pairing with fixed glass panels on larger facades to bring in more natural light without sacrificing operable ventilation sections. This combination is popular in multi-storey residential and commercial projects.",
         ],
         features: [
             "Ventilation during rain",
@@ -182,6 +208,30 @@ export const products: Product[] = [
                 answer:
                     "Awning windows are commonly used in kitchens, bathrooms, and bedrooms where ventilation, privacy, and weather resistance all matter at the same time.",
             },
+            {
+                question:
+                    "Can awning windows be combined with fixed glass panels?",
+                answer:
+                    "Yes. One of the most popular configurations in Sydney projects is a large fixed glass panel paired with one or more awning windows. This maximises the glass area and natural light while still providing operable ventilation where it is needed.",
+            },
+            {
+                question:
+                    "Are awning windows a good choice for apartment buildings?",
+                answer:
+                    "They are one of the most commonly specified window types for multi-storey residential buildings. Their compact outward projection, rain protection, and security when open make them well suited to apartments and units.",
+            },
+            {
+                question:
+                    "Do awning windows provide good security when partially open?",
+                answer:
+                    "Yes. Because the sash pushes outward at the bottom while remaining hinged at the top, it is difficult for someone to reach through the opening from outside, which adds a practical layer of security to everyday ventilation.",
+            },
+            {
+                question:
+                    "What size range is available for aluminium awning windows?",
+                answer:
+                    "Aluverse fabricates awning windows up to 1500 mm wide and 1800 mm high. Exact sizing depends on the opening and the chosen glazing option, and every unit is custom made to suit the project.",
+            },
         ],
         related: [
             "casement-windows",
@@ -195,18 +245,19 @@ export const products: Product[] = [
         title: "Casement Windows",
         summary:
             "Side-hinged windows that swing outward, providing 100% clear opening for maximum airflow.",
-        metaTitle: "Casement Windows - Aluverse | Sydney",
+        metaTitle:
+            "Aluminium Casement Windows Sydney | Custom Made | Aluverse",
         metaDescription:
-            "Premium aluminium casement windows for Sydney homes. 100% clear opening for maximum airflow with side-hinged design. Free quotes from Aluverse.",
+            "Custom aluminium casement windows for Sydney projects. Full 100% clear opening for maximum airflow and cross-ventilation. Free quotes from Aluverse.",
         cardImage: productImages.casementWindows.card,
         heroImage: productImages.casementWindows.hero,
         imageAlt: "Casement windows",
         detailDescription:
-            "Casement windows are side-hinged and swing outward, providing a full 100% clear opening for maximum airflow. Their design catches side breezes effectively, making them one of the best choices for natural ventilation in any room.",
+            "Casement windows are side-hinged and swing outward, providing a full 100 percent clear opening that delivers the strongest natural airflow of any standard window type. The outward sash acts like a scoop, catching side breezes and directing them into the room, which makes casement windows an excellent choice for cross-ventilation in bedrooms, living areas, and upper-storey spaces across Sydney. When closed, the sash compresses tightly against the frame through multi-point locking, creating a weather-tight seal that performs well against wind-driven rain and temperature extremes. This combination of generous airflow when open and strong sealing when closed makes casement windows popular on projects that prioritise both comfort and performance. For larger developments, casement windows can be ganged together or paired with fixed panels to create consistent ventilation strategies across a facade. Every casement window from Aluverse is custom fabricated to suit the opening size, glazing requirements, and colour preferences of the project.",
         idealFor: [
-            "Rooms that need strong cross-ventilation and maximum airflow.",
-            "Projects where clients want a clear opening without a central mullion blocking the breeze.",
-            "Homes looking for a simple modern window with strong weather sealing when closed.",
+            "Rooms that need strong cross-ventilation and maximum airflow. The full clear opening catches breezes more effectively than sliding or awning alternatives, making casement windows ideal for bedrooms and living areas that rely on natural cooling.",
+            "Projects where architects or builders want a clean opening without a central mullion blocking the breeze. Casement sashes swing clear of the frame, giving an uninterrupted path for air movement across the full width of the window.",
+            "Modern homes and large-scale developments that need strong weather sealing when closed. The compression seal created by multi-point locking makes casement windows one of the tightest-closing options available in aluminium framing.",
         ],
         features: [
             "100% clear opening for maximum airflow",
@@ -228,13 +279,37 @@ export const products: Product[] = [
                 question:
                     "Are casement windows the best choice for airflow?",
                 answer:
-                    "Casement windows are one of the strongest options for natural ventilation because the sash opens fully and can catch side breezes effectively.",
+                    "Casement windows are one of the strongest options for natural ventilation because the sash opens fully and can catch side breezes effectively. They deliver more airflow per square metre of opening than most other window types.",
             },
             {
                 question:
                     "Do casement windows suit modern energy-efficient homes?",
                 answer:
                     "Yes. Their compression seals and tight closure help deliver strong weather performance, especially when combined with quality glazing and careful installation.",
+            },
+            {
+                question:
+                    "Can casement windows be used on upper floors of apartment buildings?",
+                answer:
+                    "Yes, with appropriate hardware and safety considerations. Casement windows are regularly specified for multi-storey residential projects where natural ventilation on upper levels is a design priority. Restrictors can be fitted to limit the opening angle where required.",
+            },
+            {
+                question:
+                    "How do casement windows compare to sliding windows?",
+                answer:
+                    "Casement windows offer a larger clear opening for airflow because the entire sash swings out, while sliding windows move within their frame and typically open to half the window area. Sliding windows are better where external clearance is limited, while casement windows are better where maximum ventilation is the priority.",
+            },
+            {
+                question:
+                    "Are casement windows easy to clean?",
+                answer:
+                    "Yes. Because the sash swings outward, both the interior and exterior glass surfaces can usually be reached from inside the room, which simplifies cleaning on upper floors.",
+            },
+            {
+                question:
+                    "What locking options are available on aluminium casement windows?",
+                answer:
+                    "Aluverse fits casement windows with multi-point locking hardware as standard. This draws the sash tightly against the frame at multiple points for improved security and a stronger weather seal.",
             },
         ],
         related: ["awning-windows", "bifold-windows", "double-hung-windows"],
@@ -245,18 +320,19 @@ export const products: Product[] = [
         title: "Bi-Fold Windows",
         summary:
             "Multiple panels that fold neatly to one side, creating a wide servery-style opening.",
-        metaTitle: "Bi-Fold Windows - Aluverse | Sydney",
+        metaTitle:
+            "Aluminium Bi-Fold Windows Sydney | Custom Made | Aluverse",
         metaDescription:
-            "Premium aluminium bi-fold windows for Sydney homes. Wide servery-style openings for seamless indoor-outdoor connection. Free quotes from Aluverse.",
+            "Custom aluminium bi-fold windows for Sydney projects. Wide servery-style openings for seamless indoor-outdoor entertaining. Free quotes from Aluverse.",
         cardImage: productImages.bifoldWindows.card,
         heroImage: productImages.bifoldWindows.hero,
         imageAlt: "Bi-fold windows",
         detailDescription:
-            "Bi-fold windows feature multiple panels that fold neatly to one side, creating a wide servery-style opening. Perfect for connecting kitchens to outdoor entertaining areas, they transform the relationship between your indoor and outdoor spaces.",
+            "Bi-fold windows feature multiple aluminium-framed panels that fold neatly to one side, creating a wide servery-style opening that transforms the relationship between indoor and outdoor spaces. They are one of the most popular window choices for Sydney homes designed around entertaining, allowing kitchens and living areas to open directly onto alfresco zones, pool decks, and garden courtyards. When fully open, bi-fold windows stack compactly to clear up to 90 percent of the opening width, giving a near-unobstructed connection to the outside. When closed, the panels lock together and seal tightly against weather. Panel configurations of two to seven sashes can be tailored to suit the width and layout of the opening, and both single and double glazing options are available depending on the thermal and acoustic requirements of the project. Every bi-fold window from Aluverse is custom fabricated to the exact opening dimensions, finished in the client's choice from the full powder-coat colour range.",
         idealFor: [
-            "Kitchen serveries that open directly to alfresco or pool areas.",
-            "Homes designed around entertaining and indoor-outdoor flow.",
-            "Wider openings where a standard sliding or awning window would feel restrictive.",
+            "Kitchen serveries that open directly to alfresco or pool areas. Bi-fold windows create a wide countertop pass-through that makes outdoor entertaining seamless and keeps the cook connected to guests.",
+            "Homes and developments designed around indoor-outdoor flow. When fully folded back, the panels clear the opening and remove the visual barrier between living spaces and the garden, deck, or courtyard.",
+            "Wider openings where a standard sliding or awning window would feel restrictive. With up to seven panels available, bi-fold windows can span openings that other window types cannot cover in a single unit.",
         ],
         features: [
             "Wide servery-style openings",
@@ -277,13 +353,37 @@ export const products: Product[] = [
             {
                 question: "What are bi-fold windows best used for?",
                 answer:
-                    "Bi-fold windows are especially popular for kitchen serveries and entertaining zones where homeowners want a wide opening to the outside.",
+                    "Bi-fold windows are especially popular for kitchen serveries and entertaining zones where homeowners want a wide opening to the outside. They are also used in cafes, restaurants, and commercial hospitality fitouts across Sydney.",
             },
             {
                 question:
                     "Can aluminium bi-fold windows be supplied with double glazing?",
                 answer:
                     "Yes. Double glazing can be specified on bi-fold window systems when the project requires better thermal performance, noise reduction, or improved comfort.",
+            },
+            {
+                question:
+                    "How many panels can a bi-fold window system have?",
+                answer:
+                    "Aluverse can configure bi-fold windows with up to seven panels per unit. The number of panels depends on the width of the opening and how compactly the stack needs to fold when open.",
+            },
+            {
+                question:
+                    "Are bi-fold windows secure when closed?",
+                answer:
+                    "Yes. When closed, the panels lock together through multi-point hardware and the perimeter seals compress against the frame, providing both security and weather protection.",
+            },
+            {
+                question:
+                    "Can bi-fold windows be used in commercial projects?",
+                answer:
+                    "Absolutely. Bi-fold windows are a popular specification for cafes, restaurants, bars, and retail shopfronts in Sydney where a wide servery or open-front layout is part of the design.",
+            },
+            {
+                question:
+                    "Do bi-fold windows take up space when open?",
+                answer:
+                    "The folded panels stack to one side of the opening and typically occupy only about 10 to 15 percent of the total width. This keeps the bulk of the opening clear when the window is fully open.",
             },
         ],
         related: [
@@ -298,18 +398,19 @@ export const products: Product[] = [
         title: "Double Glazing",
         summary:
             "Two panes of glass with an insulating gas-filled gap for superior thermal and acoustic insulation.",
-        metaTitle: "Double Glazing Windows - Aluverse | Sydney",
+        metaTitle:
+            "Double Glazed Aluminium Windows Sydney | Aluverse",
         metaDescription:
-            "Premium double glazed aluminium windows for Sydney homes. Superior thermal and acoustic insulation for year-round comfort. Free quotes from Aluverse.",
+            "Custom double glazed aluminium windows for Sydney projects. Superior thermal and acoustic insulation for year-round comfort. Free quotes from Aluverse.",
         cardImage: productImages.doubleGlazingWindows.card,
         heroImage: productImages.doubleGlazingWindows.hero,
         imageAlt: "Double glazed windows",
         detailDescription:
-            "Double glazed windows feature two panes of glass separated by an insulating gas-filled gap, delivering superior thermal and acoustic performance. They significantly reduce heat transfer and outside noise, creating a more comfortable and energy-efficient home year-round.",
+            "Double glazed windows feature two panes of glass separated by an insulating gas-filled gap, delivering measurably better thermal and acoustic performance than single-pane alternatives. The sealed air space, typically filled with argon gas, slows heat transfer in both directions, helping keep interiors cooler in Sydney's summer and warmer through winter without relying as heavily on mechanical heating and cooling. At the same time, the dual-pane construction significantly reduces the transmission of external noise, which is particularly valuable for properties near busy roads, flight paths, schools, or commercial precincts. Low-E coatings on the glass can be specified to further improve performance by reflecting radiant heat while still allowing natural light through. Double glazing can be applied across virtually every aluminium window type Aluverse offers, including sliding, awning, casement, bi-fold, and double hung systems, so there is no need to compromise on window style to gain the performance benefits. For large-scale developments and multi-unit projects, double glazing is often specified across entire facades to deliver consistent comfort and acoustic separation between units.",
         idealFor: [
-            "Homes near roads, schools, or busy neighbourhoods where outside noise is an issue.",
-            "Projects focused on energy efficiency and better year-round comfort.",
-            "Bedrooms and living areas where reducing heat transfer and condensation matters.",
+            "Homes and developments near busy roads, schools, flight paths, or commercial areas where outside noise is an issue. The dual-pane construction creates a measurable reduction in sound transmission compared to single glazing.",
+            "Projects focused on energy efficiency and year-round comfort. Double glazing limits heat gain in summer and heat loss in winter, reducing reliance on air conditioning and heating across the building.",
+            "Bedrooms, living areas, and multi-unit apartments where reducing heat transfer and condensation matters. The insulating gap helps keep the inner pane closer to room temperature, which minimises moisture buildup on the glass.",
         ],
         features: [
             "Superior thermal insulation",
@@ -331,13 +432,37 @@ export const products: Product[] = [
                 question:
                     "Is double glazing worth it for Sydney homes?",
                 answer:
-                    "For many homes, yes. Double glazing can help reduce outside noise, improve indoor comfort, and limit heat gain or loss, especially in exposed rooms and high-traffic areas.",
+                    "For many homes, yes. Double glazing can help reduce outside noise, improve indoor comfort, and limit heat gain or loss, especially in exposed rooms, west-facing elevations, and high-traffic areas.",
             },
             {
                 question:
                     "Can double glazing be added to different window styles?",
                 answer:
-                    "Yes. Double glazing is not limited to one frame style. It can be specified across multiple aluminium window systems depending on the design and performance goals of the project.",
+                    "Yes. Double glazing is not limited to one frame style. It can be specified across sliding, awning, casement, bi-fold, and double hung aluminium window systems depending on the design and performance goals of the project.",
+            },
+            {
+                question:
+                    "What is the difference between standard and Low-E double glazing?",
+                answer:
+                    "Standard double glazing uses two clear panes with an air or gas gap. Low-E double glazing adds a microscopically thin metallic coating to one pane that reflects radiant heat while still allowing visible light through, which further improves thermal performance.",
+            },
+            {
+                question:
+                    "How much noise reduction does double glazing provide?",
+                answer:
+                    "The level of reduction depends on the glass thickness, gap size, and gas fill, but double glazed aluminium windows can achieve acoustic ratings up to STC 35. For most Sydney homes near roads or busy areas, this represents a noticeable and meaningful improvement over single glazing.",
+            },
+            {
+                question:
+                    "Is double glazing a good investment for apartment developments?",
+                answer:
+                    "Yes. Double glazing is increasingly specified in multi-unit projects across Sydney because it improves acoustic separation between units, enhances occupant comfort, and can contribute to better energy performance ratings for the development.",
+            },
+            {
+                question:
+                    "Does double glazing reduce condensation on windows?",
+                answer:
+                    "It helps significantly. The insulating gas gap keeps the inner pane closer to room temperature, which reduces the likelihood of moisture condensing on the glass during cooler months. This is especially noticeable in bathrooms, kitchens, and bedrooms.",
             },
         ],
         related: ["sliding-windows", "awning-windows", "double-hung-windows"],
@@ -348,18 +473,19 @@ export const products: Product[] = [
         title: "Double Hung",
         summary:
             "Classic vertical sliding design with both upper and lower sashes operable for versatile ventilation.",
-        metaTitle: "Double Hung Windows - Aluverse | Sydney",
+        metaTitle:
+            "Aluminium Double Hung Windows Sydney | Custom | Aluverse",
         metaDescription:
-            "Premium aluminium double hung windows for Sydney homes. Dual sash vertical sliding for versatile ventilation control. Free quotes from Aluverse.",
+            "Custom aluminium double hung windows for Sydney projects. Dual-sash vertical sliding for versatile ventilation and a classic facade look. Free quotes from Aluverse.",
         cardImage: productImages.doubleHungWindows.card,
         heroImage: productImages.doubleHungWindows.hero,
         imageAlt: "Double hung windows",
         detailDescription:
-            "Double hung windows feature both an upper and lower sash that slide vertically, offering versatile ventilation control. Open the top for warm air exhaust, the bottom for fresh air intake, or both for maximum airflow. A timeless design updated with modern aluminium engineering.",
+            "Double hung windows feature both an upper and lower sash that slide vertically within the frame, offering the most versatile ventilation control of any traditional window style. Opening the top sash releases warm air that has risen to ceiling height, while opening the bottom draws in cooler air at floor level. Running both sashes at once creates a natural stack effect that moves air through the room without any mechanical assistance. The vertical sliding action means no part of the window projects outward, keeping pathways, decks, and landscaping clear. Double hung windows are a natural fit for heritage-style homes, Federation facades, and Hamptons-inspired designs across Sydney, but their clean proportions also work well in contemporary projects that want a more structured window rhythm. Tilt-in sash options simplify cleaning on upper floors, and the full powder-coat colour range lets frames match any exterior palette. For larger developments, double hung windows provide a consistent, repeatable look across multiple storeys.",
         idealFor: [
-            "Heritage-style homes that need a more traditional window appearance.",
-            "Rooms facing pathways or decks where an outward opening sash would be inconvenient.",
-            "Homeowners who want precise control over top and bottom ventilation.",
+            "Heritage-style homes and traditional facades that need a window with familiar vertical proportions. Double hung windows are one of the most heritage-sympathetic aluminium options available, making them a strong choice for renovations and restorations across Sydney's older suburbs.",
+            "Rooms facing pathways, decks, or narrow side passages where an outward-opening sash would obstruct foot traffic. Both sashes slide within the frame, so there is no external projection at any point during operation.",
+            "Homeowners and project managers who want precise control over top and bottom ventilation. The dual-sash design allows warm air to exhaust through the top while cooler air enters through the bottom, creating natural airflow without fans or mechanical systems.",
         ],
         features: [
             "Dual sash ventilation control",
@@ -381,13 +507,37 @@ export const products: Product[] = [
                 question:
                     "Are double hung windows a good fit for traditional facades?",
                 answer:
-                    "Yes. Double hung windows are often chosen for heritage and classic homes because they retain a familiar vertical sash look while still offering modern aluminium durability.",
+                    "Yes. Double hung windows are often chosen for heritage and classic homes because they retain a familiar vertical sash look while still offering modern aluminium durability and weather sealing.",
             },
             {
                 question:
                     "How do double hung windows improve ventilation?",
                 answer:
-                    "Because both sashes can operate, you can release warm air through the top opening while drawing cooler air through the bottom, which gives you more flexible airflow control.",
+                    "Because both sashes can operate, you can release warm air through the top opening while drawing cooler air through the bottom. This creates a natural stack effect that moves air through the room without mechanical assistance.",
+            },
+            {
+                question:
+                    "Can double hung windows be used in heritage renovation projects?",
+                answer:
+                    "Yes. Double hung windows are one of the most heritage-sympathetic aluminium window types. Their vertical sliding proportions closely match the original timber windows found in Federation, Victorian, and Edwardian homes throughout Sydney.",
+            },
+            {
+                question:
+                    "Are double hung windows easy to clean on upper floors?",
+                answer:
+                    "Yes. Many double hung systems include a tilt-in feature that lets the sashes pivot inward, so both the interior and exterior glass surfaces can be cleaned from inside the room. This is especially useful on multi-storey homes and apartments.",
+            },
+            {
+                question:
+                    "Do double hung windows project outward when open?",
+                answer:
+                    "No. Both sashes slide vertically within the frame, so no part of the window extends beyond the exterior wall. This makes them practical for openings beside walkways, balconies, and narrow side passages.",
+            },
+            {
+                question:
+                    "Can double hung windows be specified with double glazing?",
+                answer:
+                    "Yes. Double hung windows can be fitted with single or double glazing depending on the thermal, acoustic, and budget requirements of the project. Double glazing is recommended for noise-affected and exposed locations.",
             },
         ],
         related: [
@@ -402,18 +552,19 @@ export const products: Product[] = [
         title: "Sliding Doors",
         summary:
             "Large glass panels that glide smoothly along tracks, offering effortless operation with slim sightlines.",
-        metaTitle: "Sliding Doors - Aluverse | Sydney",
+        metaTitle:
+            "Aluminium Sliding Doors Sydney | Custom Made | Aluverse",
         metaDescription:
-            "Premium aluminium sliding doors for Sydney homes. Smooth gliding operation, slim sightlines, maximum natural light. Free quotes. Call 0403 422 401.",
+            "Custom aluminium sliding doors for Sydney projects. Smooth gliding operation, slim sightlines and maximum natural light. Free quotes. Call 0403 422 401.",
         cardImage: productImages.slidingDoors.card,
         heroImage: productImages.slidingDoors.hero,
         imageAlt: "Sliding doors",
         detailDescription:
-            "Sliding doors feature large glass panels that glide smoothly along precision-engineered tracks. With their slim aluminium frames and expansive glazing, they flood your home with natural light while creating a seamless visual connection to the outdoors. Available in 2 or 3 track configurations for flexible opening widths.",
+            "Sliding doors feature large glass panels that glide smoothly along precision-engineered aluminium tracks, delivering effortless daily operation and expansive views with slim sightlines. Because the panels move within their own track rather than swinging into the room or onto a deck, sliding doors preserve valuable floor space on both sides of the opening, making them one of the most practical door types for Sydney homes and commercial properties. Two and three track configurations are available to suit different opening widths, and panels can be sized up to 2000 mm wide and 2700 mm high for a commanding floor-to-ceiling presence. Multi-point locking hardware secures the panels when closed, while quality weather seals protect against wind-driven rain and dust. For larger residential developments, apartment buildings, and commercial fitouts, sliding doors are frequently specified because of their simple operation, consistent sizing across multiple units, and low ongoing maintenance. Every sliding door from Aluverse is custom fabricated to the exact opening dimensions, with the full powder-coat colour range available to match any architectural palette.",
         idealFor: [
-            "Patios, balconies, and backyards where homeowners want easy everyday access.",
-            "Openings that need large glass panels without sacrificing floor space to a swing door.",
-            "Homes prioritising natural light, views, and simple low-maintenance operation.",
+            "Patios, balconies, and backyards where everyday access needs to be simple and space-efficient. Sliding doors do not require swing clearance, so furniture, planters, and walkways can sit closer to the opening without obstruction.",
+            "Openings that need large glass panels to maximise natural light and views without sacrificing usable floor space. The slim aluminium frames keep sightlines minimal while the panels slide quietly along their tracks.",
+            "Large-scale residential developments, apartment complexes, and commercial projects that prioritise consistent sizing, simple operation, and low-maintenance door systems across multiple units or floors.",
         ],
         features: [
             "Panoramic unobstructed views",
@@ -443,6 +594,30 @@ export const products: Product[] = [
                 answer:
                     "Yes. Sliding door systems can be specified with single or double glazing to suit the project's thermal, acoustic, and budget requirements.",
             },
+            {
+                question:
+                    "How large can aluminium sliding door panels be?",
+                answer:
+                    "Individual panels can be fabricated up to 2000 mm wide and 2700 mm high. For wider openings, two or three track systems allow multiple panels to slide past one another, covering openings well beyond what a single panel could span.",
+            },
+            {
+                question:
+                    "Are sliding doors suitable for apartment buildings and commercial projects?",
+                answer:
+                    "Yes. Sliding doors are one of the most commonly specified door types for apartments, offices, and retail spaces in Sydney because they are space-efficient, easy to operate, and can be produced in consistent sizes across large orders.",
+            },
+            {
+                question:
+                    "How secure are aluminium sliding doors?",
+                answer:
+                    "Modern aluminium sliding doors are fitted with multi-point locking hardware that secures the panel at several points along the frame. This provides strong resistance against forced entry while keeping the locking mechanism discreet and easy to operate from inside.",
+            },
+            {
+                question:
+                    "What is the difference between a 2-track and 3-track sliding door?",
+                answer:
+                    "A 2-track system has two panels that slide past one another, opening roughly half the total width. A 3-track system adds a third rail, allowing more panels and a wider effective opening. The right choice depends on the opening width and how much clear access is needed.",
+            },
         ],
         related: ["bifold-doors", "stacking-doors", "french-doors"],
     },
@@ -452,18 +627,19 @@ export const products: Product[] = [
         title: "Bi-Fold Doors",
         summary:
             "Multiple panels fold and stack neatly to one side, creating dramatic wide-span openings.",
-        metaTitle: "Bi-Fold Doors - Aluverse | Sydney",
+        metaTitle:
+            "Aluminium Bi-Fold Doors Sydney | Custom Made | Aluverse",
         metaDescription:
-            "Premium aluminium bi-fold doors for Sydney homes. Wide-span openings, indoor-outdoor living, flexible panel configurations. Free quotes. Call 0403 422 401.",
+            "Custom aluminium bi-fold doors for Sydney projects. Wide-span openings up to 90% clear, indoor-outdoor living at its best. Free quotes. Call 0403 422 401.",
         cardImage: productImages.bifoldDoors.card,
         heroImage: productImages.bifoldDoors.hero,
         imageAlt: "Bi-fold doors",
         detailDescription:
-            "Bi-fold doors are the ultimate solution for indoor-outdoor living. Multiple panels fold and stack neatly to one side, creating a dramatic wide-span opening that transforms your living space. Whether opening onto a deck, pool area, or garden, bi-fold doors blur the boundary between inside and out.",
+            "Bi-fold doors are the premier solution for indoor-outdoor living in Sydney, with multiple aluminium-framed panels that fold and stack neatly to one side to create dramatic wide-span openings of up to 90 percent clear width. Whether opening onto a timber deck, pool area, garden courtyard, or commercial terrace, bi-fold doors dissolve the boundary between inside and out and transform how a space is used for entertaining, dining, and everyday living. Configurations from two to eight panels allow the system to span openings that would be impossible with conventional hinged or sliding doors, while a flush threshold option provides a seamless transition between floor levels when accessibility or clean aesthetics are priorities. When closed, the panels lock together through multi-point hardware and seal against weather, providing security and protection from Sydney's coastal conditions. For architects and builders working on large-scale homes, hospitality venues, and commercial fitouts, bi-fold doors make a strong visual and functional statement. Every system from Aluverse is custom fabricated to the exact opening dimensions, with the full powder-coat colour range available.",
         idealFor: [
-            "Large entertaining areas that need the biggest possible opening.",
-            "Homes that want a strong indoor-outdoor connection to decks, gardens, or pool zones.",
-            "Architectural projects where the door system itself is part of the visual statement.",
+            "Large entertaining areas that need the biggest possible opening to a deck, garden, or alfresco zone. Bi-fold doors can clear up to 90 percent of the opening width, giving the room a near-open-air feel when the panels are folded back.",
+            "Homes, restaurants, and commercial venues that want a strong indoor-outdoor connection. The folding action creates a dramatic transition that is as much an architectural feature as it is a functional door system.",
+            "Architectural and design-driven projects where the door system itself is part of the visual statement. With up to eight panels, full-height glazing, and slim aluminium frames, bi-fold doors create a commanding focal point on any facade.",
         ],
         features: [
             "Maximum opening width up to 90%",
@@ -485,13 +661,37 @@ export const products: Product[] = [
                 question:
                     "When are bi-fold doors the best choice?",
                 answer:
-                    "Bi-fold doors are ideal when the goal is to open up a room as much as possible for entertaining and to create a strong visual connection between inside and outside.",
+                    "Bi-fold doors are ideal when the goal is to open up a room as much as possible for entertaining and to create a strong visual connection between inside and outside. They suit living areas, dining rooms, and commercial spaces that face outdoor zones.",
             },
             {
                 question:
                     "Can bi-fold doors be installed with a flush threshold?",
                 answer:
-                    "In many projects, yes. Flush threshold options are available where a smoother transition is important, subject to the design, drainage, and site conditions.",
+                    "In many projects, yes. Flush threshold options are available where a smoother transition between indoor and outdoor floor levels is important, subject to the design, drainage, and site conditions.",
+            },
+            {
+                question:
+                    "How many panels can a bi-fold door system have?",
+                answer:
+                    "Aluverse can configure bi-fold door systems with two to eight panels. The number depends on the total opening width, the desired panel proportions, and whether the panels fold to one side or split to both sides.",
+            },
+            {
+                question:
+                    "Are bi-fold doors suitable for windy or coastal Sydney locations?",
+                answer:
+                    "Yes, when correctly specified and installed. The panels lock together through multi-point hardware when closed, and perimeter weather seals help protect against wind-driven rain, salt air, and dust common in Sydney's coastal suburbs.",
+            },
+            {
+                question:
+                    "What is the difference between bi-fold doors and stacking doors?",
+                answer:
+                    "Bi-fold doors fold and hinge into a compact stack at one or both sides of the opening. Stacking doors slide on parallel tracks and remain in a single plane when open. Bi-fold doors typically clear more of the opening width, while stacking doors offer a more streamlined look for very wide spans.",
+            },
+            {
+                question:
+                    "Can bi-fold doors be used in commercial and hospitality projects?",
+                answer:
+                    "Absolutely. Bi-fold doors are a popular specification for restaurants, cafes, function venues, and retail spaces in Sydney where a wide-open frontage or terrace connection is part of the design and customer experience.",
             },
         ],
         related: ["sliding-doors", "stacking-doors", "french-doors"],
@@ -502,18 +702,19 @@ export const products: Product[] = [
         title: "French Doors",
         summary:
             "Timeless double-door elegance paired with modern aluminium strength and security.",
-        metaTitle: "French Doors - Aluverse | Sydney",
+        metaTitle:
+            "Aluminium French Doors Sydney | Custom Made | Aluverse",
         metaDescription:
-            "Premium aluminium French doors for Sydney homes. Timeless double-door elegance, modern aluminium strength. Free quotes. Call 0403 422 401.",
+            "Custom aluminium French doors for Sydney projects. Classic double-door elegance with modern aluminium strength and durability. Free quotes. Call 0403 422 401.",
         cardImage: productImages.frenchDoors.card,
         heroImage: productImages.frenchDoors.hero,
         imageAlt: "French doors",
         detailDescription:
-            "French doors bring timeless elegance to any home. The classic double-door design swings open to create a wide, welcoming entry point while aluminium frames provide the strength and weather resistance that timber can't match. Perfect for balconies, patios, and as feature entry points.",
+            "French doors bring timeless double-door elegance to any property, with a classic symmetrical design that swings open to create a wide, welcoming entry point. Aluminium framing delivers the strength, weather resistance, and dimensional stability that timber alternatives struggle to maintain in Sydney's climate, while slim profiles keep the focus on the glazing and the view beyond. French doors are a natural fit for balconies, patios, courtyards, and garden entries where a traditional door profile adds character and presence to the facade. They are equally at home in heritage renovations, Hamptons-inspired builds, and contemporary projects that want a softer design accent alongside more modern elements. For larger residential developments and commercial heritage conversions, aluminium French doors provide a consistent, low-maintenance alternative to timber that retains the classic proportions architects and homeowners expect. Every pair from Aluverse is custom fabricated to the opening dimensions, fitted with multi-point locking hardware, and finished in the client's choice from the full powder-coat colour range.",
         idealFor: [
-            "Classic or Hamptons-inspired homes that want a more traditional door profile.",
-            "Balconies, patios, and feature openings where symmetry matters.",
-            "Projects that want the look of French doors without the upkeep of timber.",
+            "Classic, Hamptons-inspired, and heritage-style homes that want a traditional double-door profile. Aluminium French doors deliver the proportions and character of timber without the ongoing maintenance, swelling, or warping that can occur in Sydney's humid conditions.",
+            "Balconies, patios, and feature openings where symmetry and visual impact matter. The twin-leaf design creates a balanced, inviting entry point that enhances both the interior room and the outdoor space it connects to.",
+            "Projects that want the look and feel of French doors without the long-term upkeep of timber framing. Aluminium does not rot, warp, or require regular repainting, making it a practical choice for high-use entries on large homes and developments.",
         ],
         features: [
             "Timeless double-door elegance",
@@ -535,13 +736,37 @@ export const products: Product[] = [
                 question:
                     "Do French doors only suit traditional homes?",
                 answer:
-                    "No. While French doors are popular in more classic designs, aluminium framing also lets them work well in contemporary homes that want softer lines and a feature opening.",
+                    "No. While French doors are popular in heritage, Federation, and Hamptons-style designs, aluminium framing also lets them work well in contemporary homes that want softer lines and a feature opening.",
             },
             {
                 question:
                     "Are aluminium French doors secure?",
                 answer:
-                    "Yes. Modern aluminium French doors can be fitted with robust hardware and multi-point locking systems to improve security without losing their classic appearance.",
+                    "Yes. Modern aluminium French doors can be fitted with robust hardware and multi-point locking systems to improve security without losing their classic double-door appearance.",
+            },
+            {
+                question:
+                    "How do aluminium French doors compare to timber French doors?",
+                answer:
+                    "Aluminium French doors offer the same classic proportions and visual character as timber but with significantly less maintenance. Aluminium does not swell, warp, or rot in Sydney's humid and coastal conditions, and the powder-coat finish does not require regular sanding or repainting.",
+            },
+            {
+                question:
+                    "Can French doors be specified with double glazing?",
+                answer:
+                    "Yes. Double glazing can be fitted to French door systems to improve thermal performance, reduce noise, and enhance overall comfort. This is especially worthwhile for doors that face busy streets or exposed elevations.",
+            },
+            {
+                question:
+                    "What width range is available for aluminium French doors?",
+                answer:
+                    "Standard French door configurations from Aluverse range from 1200 mm to 2400 mm in total width. Custom widths can be discussed based on the opening dimensions and structural requirements of the project.",
+            },
+            {
+                question:
+                    "Are French doors suitable for heritage renovation projects?",
+                answer:
+                    "Yes. Aluminium French doors are a popular choice for heritage conversions across Sydney because they can replicate traditional proportions while offering modern performance, hardware, and weather sealing that original timber doors often lack.",
             },
         ],
         related: ["hinged-doors", "bifold-doors", "sliding-doors"],
@@ -552,18 +777,19 @@ export const products: Product[] = [
         title: "Hinged Doors",
         summary:
             "Classic single or double swing doors with robust hardware for reliable daily use.",
-        metaTitle: "Hinged Doors - Aluverse | Sydney",
+        metaTitle:
+            "Aluminium Hinged Doors Sydney | Custom Made | Aluverse",
         metaDescription:
-            "Premium aluminium hinged doors for Sydney homes. Classic swing operation, heavy-duty hardware, superior weather sealing. Free quotes. Call 0403 422 401.",
+            "Custom aluminium hinged doors for Sydney projects. Single or double-leaf swing, heavy-duty hardware and superior weather sealing. Free quotes. Call 0403 422 401.",
         cardImage: productImages.hingedDoors.card,
         heroImage: productImages.hingedDoors.hero,
         imageAlt: "Hinged doors",
         detailDescription:
-            "Hinged doors offer classic swing operation paired with modern aluminium engineering. Available as single or double-leaf configurations, they're ideal for front entries, back doors, and laundry exits. Robust hardware and weather seals ensure reliable performance day after day.",
+            "Hinged doors offer classic swing operation paired with modern aluminium engineering, delivering reliable everyday performance for front entries, back doors, laundry exits, and utility access points. Available in single-leaf and double-leaf configurations, they can be set to swing inward or outward depending on the layout and traffic flow of the space. Heavy-duty hinges, multi-point locking hardware, and continuous weather seals ensure that each door stands up to the demands of high-use entry points in Sydney's variable climate. The aluminium frame resists corrosion, does not warp or swell with humidity changes, and holds its alignment over years of daily operation. For commercial fitouts, apartment common areas, and multi-unit developments, hinged doors provide a straightforward, cost-effective access solution that is easy to specify and install in volume. Every hinged door from Aluverse is custom fabricated to the exact opening dimensions, glazed with single or double-pane glass as required, and finished in any colour from the full powder-coat range.",
         idealFor: [
-            "Front entries, side doors, laundries, and utility spaces.",
-            "Projects that need a straightforward, durable everyday access door.",
-            "Homes wanting a custom single or double-leaf configuration to suit the opening.",
+            "Front entries, side doors, laundries, and utility spaces that need a reliable, straightforward access door. Hinged doors are the most familiar and intuitive door type for everyday use by residents, tenants, and staff.",
+            "Projects that need a durable, cost-effective door solution across multiple openings. For large homes and developments, hinged doors can be specified in bulk with consistent sizing, hardware, and finishes across the project.",
+            "Homes and commercial properties wanting a custom single or double-leaf configuration to suit the width and traffic flow of the opening. Swing direction can be set to inward or outward depending on the layout.",
         ],
         features: [
             "Classic reliable operation",
@@ -585,13 +811,37 @@ export const products: Product[] = [
                 question:
                     "Can aluminium hinged doors be made as single or double doors?",
                 answer:
-                    "Yes. Hinged door systems can be configured as single-leaf or double-leaf openings depending on how the space is used and the width available.",
+                    "Yes. Hinged door systems can be configured as single-leaf or double-leaf openings depending on how the space is used, the width of the opening, and the desired traffic flow.",
             },
             {
                 question:
                     "Are hinged doors suitable for exposed weather conditions?",
                 answer:
-                    "Yes. With quality seals, hardware, and correct installation, aluminium hinged doors are a dependable option for entry points that need strong daily weather performance.",
+                    "Yes. With quality seals, heavy-duty hardware, and correct installation, aluminium hinged doors are a dependable option for entry points that face prevailing weather in Sydney's coastal and suburban areas.",
+            },
+            {
+                question:
+                    "Can hinged doors swing inward or outward?",
+                answer:
+                    "Yes. The swing direction can be set during fabrication to suit the layout. Outward swing is common for front entries and fire exits, while inward swing is often preferred for internal access points and laundries.",
+            },
+            {
+                question:
+                    "Are aluminium hinged doors suitable for commercial buildings?",
+                answer:
+                    "Yes. Aluminium hinged doors are frequently used in commercial fitouts, apartment common areas, office entries, and retail spaces because they are durable, low-maintenance, and easy to specify across multiple openings.",
+            },
+            {
+                question:
+                    "What glazing options are available for hinged doors?",
+                answer:
+                    "Hinged doors can be supplied with single or double glazing depending on the project's requirements. Obscure or frosted glass is also available for locations where privacy is needed, such as bathrooms and side entries.",
+            },
+            {
+                question:
+                    "How durable are aluminium hinged doors compared to timber?",
+                answer:
+                    "Aluminium hinged doors do not swell, warp, rot, or require regular repainting. They maintain their alignment and seal integrity over years of daily use, which makes them a lower-maintenance alternative to timber in Sydney's climate.",
             },
         ],
         related: ["french-doors", "sliding-doors", "bifold-doors"],
@@ -602,18 +852,19 @@ export const products: Product[] = [
         title: "Stacking Doors",
         summary:
             "Multiple panels slide and stack behind one another, creating expansive openings with clean lines.",
-        metaTitle: "Stacking Doors - Aluverse | Sydney",
+        metaTitle:
+            "Aluminium Stacking Doors Sydney | Custom Made | Aluverse",
         metaDescription:
-            "Premium aluminium stacking doors for Sydney homes. Expansive openings, clean architectural lines, smooth-gliding hardware. Free quotes. Call 0403 422 401.",
+            "Custom aluminium stacking doors for Sydney projects. Expansive openings with clean architectural lines and smooth-gliding panels. Free quotes. Call 0403 422 401.",
         cardImage: productImages.stackingDoors.card,
         heroImage: productImages.stackingDoors.hero,
         imageAlt: "Stacking doors",
         detailDescription:
-            "Stacking doors feature multiple panels that slide and stack behind one another, creating expansive openings while maintaining clean architectural lines. Unlike bi-fold doors, all panels remain in a single plane when open, providing a more streamlined look for large openings.",
+            "Stacking doors feature multiple aluminium-framed glass panels that slide along parallel tracks and stack behind one another, creating expansive openings while maintaining clean architectural lines. Unlike bi-fold doors, all panels remain in a single plane when open, producing a more streamlined and contemporary appearance that suits modern Sydney homes and commercial properties. The multi-rail track system allows up to six panels to glide smoothly into a compact stack, clearing a generous portion of the opening width for unobstructed indoor-outdoor access. A flush track option is available for projects that need a seamless threshold transition between floor levels. Stacking doors are a popular choice for large living areas, resort-style pool surrounds, waterfront properties, and hospitality venues where panoramic glazing and clean sightlines are central to the design intent. For architects and builders working on large-scale projects, stacking doors offer an alternative to bi-fold systems that avoids the folding mechanism while still spanning wide openings. Every stacking door from Aluverse is custom fabricated to suit the opening, with single or double glazing and the full powder-coat colour range available.",
         idealFor: [
-            "Large-format openings where homeowners want wide access without folding panels.",
-            "Projects that favour panoramic glass and clean architectural lines.",
-            "Homes comparing bi-fold and sliding systems for a more streamlined multi-panel solution.",
+            "Large-format openings where homeowners or designers want wide access without folding panels. Stacking doors slide in a single plane, which creates a cleaner, more linear look than bi-fold alternatives and avoids panels projecting into the room or onto the deck.",
+            "Projects that prioritise panoramic glass, slim sightlines, and clean architectural lines. The parallel track system keeps the visual profile minimal while allowing multiple panels to stack compactly when open.",
+            "Waterfront homes, resort-style builds, and hospitality venues that need a commanding indoor-outdoor opening. Stacking doors are designed for the kind of wide-span glazing that defines contemporary coastal and entertaining architecture across Sydney.",
         ],
         features: [
             "Expansive openings with clean lines",
@@ -635,13 +886,37 @@ export const products: Product[] = [
                 question:
                     "What is the difference between stacking doors and bi-fold doors?",
                 answer:
-                    "Stacking doors slide and stack behind one another on parallel tracks, while bi-fold doors fold into a hinged stack. Stacking systems usually create a cleaner linear look for large glazed openings.",
+                    "Stacking doors slide and stack behind one another on parallel tracks, keeping all panels in a single plane. Bi-fold doors fold into a hinged stack that projects to one side. Stacking systems usually create a cleaner linear look for large glazed openings, while bi-fold doors can clear a greater percentage of the opening width.",
             },
             {
                 question:
                     "Are stacking doors a good option for wide openings?",
                 answer:
-                    "Yes. They are specifically designed for larger openings where clients want multiple sliding panels, broad views, and a strong indoor-outdoor connection.",
+                    "Yes. They are specifically designed for larger openings where clients want multiple sliding panels, broad views, and a strong indoor-outdoor connection without the folding mechanism of a bi-fold system.",
+            },
+            {
+                question:
+                    "Can stacking doors be installed with a flush threshold?",
+                answer:
+                    "Yes. A flush track option is available for projects where a seamless transition between indoor and outdoor floor levels is important. This is subject to drainage, site conditions, and the specific design of the opening.",
+            },
+            {
+                question:
+                    "How many panels can a stacking door system have?",
+                answer:
+                    "Aluverse can configure stacking door systems with up to six panels. The number of panels and tracks depends on the total opening width and the desired clear access when the doors are fully open.",
+            },
+            {
+                question:
+                    "Are stacking doors used in commercial and hospitality projects?",
+                answer:
+                    "Yes. Stacking doors are a popular specification for restaurants, bars, function venues, and resort-style developments in Sydney where expansive glazing and wide openings are central to the design.",
+            },
+            {
+                question:
+                    "How do stacking doors handle Sydney's coastal weather?",
+                answer:
+                    "The aluminium frames resist salt air corrosion, and each panel is fitted with weather seals designed to protect against wind-driven rain and dust. Powder-coat finishes provide an additional layer of protection for coastal environments.",
             },
         ],
         related: ["sliding-doors", "bifold-doors", "hinged-doors"],
