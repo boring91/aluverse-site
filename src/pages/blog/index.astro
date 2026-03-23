@@ -1,0 +1,122 @@
+---
+import { getCollection } from "astro:content";
+import { Picture } from "astro:assets";
+import CtaSection from "../../components/CtaSection.astro";
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import { pageImages, productImages } from "../../assets/images";
+import { getBreadcrumbSchema } from "../../lib/seo";
+import type { ImageMetadata } from "astro";
+
+const posts = (await getCollection("blog")).sort(
+    (a, b) =>
+        b.data.publishDate.getTime() - a.data.publishDate.getTime()
+);
+
+const blogHeroImages: Record<string, ImageMetadata> = {
+    "sliding-doors": productImages.slidingDoors.hero,
+    "bifold-doors": productImages.bifoldDoors.hero,
+    "double-glazing": productImages.doubleGlazingWindows.hero,
+    "windows": pageImages.windowsPageHero,
+    "casement-windows": productImages.casementWindows.hero,
+    "awning-windows": productImages.awningWindows.hero,
+    "sliding-windows": productImages.slidingWindows.hero,
+    "doors": pageImages.doorsPageHero,
+    "workshop": pageImages.workshopPhoto,
+};
+
+const formatDate = (date: Date) =>
+    date.toLocaleDateString("en-AU", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    });
+
+const blogSchema = [
+    getBreadcrumbSchema(
+        [
+            { label: "Home", href: "/" },
+            { label: "Blog", href: "/blog" },
+        ],
+        "/blog"
+    ),
+];
+---
+
+<Layout
+    title="Blog | Aluminium Windows & Doors Sydney | Aluverse"
+    description="Expert guides and tips on aluminium windows and doors for Sydney homes and projects. Compare products, learn about double glazing, and make informed decisions."
+    activeNav="blog"
+    canonical="/blog"
+    ogImage={pageImages.windowsPageHero}
+    schema={blogSchema}
+>
+    <PageHero
+        title="Blog"
+        subtitle="Expert guides, product comparisons, and practical advice for aluminium windows and doors in Sydney."
+        image={pageImages.windowsPageHero}
+        imageAlt="Aluminium windows and doors blog"
+        priority={true}
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Blog" }]}
+    />
+
+    <section class="py-20 bg-page">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {
+                    posts.map(post => {
+                        const heroImage =
+                            blogHeroImages[post.data.heroImageKey] ??
+                            pageImages.windowsPageHero;
+                        return (
+                            <a
+                                href={`/blog/${post.id}`}
+                                class="group block bg-card border border-divider hover:border-accent-dim transition-colors"
+                            >
+                                <div class="aspect-[16/10] overflow-hidden">
+                                    <Picture
+                                        src={heroImage}
+                                        alt={post.data.heroImageAlt}
+                                        formats={["avif", "webp"]}
+                                        fallbackFormat="webp"
+                                        widths={[480, 768]}
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                        quality={62}
+                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    />
+                                </div>
+                                <div class="p-6">
+                                    <time
+                                        datetime={post.data.publishDate.toISOString()}
+                                        class="text-xs text-text-muted tracking-wide uppercase"
+                                    >
+                                        {formatDate(post.data.publishDate)}
+                                    </time>
+                                    <h2 class="font-display text-xl mt-2 mb-3 text-dark group-hover:text-text-secondary transition-colors">
+                                        {post.data.title}
+                                    </h2>
+                                    <p class="text-sm text-text-secondary leading-relaxed">
+                                        {post.data.description}
+                                    </p>
+                                    <span class="inline-block mt-4 text-xs font-semibold tracking-widest uppercase text-dark group-hover:text-text-secondary transition-colors">
+                                        Read More
+                                    </span>
+                                </div>
+                            </a>
+                        );
+                    })
+                }
+            </div>
+        </div>
+    </section>
+
+    <CtaSection
+        tag="Ready to start?"
+        title="Get a Free Quote for Your Project"
+        text="Tell us about your aluminium window or door requirements and we'll prepare a detailed, no-obligation quote."
+        primaryHref="/quote"
+        primaryLabel="Request a Quote"
+        secondaryHref="tel:+61403422401"
+        secondaryLabel="Call Now"
+    />
+</Layout>

@@ -178,3 +178,38 @@ export const getItemListSchema = (name: string, items: ListEntry[]) =>
             url: createAbsoluteUrl(item.href),
         })),
     } satisfies JsonLdObject);
+
+type ArticleSchemaConfig = {
+    title: string;
+    description: string;
+    canonicalUrl: string;
+    publishDate: string;
+    imageUrl?: string;
+};
+
+export const getArticleSchema = ({
+    title,
+    description,
+    canonicalUrl,
+    publishDate,
+    imageUrl = defaultImageUrl,
+}: ArticleSchemaConfig) =>
+    ({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: title,
+        description,
+        image: imageUrl,
+        datePublished: publishDate,
+        url: canonicalUrl,
+        author: {
+            "@id": businessId,
+        },
+        publisher: {
+            "@id": businessId,
+        },
+        isPartOf: {
+            "@id": websiteId,
+        },
+        inLanguage: "en-AU",
+    } satisfies JsonLdObject);
