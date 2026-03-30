@@ -37,6 +37,11 @@ function Component() {
         onSuccess: () => {
             form.reset();
             recaptchaRef.current?.reset();
+
+            window.dataLayer?.push({
+                event: "form_submission_success",
+                form_type: "quote",
+            });
         },
     });
 
@@ -485,7 +490,9 @@ function Component() {
                             <ReCAPTCHAField
                                 ref={recaptchaRef}
                                 className="flex justify-center items-center"
-                                sitekey={import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY}
+                                sitekey={
+                                    import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY
+                                }
                                 onChange={token =>
                                     field.handleChange(token ?? "")
                                 }
