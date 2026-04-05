@@ -2,7 +2,7 @@ import type { ImageMetadata } from "astro";
 
 import { productImages } from "../assets/images";
 
-export type ProductCategory = "windows" | "doors";
+export type ProductCategory = "windows" | "doors" | "screens";
 
 export type ProductSpec = {
     label: string;
@@ -921,6 +921,156 @@ export const products: Product[] = [
         ],
         related: ["sliding-doors", "bifold-doors", "hinged-doors"],
     },
+    {
+        slug: "stainless-steel-mesh",
+        category: "screens",
+        title: "Stainless Steel Mesh Screens",
+        summary:
+            "Heavy-duty 316 marine-grade stainless steel mesh screens that combine superior security with unobstructed views and airflow.",
+        metaTitle:
+            "Stainless Steel Mesh Screens Sydney | Security Screens | Aluverse",
+        metaDescription:
+            "Custom stainless steel mesh screens for Sydney homes and businesses. 316 marine-grade mesh in aluminium frames for security, airflow, and clear views. Free quotes from Aluverse.",
+        cardImage: productImages.stainlessSteelMesh.card,
+        heroImage: productImages.stainlessSteelMesh.hero,
+        imageAlt: "Stainless steel mesh security screen",
+        detailDescription:
+            "Stainless steel mesh screens use a tightly woven 316 marine-grade mesh tensioned within a custom aluminium frame, delivering a security barrier that does not compromise on visibility or ventilation. The mesh is strong enough to resist forced entry, yet fine enough to keep insects out and allow a clear view of the outside. This makes stainless steel mesh screens one of the most practical upgrades for Sydney properties that want to leave windows and doors open without worrying about break-ins or pests. The 316 grade stainless steel is specifically chosen for its resistance to salt air corrosion, making it well suited to coastal suburbs and exposed sites across the Sydney basin. Every screen from Aluverse is custom fabricated to fit the exact opening, whether it is a hinged door, sliding door, window, or stacking system, and is finished in the full aluminium powder-coat colour range to match the existing frames.",
+        idealFor: [
+            "Homes in coastal or salt-air environments where corrosion resistance is essential. The 316 marine-grade stainless steel withstands prolonged exposure to salt-laden air without rusting or degrading.",
+            "Properties that need a physical security barrier across windows and doors without blocking views or restricting airflow. The fine mesh is virtually transparent from normal viewing distances.",
+            "Families who want to keep doors and windows open for ventilation while preventing insect entry. The tight weave blocks mosquitoes, flies, and other pests reliably.",
+        ],
+        features: [
+            "316 marine-grade stainless steel mesh",
+            "High security with clear outward visibility",
+            "Corrosion resistant for coastal environments",
+            "Blocks insects while allowing full airflow",
+            "Custom fabricated to any opening size",
+        ],
+        specs: [
+            { label: "Mesh Material", value: "316 Marine-Grade Stainless Steel" },
+            { label: "Frame Material", value: "Aluminium" },
+            { label: "Mesh Aperture", value: "1.0mm x 1.0mm" },
+            { label: "Wire Diameter", value: "0.8mm" },
+            { label: "Mounting", value: "Hinged, Sliding, or Fixed" },
+            { label: "Colours", value: "Full Powder Coat Range" },
+        ],
+        seoFaqs: [
+            {
+                question:
+                    "Are stainless steel mesh screens strong enough for security?",
+                answer:
+                    "Yes. 316 marine-grade stainless steel mesh is tested to resist cutting, impact, and forced entry. When properly tensioned and framed in aluminium, it provides a genuine physical barrier across the opening.",
+            },
+            {
+                question:
+                    "Can I still see through stainless steel mesh screens?",
+                answer:
+                    "Yes. The fine weave is designed to be virtually transparent from normal viewing distances inside the home, maintaining clear outward views while providing security and insect protection from outside.",
+            },
+            {
+                question:
+                    "Do stainless steel mesh screens work in coastal areas?",
+                answer:
+                    "They are specifically suited to coastal environments. The 316 grade stainless steel is highly resistant to salt air corrosion, which is why it is commonly specified for properties near the ocean across Sydney.",
+            },
+            {
+                question:
+                    "Can stainless steel mesh screens be fitted to existing windows and doors?",
+                answer:
+                    "Yes. Aluverse fabricates each screen to suit the specific opening, whether it is a new installation or a retrofit to an existing aluminium window or door frame.",
+            },
+            {
+                question:
+                    "How do stainless steel mesh screens compare to fabric mesh screens?",
+                answer:
+                    "Stainless steel mesh provides a higher level of physical security and longer lifespan in harsh conditions. Fabric mesh is lighter and more cost-effective for general insect protection where security is not the primary concern.",
+            },
+            {
+                question:
+                    "What maintenance do stainless steel mesh screens need?",
+                answer:
+                    "Very little. An occasional wash with soapy water and a soft brush is usually enough to keep the mesh clean and free of salt or dust buildup. The stainless steel and powder-coated aluminium frame require no painting or special treatments.",
+            },
+        ],
+        related: ["fabric-mesh"],
+    },
+    {
+        slug: "fabric-mesh",
+        category: "screens",
+        title: "Fabric Mesh Screens",
+        summary:
+            "Lightweight fibreglass mesh screens that provide reliable insect protection and natural ventilation at an accessible price point.",
+        metaTitle:
+            "Fabric Mesh Fly Screens Sydney | Insect Screens | Aluverse",
+        metaDescription:
+            "Custom fabric mesh fly screens for Sydney homes. Lightweight fibreglass mesh in aluminium frames for insect protection and ventilation. Free quotes from Aluverse.",
+        cardImage: productImages.fabricMesh.card,
+        heroImage: productImages.fabricMesh.hero,
+        imageAlt: "Fabric mesh fly screen",
+        detailDescription:
+            "Fabric mesh screens use a durable fibreglass mesh held within a custom aluminium frame to provide effective insect protection without restricting airflow or natural light. The lightweight mesh is easy to handle and allows generous ventilation when windows and doors are open, making it a practical everyday solution for Sydney homes that want to keep flies, mosquitoes, and other insects out. Fabric mesh screens are available in a range of configurations including hinged, sliding, retractable, and fixed panel options, so they can be matched to virtually any window or door type in the home. The aluminium frames are custom fabricated to the exact opening dimensions and finished in the full powder-coat colour range, ensuring a clean fit and consistent appearance with the existing window and door frames. For homeowners who want reliable insect protection without the higher cost of stainless steel security mesh, fabric mesh screens are the most popular and cost-effective option.",
+        idealFor: [
+            "Homes that need reliable insect protection across multiple windows and doors without a large overall outlay. Fabric mesh is the most cost-effective screening option for full-house coverage.",
+            "Living areas, bedrooms, and kitchens where natural ventilation is a priority. The open weave allows generous airflow while keeping insects out of the home.",
+            "Rental properties, granny flats, and new builds where practical fly screening is needed across many openings. The lightweight frames are easy to install and replace if damaged.",
+        ],
+        features: [
+            "Lightweight fibreglass mesh",
+            "Effective insect protection",
+            "Generous airflow and light transmission",
+            "Available in hinged, sliding, retractable, or fixed",
+            "Cost-effective full-house screening",
+        ],
+        specs: [
+            { label: "Mesh Material", value: "Fibreglass / Pet Mesh" },
+            { label: "Frame Material", value: "Aluminium" },
+            { label: "Mesh Aperture", value: "1.2mm x 1.2mm" },
+            { label: "Configuration", value: "Hinged, Sliding, Retractable, Fixed" },
+            { label: "Max Width", value: "2400mm" },
+            { label: "Colours", value: "Full Powder Coat Range" },
+        ],
+        seoFaqs: [
+            {
+                question:
+                    "Are fabric mesh screens effective against mosquitoes?",
+                answer:
+                    "Yes. The fine fibreglass mesh blocks mosquitoes, flies, and other common household insects while still allowing air to pass through freely.",
+            },
+            {
+                question:
+                    "How long do fabric mesh screens last?",
+                answer:
+                    "With normal use, a quality fibreglass mesh screen will last several years. The mesh can be replaced if it becomes torn or worn without needing to replace the aluminium frame.",
+            },
+            {
+                question:
+                    "Can fabric mesh screens be fitted to sliding doors?",
+                answer:
+                    "Yes. Aluverse offers sliding mesh screen panels that run on their own track alongside the existing sliding door, making it easy to open and close the screen independently of the door.",
+            },
+            {
+                question:
+                    "What is the difference between fabric mesh and stainless steel mesh screens?",
+                answer:
+                    "Fabric mesh is lighter, more affordable, and designed primarily for insect protection. Stainless steel mesh provides a higher level of physical security and greater durability in harsh coastal conditions, at a higher price point.",
+            },
+            {
+                question:
+                    "Can fabric mesh screens be retractable?",
+                answer:
+                    "Yes. Retractable fabric mesh screens roll into a discreet housing when not in use, which is a popular option for doors and windows where a permanent fixed screen is not wanted.",
+            },
+            {
+                question:
+                    "Do fabric mesh screens restrict the view?",
+                answer:
+                    "The mesh is designed to be as transparent as possible while still blocking insects. From inside the home, the view through a fabric mesh screen is largely unobstructed under normal lighting conditions.",
+            },
+        ],
+        related: ["stainless-steel-mesh"],
+    },
 ];
 
 export const windowProducts = products.filter(
@@ -928,6 +1078,9 @@ export const windowProducts = products.filter(
 );
 export const doorProducts = products.filter(
     product => product.category === "doors"
+);
+export const screenProducts = products.filter(
+    product => product.category === "screens"
 );
 
 export const footerProductSlugs = [
@@ -937,6 +1090,8 @@ export const footerProductSlugs = [
     "bifold-doors",
     "french-doors",
     "sliding-doors",
+    "stainless-steel-mesh",
+    "fabric-mesh",
 ] as const;
 
 export const getProductHref = (slug: string) => `/products/${slug}`;
@@ -956,6 +1111,10 @@ export const services = [
     {
         id: "both",
         label: "Both Windows & Doors",
+    },
+    {
+        id: "screens",
+        label: "Screens",
     },
     {
         id: "fly-screens",

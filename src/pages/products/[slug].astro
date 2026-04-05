@@ -24,12 +24,14 @@ const relatedProducts = product.related
     .map((slug: string) => getProductBySlug(slug))
     .filter((item): item is NonNullable<typeof item> => Boolean(item));
 
-const categoryHref = product.category === "windows" ? "/windows" : "/doors";
-const categoryLabel = product.category === "windows" ? "Windows" : "Doors";
-const relatedHeading =
-    product.category === "windows"
-        ? "Other Window Systems"
-        : "Other Door Systems";
+const categoryMap = {
+    windows: { href: "/windows", label: "Windows", related: "Other Window Systems" },
+    doors: { href: "/doors", label: "Doors", related: "Other Door Systems" },
+    screens: { href: "/screens", label: "Screens", related: "Other Screen Systems" },
+} as const;
+const categoryHref = categoryMap[product.category].href;
+const categoryLabel = categoryMap[product.category].label;
+const relatedHeading = categoryMap[product.category].related;
 const detailImageWidths = [480, 768, 960, 1280];
 const detailImageQuality = 62;
 const productPath = `/products/${product.slug}`;
@@ -49,7 +51,11 @@ const productSchema = {
         name: company.name,
     },
     category:
-        product.category === "windows" ? "Aluminium Windows" : "Aluminium Doors",
+        product.category === "windows"
+            ? "Aluminium Windows"
+            : product.category === "doors"
+              ? "Aluminium Doors"
+              : "Aluminium Screens",
     additionalProperty: product.specs.map(spec => ({
         "@type": "PropertyValue",
         name: spec.label,

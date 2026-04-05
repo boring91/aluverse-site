@@ -9,6 +9,7 @@ import { pageImages, productImages } from "../assets/images";
 import {
     company,
     doorProducts,
+    screenProducts,
     testimonials,
     windowProducts,
 } from "../data/site";
@@ -100,10 +101,10 @@ const homeSchema = [
                 Sydney's Premium Choice
             </p>
             <h1
-                class="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.08] mb-6 max-w-3xl"
+                class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.08] mb-6 max-w-3xl"
             >
                 Premium Aluminium <em class="not-italic text-anodise"
-                    >Windows & Doors</em
+                    >Windows, Doors & Screens</em
                 >
             </h1>
             <p class="text-lg text-white/90 leading-relaxed max-w-lg mb-10">
@@ -205,6 +206,48 @@ const homeSchema = [
                     class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase text-white border border-white/30 hover:border-white/70 hover:bg-white/5 transition-all inline-flex items-center gap-2"
                 >
                     View All Doors
+                    <svg
+                        viewBox="0 0 24 24"
+                        class="size-4 stroke-current fill-none stroke-2"
+                        ><path d="M5 12h14M12 5l7 7-7 7"></path></svg
+                    >
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screens -->
+    <section class="py-20 bg-page">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-10">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Our Collection
+                </p>
+                <h2
+                    class="font-display text-3xl md:text-4xl leading-tight mb-3"
+                >
+                    Aluminium Screens
+                </h2>
+                <p class="text-sm text-text-secondary max-w-lg leading-relaxed">
+                    Security and insect protection screens custom-fitted to your
+                    windows and doors.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {
+                    screenProducts.map(product => (
+                        <ProductCard product={product} />
+                    ))
+                }
+            </div>
+            <div class="text-center mt-10">
+                <a
+                    href="/screens"
+                    class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase text-accent border border-divider hover:border-accent hover:bg-accent-light transition-all inline-flex items-center gap-2"
+                >
+                    View All Screens
                     <svg
                         viewBox="0 0 24 24"
                         class="size-4 stroke-current fill-none stroke-2"

@@ -99,9 +99,12 @@ export const getBaseSchemas = ({
             serviceType: [
                 "Custom aluminium windows",
                 "Custom aluminium doors",
+                "Custom aluminium screens",
                 "Window replacement",
                 "Door replacement",
                 "Double glazing",
+                "Security screens",
+                "Fly screens",
             ],
         },
         {

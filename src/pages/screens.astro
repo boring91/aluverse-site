@@ -1,0 +1,290 @@
+---
+import { pageImages } from "../assets/images";
+import CtaSection from "../components/CtaSection.astro";
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import ProductCard from "../components/ProductCard.astro";
+import { company, getProductHref, screenProducts } from "../data/site";
+import {
+    getBreadcrumbSchema,
+    getFaqSchema,
+    getItemListSchema,
+} from "../lib/seo";
+
+const screenGuides = [
+    {
+        title: "Choose by purpose",
+        text: "If your main concern is security and break-in resistance, stainless steel mesh is the stronger option. If you primarily want to keep insects out while maximising airflow and keeping costs down, fabric mesh does the job well.",
+    },
+    {
+        title: "Choose by environment",
+        text: "Properties near the coast or exposed to salt air benefit from 316 marine-grade stainless steel mesh, which resists corrosion over the long term. Fabric mesh suits sheltered suburban settings where corrosion is less of a factor.",
+    },
+    {
+        title: "Choose by budget",
+        text: "Fabric mesh screens offer effective insect protection at an accessible price point, making them practical for screening an entire home. Stainless steel mesh is a higher investment that adds security and durability on top of insect protection.",
+    },
+] as const;
+const screenFaqs = [
+    {
+        question: "What types of screens does Aluverse offer?",
+        answer:
+            "Aluverse offers stainless steel mesh screens for security and insect protection, and fabric mesh screens for lightweight insect protection. Both types are custom fabricated in aluminium frames to fit any window or door opening.",
+    },
+    {
+        question: "Can screens be fitted to existing aluminium windows and doors?",
+        answer:
+            "Yes. Both stainless steel and fabric mesh screens can be retrofitted to existing aluminium window and door frames. Each screen is measured and fabricated to suit the specific opening, so there is no need to replace the existing frames.",
+    },
+    {
+        question: "Are security screens the same as fly screens?",
+        answer:
+            "Not quite. Fly screens use a lighter fabric mesh designed primarily to keep insects out. Security screens use a heavier stainless steel mesh that provides both insect protection and a physical barrier against forced entry.",
+    },
+    {
+        question: "What screen configurations are available?",
+        answer:
+            "Aluverse offers hinged, sliding, retractable, and fixed panel screen configurations. The right option depends on the type of window or door, how frequently the screen needs to open, and the level of security required.",
+    },
+    {
+        question: "Do aluminium screens block the view from inside?",
+        answer:
+            "Both mesh types are designed to be as transparent as possible. Stainless steel mesh is virtually invisible from normal indoor viewing distances, and fabric mesh allows a clear view with only minimal softening of the outlook.",
+    },
+    {
+        question: "What colours are available for aluminium screen frames?",
+        answer:
+            "Aluverse offers the full powder-coat colour range for screen frames, so they can be matched to existing window and door frames. Popular choices include matt black, surfmist, monument, and various anodised-look finishes.",
+    },
+] as const;
+const screenSchema = [
+    getBreadcrumbSchema(
+        [
+            { label: "Home", href: "/" },
+            { label: "Screens", href: "/screens" },
+        ],
+        "/screens"
+    ),
+    getItemListSchema(
+        "Aluminium Screens",
+        screenProducts.map(product => ({
+            name: product.title,
+            href: getProductHref(product.slug),
+        }))
+    ),
+    getFaqSchema([...screenFaqs]),
+];
+---
+
+<Layout
+    title="Aluminium Screens Sydney | Security & Fly Screens | Aluverse"
+    description="Custom aluminium screens for Sydney homes. Stainless steel mesh security screens and fabric mesh fly screens fabricated to fit any window or door opening."
+    activeNav="screens"
+    canonical="/screens"
+    ogImage={pageImages.screensPageHero}
+    schema={screenSchema}
+>
+    <PageHero
+        title="Aluminium Screens"
+        subtitle="Security and insect protection screens custom-fabricated in aluminium frames to fit any window or door opening across Sydney."
+        image={pageImages.screensPageHero}
+        imageAlt="Premium aluminium screens"
+        priority={true}
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Screens" }]}
+    />
+
+    <section class="py-20 bg-page">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Our Range
+                </p>
+                <h2
+                    class="font-display text-3xl md:text-4xl leading-tight mb-3"
+                >
+                    Screen Systems
+                </h2>
+                <p
+                    class="text-sm text-text-secondary max-w-lg leading-relaxed mx-auto"
+                >
+                    From heavy-duty stainless steel security mesh to lightweight
+                    fabric fly screens, we offer screening solutions for every
+                    need.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {
+                    screenProducts.map(product => (
+                        <ProductCard product={product} />
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-dark text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-anodise mb-3"
+                >
+                    Why Screens
+                </p>
+                <h2 class="font-display text-3xl md:text-4xl leading-tight">
+                    Protection Without Compromise
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div
+                    class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                >
+                    <div
+                        class="size-12 border border-anodise/30 flex items-center justify-center mb-6"
+                    >
+                        <svg
+                            class="size-6 stroke-anodise stroke-[1.5] fill-none"
+                            viewBox="0 0 24 24"
+                        >
+                            <rect
+                                x="3"
+                                y="11"
+                                width="18"
+                                height="11"
+                                rx="2"
+                                ry="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-lg mb-3">Security</h3>
+                    <p class="text-sm text-white/45 leading-relaxed">
+                        Stainless steel mesh screens provide a physical barrier
+                        against break-ins while keeping your home open and
+                        ventilated.
+                    </p>
+                </div>
+                <div
+                    class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                >
+                    <div
+                        class="size-12 border border-anodise/30 flex items-center justify-center mb-6"
+                    >
+                        <svg
+                            class="size-6 stroke-anodise stroke-[1.5] fill-none"
+                            viewBox="0 0 24 24"
+                        >
+                            <path d="M9.59 4.59A2 2 0 1111 8H2"></path><path
+                                d="M12.59 19.41A2 2 0 1014 16H2"></path><path
+                                d="M17.73 7.73A2.5 2.5 0 1019.5 12H2"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-lg mb-3">Ventilation</h3>
+                    <p class="text-sm text-white/45 leading-relaxed">
+                        Keep windows and doors open for fresh air without
+                        letting insects in. Both mesh types allow generous
+                        airflow.
+                    </p>
+                </div>
+                <div
+                    class="p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                >
+                    <div
+                        class="size-12 border border-anodise/30 flex items-center justify-center mb-6"
+                    >
+                        <svg
+                            class="size-6 stroke-anodise stroke-[1.5] fill-none"
+                            viewBox="0 0 24 24"
+                            ><path
+                                d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+                            ></path></svg
+                        >
+                    </div>
+                    <h3 class="font-display text-lg mb-3">Durability</h3>
+                    <p class="text-sm text-white/45 leading-relaxed">
+                        Aluminium frames and quality mesh materials stand up to
+                        Sydney's coastal climate with minimal maintenance
+                        required.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white border-t border-divider">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-3xl mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Buying Guide
+                </p>
+                <h2 class="font-display text-3xl md:text-4xl leading-tight mb-4">
+                    How to Choose the Right Screen
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                    Most people comparing screens are weighing security versus
+                    cost and deciding which mesh type suits their property. These
+                    quick notes help narrow the choice.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {
+                    screenGuides.map(item => (
+                        <article class="p-8 border border-divider bg-page">
+                            <h3 class="font-display text-xl mb-3">
+                                {item.title}
+                            </h3>
+                            <p class="text-sm text-text-secondary leading-relaxed">
+                                {item.text}
+                            </p>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-page">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="max-w-3xl mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    FAQs
+                </p>
+                <h2 class="font-display text-3xl md:text-4xl leading-tight mb-4">
+                    Questions We Hear About Aluminium Screens
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                    These are the common questions people ask when choosing
+                    between screen types for their home or project.
+                </p>
+            </div>
+            <div class="grid gap-6">
+                {
+                    screenFaqs.map(faq => (
+                        <article class="p-8 bg-white border border-divider">
+                            <h3 class="font-display text-xl mb-3">
+                                {faq.question}
+                            </h3>
+                            <p class="text-sm text-text-secondary leading-relaxed">
+                                {faq.answer}
+                            </p>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <CtaSection
+        tag="Get Started"
+        title="Ready to Screen Your Home?"
+        text="Get your free consultation and quote today. Let us fit the right screens to your windows and doors."
+        primaryHref={company.phoneHref}
+        primaryLabel={`Call ${company.phoneDisplay}`}
+        secondaryHref="/quote"
+        secondaryLabel="Request a Quote"
+    />
+</Layout>

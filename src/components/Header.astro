@@ -3,12 +3,13 @@ import {
     company,
     doorProducts,
     getProductHref,
+    screenProducts,
     windowProducts,
 } from "../data/site";
 import Logo from "./Logo.astro";
 
 type Props = {
-    activeNav?: "home" | "windows" | "doors" | "about" | "contact" | "blog";
+    activeNav?: "home" | "windows" | "doors" | "screens" | "about" | "contact" | "blog";
 };
 
 const { activeNav } = Astro.props;
@@ -103,6 +104,48 @@ const { activeNav } = Astro.props;
                         >
                         {
                             doorProducts.map(p => (
+                                <a
+                                    href={getProductHref(p.slug)}
+                                    class="block px-5 py-2 text-xs text-white/50 hover:text-white hover:bg-white/5"
+                                >
+                                    {p.title}
+                                </a>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative">
+                <a
+                    href="/screens"
+                    class:list={[
+                        "text-xs font-medium tracking-widest uppercase transition-colors flex items-center gap-1",
+                        activeNav === "screens"
+                            ? "text-white"
+                            : "text-white/60 hover:text-white",
+                    ]}
+                >
+                    Screens
+                    <svg
+                        class="size-2.5 stroke-current fill-none stroke-2 transition-transform group-hover:rotate-180"
+                        viewBox="0 0 24 24"
+                        ><polyline points="6 9 12 15 18 9"></polyline></svg
+                    >
+                </a>
+                <div
+                    class="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
+                >
+                    <div
+                        class="bg-[rgba(10,10,10,0.97)] backdrop-blur-xl border border-white/10 min-w-52 py-2"
+                    >
+                        <a
+                            href="/screens"
+                            class="block px-5 py-2 text-xs text-white/50 hover:text-white hover:bg-white/5"
+                            >All Screens</a
+                        >
+                        {
+                            screenProducts.map(p => (
                                 <a
                                     href={getProductHref(p.slug)}
                                     class="block px-5 py-2 text-xs text-white/50 hover:text-white hover:bg-white/5"
@@ -240,6 +283,38 @@ const { activeNav } = Astro.props;
                 >
                 {
                     doorProducts.map(p => (
+                        <a
+                            href={getProductHref(p.slug)}
+                            class="block py-2 text-sm text-white/50 hover:text-white"
+                        >
+                            {p.title}
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+        <div>
+            <button
+                type="button"
+                class="flex justify-between items-center w-full py-3 text-sm text-white/70 border-b border-white/5 uppercase tracking-wide"
+                data-dropdown-toggle
+                aria-expanded="false"
+            >
+                Screens
+                <svg
+                    class="size-3 stroke-current fill-none stroke-2"
+                    viewBox="0 0 24 24"
+                    ><polyline points="6 9 12 15 18 9"></polyline></svg
+                >
+            </button>
+            <div class="hidden pl-4 pb-2">
+                <a
+                    href="/screens"
+                    class="block py-2 text-sm text-white/50 hover:text-white"
+                    >All Screens</a
+                >
+                {
+                    screenProducts.map(p => (
                         <a
                             href={getProductHref(p.slug)}
                             class="block py-2 text-sm text-white/50 hover:text-white"
