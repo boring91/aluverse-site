@@ -5,6 +5,7 @@ import Layout from "../layouts/Layout.astro";
 import ProductCard from "../components/ProductCard.astro";
 import SocialSection from "../components/SocialSection.astro";
 import StatsBar from "../components/StatsBar.astro";
+import { ContactForm } from "../components/ContactForm";
 import { pageImages, productImages } from "../assets/images";
 import {
     company,
@@ -91,44 +92,56 @@ const homeSchema = [
             class="h-full w-full object-cover"
         />
         <div
-            class="absolute inset-0 bg-linear-to-r from-black/85 via-black/60 to-black/30"
+            class="absolute inset-0 bg-linear-to-r from-black/85 via-black/65 to-black/55"
         >
         </div>
-        <div class="max-w-7xl mx-auto px-6 py-20 w-full relative z-10 text-shadow-hero">
-            <p
-                class="text-xs font-semibold tracking-widest uppercase text-anodise mb-6"
-            >
-                Sydney's Premium Choice
-            </p>
-            <h1
-                class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.08] mb-6 max-w-3xl"
-            >
-                Premium Aluminium <em class="not-italic text-anodise"
-                    >Windows, Doors & Screens</em
+        <div class="max-w-7xl mx-auto px-6 py-12 lg:py-20 w-full relative z-10 flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">
+            <div class="flex-1 text-shadow-hero">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-anodise mb-6"
                 >
-            </h1>
-            <p class="text-lg text-white/90 leading-relaxed max-w-lg mb-10">
-                Meticulously crafted aluminium doors and windows solutions for
-                Sydney homes. Where architectural precision meets enduring
-                quality.
-            </p>
-            <div class="flex flex-wrap gap-4">
-                <a
-                    href={company.phoneHref}
-                    class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase bg-white text-dark hover:bg-anodise hover:text-dark transition-colors inline-flex items-center gap-2"
+                    Sydney's Premium Choice
+                </p>
+                <h1
+                    class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.08] mb-6"
                 >
-                    Call Now
-                    <svg
-                        viewBox="0 0 24 24"
-                        class="size-4 stroke-current fill-none stroke-2"
-                        ><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg
+                    Premium Aluminium <em class="not-italic text-anodise"
+                        >Windows, Doors & Screens</em
                     >
-                </a>
-                <a
-                    href="/contact"
-                    class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase border border-white/60 hover:border-white hover:bg-white/15 transition-all"
-                    >Get Free Quote</a
-                >
+                </h1>
+                <p class="text-lg text-white/90 leading-relaxed max-w-lg mb-10">
+                    Meticulously crafted aluminium doors and windows solutions for
+                    Sydney homes. Where architectural precision meets enduring
+                    quality.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a
+                        href={company.phoneHref}
+                        class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase bg-white text-dark hover:bg-anodise hover:text-dark transition-colors inline-flex items-center gap-2"
+                    >
+                        Call Now
+                        <svg
+                            viewBox="0 0 24 24"
+                            class="size-4 stroke-current fill-none stroke-2"
+                            ><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg
+                        >
+                    </a>
+                    <a
+                        href="/contact"
+                        class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase border border-white/60 hover:border-white hover:bg-white/15 transition-all"
+                        >Get Free Quote</a
+                    >
+                </div>
+            </div>
+            <div class="w-full lg:w-[440px] lg:shrink-0">
+                <div class="hero-form-card relative p-5 md:p-7 bg-white/6 backdrop-blur-2xl border border-white/12 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+                    <div class="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-anodise/50 to-transparent"></div>
+                    <div class="mb-5">
+                        <h2 class="font-display text-2xl text-white">Get a Free Quote</h2>
+                        <p class="text-sm text-white/50 mt-1.5">Tell us about your project — we'll respond within 24 hours</p>
+                    </div>
+                    <ContactForm client:visible />
+                </div>
             </div>
         </div>
     </section>
@@ -604,3 +617,44 @@ const homeSchema = [
     <!-- Social -->
     <SocialSection />
 </Layout>
+
+<style is:global>
+    .hero-form-card label {
+        color: rgba(255, 255, 255, 0.55) !important;
+    }
+    .hero-form-card input,
+    .hero-form-card select,
+    .hero-form-card textarea {
+        background: rgba(255, 255, 255, 0.07) !important;
+        border-color: rgba(255, 255, 255, 0.12) !important;
+        color: white !important;
+    }
+    .hero-form-card input::placeholder,
+    .hero-form-card textarea::placeholder {
+        color: rgba(255, 255, 255, 0.3) !important;
+    }
+    .hero-form-card input:focus,
+    .hero-form-card select:focus,
+    .hero-form-card textarea:focus {
+        border-color: rgba(181, 185, 189, 0.6) !important;
+    }
+    .hero-form-card .border-rose-500 {
+        border-color: rgb(244, 63, 94) !important;
+    }
+    .hero-form-card select option {
+        background: #1a1a1a;
+        color: white;
+    }
+    .hero-form-card button[type="submit"] {
+        background: white !important;
+        color: var(--color-accent) !important;
+    }
+    .hero-form-card button[type="submit"]:hover:not(:disabled) {
+        background: var(--color-anodise) !important;
+        color: var(--color-dark) !important;
+    }
+    .hero-form-card button[type="submit"]:disabled {
+        background: rgba(255, 255, 255, 0.2) !important;
+        color: rgba(255, 255, 255, 0.6) !important;
+    }
+</style>
