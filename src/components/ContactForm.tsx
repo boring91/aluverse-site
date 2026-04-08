@@ -323,7 +323,7 @@ function Component() {
             />
 
             {/* Recaptcha */}
-            <div className="mt-5 min-h-5">
+            <div className="mt-5 min-h-5 empty:hidden">
                 {recaptchaError && (
                     <p className="mt-1 text-xs text-rose-500 text-center">
                         Security verification failed. Please try again.
