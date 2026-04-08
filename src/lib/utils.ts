@@ -18,7 +18,6 @@ export const contactSchema = z.object({
     message: z
         .string()
         .min(10, { error: "Message should have at least 10 characters" }),
-    recaptcha: z.string().min(1, { error: "Recaptcha field is required" }),
 });
 
 export const quoteSchema = z.object({
@@ -30,5 +29,4 @@ export const quoteSchema = z.object({
     interest: z.enum(services.map(x => x.id)),
     timeframe: z.enum(timeframes.map(x => x.id)),
     socialMedia: z.enum(socialMedia.map(x => x.id)).or(z.literal("")),
-    recaptcha: z.string().min(1),
 });

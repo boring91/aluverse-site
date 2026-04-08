@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import z from "zod";
 import { quoteSchema } from "../../lib/utils";
 import { RESEND_API_KEY, INFO_EMAIL_ADDRESS } from "astro:env/server";
 import { Resend } from "resend";
@@ -15,8 +16,15 @@ export const prerender = false;
 
 export const POST = (async ({ request }) => {
     const body = await request.json();
+    const hostHeader = request.headers.get("x-forwarded-host") ?? request.headers.get("host") ?? "";
+    const userIpAddress =
+        request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "";
+    const userAgent = request.headers.get("user-agent") ?? "";
+    const requestSchema = quoteSchema.safeExtend({
+        recaptcha: z.string().min(1, { error: "Recaptcha field is required" }),
+    });
 
-    const { data, error: parseError } = quoteSchema.safeParse(body);
+    const { data, error: parseError } = requestSchema.safeParse(body);
 
     if (parseError) {
         return new Response(JSON.stringify({ error: parseError.issues }), {
@@ -24,7 +32,13 @@ export const POST = (async ({ request }) => {
         });
     }
 
-    const recaptchaResult = await verifyRecaptcha(data.recaptcha);
+    const recaptchaResult = await verifyRecaptcha({
+        expectedAction: "quote_form_submit",
+        expectedHostname: hostHeader,
+        token: data.recaptcha,
+        userAgent,
+        userIpAddress,
+    });
     if (!recaptchaResult) {
         return new Response(JSON.stringify({ error: "Invalid recaptcha" }), {
             status: 423,

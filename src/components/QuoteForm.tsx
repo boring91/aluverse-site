@@ -1,7 +1,7 @@
 import { useForm } from "@tanstack/react-form";
 import { quoteSchema } from "../lib/utils";
 import { useMutation } from "@tanstack/react-query";
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import type z from "zod";
 import {
     company,
@@ -12,19 +12,20 @@ import {
     timeframes,
 } from "../data/site";
 import { ReactProviders } from "./ReactProviders";
-import ReCAPTCHAModule from "react-google-recaptcha";
-import type ReCAPTCHA from "react-google-recaptcha";
-
-// CJS/ESM interop: the module may resolve as { default: Component } during SSR
-const ReCAPTCHAField =
-    (ReCAPTCHAModule as unknown as { default: typeof ReCAPTCHAModule })
-        .default ?? ReCAPTCHAModule;
+import { executeRecaptcha, loadRecaptchaEnterprise } from "../lib/recaptcha-client";
 
 type SchemaType = z.infer<typeof quoteSchema>;
+type SubmitPayload = SchemaType & {
+    recaptcha: string;
+};
+
+const recaptchaAction = "quote_form_submit";
+const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
 
 function Component() {
+    const [recaptchaError, setRecaptchaError] = useState(false);
     const { mutate, isPending, isSuccess, isError, reset } = useMutation({
-        mutationFn: async (data: SchemaType) => {
+        mutationFn: async (data: SubmitPayload) => {
             const res = await fetch("/api/send-quote", {
                 method: "POST",
                 body: JSON.stringify(data),
@@ -36,22 +37,24 @@ function Component() {
 
         onSuccess: () => {
             form.reset();
-            recaptchaRef.current?.reset();
+            setRecaptchaError(false);
 
-            window.dataLayer?.push({
+            globalThis.dataLayer?.push({
                 event: "form_submission_success",
                 form_type: "quote",
             });
         },
     });
 
-    const recaptchaRef = useRef<ReCAPTCHA>(null);
-
     useEffect(() => {
         if (!isSuccess) return;
         const timer = setTimeout(() => reset(), 5000);
         return () => clearTimeout(timer);
     }, [isSuccess, reset]);
+
+    useEffect(() => {
+        void loadRecaptchaEnterprise(recaptchaSiteKey);
+    }, []);
 
     const form = useForm({
         defaultValues: {
@@ -63,7 +66,6 @@ function Component() {
             interest: "" as SchemaType["interest"],
             timeframe: "" as SchemaType["timeframe"],
             socialMedia: "" as SchemaType["socialMedia"],
-            recaptcha: "",
         },
 
         validators: {
@@ -71,16 +73,28 @@ function Component() {
         },
 
         onSubmit: async ({ value }) => {
-            mutate(value);
+            try {
+                const token = await executeRecaptcha(
+                    recaptchaSiteKey,
+                    recaptchaAction
+                );
+                setRecaptchaError(false);
+                mutate({
+                    ...value,
+                    recaptcha: token,
+                });
+            } catch {
+                setRecaptchaError(true);
+            }
         },
     });
 
     return (
         <form
-            onSubmit={e => {
+            onSubmit={async e => {
                 e.preventDefault();
                 e.stopPropagation();
-                form.handleSubmit();
+                await form.handleSubmit();
             }}
             data-static-form
         >
@@ -482,31 +496,13 @@ function Component() {
             />
 
             {/* Recaptcha */}
-            <form.Field
-                name="recaptcha"
-                children={field => {
-                    return (
-                        <div className="mt-5">
-                            <ReCAPTCHAField
-                                ref={recaptchaRef}
-                                className="flex justify-center items-center"
-                                sitekey={
-                                    import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY
-                                }
-                                onChange={token =>
-                                    field.handleChange(token ?? "")
-                                }
-                            />
-                            {!field.state.meta.isValid &&
-                                field.form.state.submissionAttempts > 0 && (
-                                    <p className="mt-1 text-xs text-rose-500 text-center">
-                                        {field.state.meta.errors[0]?.message}
-                                    </p>
-                                )}
-                        </div>
-                    );
-                }}
-            />
+            <div className="mt-5 min-h-5">
+                {recaptchaError && (
+                    <p className="mt-1 text-xs text-rose-500 text-center">
+                        Security verification failed. Please try again.
+                    </p>
+                )}
+            </div>
 
             {(isSuccess || isError) && (
                 <div
@@ -607,6 +603,28 @@ function Component() {
                 )}
                 {isPending ? "Submitting..." : "Submit Quote Request"}
             </button>
+
+            <p className="mt-4 text-[11px] leading-relaxed text-center text-text-muted">
+                This site is protected by reCAPTCHA and the Google{" "}
+                <a
+                    href="https://policies.google.com/privacy"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline underline-offset-2 hover:text-text-primary transition-colors"
+                >
+                    Privacy Policy
+                </a>{" "}
+                and{" "}
+                <a
+                    href="https://policies.google.com/terms"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline underline-offset-2 hover:text-text-primary transition-colors"
+                >
+                    Terms of Service
+                </a>{" "}
+                apply.
+            </p>
 
             <style>{`
                 @keyframes quoteFeedbackIn {

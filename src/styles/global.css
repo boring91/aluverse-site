@@ -99,3 +99,7 @@
 	--font-display: 'DM Serif Text', Georgia, serif;
 	--font-body: 'Manrope', sans-serif;
 }
+
+.grecaptcha-badge {
+	visibility: hidden;
+}

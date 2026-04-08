@@ -30,7 +30,17 @@ export default defineConfig({
                 access: "public",
             }),
 
-            RECAPTCHA_SECRET_KEY: envField.string({
+            RECAPTCHA_SITE_KEY: envField.string({
+                context: "server",
+                access: "secret",
+            }),
+
+            RECAPTCHA_PROJECT_ID: envField.string({
+                context: "server",
+                access: "secret",
+            }),
+
+            RECAPTCHA_API_KEY: envField.string({
                 context: "server",
                 access: "secret",
             }),
