@@ -190,6 +190,21 @@ type ArticleSchemaConfig = {
     imageUrl?: string;
 };
 
+type ServiceProperty = {
+    name: string;
+    value: string;
+};
+
+type ServiceSchemaConfig = {
+    name: string;
+    description: string;
+    canonicalUrl: string;
+    serviceType: string;
+    category: string;
+    imageUrl?: string;
+    additionalProperties?: ServiceProperty[];
+};
+
 export const getArticleSchema = ({
     title,
     description,
@@ -215,4 +230,40 @@ export const getArticleSchema = ({
             "@id": websiteId,
         },
         inLanguage: "en-AU",
+    } satisfies JsonLdObject);
+
+export const getServiceSchema = ({
+    name,
+    description,
+    canonicalUrl,
+    serviceType,
+    category,
+    imageUrl = defaultImageUrl,
+    additionalProperties = [],
+}: ServiceSchemaConfig) =>
+    ({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name,
+        description,
+        url: canonicalUrl,
+        image: imageUrl,
+        category,
+        serviceType,
+        areaServed: {
+            "@type": "City",
+            name: company.location,
+        },
+        provider: {
+            "@id": businessId,
+        },
+        brand: {
+            "@type": "Brand",
+            name: company.name,
+        },
+        additionalProperty: additionalProperties.map(property => ({
+            "@type": "PropertyValue",
+            name: property.name,
+            value: property.value,
+        })),
     } satisfies JsonLdObject);

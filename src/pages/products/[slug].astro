@@ -10,6 +10,7 @@ import {
     createAbsoluteImageUrl,
     getBreadcrumbSchema,
     getFaqSchema,
+    getServiceSchema,
 } from "../../lib/seo";
 
 export function getStaticPaths() {
@@ -35,33 +36,24 @@ const relatedHeading = categoryMap[product.category].related;
 const detailImageWidths = [480, 768, 960, 1280];
 const detailImageQuality = 62;
 const productPath = `/products/${product.slug}`;
-const productSchema = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: product.title,
+const productCategory =
+    product.category === "windows"
+        ? "Custom Aluminium Windows"
+        : product.category === "doors"
+          ? "Custom Aluminium Doors"
+          : "Custom Aluminium Screens";
+const productSchema = getServiceSchema({
+    name: `${product.title} by ${company.name}`,
     description: product.metaDescription,
-    image: createAbsoluteImageUrl(product.heroImage),
-    url: createAbsoluteUrl(productPath),
-    brand: {
-        "@type": "Brand",
-        name: company.name,
-    },
-    manufacturer: {
-        "@type": "Organization",
-        name: company.name,
-    },
-    category:
-        product.category === "windows"
-            ? "Aluminium Windows"
-            : product.category === "doors"
-              ? "Aluminium Doors"
-              : "Aluminium Screens",
-    additionalProperty: product.specs.map(spec => ({
-        "@type": "PropertyValue",
+    canonicalUrl: createAbsoluteUrl(productPath),
+    imageUrl: createAbsoluteImageUrl(product.heroImage),
+    serviceType: product.title,
+    category: productCategory,
+    additionalProperties: product.specs.map(spec => ({
         name: spec.label,
         value: spec.value,
     })),
-};
+});
 const productPageSchema = [
     getBreadcrumbSchema(
         [
