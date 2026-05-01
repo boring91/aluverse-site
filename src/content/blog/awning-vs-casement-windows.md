@@ -131,4 +131,4 @@ The choice between awning and casement windows comes down to what matters most i
 
 For most Sydney homes, a combination of both types across different rooms delivers the best result.
 
-If you need help deciding which window types suit your project, [contact Aluverse](/contact) for a free consultation or [request a quote](/quote) with your project details. Every window is custom fabricated to suit the opening, so you are not locked into a one-size-fits-all approach.
+If you need help deciding which window types suit your project, [request a quote](/quote) with your project details. Every window is custom fabricated to suit the opening, so you are not locked into a one-size-fits-all approach.

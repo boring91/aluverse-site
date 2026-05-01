@@ -3,13 +3,7 @@ import z from "zod";
 import { quoteSchema } from "../../lib/utils";
 import { RESEND_API_KEY, INFO_EMAIL_ADDRESS } from "astro:env/server";
 import { Resend } from "resend";
-import {
-    contactPreferences,
-    propertyTypes,
-    services,
-    socialMedia,
-    timeframes,
-} from "../../data/site";
+import { propertyTypes, services, timeframes } from "../../data/site";
 import { verifyRecaptcha } from "../../lib/recaptcha";
 
 export const prerender = false;
@@ -57,16 +51,13 @@ export const POST = (async ({ request }) => {
         <p>Property type: ${
             propertyTypes.find(x => x.id === data.propertyType)!.label
         }</p>
-        <p>Contact preference: ${
-            contactPreferences.find(x => x.id === data.contactPreference)!.label
-        }</p>
         <p>Interest: ${services.find(x => x.id === data.interest)!.label}</p>
         <p>Timeframe: ${
             timeframes.find(x => x.id === data.timeframe)!.label
         }</p>
-        <p>Social media: ${
-            socialMedia.find(x => x.id === data.socialMedia)?.label ?? "N/A"
-        }</p>
+        <br>
+        <p>Details:</p>
+        <p>${data.details ? data.details : "N/A"}</p>
         `,
     });
 

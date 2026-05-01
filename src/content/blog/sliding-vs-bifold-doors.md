@@ -99,4 +99,4 @@ Yes, and many Sydney homes do. A common approach is to use bi-fold doors on the 
 
 The best door choice depends on the specific opening, the surrounding layout, how the space is used, and the overall design of the project. At Aluverse, every door is custom fabricated to suit the opening dimensions, so there is no need to compromise on size, configuration, or finish regardless of which type you choose.
 
-If you are planning a project in Sydney and want help deciding between sliding and bi-fold doors, [get in touch](/contact) for a free consultation or [request a quote](/quote) to get started.
+If you are planning a project in Sydney and want help deciding between sliding and bi-fold doors, [request a quote](/quote) to get started.

@@ -136,4 +136,4 @@ For large projects, the relationship with the window supplier is as important as
 
 ## Getting Started
 
-If you are planning a large residential project in Sydney and need aluminium windows fabricated to your specifications, [contact Aluverse](/contact) to discuss your requirements or [request a quote](/quote) with your project details. The earlier the conversation starts, the smoother the process will be.
+If you are planning a large residential project in Sydney and need aluminium windows fabricated to your specifications, [request a quote](/quote) with your project details. The earlier the conversation starts, the smoother the process will be.

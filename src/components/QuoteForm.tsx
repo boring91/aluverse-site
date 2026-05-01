@@ -5,10 +5,8 @@ import { useEffect, useState } from "react";
 import type z from "zod";
 import {
     company,
-    contactPreferences,
     propertyTypes,
     services,
-    socialMedia,
     timeframes,
 } from "../data/site";
 import { ReactProviders } from "./ReactProviders";
@@ -62,10 +60,9 @@ function Component() {
             phone: "",
             email: "",
             propertyType: "" as SchemaType["propertyType"],
-            contactPreference: "" as SchemaType["contactPreference"],
             interest: "" as SchemaType["interest"],
             timeframe: "" as SchemaType["timeframe"],
-            socialMedia: "" as SchemaType["socialMedia"],
+            details: "",
         },
 
         validators: {
@@ -237,121 +234,58 @@ function Component() {
                 }}
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
-                {/* Property Type */}
-                <form.Field
-                    name="propertyType"
-                    children={field => {
-                        return (
-                            <div>
-                                <label
-                                    htmlFor={field.name}
-                                    className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
-                                >
-                                    Property Type*
-                                </label>
-                                <select
-                                    id={field.name}
-                                    name={field.name}
-                                    value={field.state.value}
-                                    onChange={e =>
-                                        field.handleChange(
-                                            e.target
-                                                .value as SchemaType["propertyType"]
-                                        )
-                                    }
-                                    onBlur={field.handleBlur}
-                                    className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors ${
-                                        !field.state.meta.isValid &&
-                                        (field.state.meta.isBlurred ||
-                                            field.form.state
-                                                .submissionAttempts > 0)
-                                            ? "border-rose-500"
-                                            : ""
-                                    }`}
-                                >
-                                    <option value="" disabled>
-                                        Select property type
-                                    </option>
-                                    {propertyTypes.map(x => (
-                                        <option key={x.id} value={x.id}>
-                                            {x.label}
-                                        </option>
-                                    ))}
-                                </select>
-                                {!field.state.meta.isValid &&
+            {/* Property Type */}
+            <form.Field
+                name="propertyType"
+                children={field => {
+                    return (
+                        <div className="mt-5">
+                            <label
+                                htmlFor={field.name}
+                                className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
+                            >
+                                Property Type*
+                            </label>
+                            <select
+                                id={field.name}
+                                name={field.name}
+                                value={field.state.value}
+                                onChange={e =>
+                                    field.handleChange(
+                                        e.target
+                                            .value as SchemaType["propertyType"]
+                                    )
+                                }
+                                onBlur={field.handleBlur}
+                                className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors ${
+                                    !field.state.meta.isValid &&
                                     (field.state.meta.isBlurred ||
-                                        field.form.state.submissionAttempts >
-                                            0) && (
-                                        <p className="mt-1 text-xs text-rose-500">
-                                            {
-                                                field.state.meta.errors[0]
-                                                    ?.message
-                                            }
-                                        </p>
-                                    )}
-                            </div>
-                        );
-                    }}
-                />
-
-                {/* Contact Preference */}
-                <form.Field
-                    name="contactPreference"
-                    children={field => {
-                        return (
-                            <div>
-                                <label
-                                    htmlFor={field.name}
-                                    className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
-                                >
-                                    Preferred Contact Method*
-                                </label>
-                                <select
-                                    id={field.name}
-                                    name={field.name}
-                                    value={field.state.value}
-                                    onChange={e =>
-                                        field.handleChange(
-                                            e.target
-                                                .value as SchemaType["contactPreference"]
-                                        )
-                                    }
-                                    onBlur={field.handleBlur}
-                                    className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors ${
-                                        !field.state.meta.isValid &&
-                                        (field.state.meta.isBlurred ||
-                                            field.form.state
-                                                .submissionAttempts > 0)
-                                            ? "border-rose-500"
-                                            : ""
-                                    }`}
-                                >
-                                    <option value="" disabled>
-                                        Select preference
+                                        field.form.state.submissionAttempts > 0)
+                                        ? "border-rose-500"
+                                        : ""
+                                }`}
+                            >
+                                <option value="" disabled>
+                                    Select property type
+                                </option>
+                                {propertyTypes.map(x => (
+                                    <option key={x.id} value={x.id}>
+                                        {x.label}
                                     </option>
-                                    {contactPreferences.map(x => (
-                                        <option key={x.id} value={x.id}>
-                                            {x.label}
-                                        </option>
-                                    ))}
-                                </select>
-                                {!field.state.meta.isValid &&
-                                    (field.state.meta.isBlurred ||
-                                        field.form.state.submissionAttempts >
-                                            0) && (
-                                        <p className="mt-1 text-xs text-rose-500">
-                                            {
-                                                field.state.meta.errors[0]
-                                                    ?.message
-                                            }
-                                        </p>
-                                    )}
-                            </div>
-                        );
-                    }}
-                />
-            </div>
+                                ))}
+                            </select>
+                            {!field.state.meta.isValid &&
+                                (field.state.meta.isBlurred ||
+                                    field.form.state.submissionAttempts >
+                                        0) && (
+                                    <p className="mt-1 text-xs text-rose-500">
+                                        {field.state.meta.errors[0]?.message}
+                                    </p>
+                                )}
+                        </div>
+                    );
+                }}
+            />
 
             {/* Product Interest */}
             <form.Field
@@ -458,9 +392,9 @@ function Component() {
                 }}
             />
 
-            {/* How Did You Hear About Us */}
+            {/* Project details */}
             <form.Field
-                name="socialMedia"
+                name="details"
                 children={field => {
                     return (
                         <div className="mt-5">
@@ -468,28 +402,19 @@ function Component() {
                                 htmlFor={field.name}
                                 className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
                             >
-                                How Did You Hear About Us?
+                                Project Details
                             </label>
-                            <select
+                            <textarea
                                 id={field.name}
                                 name={field.name}
                                 value={field.state.value}
                                 onChange={e =>
-                                    field.handleChange(
-                                        e.target
-                                            .value as SchemaType["socialMedia"]
-                                    )
+                                    field.handleChange(e.target.value)
                                 }
                                 onBlur={field.handleBlur}
-                                className="w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors"
-                            >
-                                <option value="">Select an option</option>
-                                {socialMedia.map(x => (
-                                    <option key={x.id} value={x.id}>
-                                        {x.label}
-                                    </option>
-                                ))}
-                            </select>
+                                placeholder="Tell us about your project: sizes, quantities, finishes, timing, or anything else that helps us prepare your quote..."
+                                className="w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors h-32 resize-y"
+                            />
                         </div>
                     );
                 }}

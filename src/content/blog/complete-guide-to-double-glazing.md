@@ -126,4 +126,4 @@ For larger projects and developments, the per-unit cost of double glazing typica
 
 The best approach is to assess each window in your project individually. Consider the orientation, the noise environment, how the room is used, and whether thermal comfort is currently an issue.
 
-For a free assessment and quote on double glazed aluminium windows for your Sydney home or development, [contact Aluverse](/contact) or [request a quote](/quote). Every window is custom fabricated, so your double glazing solution will be tailored to the specific needs of your project.
+For a free assessment and quote on double glazed aluminium windows for your Sydney home or development, [request a quote](/quote). Every window is custom fabricated, so your double glazing solution will be tailored to the specific needs of your project.

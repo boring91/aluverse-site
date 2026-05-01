@@ -5,7 +5,7 @@ import Layout from "../layouts/Layout.astro";
 import ProductCard from "../components/ProductCard.astro";
 import SocialSection from "../components/SocialSection.astro";
 import StatsBar from "../components/StatsBar.astro";
-import { ContactForm } from "../components/ContactForm";
+import { QuoteForm } from "../components/QuoteForm";
 import { pageImages, productImages } from "../assets/images";
 import {
     company,
@@ -138,7 +138,7 @@ const homeSchema = [
                         >
                     </a>
                     <a
-                        href="/contact"
+                        href="/quote"
                         class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase border border-white/60 hover:border-white hover:bg-white/15 transition-all"
                         >Get Free Quote</a
                     >
@@ -151,7 +151,7 @@ const homeSchema = [
                         <h2 class="font-display text-2xl text-white">Get a Free Quote</h2>
                         <p class="text-sm text-white/50 mt-1.5">Tell us about your project; we'll respond within 24 hours</p>
                     </div>
-                    <ContactForm client:visible />
+                    <QuoteForm client:visible />
                 </div>
             </div>
         </div>

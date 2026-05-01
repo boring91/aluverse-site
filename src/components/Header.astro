@@ -10,7 +10,7 @@ import {
 import Logo from "./Logo.astro";
 
 type Props = {
-    activeNav?: "home" | "windows" | "doors" | "screens" | "facades" | "about" | "contact" | "blog";
+    activeNav?: "home" | "windows" | "doors" | "screens" | "facades" | "about" | "blog";
 };
 
 const facadeProduct = facadeProducts[0];
@@ -187,15 +187,6 @@ const { activeNav } = Astro.props;
                 ]}>About</a
             >
             <a
-                href="/contact"
-                class:list={[
-                    "text-xs font-medium tracking-widest uppercase transition-colors",
-                    activeNav === "contact"
-                        ? "text-white"
-                        : "text-white/60 hover:text-white",
-                ]}>Contact</a
-            >
-            <a
                 href="/blog"
                 class:list={[
                     "text-xs font-medium tracking-widest uppercase transition-colors",
@@ -358,11 +349,6 @@ const { activeNav } = Astro.props;
             href="/about"
             class="block py-3 text-sm text-white/70 border-b border-white/5 uppercase tracking-wide"
             >About</a
-        >
-        <a
-            href="/contact"
-            class="block py-3 text-sm text-white/70 border-b border-white/5 uppercase tracking-wide"
-            >Contact</a
         >
         <a
             href="/blog"

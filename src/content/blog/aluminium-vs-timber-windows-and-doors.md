@@ -149,4 +149,4 @@ Some manufacturers offer composite or hybrid systems that combine a timber inter
 
 For most Sydney homes and developments, aluminium offers the strongest combination of durability, low maintenance, design flexibility, and value. Timber has genuine appeal for heritage properties and design-focused homes where maintenance is not a concern, but the practical advantages of aluminium make it the default choice for the majority of projects.
 
-If you are weighing up your options for a new build, renovation, or development in Sydney, [contact Aluverse](/contact) to discuss your project or [request a quote](/quote) for custom aluminium windows and doors fabricated to your specifications.
+If you are weighing up your options for a new build, renovation, or development in Sydney, [request a quote](/quote) for custom aluminium windows and doors fabricated to your specifications.
