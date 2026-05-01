@@ -1,0 +1,378 @@
+---
+import { Image, Picture } from "astro:assets";
+import AdLayout from "../../layouts/AdLayout.astro";
+import AdSharedSections from "../../components/AdSharedSections.astro";
+import StatsBar from "../../components/StatsBar.astro";
+import { QuoteForm } from "../../components/QuoteForm";
+import { productImages } from "../../assets/images";
+import { company, getProductBySlug } from "../../data/site";
+import { getFaqSchema } from "../../lib/seo";
+
+const product = getProductBySlug("aluminium-facade-systems");
+if (!product) throw new Error("aluminium-facade-systems product missing");
+
+const heroWidths = [768, 1024, 1440, 1920];
+const featureImageWidths = [480, 768, 960, 1280];
+const heroQuality = 66;
+const featureImageQuality = 62;
+
+const adFaqs = product.seoFaqs;
+const adSchema = [getFaqSchema([...adFaqs])];
+
+const whyItems = [
+    {
+        title: "Curtain Wall & Structural Glazing",
+        text: "Stick-built and unitised curtain wall, captive and silicone-bonded glazing engineered to your structural grid and architect intent.",
+    },
+    {
+        title: "Thermally Broken Framing",
+        text: "Aluminium framing with thermal breaks for energy performance, condensation control, and compliance with modern building briefs.",
+    },
+    {
+        title: "Rainscreen Cladding",
+        text: "Pressure-equalised rainscreen and aluminium cladding systems detailed for water management and visual consistency across the facade.",
+    },
+    {
+        title: "AS/NZS 4284 Performance",
+        text: "Systems designed and documented to AS/NZS 4284 with structural, thermal, and weatherproofing performance verified for your project.",
+    },
+    {
+        title: "Single Point of Accountability",
+        text: "Design development, shop drawings, fabrication, and on-site installation managed by one team, coordinated with your head contractor.",
+    },
+    {
+        title: "Powder-Coat & Anodised Finishes",
+        text: "Full powder-coat colour range and anodised finish options to match the architect's palette across mid-rise and high-rise builds.",
+    },
+];
+
+const aboutBullets = [
+    "Mid-rise commercial expertise",
+    "Multi-residential developments",
+    "Architectural refurbishments",
+    "Designed to AS/NZS 4284",
+    "Coordinated with head contractor",
+    "Shop drawings & compliance docs",
+];
+---
+
+<AdLayout
+    title="Aluminium Facade Systems Sydney | Curtain Wall & Cladding | Aluverse"
+    description="Custom aluminium facade systems for Sydney commercial and architectural projects. Curtain wall, structural glazing, and rainscreen cladding engineered to AS standards by Aluverse."
+    canonical="/ads/facade"
+    ogImage={product.heroImage}
+    schema={adSchema}
+>
+    <!-- Hero -->
+    <section
+        class="min-h-[90vh] flex items-center text-white relative pt-16 overflow-hidden"
+    >
+        <Picture
+            src={product.heroImage}
+            alt="Aluminium facade system on a Sydney commercial building"
+            formats={["avif", "webp"]}
+            fallbackFormat="webp"
+            widths={heroWidths}
+            sizes="100vw"
+            quality={heroQuality}
+            loading="eager"
+            fetchpriority="high"
+            pictureAttributes={{
+                class: "absolute inset-0 block h-full w-full",
+            }}
+            class="h-full w-full object-cover"
+        />
+        <div
+            class="absolute inset-0 bg-linear-to-r from-black/85 via-black/65 to-black/55"
+        >
+        </div>
+        <div
+            class="max-w-7xl mx-auto px-6 py-12 lg:py-20 w-full relative z-10 flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16"
+        >
+            <div class="flex-1 text-shadow-hero">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-anodise mb-6"
+                >
+                    Custom Aluminium Facade Systems in Sydney
+                </p>
+                <h1
+                    class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.08] mb-6"
+                >
+                    Facade Systems <em class="not-italic text-anodise"
+                        >Engineered for Your Build</em
+                    >
+                </h1>
+                <p class="text-lg text-white/90 leading-relaxed max-w-lg mb-10">
+                    Curtain wall, structural glazing, and rainscreen cladding
+                    designed to AS/NZS 4284. One specialist team for design,
+                    shop drawings, fabrication, and install.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a
+                        href={company.phoneHref}
+                        class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase bg-white text-dark hover:bg-anodise hover:text-dark transition-colors inline-flex items-center gap-2"
+                    >
+                        Call Now
+                        <svg
+                            viewBox="0 0 24 24"
+                            class="size-4 stroke-current fill-none stroke-2"
+                            ><path
+                                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"
+                            ></path></svg
+                        >
+                    </a>
+                    <a
+                        href="#quote"
+                        class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase border border-white/60 hover:border-white hover:bg-white/15 transition-all"
+                        >Discuss a Project</a
+                    >
+                </div>
+            </div>
+            <div id="quote" class="w-full lg:w-[440px] lg:shrink-0 scroll-mt-20">
+                <div
+                    class="hero-form-card relative p-5 md:p-7 bg-white/6 backdrop-blur-2xl border border-white/12 shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+                >
+                    <div
+                        class="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-anodise/50 to-transparent"
+                    >
+                    </div>
+                    <div class="mb-5">
+                        <h2 class="font-display text-2xl text-white">
+                            Discuss Your Facade Project
+                        </h2>
+                        <p class="text-sm text-white/50 mt-1.5">
+                            Share project details; we'll respond within 24
+                            hours
+                        </p>
+                    </div>
+                    <QuoteForm client:visible />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <StatsBar />
+
+    <!-- Service detail -->
+    <section class="py-20 bg-page">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <p
+                        class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                    >
+                        Architectural Facade Solutions
+                    </p>
+                    <h2
+                        class="font-display text-3xl md:text-4xl leading-tight mb-4"
+                    >
+                        Curtain Wall, Structural Glazing & Cladding
+                    </h2>
+                    <p
+                        class="text-sm text-text-secondary leading-relaxed mb-6"
+                    >
+                        Aluverse engineers full aluminium facade envelopes for
+                        commercial, multi-residential, and architectural
+                        projects across Sydney. Stick-built and unitised
+                        curtain wall, structural silicone glazing, and
+                        rainscreen cladding are detailed to suit your
+                        structural grid and the architect's brief; with
+                        thermally broken framing, captive or silicone-bonded
+                        glazing, and powder-coat or anodised finishes. Every
+                        installation comes with shop drawings, AS/NZS
+                        performance documentation, and on-site coordination.
+                    </p>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                        {
+                            product.features.map(item => (
+                                <li class="flex items-start gap-2.5 text-sm text-text-secondary">
+                                    <svg
+                                        class="size-4 stroke-accent stroke-2 fill-none shrink-0 mt-0.5"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    {item}
+                                </li>
+                            ))
+                        }
+                    </ul>
+                    <div class="flex flex-wrap gap-4">
+                        <a
+                            href={company.phoneHref}
+                            class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase bg-accent text-white hover:bg-accent-hover transition-colors inline-flex items-center gap-2"
+                        >
+                            Call {company.phoneDisplay}
+                        </a>
+                        <a
+                            href="#quote"
+                            class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase text-accent border border-divider hover:border-accent hover:bg-accent-light transition-all"
+                        >
+                            Discuss a Project
+                        </a>
+                    </div>
+                </div>
+                <div
+                    class="aspect-6/5 overflow-hidden border-t-[3px] border-t-anodise"
+                >
+                    <Image
+                        src={productImages.aluminiumFacades.card}
+                        alt="Aluminium facade panels and curtain wall framing"
+                        widths={featureImageWidths}
+                        sizes="(min-width: 768px) calc((min(100vw, 80rem) - 7.5rem) / 2), calc(100vw - 3rem)"
+                        quality={featureImageQuality}
+                        loading="lazy"
+                        decoding="async"
+                        class="w-full h-full object-cover"
+                    />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specs -->
+    <section class="py-20 bg-alt">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-2xl mb-10">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    System Capabilities
+                </p>
+                <h2
+                    class="font-display text-3xl md:text-4xl leading-tight mb-3"
+                >
+                    Engineered to Australian Standards
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                    Each facade is engineered project-specific. Here is the
+                    technical envelope our standard facade systems work
+                    within.
+                </p>
+            </div>
+            <div
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-divider border border-divider"
+            >
+                {
+                    product.specs.map(spec => (
+                        <div class="p-6 bg-white">
+                            <p class="text-xs font-semibold tracking-widest uppercase text-text-muted mb-2">
+                                {spec.label}
+                            </p>
+                            <p class="font-display text-xl">{spec.value}</p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 bg-white border-y border-divider">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-3xl mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Common Questions
+                </p>
+                <h2
+                    class="font-display text-3xl md:text-4xl leading-tight mb-4"
+                >
+                    Aluminium Facade Systems in Sydney
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                    Practical answers to the questions architects, builders,
+                    and developers ask before specifying a facade system.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {
+                    adFaqs.map(faq => (
+                        <article class="p-8 border border-divider bg-page">
+                            <h3 class="font-display text-xl mb-3">
+                                {faq.question}
+                            </h3>
+                            <p class="text-sm text-text-secondary leading-relaxed">
+                                {faq.answer}
+                            </p>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <AdSharedSections
+        whyTag="What We Do"
+        whyTitle="Why Sydney Specifies Aluverse for Facades"
+        whyText="A specialist aluminium fabricator handling design, shop drawings, fabrication, and on-site install for facade envelopes."
+        whyItems={whyItems}
+        aboutTitle="A Decade of Architectural Aluminium Delivery"
+        aboutText="Aluverse delivers facade systems for boutique mixed-use developments through to commercial fitouts and multi-residential builds across Sydney."
+        aboutBullets={aboutBullets}
+        ctaTag="Get Started"
+        ctaTitle="Ready To Discuss Your Facade?"
+        ctaText="Share your drawings and performance brief; we'll review and quote a system tailored to your project."
+    />
+</AdLayout>
+
+<style is:global>
+    .hero-form-card label {
+        color: rgba(255, 255, 255, 0.55) !important;
+    }
+    .hero-form-card input,
+    .hero-form-card select,
+    .hero-form-card textarea {
+        background: rgba(255, 255, 255, 0.07) !important;
+        border-color: rgba(255, 255, 255, 0.12) !important;
+        color: white !important;
+    }
+    .hero-form-card select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") !important;
+        background-repeat: no-repeat !important;
+        background-position: right 1rem center !important;
+        background-size: 1rem !important;
+    }
+    .hero-form-card input::placeholder,
+    .hero-form-card textarea::placeholder {
+        color: rgba(255, 255, 255, 0.3) !important;
+    }
+    .hero-form-card input:focus,
+    .hero-form-card select:focus,
+    .hero-form-card textarea:focus {
+        border-color: rgba(181, 185, 189, 0.6) !important;
+    }
+    .hero-form-card .border-rose-500 {
+        border-color: #fda4af !important;
+    }
+    .hero-form-card select option {
+        background: #1a1a1a;
+        color: white;
+    }
+    .hero-form-card button[type="submit"] {
+        background: white !important;
+        color: var(--color-accent) !important;
+    }
+    .hero-form-card button[type="submit"]:hover:not(:disabled) {
+        background: var(--color-anodise) !important;
+        color: var(--color-dark) !important;
+    }
+    .hero-form-card button[type="submit"]:disabled {
+        background: rgba(255, 255, 255, 0.2) !important;
+        color: rgba(255, 255, 255, 0.6) !important;
+    }
+    .hero-form-card .text-rose-500 {
+        color: #fda4af !important;
+    }
+    .hero-form-card .text-text-muted {
+        color: rgba(255, 255, 255, 0.4) !important;
+    }
+    .hero-form-card a {
+        color: rgba(255, 255, 255, 0.55) !important;
+    }
+    .hero-form-card a:hover {
+        color: rgba(255, 255, 255, 0.85) !important;
+    }
+</style>
