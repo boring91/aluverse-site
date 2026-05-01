@@ -29,6 +29,7 @@ const categoryMap = {
     windows: { href: "/windows", label: "Windows", related: "Other Window Systems" },
     doors: { href: "/doors", label: "Doors", related: "Other Door Systems" },
     screens: { href: "/screens", label: "Screens", related: "Other Screen Systems" },
+    facades: { href: null, label: "Facades", related: "Pairs Well With" },
 } as const;
 const categoryHref = categoryMap[product.category].href;
 const categoryLabel = categoryMap[product.category].label;
@@ -41,7 +42,29 @@ const productCategory =
         ? "Custom Aluminium Windows"
         : product.category === "doors"
           ? "Custom Aluminium Doors"
-          : "Custom Aluminium Screens";
+          : product.category === "screens"
+            ? "Custom Aluminium Screens"
+            : "Custom Aluminium Facade Systems";
+const breadcrumbTrail = categoryHref
+    ? [
+          { label: "Home", href: "/" },
+          { label: categoryLabel, href: categoryHref },
+          { label: product.title, href: productPath },
+      ]
+    : [
+          { label: "Home", href: "/" },
+          { label: product.title, href: productPath },
+      ];
+const heroBreadcrumbs = categoryHref
+    ? [
+          { label: "Home", href: "/" },
+          { label: categoryLabel, href: categoryHref },
+          { label: product.title },
+      ]
+    : [
+          { label: "Home", href: "/" },
+          { label: product.title },
+      ];
 const productSchema = getServiceSchema({
     name: `${product.title} by ${company.name}`,
     description: product.metaDescription,
@@ -55,14 +78,7 @@ const productSchema = getServiceSchema({
     })),
 });
 const productPageSchema = [
-    getBreadcrumbSchema(
-        [
-            { label: "Home", href: "/" },
-            { label: categoryLabel, href: categoryHref },
-            { label: product.title, href: productPath },
-        ],
-        productPath
-    ),
+    getBreadcrumbSchema(breadcrumbTrail, productPath),
     productSchema,
     getFaqSchema(product.seoFaqs),
 ];
@@ -81,11 +97,7 @@ const productPageSchema = [
         image={product.heroImage}
         imageAlt={product.imageAlt}
         priority={true}
-        breadcrumbs={[
-            { label: "Home", href: "/" },
-            { label: categoryLabel, href: categoryHref },
-            { label: product.title },
-        ]}
+        breadcrumbs={heroBreadcrumbs}
     />
 
     <section class="py-20 bg-page">

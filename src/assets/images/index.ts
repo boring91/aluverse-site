@@ -1,6 +1,8 @@
 import type { ImageMetadata } from "astro";
 
 import aboutPageHero from "./about-page-hero.webp";
+import aluminiumFacadeCard from "./aluminium-facade-card.webp";
+import aluminiumFacadeHero from "./aluminium-facade-hero.webp";
 import awningWindowCard from "./awning-window-card.webp";
 import awningWindowHero from "./awning-window-hero.webp";
 import bifoldDoorCard from "./bifold-door-card.webp";
@@ -91,6 +93,10 @@ export const productImages = {
     fabricMesh: {
         card: fabricMeshCard,
         hero: fabricMeshHero,
+    },
+    aluminiumFacades: {
+        card: aluminiumFacadeCard,
+        hero: aluminiumFacadeHero,
     },
 } as const satisfies Record<string, ProductImageSet>;
 

@@ -2,7 +2,7 @@ import type { ImageMetadata } from "astro";
 
 import { productImages } from "../assets/images";
 
-export type ProductCategory = "windows" | "doors" | "screens";
+export type ProductCategory = "windows" | "doors" | "screens" | "facades";
 
 export type ProductSpec = {
     label: string;
@@ -1071,6 +1071,79 @@ export const products: Product[] = [
         ],
         related: ["stainless-steel-mesh"],
     },
+    {
+        slug: "aluminium-facade-systems",
+        category: "facades",
+        title: "Aluminium Facade Systems",
+        summary:
+            "Engineered aluminium curtain wall and cladding systems for commercial, multi-residential, and architectural projects across Sydney.",
+        metaTitle:
+            "Aluminium Facade Systems Sydney | Curtain Wall & Cladding | Aluverse",
+        metaDescription:
+            "Custom aluminium facade systems for Sydney commercial and architectural projects. Curtain wall, structural glazing, and cladding engineered to AS standards by Aluverse.",
+        cardImage: productImages.aluminiumFacades.card,
+        heroImage: productImages.aluminiumFacades.hero,
+        imageAlt: "Aluminium facade system",
+        detailDescription:
+            "Aluminium facade systems form the architectural envelope of modern commercial and multi-residential buildings, combining structural performance with the visual language of contemporary Sydney design. Aluverse fabricates curtain wall, structural glazing, and rainscreen cladding systems engineered to handle wind loads, thermal movement, and water penetration across mid-rise and high-rise applications. Each system is detailed to suit the project's structural grid, with thermally broken framing, captive or silicone-bonded glazing, and powder-coat or anodised finishes specified to architect intent. Because facade work sits at the intersection of architecture, structure, and building services, every installation is documented with shop drawings, AS/NZS-compliant performance data, and on-site coordination with the head contractor. From boutique mixed-use developments in the inner suburbs through to commercial fitouts and refurbishments, our facade division delivers a single point of accountability for design, fabrication, and installation.",
+        idealFor: [
+            "Mid-rise commercial and mixed-use developments where the facade defines the building's identity and must meet wind, water, and thermal performance to AS/NZS 4284.",
+            "Multi-residential apartment projects requiring thermally broken curtain wall, balcony glazing, and consistent powder-coat finishes across multiple levels.",
+            "Architectural refurbishments and re-cladding projects where an existing facade is being upgraded for compliance, energy performance, or visual refresh.",
+        ],
+        features: [
+            "Stick-built and unitised curtain wall options",
+            "Thermally broken aluminium framing",
+            "Structural silicone and captive glazing details",
+            "Rainscreen and pressure-equalised cladding systems",
+            "Powder-coat and anodised finish range",
+            "Shop drawings and AS/NZS performance documentation",
+            "Coordinated on-site installation with head contractors",
+        ],
+        specs: [
+            { label: "System Types", value: "Curtain wall, structural glazing, rainscreen cladding" },
+            { label: "Framing", value: "Thermally broken aluminium" },
+            { label: "Glazing", value: "Double or triple glazed IGUs" },
+            { label: "Performance", value: "Designed to AS/NZS 4284" },
+            { label: "Finish", value: "Powder-coat or anodised" },
+            { label: "Project Scale", value: "Commercial & multi-residential" },
+            { label: "Documentation", value: "Shop drawings & compliance data" },
+            { label: "Lead Time", value: "Project specific; quoted on enquiry" },
+        ],
+        seoFaqs: [
+            {
+                question:
+                    "What types of aluminium facade systems does Aluverse supply?",
+                answer:
+                    "Aluverse supplies stick-built and unitised curtain wall, structural silicone glazing, captive glazing, and rainscreen cladding systems. Each project is engineered to suit the building's structural grid, performance requirements, and the architect's visual intent.",
+            },
+            {
+                question:
+                    "Are your facade systems compliant with Australian standards?",
+                answer:
+                    "Yes. Our facade systems are designed and documented to AS/NZS 4284 for facade performance, with structural, thermal, and weatherproofing details verified by the project engineer. Compliance documentation is supplied with every project.",
+            },
+            {
+                question:
+                    "Can you handle the design and installation as a single package?",
+                answer:
+                    "Yes. Aluverse provides a single point of accountability across design development, shop drawing, fabrication, and on-site installation. We coordinate directly with the head contractor, structural engineer, and architect throughout the build.",
+            },
+            {
+                question:
+                    "What project scale do facade systems typically suit?",
+                answer:
+                    "Aluminium facade systems are most often specified for mid-rise commercial buildings, multi-residential developments, and architectural refurbishments. Smaller residential projects are usually better served by our standard window and door product range.",
+            },
+            {
+                question:
+                    "How is pricing calculated for an aluminium facade?",
+                answer:
+                    "Facade pricing is project specific and depends on system type, performance requirements, glazing specification, finish, and site access. We quote on enquiry following a review of architectural drawings and the project performance brief.",
+            },
+        ],
+        related: ["bifold-windows", "stacking-doors", "double-glazing-windows"],
+    },
 ];
 
 export const windowProducts = products.filter(
@@ -1081,6 +1154,9 @@ export const doorProducts = products.filter(
 );
 export const screenProducts = products.filter(
     product => product.category === "screens"
+);
+export const facadeProducts = products.filter(
+    product => product.category === "facades"
 );
 
 export const footerProductSlugs = [

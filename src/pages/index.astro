@@ -10,6 +10,8 @@ import { pageImages, productImages } from "../assets/images";
 import {
     company,
     doorProducts,
+    facadeProducts,
+    getProductHref,
     screenProducts,
     testimonials,
     windowProducts,
@@ -20,6 +22,15 @@ const heroWidths = [768, 1024, 1440, 1920];
 const featureImageWidths = [480, 768, 960, 1280];
 const heroQuality = 66;
 const featureImageQuality = 62;
+const facadeProduct = facadeProducts[0];
+const facadeFeatureHighlights = [
+    "Curtain wall & structural glazing",
+    "Thermally broken aluminium framing",
+    "Rainscreen & cladding systems",
+    "Designed to AS/NZS 4284",
+    "Powder-coat & anodised finishes",
+    "Shop drawings & compliance docs",
+] as const;
 const homeFaqs = [
     {
         question:
@@ -138,7 +149,7 @@ const homeSchema = [
                     <div class="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-anodise/50 to-transparent"></div>
                     <div class="mb-5">
                         <h2 class="font-display text-2xl text-white">Get a Free Quote</h2>
-                        <p class="text-sm text-white/50 mt-1.5">Tell us about your project — we'll respond within 24 hours</p>
+                        <p class="text-sm text-white/50 mt-1.5">Tell us about your project; we'll respond within 24 hours</p>
                     </div>
                     <ContactForm client:visible />
                 </div>
@@ -270,6 +281,78 @@ const homeSchema = [
             </div>
         </div>
     </section>
+
+    <!-- Facades -->
+    {
+        facadeProduct && (
+            <section class="py-20 bg-alt">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">
+                                Architectural Solutions
+                            </p>
+                            <h2 class="font-display text-3xl md:text-4xl leading-tight mb-4">
+                                Aluminium Facade Systems
+                            </h2>
+                            <p class="text-sm text-text-secondary max-w-lg leading-relaxed mb-8">
+                                For commercial, multi-residential, and architectural
+                                projects, Aluverse engineers full aluminium facade
+                                envelopes; curtain wall, structural glazing, and
+                                rainscreen cladding designed to Australian standards
+                                and detailed to architect intent.
+                            </p>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                                {facadeFeatureHighlights.map(item => (
+                                    <li class="flex items-start gap-2.5 text-sm text-text-secondary">
+                                        <svg
+                                            class="size-4 stroke-accent stroke-2 fill-none shrink-0 mt-0.5"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <polyline points="20 6 9 17 4 12" />
+                                        </svg>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                            <div class="flex flex-wrap gap-4">
+                                <a
+                                    href={getProductHref(facadeProduct.slug)}
+                                    class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase bg-accent text-white hover:bg-accent-hover transition-colors inline-flex items-center gap-2"
+                                >
+                                    Explore Facade Systems
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        class="size-4 stroke-current fill-none stroke-2"
+                                    >
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                </a>
+                                <a
+                                    href="/quote"
+                                    class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase text-accent border border-divider hover:border-accent hover:bg-accent-light transition-all"
+                                >
+                                    Discuss a Project
+                                </a>
+                            </div>
+                        </div>
+                        <div class="aspect-6/5 overflow-hidden order-first md:order-last border-t-[3px] border-t-anodise">
+                            <Image
+                                src={facadeProduct.heroImage}
+                                alt={facadeProduct.imageAlt}
+                                widths={featureImageWidths}
+                                sizes="(min-width: 768px) calc((min(100vw, 80rem) - 7.5rem) / 2), calc(100vw - 3rem)"
+                                quality={featureImageQuality}
+                                loading="lazy"
+                                decoding="async"
+                                class="w-full h-full object-cover"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+        )
+    }
 
     <!-- What we do -->
     <section class="py-20 bg-dark text-white border-t border-white/10">

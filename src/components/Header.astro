@@ -2,6 +2,7 @@
 import {
     company,
     doorProducts,
+    facadeProducts,
     getProductHref,
     screenProducts,
     windowProducts,
@@ -9,8 +10,10 @@ import {
 import Logo from "./Logo.astro";
 
 type Props = {
-    activeNav?: "home" | "windows" | "doors" | "screens" | "about" | "contact" | "blog";
+    activeNav?: "home" | "windows" | "doors" | "screens" | "facades" | "about" | "contact" | "blog";
 };
+
+const facadeProduct = facadeProducts[0];
 
 const { activeNav } = Astro.props;
 ---
@@ -157,6 +160,22 @@ const { activeNav } = Astro.props;
                     </div>
                 </div>
             </div>
+
+            {
+                facadeProduct && (
+                    <a
+                        href={getProductHref(facadeProduct.slug)}
+                        class:list={[
+                            "text-xs font-medium tracking-widest uppercase transition-colors",
+                            activeNav === "facades"
+                                ? "text-white"
+                                : "text-white/60 hover:text-white",
+                        ]}
+                    >
+                        Facades
+                    </a>
+                )
+            }
 
             <a
                 href="/about"
@@ -325,6 +344,16 @@ const { activeNav } = Astro.props;
                 }
             </div>
         </div>
+        {
+            facadeProduct && (
+                <a
+                    href={getProductHref(facadeProduct.slug)}
+                    class="block py-3 text-sm text-white/70 border-b border-white/5 uppercase tracking-wide"
+                >
+                    Facades
+                </a>
+            )
+        }
         <a
             href="/about"
             class="block py-3 text-sm text-white/70 border-b border-white/5 uppercase tracking-wide"
