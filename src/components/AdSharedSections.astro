@@ -1,8 +1,19 @@
 ---
 import { Image } from "astro:assets";
 import { pageImages } from "../assets/images";
-import { company, testimonials } from "../data/site";
+import { company } from "../data/site";
 import SocialSection from "./SocialSection.astro";
+import { GoogleReviewsCarousel } from "./GoogleReviewsCarousel";
+import { fetchGoogleReviews } from "../lib/google-reviews";
+import {
+    GOOGLE_PLACES_API_KEY,
+    GOOGLE_PLACE_ID,
+} from "astro:env/server";
+
+const reviewsData = await fetchGoogleReviews(
+    GOOGLE_PLACES_API_KEY,
+    GOOGLE_PLACE_ID,
+);
 
 type WhyItem = {
     title: string;
@@ -135,50 +146,12 @@ const featureImageQuality = 62;
 </section>
 
 <!-- Testimonials -->
-<section class="py-20 bg-page">
+<section class="py-24 bg-page">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-12">
-            <p
-                class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
-            >
-                Client Feedback
-            </p>
-            <h2 class="font-display text-3xl md:text-4xl leading-tight mb-3">
-                What Our Clients Say
-            </h2>
-            <p
-                class="text-sm text-text-secondary max-w-lg leading-relaxed mx-auto"
-            >
-                Trusted by Sydney homeowners and businesses alike.
-            </p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {
-                testimonials.map(testimonial => (
-                    <div class="p-8 bg-white border border-divider text-center">
-                        <div class="flex justify-center gap-1 mb-5">
-                            {Array.from({ length: 5 }).map(() => (
-                                <svg
-                                    class="size-4 fill-accent"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                                </svg>
-                            ))}
-                        </div>
-                        <p class="font-display text-lg italic leading-relaxed mb-5">
-                            "{testimonial.quote}"
-                        </p>
-                        <div class="text-sm font-bold">
-                            {testimonial.author}
-                        </div>
-                        <div class="text-xs text-text-muted mt-1">
-                            {testimonial.location}
-                        </div>
-                    </div>
-                ))
-            }
-        </div>
+        <GoogleReviewsCarousel
+            client:idle
+            data={reviewsData}
+        />
     </div>
 </section>
 

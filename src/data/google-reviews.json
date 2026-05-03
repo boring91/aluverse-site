@@ -1,0 +1,27 @@
+{
+    "totalReviews": 12,
+    "placeUrl": "https://www.google.com/maps/place/ALUVERSE/@-33.8586078,150.9791847,15z/data=!4m6!3m5!1s0x8d74af16034f7e09:0x6f9a4c3248434a7!8m2!3d-33.8586082!4d150.9894844",
+    "reviews": [
+        {
+            "author": "Jessy",
+            "rating": 5,
+            "text": "Ahmed and his team did an excellent job. They arrived on time, were very professional, and explained everything to me clearly. I would highly recommend them.",
+            "publishedAt": "2026-04-01",
+            "location": "Redfern, Sydney"
+        },
+        {
+            "author": "Scott",
+            "rating": 5,
+            "text": "Ahmed was great to deal with, stuck to his timeline and worked very hard to get the job done. We appreciate his work and would highly recommend Ahmed and team.",
+            "publishedAt": "2026-03-01",
+            "location": "Collaroy, Sydney"
+        },
+        {
+            "author": "Paul C",
+            "rating": 5,
+            "text": "He is a good communicator, hard working and listens carefully. Also very knowledgeable and professional. Did the job efficiently.",
+            "publishedAt": "2026-02-01",
+            "location": "Beecroft, Sydney"
+        }
+    ]
+}

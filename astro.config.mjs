@@ -54,6 +54,18 @@ export default defineConfig({
                 context: "server",
                 access: "secret",
             }),
+
+            GOOGLE_PLACES_API_KEY: envField.string({
+                context: "server",
+                access: "secret",
+                optional: true,
+            }),
+
+            GOOGLE_PLACE_ID: envField.string({
+                context: "server",
+                access: "secret",
+                optional: true,
+            }),
         },
     },
 
