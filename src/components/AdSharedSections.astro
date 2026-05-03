@@ -1,9 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import { pageImages } from "../assets/images";
-import { company } from "../data/site";
-import SocialSection from "./SocialSection.astro";
 import { GoogleReviewsCarousel } from "./GoogleReviewsCarousel";
+import { QuoteForm } from "./QuoteForm";
 import { fetchGoogleReviews } from "../lib/google-reviews";
 import {
     GOOGLE_PLACES_API_KEY,
@@ -28,9 +27,9 @@ type Props = {
     aboutTitle: string;
     aboutText: string;
     aboutBullets: string[];
-    ctaTag: string;
-    ctaTitle: string;
-    ctaText: string;
+    quoteTag: string;
+    quoteTitle: string;
+    quoteText: string;
 };
 
 const {
@@ -41,9 +40,9 @@ const {
     aboutTitle,
     aboutText,
     aboutBullets,
-    ctaTag,
-    ctaTitle,
-    ctaText,
+    quoteTag,
+    quoteTitle,
+    quoteText,
 } = Astro.props;
 
 const featureImageWidths = [480, 768, 960, 1280];
@@ -155,32 +154,91 @@ const featureImageQuality = 62;
     </div>
 </section>
 
-<!-- CTA -->
-<section class="bg-cta text-white px-6 py-24 text-center">
-    <div class="max-w-xl mx-auto">
-        <p
-            class="text-xs font-semibold tracking-widest uppercase text-anodise mb-4"
+<!-- Quote form -->
+<section id="quote" class="bg-cta text-white px-6 py-24 scroll-mt-20">
+    <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+            <p
+                class="text-xs font-semibold tracking-widest uppercase text-anodise mb-4"
+            >
+                {quoteTag}
+            </p>
+            <h2 class="font-display text-3xl md:text-4xl leading-tight mb-4">
+                {quoteTitle}
+            </h2>
+            <p
+                class="text-white/60 leading-relaxed max-w-xl mx-auto"
+            >
+                {quoteText}
+            </p>
+        </div>
+        <div
+            class="quote-form-card relative p-6 md:p-10 bg-white/6 backdrop-blur-2xl border border-white/12 shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
         >
-            {ctaTag}
-        </p>
-        <h2 class="font-display text-3xl md:text-4xl leading-tight mb-4">
-            {ctaTitle}
-        </h2>
-        <p class="text-white/60 leading-relaxed mb-10">{ctaText}</p>
-        <div class="flex justify-center gap-4 flex-wrap">
-            <a
-                href={company.phoneHref}
-                class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase bg-white text-dark hover:bg-gray-100 transition-colors"
-                >Call {company.phoneDisplay}</a
+            <div
+                class="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-anodise/50 to-transparent"
             >
-            <a
-                href="#quote"
-                class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase border border-white/30 hover:border-white/70 hover:bg-white/5 transition-colors"
-                >Request a Quote</a
-            >
+            </div>
+            <QuoteForm wide client:visible />
         </div>
     </div>
 </section>
 
-<!-- Social -->
-<SocialSection />
+<style is:global>
+    .quote-form-card label {
+        color: rgba(255, 255, 255, 0.55) !important;
+    }
+    .quote-form-card input,
+    .quote-form-card select,
+    .quote-form-card textarea {
+        background: rgba(255, 255, 255, 0.07) !important;
+        border-color: rgba(255, 255, 255, 0.12) !important;
+        color: white !important;
+    }
+    .quote-form-card select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") !important;
+        background-repeat: no-repeat !important;
+        background-position: right 1rem center !important;
+        background-size: 1rem !important;
+    }
+    .quote-form-card input::placeholder,
+    .quote-form-card textarea::placeholder {
+        color: rgba(255, 255, 255, 0.3) !important;
+    }
+    .quote-form-card input:focus,
+    .quote-form-card select:focus,
+    .quote-form-card textarea:focus {
+        border-color: rgba(181, 185, 189, 0.6) !important;
+    }
+    .quote-form-card .border-rose-500 {
+        border-color: #fda4af !important;
+    }
+    .quote-form-card select option {
+        background: #1a1a1a;
+        color: white;
+    }
+    .quote-form-card button[type="submit"] {
+        background: white !important;
+        color: var(--color-accent) !important;
+    }
+    .quote-form-card button[type="submit"]:hover:not(:disabled) {
+        background: var(--color-anodise) !important;
+        color: var(--color-dark) !important;
+    }
+    .quote-form-card button[type="submit"]:disabled {
+        background: rgba(255, 255, 255, 0.2) !important;
+        color: rgba(255, 255, 255, 0.6) !important;
+    }
+    .quote-form-card .text-rose-500 {
+        color: #fda4af !important;
+    }
+    .quote-form-card .text-text-muted {
+        color: rgba(255, 255, 255, 0.4) !important;
+    }
+    .quote-form-card a {
+        color: rgba(255, 255, 255, 0.55) !important;
+    }
+    .quote-form-card a:hover {
+        color: rgba(255, 255, 255, 0.85) !important;
+    }
+</style>

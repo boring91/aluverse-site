@@ -8,5 +8,5 @@ export const quoteSchema = z.object({
     propertyType: z.enum(propertyTypes.map(x => x.id)),
     interest: z.enum(services.map(x => x.id)),
     timeframe: z.enum(timeframes.map(x => x.id)),
-    details: z.string().optional(),
+    details: z.string(),
 });
