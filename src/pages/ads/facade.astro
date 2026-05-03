@@ -3,6 +3,7 @@ import { Image, Picture } from "astro:assets";
 import AdLayout from "../../layouts/AdLayout.astro";
 import AdSharedSections from "../../components/AdSharedSections.astro";
 import StatsBar from "../../components/StatsBar.astro";
+import PartnerLogosMarquee from "../../components/PartnerLogosMarquee.astro";
 import { productImages } from "../../assets/images";
 import { company, getProductBySlug } from "../../data/site";
 import { getFaqSchema } from "../../lib/seo";
@@ -209,6 +210,9 @@ const aboutBullets = [
             </div>
         </div>
     </section>
+
+    <!-- Partner logos -->
+    <PartnerLogosMarquee />
 
     <!-- Specs -->
     <section class="py-20 bg-alt">

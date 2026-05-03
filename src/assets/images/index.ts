@@ -35,6 +35,12 @@ import stackingDoorHero from "./stacking-door-hero.webp";
 import windowsPageHero from "./windows-page-hero.webp";
 import workshopPhoto from "./workshop-photo.webp";
 
+import alspecLogo from "./partners/alspec.webp";
+import keelerLogo from "./partners/keeler.webp";
+import mesoLogo from "./partners/meso.webp";
+import pressMetalLogo from "./partners/press-metal.webp";
+import whitcoLogo from "./partners/whitco.webp";
+
 type ProductImageSet = {
     card: ImageMetadata;
     hero: ImageMetadata;
@@ -107,3 +113,17 @@ export const pageImages = {
     windowsPageHero,
     workshopPhoto,
 } as const;
+
+export type PartnerLogo = {
+    name: string;
+    image: ImageMetadata;
+    aspectHint: "wide" | "tall";
+};
+
+export const partnerLogos: PartnerLogo[] = [
+    { name: "Alspec", image: alspecLogo, aspectHint: "wide" },
+    { name: "Press Metal", image: pressMetalLogo, aspectHint: "wide" },
+    { name: "Keeler Hardware", image: keelerLogo, aspectHint: "wide" },
+    { name: "Whitco", image: whitcoLogo, aspectHint: "wide" },
+    { name: "Meso Glass", image: mesoLogo, aspectHint: "wide" },
+];
