@@ -121,7 +121,7 @@ export function loadManualReviews() {
         placeName: "Aluverse",
         placeUrl: file.placeUrl,
         reviews,
-        source: "manual",
+        source: "manual" as const,
     };
 }
 
@@ -172,7 +172,7 @@ export async function fetchGoogleReviews(
             placeName: data.displayName?.text ?? "Aluverse",
             placeUrl: data.googleMapsUri,
             reviews,
-            source: "live",
+            source: "live" as const,
         };
     } catch {
         return loadManualReviews();

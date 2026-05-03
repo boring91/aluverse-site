@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { pageImages } from "../assets/images";
 import { GoogleReviewsCarousel } from "./GoogleReviewsCarousel";
+import GoogleRatingBadge from "./GoogleRatingBadge.astro";
 import { QuoteForm } from "./QuoteForm";
 import { fetchGoogleReviews } from "../lib/google-reviews";
 import {
@@ -145,7 +146,10 @@ const featureImageQuality = 62;
 </section>
 
 <!-- Testimonials -->
-<section class="py-24 bg-page">
+<section
+    id="reviews"
+    class="py-24 bg-page scroll-mt-20"
+>
     <div class="max-w-7xl mx-auto px-6">
         <GoogleReviewsCarousel
             client:idle
@@ -153,6 +157,11 @@ const featureImageQuality = 62;
         />
     </div>
 </section>
+
+<GoogleRatingBadge
+    rating={reviewsData.aggregateRating}
+    totalReviews={reviewsData.totalReviews}
+/>
 
 <!-- Quote form -->
 <section id="quote" class="bg-cta text-white px-6 py-24 scroll-mt-20">
