@@ -69,5 +69,10 @@ export default defineConfig({
         },
     },
 
-    integrations: [react(), sitemap()],
+    integrations: [
+        react(),
+        sitemap({
+            filter: page => !new URL(page).pathname.startsWith("/ads/"),
+        }),
+    ],
 });
