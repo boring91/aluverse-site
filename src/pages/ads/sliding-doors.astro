@@ -8,21 +8,43 @@ import { productImages } from "../../assets/images";
 import { company, getProductBySlug } from "../../data/site";
 import { getFaqSchema } from "../../lib/seo";
 
-const product = getProductBySlug("sliding-doors");
-if (!product) throw new Error("sliding-doors product missing");
+const slidingProduct = getProductBySlug("sliding-doors");
+const stackingProduct = getProductBySlug("stacking-doors");
+if (!slidingProduct) throw new Error("sliding-doors product missing");
+if (!stackingProduct) throw new Error("stacking-doors product missing");
 
 const heroWidths = [768, 1024, 1440, 1920];
 const featureImageWidths = [480, 768, 960, 1280];
 const heroQuality = 66;
 const featureImageQuality = 62;
 
-const adFaqs = product.seoFaqs;
+const renameStacking = (text: string) =>
+    text
+        .replaceAll("Stacking doors", "Stacker doors")
+        .replaceAll("stacking doors", "stacker doors")
+        .replaceAll("Stacking door", "Stacker door")
+        .replaceAll("stacking door", "stacker door");
+
+const adFaqs = [
+    ...slidingProduct.seoFaqs.slice(0, 3),
+    {
+        question:
+            "Should I choose sliding doors or stacker doors?",
+        answer:
+            "Sliding doors are ideal for everyday openings where two or three panels glide past each other; they are space-efficient and budget-friendly. Stacker doors use multiple parallel tracks so up to six panels stack behind one another, clearing far wider openings for indoor-outdoor living and large-format architectural projects.",
+    },
+    ...stackingProduct.seoFaqs.slice(1, 4).map(faq => ({
+        question: renameStacking(faq.question),
+        answer: renameStacking(faq.answer),
+    })),
+    slidingProduct.seoFaqs[4],
+];
 const adSchema = [getFaqSchema([...adFaqs])];
 
 const whyItems = [
     {
         title: "Custom Fabrication",
-        text: "Every sliding door is built to the exact dimensions of your opening. Panel widths, track count, and frame colours are all configured to suit the project.",
+        text: "Every sliding and stacker door is built to the exact dimensions of your opening. Panel count, track configuration, and frame colours are all tailored to the project.",
     },
     {
         title: "Slim Sightlines, Big Glass",
@@ -30,7 +52,11 @@ const whyItems = [
     },
     {
         title: "Whisper-Quiet Operation",
-        text: "Precision-engineered tracks and quality rollers deliver smooth, low-effort operation that holds up after thousands of cycles.",
+        text: "Precision-engineered tracks and quality rollers deliver smooth, low-effort gliding that holds up after thousands of cycles.",
+    },
+    {
+        title: "Wide-Span Stacker Configurations",
+        text: "Multi-rail stacker systems let up to six panels slide and stack in a single plane, clearing wide openings without the folding mechanism of a bi-fold.",
     },
     {
         title: "Multi-Point Locking",
@@ -40,27 +66,23 @@ const whyItems = [
         title: "Sealed for Sydney Conditions",
         text: "Weather seals and drainage channels are detailed for Sydney's coastal humidity, summer heat, and wind-driven rain.",
     },
-    {
-        title: "Removal, Supply & Install",
-        text: "We remove the old door, supply the new system, install it, and finish it. One trusted team, one point of accountability.",
-    },
 ];
 
 const aboutBullets = [
     "Over a decade of Sydney aluminium experience",
+    "Sliding and stacker systems engineered together",
     "Residential, multi-residential & commercial",
     "Single & double glazing options",
-    "Australian Standards compliant",
-    "Two and three track configurations",
+    "Two, three, and multi-rail stacker configurations",
     "Full powder-coat colour range",
 ];
 ---
 
 <AdLayout
-    title="Aluminium Sliding Doors Sydney | Custom Made | Aluverse"
-    description="Custom aluminium sliding doors for Sydney homes and projects. Slim sightlines, smooth operation, secure multi-point locking. Free quotes from Aluverse."
+    title="Aluminium Sliding & Stacker Doors Sydney | Custom Made | Aluverse"
+    description="Custom aluminium sliding and stacker doors for Sydney homes and projects. Slim sightlines, smooth gliding panels, wide-span openings. Free quotes from Aluverse."
     canonical="/ads/sliding-doors"
-    ogImage={product.heroImage}
+    ogImage={slidingProduct.heroImage}
     schema={adSchema}
 >
     <!-- Hero -->
@@ -68,8 +90,8 @@ const aboutBullets = [
         class="min-h-[90vh] flex items-center text-white relative pt-16 overflow-hidden"
     >
         <Picture
-            src={product.heroImage}
-            alt="Custom aluminium sliding doors opening to a Sydney patio"
+            src={slidingProduct.heroImage}
+            alt="Custom aluminium sliding and stacker doors opening to a Sydney patio"
             formats={["avif", "webp"]}
             fallbackFormat="webp"
             widths={heroWidths}
@@ -93,19 +115,20 @@ const aboutBullets = [
                 <p
                     class="text-xs font-semibold tracking-widest uppercase text-anodise mb-6"
                 >
-                    Custom Aluminium Sliding Doors in Sydney
+                    Custom Aluminium Sliding & Stacker Doors in Sydney
                 </p>
                 <h1
                     class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.08] mb-6"
                 >
-                    Sliding Doors That <em class="not-italic text-anodise"
-                        >Open Up Your Space</em
+                    Sliding & Stacker Doors That <em
+                        class="not-italic text-anodise">Open Up Your Space</em
                     >
                 </h1>
                 <p class="text-lg text-white/90 leading-relaxed max-w-lg mb-10">
-                    Floor-to-ceiling glass that glides effortlessly. Built to
-                    your opening, sealed for Sydney conditions, and finished
-                    in your choice of colour.
+                    Floor-to-ceiling glass that glides effortlessly; from
+                    space-saving sliding panels to wide-span stacker systems.
+                    Built to your opening, sealed for Sydney conditions, and
+                    finished in your choice of colour.
                 </p>
                 <div class="flex flex-wrap gap-4">
                     <a
@@ -142,7 +165,7 @@ const aboutBullets = [
                     <p
                         class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
                     >
-                        Engineered Sliding Door Systems
+                        Engineered Sliding & Stacker Door Systems
                     </p>
                     <h2
                         class="font-display text-3xl md:text-4xl leading-tight mb-4"
@@ -155,15 +178,24 @@ const aboutBullets = [
                         Aluminium sliding doors give you large glass panels
                         that glide on precision-engineered tracks; perfect for
                         decks, patios, balconies, and any opening where every
-                        millimetre of floor space matters. Two and three track
-                        configurations cover openings well beyond what a
-                        single hinged door could span, while panels up to
-                        2000 mm wide and 2700 mm high let you bring in
-                        floor-to-ceiling light without visual clutter.
+                        millimetre of floor space matters. For wider openings,
+                        stacker door systems use multiple parallel rails so up
+                        to six panels slide and stack behind one another in a
+                        single plane, opening up the room without the folding
+                        mechanism of a bi-fold. Both systems are custom
+                        fabricated to your opening, with panels up to 1500 mm
+                        wide and 2700 mm high.
                     </p>
                     <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                         {
-                            product.features.map(item => (
+                            [
+                                "Two & three track sliding configurations",
+                                "Up to six panel stacker systems",
+                                "Whisper-quiet smooth operation",
+                                "Slim sightlines, maximum glass",
+                                "Multi-point locking hardware",
+                                "Flush threshold option (stacker)",
+                            ].map(item => (
                                 <li class="flex items-start gap-2.5 text-sm text-text-secondary">
                                     <svg
                                         class="size-4 stroke-accent stroke-2 fill-none shrink-0 mt-0.5"
@@ -227,24 +259,58 @@ const aboutBullets = [
                     Built To Order, To Australian Standards
                 </h2>
                 <p class="text-sm text-text-secondary leading-relaxed">
-                    Every sliding door is custom fabricated to suit your
-                    opening. Here is the technical envelope our standard
-                    sliding door systems work within.
+                    Every sliding and stacker door is custom fabricated to
+                    suit your opening. Here is the technical envelope our
+                    standard systems work within.
                 </p>
             </div>
-            <div
-                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-divider border border-divider"
-            >
-                {
-                    product.specs.map(spec => (
-                        <div class="p-6 bg-white">
-                            <p class="text-xs font-semibold tracking-widest uppercase text-text-muted mb-2">
-                                {spec.label}
-                            </p>
-                            <p class="font-display text-xl">{spec.value}</p>
-                        </div>
-                    ))
-                }
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div>
+                    <p
+                        class="font-display text-xl mb-4 pb-3 border-b border-divider"
+                    >
+                        Sliding Doors
+                    </p>
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-divider border border-divider"
+                    >
+                        {
+                            slidingProduct.specs.map(spec => (
+                                <div class="p-6 bg-white">
+                                    <p class="text-xs font-semibold tracking-widest uppercase text-text-muted mb-2">
+                                        {spec.label}
+                                    </p>
+                                    <p class="font-display text-xl">
+                                        {spec.value}
+                                    </p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+                <div>
+                    <p
+                        class="font-display text-xl mb-4 pb-3 border-b border-divider"
+                    >
+                        Stacker Doors
+                    </p>
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-divider border border-divider"
+                    >
+                        {
+                            stackingProduct.specs.map(spec => (
+                                <div class="p-6 bg-white">
+                                    <p class="text-xs font-semibold tracking-widest uppercase text-text-muted mb-2">
+                                        {spec.label}
+                                    </p>
+                                    <p class="font-display text-xl">
+                                        {spec.value}
+                                    </p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -261,11 +327,12 @@ const aboutBullets = [
                 <h2
                     class="font-display text-3xl md:text-4xl leading-tight mb-4"
                 >
-                    Aluminium Sliding Doors in Sydney
+                    Aluminium Sliding & Stacker Doors in Sydney
                 </h2>
                 <p class="text-sm text-text-secondary leading-relaxed">
                     Practical answers to the questions most Sydney homeowners
-                    and builders ask before specifying a sliding door system.
+                    and builders ask before specifying a sliding or stacker
+                    door system.
                 </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -287,14 +354,14 @@ const aboutBullets = [
 
     <AdSharedSections
         whyTag="What We Do"
-        whyTitle="Why Sydney Chooses Aluverse for Sliding Doors"
-        whyText="A specialist aluminium fabricator handling every step from measurement and design through to install and finish."
+        whyTitle="Why Sydney Chooses Aluverse for Sliding & Stacker Doors"
+        whyText="A specialist aluminium fabricator handling every step from measurement and design through to install and finish, across both sliding and stacker systems."
         whyItems={whyItems}
-        aboutTitle="A Decade of Precision Sliding Door Craftsmanship"
-        aboutText="Aluverse fabricates and installs custom aluminium sliding doors across Sydney; from single-home upgrades through to multi-unit residential and commercial projects."
+        aboutTitle="A Decade of Precision Sliding & Stacker Door Craftsmanship"
+        aboutText="Aluverse fabricates and installs custom aluminium sliding and stacker doors across Sydney; from single-home upgrades through to multi-unit residential, hospitality, and commercial projects."
         aboutBullets={aboutBullets}
         quoteTag="Get Started"
-        quoteTitle="Ready For Your New Sliding Doors?"
-        quoteText="Tell us about your project; sizes, finishes, timing. We'll respond with a tailored quote within 24 hours."
+        quoteTitle="Ready For Your New Sliding or Stacker Doors?"
+        quoteText="Tell us about your project; opening size, panel preference, finishes, timing. We'll respond with a tailored quote within 24 hours."
     />
 </AdLayout>
