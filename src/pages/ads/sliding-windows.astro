@@ -86,9 +86,7 @@ const aboutBullets = [
             class="absolute inset-0 bg-linear-to-r from-black/85 via-black/65 to-black/55"
         >
         </div>
-        <div
-            class="max-w-7xl mx-auto px-6 py-12 lg:py-20 w-full relative z-10"
-        >
+        <div class="max-w-7xl mx-auto px-6 py-12 lg:py-20 w-full relative z-10">
             <div class="max-w-3xl text-shadow-hero">
                 <p
                     class="text-xs font-semibold tracking-widest uppercase text-anodise mb-6"
@@ -104,8 +102,8 @@ const aboutBullets = [
                 </h1>
                 <p class="text-lg text-white/90 leading-relaxed max-w-lg mb-10">
                     Smooth horizontal panels. Slim frames. Built to fit your
-                    opening, sealed for Sydney conditions, and powder-coated
-                    in your choice of colour.
+                    opening, sealed for Sydney conditions, and powder-coated in
+                    your choice of colour.
                 </p>
                 <div class="flex flex-wrap gap-4">
                     <a
@@ -149,18 +147,16 @@ const aboutBullets = [
                     >
                         Daily Ventilation, Effortless Operation.
                     </h2>
-                    <p
-                        class="text-sm text-text-secondary leading-relaxed mb-6"
-                    >
+                    <p class="text-sm text-text-secondary leading-relaxed mb-6">
                         Aluminium sliding windows give you smooth horizontal
-                        operation along precision tracks, no outward
-                        projection, and clean sightlines across wide openings.
-                        They suit bedrooms, kitchens, and living areas where
-                        easy day-to-day airflow matters; and they sit
-                        comfortably beside decks and walkways without
-                        obstructing foot traffic. Single panels can be
-                        fabricated up to 3600 mm wide and 2400 mm high; multi-
-                        track configurations cover even larger openings.
+                        operation along precision tracks, no outward projection,
+                        and clean sightlines across wide openings. They suit
+                        bedrooms, kitchens, and living areas where easy
+                        day-to-day airflow matters; and they sit comfortably
+                        beside decks and walkways without obstructing foot
+                        traffic. Single panels can be fabricated up to 3600 mm
+                        wide and 2400 mm high; multi- track configurations cover
+                        even larger openings.
                     </p>
                     <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                         {
@@ -229,12 +225,12 @@ const aboutBullets = [
                 </h2>
                 <p class="text-sm text-text-secondary leading-relaxed">
                     Every sliding window is custom fabricated to suit your
-                    opening. Here is the technical envelope our standard
-                    sliding window systems work within.
+                    opening. Here is the technical envelope our standard sliding
+                    window systems work within.
                 </p>
             </div>
             <div
-                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-divider border border-divider"
+                class={`grid grid-cols-1 sm:grid-cols-2 ${product.specs.length > 4 ? "lg:grid-cols-3" : ""} gap-px bg-divider border border-divider`}
             >
                 {
                     product.specs.map(spec => (
@@ -266,8 +262,7 @@ const aboutBullets = [
                 </h2>
                 <p class="text-sm text-text-secondary leading-relaxed">
                     Practical answers to the questions most Sydney homeowners
-                    and builders ask before specifying a sliding window
-                    system.
+                    and builders ask before specifying a sliding window system.
                 </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

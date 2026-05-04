@@ -116,8 +116,6 @@ export const products: Product[] = [
         specs: [
             { label: "Frame Material", value: "Aluminium" },
             { label: "Glazing", value: "Single or Double" },
-            { label: "Max Width", value: "3600mm" },
-            { label: "Max Height", value: "2400mm" },
             { label: "Operation", value: "Horizontal Sliding" },
             { label: "Colours", value: "Full Powder Coat Range" },
         ],
@@ -560,7 +558,7 @@ export const products: Product[] = [
         heroImage: productImages.slidingDoors.hero,
         imageAlt: "Sliding doors",
         detailDescription:
-            "Sliding doors feature large glass panels that glide smoothly along precision-engineered aluminium tracks, delivering effortless daily operation and expansive views with slim sightlines. Because the panels move within their own track rather than swinging into the room or onto a deck, sliding doors preserve valuable floor space on both sides of the opening, making them one of the most practical door types for Sydney homes and commercial properties. Two and three track configurations are available to suit different opening widths, and panels can be sized up to 2000 mm wide and 2700 mm high for a commanding floor-to-ceiling presence. Multi-point locking hardware secures the panels when closed, while quality weather seals protect against wind-driven rain and dust. For larger residential developments, apartment buildings, and commercial fitouts, sliding doors are frequently specified because of their simple operation, consistent sizing across multiple units, and low ongoing maintenance. Every sliding door from Aluverse is custom fabricated to the exact opening dimensions, with the full powder-coat colour range available to match any architectural palette.",
+            "Sliding doors feature large glass panels that glide smoothly along precision-engineered aluminium tracks, delivering effortless daily operation and expansive views with slim sightlines. Because the panels move within their own track rather than swinging into the room or onto a deck, sliding doors preserve valuable floor space on both sides of the opening, making them one of the most practical door types for Sydney homes and commercial properties. Two and three track configurations are available to suit different opening widths, and panels can be sized up to 1500 mm wide and 2700 mm high for a commanding floor-to-ceiling presence. Multi-point locking hardware secures the panels when closed, while quality weather seals protect against wind-driven rain and dust. For larger residential developments, apartment buildings, and commercial fitouts, sliding doors are frequently specified because of their simple operation, consistent sizing across multiple units, and low ongoing maintenance. Every sliding door from Aluverse is custom fabricated to the exact opening dimensions, with the full powder-coat colour range available to match any architectural palette.",
         idealFor: [
             "Patios, balconies, and backyards where everyday access needs to be simple and space-efficient. Sliding doors do not require swing clearance, so furniture, planters, and walkways can sit closer to the opening without obstruction.",
             "Openings that need large glass panels to maximise natural light and views without sacrificing usable floor space. The slim aluminium frames keep sightlines minimal while the panels slide quietly along their tracks.",
@@ -571,14 +569,14 @@ export const products: Product[] = [
             "Whisper-quiet smooth operation",
             "Space-efficient (no swing clearance needed)",
             "High-security multi-point locking",
-            "Available in 2 or 3 track systems",
+            "Available in 3 to 5 track systems",
         ],
         specs: [
             { label: "Frame Material", value: "Aluminium" },
             { label: "Glazing", value: "Single or Double" },
-            { label: "Max Panel Width", value: "2000mm" },
+            { label: "Max Panel Width", value: "1500mm" },
             { label: "Max Height", value: "2700mm" },
-            { label: "Tracks", value: "2 or 3 Rail" },
+            { label: "Tracks", value: "3 to 5 Rails" },
             { label: "Colours", value: "Full Powder Coat Range" },
         ],
         seoFaqs: [
@@ -598,7 +596,7 @@ export const products: Product[] = [
                 question:
                     "How large can aluminium sliding door panels be?",
                 answer:
-                    "Individual panels can be fabricated up to 2000 mm wide and 2700 mm high. For wider openings, two or three track systems allow multiple panels to slide past one another, covering openings well beyond what a single panel could span.",
+                    "Individual panels can be fabricated up to 1500 mm wide and 2700 mm high. For wider openings, two or three track systems allow multiple panels to slide past one another, covering openings well beyond what a single panel could span.",
             },
             {
                 question:
@@ -1093,9 +1091,7 @@ export const products: Product[] = [
         ],
         features: [
             "Stick-built and unitised curtain wall options",
-            "Thermally broken aluminium framing",
             "Structural silicone and captive glazing details",
-            "Rainscreen and pressure-equalised cladding systems",
             "Powder-coat and anodised finish range",
             "Shop drawings and AS/NZS performance documentation",
             "Coordinated on-site installation with head contractors",
@@ -1103,7 +1099,7 @@ export const products: Product[] = [
         specs: [
             { label: "System Types", value: "Curtain wall, structural glazing, rainscreen cladding" },
             { label: "Framing", value: "Thermally broken aluminium" },
-            { label: "Glazing", value: "Double or triple glazed IGUs" },
+            { label: "Glazing", value: "Double glazed IGUs" },
             { label: "Performance", value: "Designed to AS/NZS 4284" },
             { label: "Finish", value: "Powder-coat or anodised" },
             { label: "Project Scale", value: "Commercial & multi-residential" },

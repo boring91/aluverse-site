@@ -5,12 +5,16 @@ import { partnerLogos } from "../assets/images";
 type Props = {
     eyebrow?: string;
     heading?: string;
+    exclude?: string[];
 };
 
 const {
     eyebrow = "Trusted Materials",
     heading = "Built with Australia's leading aluminium specialists",
+    exclude = [],
 } = Astro.props;
+
+const visiblePartners = partnerLogos.filter(p => !exclude.includes(p.name));
 
 // Build the marquee track. Two requirements:
 //   1. A "half-track" (one repetition cycle) must be at least as wide as the
@@ -18,10 +22,10 @@ const {
 //      reveals empty space before the duplicated set comes around.
 //   2. The track must contain an exact integer number of identical sets so
 //      translating by `-50% - gap/2` lands seamlessly on a duplicate.
-// One pass of `partnerLogos` is ~900px wide, so we repeat it 4× and let the
+// One pass of `visiblePartners` is ~900px wide, so we repeat it 4× and let the
 // translation animate by the natural -50% (covering 2× of those 4 sets).
 const repeats = 4;
-const baseSet = Array.from({ length: repeats }, () => partnerLogos).flat();
+const baseSet = Array.from({ length: repeats }, () => visiblePartners).flat();
 const track = [...baseSet, ...baseSet];
 ---
 
@@ -55,13 +59,13 @@ const track = [...baseSet, ...baseSet];
                     track.map((partner, i) => (
                         <div
                             class="partner-marquee__item"
-                            role={i < partnerLogos.length ? "listitem" : "presentation"}
-                            aria-hidden={i >= partnerLogos.length}
+                            role={i < visiblePartners.length ? "listitem" : "presentation"}
+                            aria-hidden={i >= visiblePartners.length}
                         >
                             <Image
                                 src={partner.image}
                                 alt={
-                                    i < partnerLogos.length
+                                    i < visiblePartners.length
                                         ? `${partner.name} logo`
                                         : ""
                                 }
