@@ -38,7 +38,6 @@ import workshopPhoto from "./workshop-photo.webp";
 import alspecLogo from "./partners/alspec.webp";
 import darleyLogo from "./partners/darley.webp";
 import keelerLogo from "./partners/keeler.webp";
-import mesoLogo from "./partners/meso.webp";
 import pressMetalLogo from "./partners/press-metal.webp";
 import whitcoLogo from "./partners/whitco.webp";
 
@@ -127,5 +126,4 @@ export const partnerLogos: PartnerLogo[] = [
     { name: "Darley", image: darleyLogo, aspectHint: "wide" },
     { name: "Keeler Hardware", image: keelerLogo, aspectHint: "wide" },
     { name: "Whitco", image: whitcoLogo, aspectHint: "wide" },
-    { name: "Meso Glass", image: mesoLogo, aspectHint: "wide" },
 ];
