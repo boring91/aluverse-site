@@ -196,8 +196,7 @@ export function QuoteConfirmationEmail({
                                 }}
                             >
                                 {company.phoneDisplay}
-                            </Link>{" "}
-                            or simply reply to this email.
+                            </Link>.
                         </Text>
 
                         <Hr
