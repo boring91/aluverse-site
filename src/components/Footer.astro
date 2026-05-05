@@ -1,6 +1,7 @@
 ---
 import {
     company,
+    facadeProducts,
     footerProductSlugs,
     getProductBySlug,
     getProductHref,
@@ -10,6 +11,7 @@ import Logo from "./Logo.astro";
 const featuredProducts = footerProductSlugs
     .map(slug => getProductBySlug(slug))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
+const facadeProduct = facadeProducts[0];
 const year = new Date().getFullYear();
 ---
 
@@ -48,15 +50,28 @@ const year = new Date().getFullYear();
                         class="hover:text-white transition-colors">Screens</a
                     >
                 </li>
+                {
+                    facadeProduct && (
+                        <li>
+                            <a
+                                href={getProductHref(facadeProduct.slug)}
+                                class="hover:text-white transition-colors"
+                            >
+                                Facades
+                            </a>
+                        </li>
+                    )
+                }
                 <li>
                     <a href="/about" class="hover:text-white transition-colors"
-                        >About Us</
+                        >About Us</a
                     >
                 </li>
                 <li>
                     <a
-                        href="/contact"
-                        class="hover:text-white transition-colors">Contact</a
+                        href="/quote"
+                        class="hover:text-white transition-colors"
+                        >Request a Quote</a
                     >
                 </li>
                 <li>

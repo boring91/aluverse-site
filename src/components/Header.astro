@@ -2,6 +2,7 @@
 import {
     company,
     doorProducts,
+    facadeProducts,
     getProductHref,
     screenProducts,
     windowProducts,
@@ -9,8 +10,10 @@ import {
 import Logo from "./Logo.astro";
 
 type Props = {
-    activeNav?: "home" | "windows" | "doors" | "screens" | "about" | "contact" | "blog";
+    activeNav?: "home" | "windows" | "doors" | "screens" | "facades" | "about";
 };
+
+const facadeProduct = facadeProducts[0];
 
 const { activeNav } = Astro.props;
 ---
@@ -158,6 +161,22 @@ const { activeNav } = Astro.props;
                 </div>
             </div>
 
+            {
+                facadeProduct && (
+                    <a
+                        href={getProductHref(facadeProduct.slug)}
+                        class:list={[
+                            "text-xs font-medium tracking-widest uppercase transition-colors",
+                            activeNav === "facades"
+                                ? "text-white"
+                                : "text-white/60 hover:text-white",
+                        ]}
+                    >
+                        Facades
+                    </a>
+                )
+            }
+
             <a
                 href="/about"
                 class:list={[
@@ -166,24 +185,6 @@ const { activeNav } = Astro.props;
                         ? "text-white"
                         : "text-white/60 hover:text-white",
                 ]}>About</a
-            >
-            <a
-                href="/contact"
-                class:list={[
-                    "text-xs font-medium tracking-widest uppercase transition-colors",
-                    activeNav === "contact"
-                        ? "text-white"
-                        : "text-white/60 hover:text-white",
-                ]}>Contact</a
-            >
-            <a
-                href="/blog"
-                class:list={[
-                    "text-xs font-medium tracking-widest uppercase transition-colors",
-                    activeNav === "blog"
-                        ? "text-white"
-                        : "text-white/60 hover:text-white",
-                ]}>Blog</a
             >
         </nav>
 
@@ -325,20 +326,20 @@ const { activeNav } = Astro.props;
                 }
             </div>
         </div>
+        {
+            facadeProduct && (
+                <a
+                    href={getProductHref(facadeProduct.slug)}
+                    class="block py-3 text-sm text-white/70 border-b border-white/5 uppercase tracking-wide"
+                >
+                    Facades
+                </a>
+            )
+        }
         <a
             href="/about"
             class="block py-3 text-sm text-white/70 border-b border-white/5 uppercase tracking-wide"
             >About</a
-        >
-        <a
-            href="/contact"
-            class="block py-3 text-sm text-white/70 border-b border-white/5 uppercase tracking-wide"
-            >Contact</a
-        >
-        <a
-            href="/blog"
-            class="block py-3 text-sm text-white/70 border-b border-white/5 uppercase tracking-wide"
-            >Blog</a
         >
         <a
             href="/quote"

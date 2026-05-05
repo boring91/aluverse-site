@@ -1,0 +1,182 @@
+---
+import { Image } from "astro:assets";
+import { partnerLogos } from "../assets/images";
+
+type Props = {
+    eyebrow?: string;
+    heading?: string;
+    exclude?: string[];
+};
+
+const {
+    eyebrow = "Trusted Materials",
+    heading = "Built with Australia's leading aluminium specialists",
+    exclude = [],
+} = Astro.props;
+
+const visiblePartners = partnerLogos.filter(p => !exclude.includes(p.name));
+
+// Build the marquee track. Two requirements:
+//   1. A "half-track" (one repetition cycle) must be at least as wide as the
+//      widest viewport the marquee will render in, otherwise the loop point
+//      reveals empty space before the duplicated set comes around.
+//   2. The track must contain an exact integer number of identical sets so
+//      translating by `-50% - gap/2` lands seamlessly on a duplicate.
+// One pass of `visiblePartners` is ~900px wide, so we repeat it 4× and let the
+// translation animate by the natural -50% (covering 2× of those 4 sets).
+const repeats = 4;
+const baseSet = Array.from({ length: repeats }, () => visiblePartners).flat();
+const track = [...baseSet, ...baseSet];
+---
+
+<section
+    class="bg-dark text-white border-t border-white/10 overflow-hidden"
+    aria-label="Materials and hardware partners"
+>
+    <div
+        class="max-w-7xl mx-auto px-6 py-16 md:py-20 flex flex-col items-center gap-8 md:gap-10"
+    >
+        <div class="text-center max-w-2xl">
+            <p
+                class="text-xs font-semibold tracking-[0.18em] uppercase text-anodise mb-3"
+            >
+                {eyebrow}
+            </p>
+            <h2
+                class="font-display text-2xl md:text-3xl leading-tight text-white/90"
+            >
+                {heading}
+            </h2>
+        </div>
+
+        <div
+            class="partner-marquee relative w-full"
+            role="list"
+            aria-label="Aluverse material and hardware partners"
+        >
+            <div class="partner-marquee__track">
+                {
+                    track.map((partner, i) => (
+                        <div
+                            class="partner-marquee__item"
+                            role={i < visiblePartners.length ? "listitem" : "presentation"}
+                            aria-hidden={i >= visiblePartners.length}
+                        >
+                            <Image
+                                src={partner.image}
+                                alt={
+                                    i < visiblePartners.length
+                                        ? `${partner.name} logo`
+                                        : ""
+                                }
+                                quality={92}
+                                loading="lazy"
+                                decoding="async"
+                                class:list={[
+                                    "partner-marquee__logo",
+                                    partner.aspectHint === "tall" &&
+                                        "partner-marquee__logo--tall",
+                                ]}
+                            />
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .partner-marquee {
+        --marquee-duration: 180s;
+        --marquee-gap: 4rem;
+        --fade-width: 96px;
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent 0,
+            black var(--fade-width),
+            black calc(100% - var(--fade-width)),
+            transparent 100%
+        );
+        mask-image: linear-gradient(
+            to right,
+            transparent 0,
+            black var(--fade-width),
+            black calc(100% - var(--fade-width)),
+            transparent 100%
+        );
+    }
+
+    @media (max-width: 640px) {
+        .partner-marquee {
+            --marquee-duration: 120s;
+            --marquee-gap: 2.5rem;
+            --fade-width: 48px;
+        }
+    }
+
+    .partner-marquee__track {
+        display: flex;
+        align-items: center;
+        gap: var(--marquee-gap);
+        width: max-content;
+        animation: marquee-drift var(--marquee-duration) linear infinite;
+        will-change: transform;
+    }
+
+    .partner-marquee:hover .partner-marquee__track,
+    .partner-marquee:focus-within .partner-marquee__track {
+        animation-play-state: paused;
+    }
+
+    .partner-marquee__item {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 2.75rem;
+        opacity: 0.55;
+        transition: opacity 0.4s ease;
+    }
+
+    .partner-marquee:hover .partner-marquee__item,
+    .partner-marquee:focus-within .partner-marquee__item {
+        opacity: 0.85;
+    }
+
+    .partner-marquee__logo {
+        height: 100%;
+        width: auto;
+        max-width: 11rem;
+        object-fit: contain;
+        display: block;
+    }
+
+    .partner-marquee__logo--tall {
+        height: 130%;
+        max-width: 4.5rem;
+    }
+
+    @keyframes marquee-drift {
+        from {
+            transform: translate3d(0, 0, 0);
+        }
+        to {
+            transform: translate3d(calc(-50% - var(--marquee-gap) / 2), 0, 0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .partner-marquee__track {
+            animation: none;
+            justify-content: center;
+            flex-wrap: wrap;
+            row-gap: 1.5rem;
+            width: 100%;
+        }
+        .partner-marquee {
+            -webkit-mask-image: none;
+            mask-image: none;
+        }
+    }
+</style>

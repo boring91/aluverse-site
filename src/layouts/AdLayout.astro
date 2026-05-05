@@ -2,8 +2,6 @@
 import type { ImageMetadata } from "astro";
 
 import { siteUrl } from "../../site-config.mjs";
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
 import { productImages } from "../assets/images";
 import { company } from "../data/site";
 import {
@@ -16,7 +14,6 @@ import "../styles/global.css";
 type Props = {
     title: string;
     description: string;
-    activeNav?: "home" | "windows" | "doors" | "screens" | "facades" | "about";
     canonical?: string;
     ogImage?: ImageMetadata | string;
     robots?: string;
@@ -26,12 +23,12 @@ type Props = {
 const {
     title,
     description,
-    activeNav,
     canonical,
     ogImage,
-    robots = "index,follow",
+    robots = "noindex,nofollow",
     schema,
 } = Astro.props;
+
 const siteOrigin = Astro.site ?? new URL(siteUrl);
 const canonicalUrl = new URL(
     canonical ?? Astro.url.pathname,
@@ -49,6 +46,7 @@ const schemaNodes = [
     }),
     ...(schema ? (Array.isArray(schema) ? schema : [schema]) : []),
 ];
+const year = new Date().getFullYear();
 ---
 
 <!doctype html>
@@ -78,11 +76,8 @@ const schemaNodes = [
             content="width=device-width, viewport-fit=cover"
         />
 
-        <!-- Fallback first -->
         <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" />
         <link rel="icon" href="/favicon-light.ico" />
-
-        <!-- Media-specific variants override the fallback -->
         <link
             rel="icon"
             type="image/svg+xml"
@@ -147,56 +142,114 @@ const schemaNodes = [
         >
         <!-- End Google Tag Manager (noscript) -->
 
-        <Header activeNav={activeNav} />
+        <header
+            class="fixed top-0 left-0 right-0 z-50 bg-header-bg border-b border-header-border backdrop-blur-xl pt-[env(safe-area-inset-top)]"
+        >
+            <div
+                class="flex items-center justify-between h-16 max-w-7xl mx-auto px-6"
+            >
+                <div
+                    class="font-display text-2xl text-white flex items-center gap-2"
+                >
+                    <img class="size-9" src="/logo-dark.svg" alt="" />
+                    <p>
+                        Alu<span class="text-anodise">verse</span>
+                    </p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a
+                        href="#quote"
+                        class="hidden sm:inline-flex px-4 py-2.5 text-xs font-bold text-anodise border border-anodise/25 tracking-wide uppercase hover:border-anodise/50 hover:text-white transition-all duration-200"
+                        >Get Free Quote</a
+                    >
+                    <a
+                        href={company.phoneHref}
+                        class="group/phone flex items-center gap-2 px-4 py-2.5 text-xs font-bold bg-anodise text-dark tracking-wide uppercase hover:bg-white transition-all duration-200"
+                    >
+                        <svg
+                            class="size-3.5 stroke-dark fill-none stroke-2 group-hover/phone:stroke-dark transition-colors duration-200"
+                            viewBox="0 0 24 24"
+                            ><path
+                                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"
+                            ></path></svg
+                        >
+                        Call Now
+                    </a>
+                </div>
+            </div>
+        </header>
         <main>
             <slot />
         </main>
-        <Footer />
+        <footer class="bg-dark text-white pt-16 px-6">
+            <div
+                class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10"
+            >
+                <div class="flex flex-col gap-2">
+                    <div
+                        class="font-display text-2xl text-white flex items-center gap-2"
+                    >
+                        <img class="size-9" src="/logo-dark.svg" alt="" />
+                        <p>
+                            Alu<span class="text-anodise">verse</span>
+                        </p>
+                    </div>
+                    <p class="text-sm text-white/60 leading-relaxed">
+                        {company.tagline}
+                    </p>
+                </div>
+                <div>
+                    <p class="font-display text-lg mb-4">Get In Touch</p>
+                    <ul class="space-y-2 text-sm text-white/50">
+                        <li>
+                            <a
+                                href={company.phoneHref}
+                                class="hover:text-white transition-colors"
+                                >{company.phoneDisplay}</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href={company.emailHref}
+                                class="hover:text-white transition-colors"
+                                >{company.emailDisplay}</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="#quote"
+                                class="hover:text-white transition-colors"
+                                >Request a Quote</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="font-display text-lg mb-4">Service & Hours</p>
+                    <ul class="space-y-2 text-sm text-white/50">
+                        <li>{company.shortHours}</li>
+                        <li>7 Days a Week</li>
+                        <li>{company.serviceArea}</li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="max-w-7xl mx-auto py-8 mt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-white/60 gap-2"
+            >
+                <span
+                    >&copy; {year} Aluverse Doors and Windows. All rights reserved.</span
+                >
+                <span
+                    >Australian Standards Compliant | {company.location}</span
+                >
+            </div>
+        </footer>
 
         <script is:inline>
             (() => {
                 const init = () => {
-                    const toggle = document.getElementById("menuToggle");
-                    const nav = document.getElementById("mobileNav");
-                    if (toggle && nav) {
-                        toggle.addEventListener("click", () => {
-                            const isHidden = nav.classList.toggle("hidden");
-                            toggle.setAttribute(
-                                "aria-expanded",
-                                String(!isHidden)
-                            );
-                            document.body.classList.toggle(
-                                "overflow-hidden",
-                                !isHidden
-                            );
-                        });
-                        nav.querySelectorAll("a").forEach(link => {
-                            link.addEventListener("click", () => {
-                                nav.classList.add("hidden");
-                                document.body.classList.remove(
-                                    "overflow-hidden"
-                                );
-                            });
-                        });
-                    }
-
-                    document
-                        .querySelectorAll("[data-dropdown-toggle]")
-                        .forEach(btn => {
-                            btn.addEventListener("click", () => {
-                                const menu = btn.nextElementSibling;
-                                if (menu) menu.classList.toggle("hidden");
-                                const expanded =
-                                    btn.getAttribute("aria-expanded") ===
-                                    "true";
-                                btn.setAttribute(
-                                    "aria-expanded",
-                                    String(!expanded)
-                                );
-                            });
-                        });
-
-                    const counters = document.querySelectorAll("[data-target]");
+                    const counters =
+                        document.querySelectorAll("[data-target]");
                     if (counters.length) {
                         const runCounterAnimation = () => {
                             counters.forEach(counter => {
@@ -212,7 +265,10 @@ const schemaNodes = [
                                           : "";
                                 const start = performance.now();
                                 const update = now => {
-                                    const p = Math.min((now - start) / 2000, 1);
+                                    const p = Math.min(
+                                        (now - start) / 2000,
+                                        1
+                                    );
                                     const eased = 1 - Math.pow(1 - p, 3);
                                     counter.textContent =
                                         Math.floor(eased * target) + suffix;

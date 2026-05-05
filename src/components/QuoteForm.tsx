@@ -3,26 +3,27 @@ import { quoteSchema } from "../lib/utils";
 import { useMutation } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import type z from "zod";
-import {
-    company,
-    contactPreferences,
-    propertyTypes,
-    services,
-    socialMedia,
-    timeframes,
-} from "../data/site";
+import { company, propertyTypes, services, timeframes } from "../data/site";
 import { ReactProviders } from "./ReactProviders";
-import { executeRecaptcha, loadRecaptchaEnterprise } from "../lib/recaptcha-client";
+import {
+    executeRecaptcha,
+    loadRecaptchaEnterprise,
+} from "../lib/recaptcha-client";
 
 type SchemaType = z.infer<typeof quoteSchema>;
 type SubmitPayload = SchemaType & {
     recaptcha: string;
 };
 
+type ComponentProps = {
+    wide?: boolean;
+};
+
 const recaptchaAction = "quote_form_submit";
 const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
 
-function Component() {
+function Component({ wide = false }: ComponentProps) {
+    const halfSpan = wide ? "" : "md:col-span-2";
     const [recaptchaError, setRecaptchaError] = useState(false);
     const { mutate, isPending, isSuccess, isError, reset } = useMutation({
         mutationFn: async (data: SubmitPayload) => {
@@ -62,10 +63,9 @@ function Component() {
             phone: "",
             email: "",
             propertyType: "" as SchemaType["propertyType"],
-            contactPreference: "" as SchemaType["contactPreference"],
             interest: "" as SchemaType["interest"],
             timeframe: "" as SchemaType["timeframe"],
-            socialMedia: "" as SchemaType["socialMedia"],
+            details: "",
         },
 
         validators: {
@@ -192,58 +192,60 @@ function Component() {
                         );
                     }}
                 />
-            </div>
 
-            {/* Email */}
-            <form.Field
-                name="email"
-                children={field => {
-                    return (
-                        <div className="mt-5">
-                            <label
-                                htmlFor={field.name}
-                                className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
-                            >
-                                Email*
-                            </label>
-                            <input
-                                type="email"
-                                id={field.name}
-                                name={field.name}
-                                value={field.state.value}
-                                onChange={e =>
-                                    field.handleChange(e.target.value)
-                                }
-                                onBlur={field.handleBlur}
-                                placeholder="Your email address"
-                                className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors ${
-                                    !field.state.meta.isValid &&
+                {/* Email */}
+                <form.Field
+                    name="email"
+                    children={field => {
+                        return (
+                            <div className={halfSpan}>
+                                <label
+                                    htmlFor={field.name}
+                                    className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
+                                >
+                                    Email*
+                                </label>
+                                <input
+                                    type="email"
+                                    id={field.name}
+                                    name={field.name}
+                                    value={field.state.value}
+                                    onChange={e =>
+                                        field.handleChange(e.target.value)
+                                    }
+                                    onBlur={field.handleBlur}
+                                    placeholder="Your email address"
+                                    className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors ${
+                                        !field.state.meta.isValid &&
+                                        (field.state.meta.isBlurred ||
+                                            field.form.state
+                                                .submissionAttempts > 0)
+                                            ? "border-rose-500"
+                                            : ""
+                                    }`}
+                                />
+                                {!field.state.meta.isValid &&
                                     (field.state.meta.isBlurred ||
-                                        field.form.state.submissionAttempts > 0)
-                                        ? "border-rose-500"
-                                        : ""
-                                }`}
-                            />
-                            {!field.state.meta.isValid &&
-                                (field.state.meta.isBlurred ||
-                                    field.form.state.submissionAttempts >
-                                        0) && (
-                                    <p className="mt-1 text-xs text-rose-500">
-                                        {field.state.meta.errors[0]?.message}
-                                    </p>
-                                )}
-                        </div>
-                    );
-                }}
-            />
+                                        field.form.state.submissionAttempts >
+                                            0) && (
+                                        <p className="mt-1 text-xs text-rose-500">
+                                            {
+                                                field.state.meta.errors[0]
+                                                    ?.message
+                                            }
+                                        </p>
+                                    )}
+                            </div>
+                        );
+                    }}
+                />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
                 {/* Property Type */}
                 <form.Field
                     name="propertyType"
                     children={field => {
                         return (
-                            <div>
+                            <div className={halfSpan}>
                                 <label
                                     htmlFor={field.name}
                                     className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
@@ -295,17 +297,17 @@ function Component() {
                     }}
                 />
 
-                {/* Contact Preference */}
+                {/* Product Interest */}
                 <form.Field
-                    name="contactPreference"
+                    name="interest"
                     children={field => {
                         return (
-                            <div>
+                            <div className={halfSpan}>
                                 <label
                                     htmlFor={field.name}
                                     className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
                                 >
-                                    Preferred Contact Method*
+                                    Product Interest*
                                 </label>
                                 <select
                                     id={field.name}
@@ -314,7 +316,7 @@ function Component() {
                                     onChange={e =>
                                         field.handleChange(
                                             e.target
-                                                .value as SchemaType["contactPreference"]
+                                                .value as SchemaType["interest"]
                                         )
                                     }
                                     onBlur={field.handleBlur}
@@ -328,9 +330,9 @@ function Component() {
                                     }`}
                                 >
                                     <option value="" disabled>
-                                        Select preference
+                                        What are you interested in?
                                     </option>
-                                    {contactPreferences.map(x => (
+                                    {services.map(x => (
                                         <option key={x.id} value={x.id}>
                                             {x.label}
                                         </option>
@@ -351,149 +353,92 @@ function Component() {
                         );
                     }}
                 />
+
+                {/* Timeframe */}
+                <form.Field
+                    name="timeframe"
+                    children={field => {
+                        return (
+                            <div className={halfSpan}>
+                                <label
+                                    htmlFor={field.name}
+                                    className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
+                                >
+                                    Preferred Timeframe*
+                                </label>
+                                <select
+                                    id={field.name}
+                                    name={field.name}
+                                    value={field.state.value}
+                                    onChange={e =>
+                                        field.handleChange(
+                                            e.target
+                                                .value as SchemaType["timeframe"]
+                                        )
+                                    }
+                                    onBlur={field.handleBlur}
+                                    className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors ${
+                                        !field.state.meta.isValid &&
+                                        (field.state.meta.isBlurred ||
+                                            field.form.state
+                                                .submissionAttempts > 0)
+                                            ? "border-rose-500"
+                                            : ""
+                                    }`}
+                                >
+                                    <option value="" disabled>
+                                        Select timeframe
+                                    </option>
+                                    {timeframes.map(x => (
+                                        <option key={x.id} value={x.id}>
+                                            {x.label}
+                                        </option>
+                                    ))}
+                                </select>
+                                {!field.state.meta.isValid &&
+                                    (field.state.meta.isBlurred ||
+                                        field.form.state.submissionAttempts >
+                                            0) && (
+                                        <p className="mt-1 text-xs text-rose-500">
+                                            {
+                                                field.state.meta.errors[0]
+                                                    ?.message
+                                            }
+                                        </p>
+                                    )}
+                            </div>
+                        );
+                    }}
+                />
+
+                {/* Project details */}
+                <form.Field
+                    name="details"
+                    children={field => {
+                        return (
+                            <div className="md:col-span-2">
+                                <label
+                                    htmlFor={field.name}
+                                    className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
+                                >
+                                    Project Details
+                                </label>
+                                <textarea
+                                    id={field.name}
+                                    name={field.name}
+                                    value={field.state.value}
+                                    onChange={e =>
+                                        field.handleChange(e.target.value)
+                                    }
+                                    onBlur={field.handleBlur}
+                                    placeholder="Tell us about your project: sizes, quantities, finishes, timing, or anything else that helps us prepare your quote..."
+                                    className="w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors h-32 resize-y"
+                                />
+                            </div>
+                        );
+                    }}
+                />
             </div>
-
-            {/* Product Interest */}
-            <form.Field
-                name="interest"
-                children={field => {
-                    return (
-                        <div className="mt-5">
-                            <label
-                                htmlFor={field.name}
-                                className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
-                            >
-                                Product Interest*
-                            </label>
-                            <select
-                                id={field.name}
-                                name={field.name}
-                                value={field.state.value}
-                                onChange={e =>
-                                    field.handleChange(
-                                        e.target.value as SchemaType["interest"]
-                                    )
-                                }
-                                onBlur={field.handleBlur}
-                                className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors ${
-                                    !field.state.meta.isValid &&
-                                    (field.state.meta.isBlurred ||
-                                        field.form.state.submissionAttempts > 0)
-                                        ? "border-rose-500"
-                                        : ""
-                                }`}
-                            >
-                                <option value="" disabled>
-                                    What are you interested in?
-                                </option>
-                                {services.map(x => (
-                                    <option key={x.id} value={x.id}>
-                                        {x.label}
-                                    </option>
-                                ))}
-                            </select>
-                            {!field.state.meta.isValid &&
-                                (field.state.meta.isBlurred ||
-                                    field.form.state.submissionAttempts >
-                                        0) && (
-                                    <p className="mt-1 text-xs text-rose-500">
-                                        {field.state.meta.errors[0]?.message}
-                                    </p>
-                                )}
-                        </div>
-                    );
-                }}
-            />
-
-            {/* Timeframe */}
-            <form.Field
-                name="timeframe"
-                children={field => {
-                    return (
-                        <div className="mt-5">
-                            <label
-                                htmlFor={field.name}
-                                className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
-                            >
-                                Preferred Timeframe*
-                            </label>
-                            <select
-                                id={field.name}
-                                name={field.name}
-                                value={field.state.value}
-                                onChange={e =>
-                                    field.handleChange(
-                                        e.target
-                                            .value as SchemaType["timeframe"]
-                                    )
-                                }
-                                onBlur={field.handleBlur}
-                                className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors ${
-                                    !field.state.meta.isValid &&
-                                    (field.state.meta.isBlurred ||
-                                        field.form.state.submissionAttempts > 0)
-                                        ? "border-rose-500"
-                                        : ""
-                                }`}
-                            >
-                                <option value="" disabled>
-                                    Select timeframe
-                                </option>
-                                {timeframes.map(x => (
-                                    <option key={x.id} value={x.id}>
-                                        {x.label}
-                                    </option>
-                                ))}
-                            </select>
-                            {!field.state.meta.isValid &&
-                                (field.state.meta.isBlurred ||
-                                    field.form.state.submissionAttempts >
-                                        0) && (
-                                    <p className="mt-1 text-xs text-rose-500">
-                                        {field.state.meta.errors[0]?.message}
-                                    </p>
-                                )}
-                        </div>
-                    );
-                }}
-            />
-
-            {/* How Did You Hear About Us */}
-            <form.Field
-                name="socialMedia"
-                children={field => {
-                    return (
-                        <div className="mt-5">
-                            <label
-                                htmlFor={field.name}
-                                className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
-                            >
-                                How Did You Hear About Us?
-                            </label>
-                            <select
-                                id={field.name}
-                                name={field.name}
-                                value={field.state.value}
-                                onChange={e =>
-                                    field.handleChange(
-                                        e.target
-                                            .value as SchemaType["socialMedia"]
-                                    )
-                                }
-                                onBlur={field.handleBlur}
-                                className="w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors"
-                            >
-                                <option value="">Select an option</option>
-                                {socialMedia.map(x => (
-                                    <option key={x.id} value={x.id}>
-                                        {x.label}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                    );
-                }}
-            />
 
             {/* Recaptcha */}
             <div className="mt-5 min-h-5 empty:hidden">
@@ -642,10 +587,10 @@ function Component() {
     );
 }
 
-export function QuoteForm() {
+export function QuoteForm({ wide = false }: { wide?: boolean }) {
     return (
         <ReactProviders>
-            <Component />
+            <Component wide={wide} />
         </ReactProviders>
     );
 }
