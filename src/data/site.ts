@@ -986,7 +986,7 @@ export const products: Product[] = [
                 value: "Curtain wall, structural glazing, shop fronts",
             },
             { label: "Framing", value: "Thermally broken aluminium" },
-            { label: "Glazing", value: "Double glazed IGUs" },
+            { label: "Glazing", value: "Front- or center-glazed IGUs" },
             { label: "Performance", value: "Designed to AS/NZS 4284" },
             { label: "Finish", value: "Powder-coat or anodised" },
             { label: "Project Scale", value: "Commercial & multi-residential" },
@@ -1019,6 +1019,11 @@ export const products: Product[] = [
                 question:
                     "What project scale do facade systems typically suit?",
                 answer: "Aluminium facade systems are most often specified for mid-rise commercial buildings, multi-residential developments, and architectural refurbishments. Smaller residential projects are usually better served by our standard window and door product range.",
+            },
+            {
+                question:
+                    "Do you supply front-glazed and center-glazed facade systems?",
+                answer: "Yes. Aluverse fabricates both front-glazed (externally retained) and center-glazed (pocket-set) configurations. Front glazing is typical for curtain wall and high-rise facades where clean external sightlines drive the aesthetic, while center glazing suits shop fronts and ground-floor facades where the inside trim is visible to occupants and customers.",
             },
             {
                 question: "How is pricing calculated for an aluminium facade?",
