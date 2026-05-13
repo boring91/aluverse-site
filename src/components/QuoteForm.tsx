@@ -17,13 +17,36 @@ type SubmitPayload = SchemaType & {
 
 type ComponentProps = {
     wide?: boolean;
+    compact?: boolean;
+    formIdPrefix?: string;
+    defaultInterest?: SchemaType["interest"];
+    defaultPropertyType?: SchemaType["propertyType"];
 };
 
 const recaptchaAction = "quote_form_submit";
 const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
 
-function Component({ wide = false }: ComponentProps) {
-    const halfSpan = wide ? "" : "md:col-span-2";
+function Component({
+    wide = false,
+    compact = false,
+    formIdPrefix = "quote",
+    defaultInterest,
+    defaultPropertyType,
+}: ComponentProps) {
+    const halfSpan = wide || compact ? "" : "md:col-span-2";
+    const fullSpan = compact ? "sm:col-span-2" : "md:col-span-2";
+    const emailSpan = compact ? "sm:col-span-2" : halfSpan;
+    const gridClass = compact
+        ? "grid grid-cols-1 sm:grid-cols-2 gap-3"
+        : "grid grid-cols-1 md:grid-cols-2 gap-5";
+    const submitClass = compact ? "mt-4" : "mt-6";
+    const detailsClass = compact
+        ? "w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors h-24 resize-y"
+        : "w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors h-32 resize-y";
+    const detailsPlaceholder = compact
+        ? "Brief project details: sizes, quantities, finishes, timing..."
+        : "Tell us about your project: sizes, quantities, finishes, timing, or anything else that helps us prepare your quote...";
+    const fieldId = (name: string) => `${formIdPrefix}-${name}`;
     const [recaptchaError, setRecaptchaError] = useState(false);
     const { mutate, isPending, isSuccess, isError, reset } = useMutation({
         mutationFn: async (data: SubmitPayload) => {
@@ -62,8 +85,9 @@ function Component({ wide = false }: ComponentProps) {
             name: "",
             phone: "",
             email: "",
-            propertyType: "" as SchemaType["propertyType"],
-            interest: "" as SchemaType["interest"],
+            propertyType:
+                defaultPropertyType ?? ("" as SchemaType["propertyType"]),
+            interest: defaultInterest ?? ("" as SchemaType["interest"]),
             timeframe: "" as SchemaType["timeframe"],
             details: "",
         },
@@ -98,7 +122,7 @@ function Component({ wide = false }: ComponentProps) {
             }}
             data-static-form
         >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className={gridClass}>
                 {/* Name */}
                 <form.Field
                     name="name"
@@ -106,14 +130,14 @@ function Component({ wide = false }: ComponentProps) {
                         return (
                             <div>
                                 <label
-                                    htmlFor={field.name}
+                                    htmlFor={fieldId(field.name)}
                                     className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
                                 >
                                     Full Name*
                                 </label>
                                 <input
                                     type="text"
-                                    id={field.name}
+                                    id={fieldId(field.name)}
                                     name={field.name}
                                     value={field.state.value}
                                     onChange={e =>
@@ -153,14 +177,14 @@ function Component({ wide = false }: ComponentProps) {
                         return (
                             <div>
                                 <label
-                                    htmlFor={field.name}
+                                    htmlFor={fieldId(field.name)}
                                     className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
                                 >
                                     Phone*
                                 </label>
                                 <input
                                     type="tel"
-                                    id={field.name}
+                                    id={fieldId(field.name)}
                                     name={field.name}
                                     value={field.state.value}
                                     onChange={e =>
@@ -198,16 +222,16 @@ function Component({ wide = false }: ComponentProps) {
                     name="email"
                     children={field => {
                         return (
-                            <div className={halfSpan}>
+                            <div className={emailSpan}>
                                 <label
-                                    htmlFor={field.name}
+                                    htmlFor={fieldId(field.name)}
                                     className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
                                 >
                                     Email*
                                 </label>
                                 <input
                                     type="email"
-                                    id={field.name}
+                                    id={fieldId(field.name)}
                                     name={field.name}
                                     value={field.state.value}
                                     onChange={e =>
@@ -247,13 +271,13 @@ function Component({ wide = false }: ComponentProps) {
                         return (
                             <div className={halfSpan}>
                                 <label
-                                    htmlFor={field.name}
+                                    htmlFor={fieldId(field.name)}
                                     className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
                                 >
                                     Property Type*
                                 </label>
                                 <select
-                                    id={field.name}
+                                    id={fieldId(field.name)}
                                     name={field.name}
                                     value={field.state.value}
                                     onChange={e =>
@@ -297,62 +321,63 @@ function Component({ wide = false }: ComponentProps) {
                     }}
                 />
 
-                {/* Product Interest */}
-                <form.Field
-                    name="interest"
-                    children={field => {
-                        return (
-                            <div className={halfSpan}>
-                                <label
-                                    htmlFor={field.name}
-                                    className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
-                                >
-                                    Product Interest*
-                                </label>
-                                <select
-                                    id={field.name}
-                                    name={field.name}
-                                    value={field.state.value}
-                                    onChange={e =>
-                                        field.handleChange(
-                                            e.target
-                                                .value as SchemaType["interest"]
-                                        )
-                                    }
-                                    onBlur={field.handleBlur}
-                                    className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors ${
-                                        !field.state.meta.isValid &&
+                {!compact && (
+                    <form.Field
+                        name="interest"
+                        children={field => {
+                            return (
+                                <div className={halfSpan}>
+                                    <label
+                                        htmlFor={fieldId(field.name)}
+                                        className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
+                                    >
+                                        Product Interest*
+                                    </label>
+                                    <select
+                                        id={fieldId(field.name)}
+                                        name={field.name}
+                                        value={field.state.value}
+                                        onChange={e =>
+                                            field.handleChange(
+                                                e.target
+                                                    .value as SchemaType["interest"]
+                                            )
+                                        }
+                                        onBlur={field.handleBlur}
+                                        className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors ${
+                                            !field.state.meta.isValid &&
+                                            (field.state.meta.isBlurred ||
+                                                field.form.state
+                                                    .submissionAttempts > 0)
+                                                ? "border-rose-500"
+                                                : ""
+                                        }`}
+                                    >
+                                        <option value="" disabled>
+                                            What are you interested in?
+                                        </option>
+                                        {services.map(x => (
+                                            <option key={x.id} value={x.id}>
+                                                {x.label}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    {!field.state.meta.isValid &&
                                         (field.state.meta.isBlurred ||
                                             field.form.state
-                                                .submissionAttempts > 0)
-                                            ? "border-rose-500"
-                                            : ""
-                                    }`}
-                                >
-                                    <option value="" disabled>
-                                        What are you interested in?
-                                    </option>
-                                    {services.map(x => (
-                                        <option key={x.id} value={x.id}>
-                                            {x.label}
-                                        </option>
-                                    ))}
-                                </select>
-                                {!field.state.meta.isValid &&
-                                    (field.state.meta.isBlurred ||
-                                        field.form.state.submissionAttempts >
-                                            0) && (
-                                        <p className="mt-1 text-xs text-rose-500">
-                                            {
-                                                field.state.meta.errors[0]
-                                                    ?.message
-                                            }
-                                        </p>
-                                    )}
-                            </div>
-                        );
-                    }}
-                />
+                                                .submissionAttempts > 0) && (
+                                            <p className="mt-1 text-xs text-rose-500">
+                                                {
+                                                    field.state.meta.errors[0]
+                                                        ?.message
+                                                }
+                                            </p>
+                                        )}
+                                </div>
+                            );
+                        }}
+                    />
+                )}
 
                 {/* Timeframe */}
                 <form.Field
@@ -361,13 +386,13 @@ function Component({ wide = false }: ComponentProps) {
                         return (
                             <div className={halfSpan}>
                                 <label
-                                    htmlFor={field.name}
+                                    htmlFor={fieldId(field.name)}
                                     className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
                                 >
                                     Preferred Timeframe*
                                 </label>
                                 <select
-                                    id={field.name}
+                                    id={fieldId(field.name)}
                                     name={field.name}
                                     value={field.state.value}
                                     onChange={e =>
@@ -411,28 +436,27 @@ function Component({ wide = false }: ComponentProps) {
                     }}
                 />
 
-                {/* Project details */}
                 <form.Field
                     name="details"
                     children={field => {
                         return (
-                            <div className="md:col-span-2">
+                            <div className={fullSpan}>
                                 <label
-                                    htmlFor={field.name}
+                                    htmlFor={fieldId(field.name)}
                                     className="block text-xs font-semibold tracking-wider uppercase text-text-muted mb-2"
                                 >
                                     Project Details
                                 </label>
                                 <textarea
-                                    id={field.name}
+                                    id={fieldId(field.name)}
                                     name={field.name}
                                     value={field.state.value}
                                     onChange={e =>
                                         field.handleChange(e.target.value)
                                     }
                                     onBlur={field.handleBlur}
-                                    placeholder="Tell us about your project: sizes, quantities, finishes, timing, or anything else that helps us prepare your quote..."
-                                    className="w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors h-32 resize-y"
+                                    placeholder={detailsPlaceholder}
+                                    className={detailsClass}
                                 />
                             </div>
                         );
@@ -518,7 +542,7 @@ function Component({ wide = false }: ComponentProps) {
 
             <button
                 type="submit"
-                className={`w-full py-4 text-xs font-bold tracking-wider uppercase mt-6 transition-all duration-200 flex items-center justify-center gap-2 ${
+                className={`w-full py-4 text-xs font-bold tracking-wider uppercase ${submitClass} transition-all duration-200 flex items-center justify-center gap-2 ${
                     isPending
                         ? "bg-accent-dim text-white/70 cursor-not-allowed"
                         : "bg-accent text-white hover:bg-accent-hover"
@@ -587,10 +611,22 @@ function Component({ wide = false }: ComponentProps) {
     );
 }
 
-export function QuoteForm({ wide = false }: { wide?: boolean }) {
+export function QuoteForm({
+    wide = false,
+    compact = false,
+    formIdPrefix,
+    defaultInterest,
+    defaultPropertyType,
+}: ComponentProps) {
     return (
         <ReactProviders>
-            <Component wide={wide} />
+            <Component
+                wide={wide}
+                compact={compact}
+                formIdPrefix={formIdPrefix}
+                defaultInterest={defaultInterest}
+                defaultPropertyType={defaultPropertyType}
+            />
         </ReactProviders>
     );
 }

@@ -1,0 +1,122 @@
+---
+import { QuoteForm } from "./QuoteForm";
+import type { propertyTypes, services } from "../data/site";
+
+type ServiceId = (typeof services)[number]["id"];
+type PropertyTypeId = (typeof propertyTypes)[number]["id"];
+
+type Props = {
+    tag: string;
+    title: string;
+    text: string;
+    formIdPrefix: string;
+    defaultInterest: ServiceId;
+    defaultPropertyType?: PropertyTypeId;
+};
+
+const {
+    tag,
+    title,
+    text,
+    formIdPrefix,
+    defaultInterest,
+    defaultPropertyType,
+} = Astro.props;
+---
+
+<aside
+    id={formIdPrefix}
+    class="hero-quote-form relative border border-white/18 bg-black/35 p-5 shadow-[0_24px_70px_rgba(0,0,0,0.35)] backdrop-blur-2xl md:p-6"
+>
+    <div
+        class="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-anodise/70 to-transparent"
+    >
+    </div>
+    <div class="mb-5">
+        <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-anodise">
+            {tag}
+        </p>
+        <h2 class="font-display text-2xl leading-tight text-white">
+            {title}
+        </h2>
+        <p class="mt-2 text-sm leading-relaxed text-white/60">
+            {text}
+        </p>
+    </div>
+    <QuoteForm
+        compact
+        formIdPrefix={formIdPrefix}
+        defaultInterest={defaultInterest}
+        defaultPropertyType={defaultPropertyType}
+        client:visible
+    />
+</aside>
+
+<style is:global>
+    .hero-quote-form label {
+        color: rgba(255, 255, 255, 0.58) !important;
+    }
+    .hero-quote-form input,
+    .hero-quote-form select,
+    .hero-quote-form textarea {
+        background: rgba(255, 255, 255, 0.08) !important;
+        border-color: rgba(255, 255, 255, 0.16) !important;
+        color: white !important;
+    }
+    .hero-quote-form select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") !important;
+        background-repeat: no-repeat !important;
+        background-position: right 1rem center !important;
+        background-size: 1rem !important;
+    }
+    .hero-quote-form input::placeholder,
+    .hero-quote-form textarea::placeholder {
+        color: rgba(255, 255, 255, 0.32) !important;
+    }
+    .hero-quote-form input:focus,
+    .hero-quote-form select:focus,
+    .hero-quote-form textarea:focus {
+        border-color: rgba(181, 185, 189, 0.7) !important;
+    }
+    .hero-quote-form .border-rose-500 {
+        border-color: #fda4af !important;
+    }
+    .hero-quote-form .text-rose-500 {
+        color: #fda4af !important;
+    }
+    .hero-quote-form select option {
+        background: #1a1a1a;
+        color: white;
+    }
+    .hero-quote-form button[type="submit"] {
+        background: white !important;
+        color: var(--color-accent) !important;
+    }
+    .hero-quote-form button[type="submit"]:hover:not(:disabled) {
+        background: var(--color-anodise) !important;
+        color: var(--color-dark) !important;
+    }
+    .hero-quote-form button[type="submit"]:disabled {
+        background: rgba(255, 255, 255, 0.2) !important;
+        color: rgba(255, 255, 255, 0.6) !important;
+    }
+    .hero-quote-form .text-text-muted {
+        color: rgba(255, 255, 255, 0.42) !important;
+    }
+    .hero-quote-form a {
+        color: rgba(255, 255, 255, 0.55) !important;
+    }
+    .hero-quote-form a:hover {
+        color: rgba(255, 255, 255, 0.85) !important;
+    }
+    .hero-quote-form [class*="bg-emerald-50"] {
+        background: rgba(209, 250, 229, 0.12) !important;
+        border-color: rgba(110, 231, 183, 0.3) !important;
+        color: #d1fae5 !important;
+    }
+    .hero-quote-form [class*="bg-rose-50"] {
+        background: rgba(255, 228, 230, 0.12) !important;
+        border-color: rgba(253, 164, 175, 0.3) !important;
+        color: #ffe4e6 !important;
+    }
+</style>

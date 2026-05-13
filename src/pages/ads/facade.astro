@@ -1,6 +1,7 @@
 ---
 import { Image, Picture } from "astro:assets";
 import AdLayout from "../../layouts/AdLayout.astro";
+import AdHeroQuoteForm from "../../components/AdHeroQuoteForm.astro";
 import AdSharedSections from "../../components/AdSharedSections.astro";
 import StatsBar from "../../components/StatsBar.astro";
 import PartnerLogosMarquee from "../../components/PartnerLogosMarquee.astro";
@@ -21,16 +22,16 @@ const adSchema = [getFaqSchema([...adFaqs])];
 
 const whyItems = [
     {
-        title: "Curtain Wall & Structural Glazing",
-        text: "Stick-built and unitised curtain wall with front-glazed (externally retained) and center-glazed (pocket-set) options, captive or silicone-bonded to your structural grid and architect intent.",
+        title: "Curtain Wall Installation",
+        text: "Stick-built and unitised curtain wall installation with front-glazed (externally retained) and center-glazed (pocket-set) options, captive or silicone-bonded to your structural grid and architect intent.",
     },
     {
         title: "Thermally Broken Framing",
         text: "Aluminium framing with thermal breaks for energy performance, condensation control, and compliance with modern building briefs.",
     },
     {
-        title: "Shop Fronts",
-        text: "Commercial shop front systems with slim aluminium framing, toughened glazing, and entrance doors detailed for high-traffic retail and ground-floor tenancies.",
+        title: "Shopfront Glazing Contractors",
+        text: "Commercial shopfront glazing with slim aluminium framing, toughened glass, and entrance doors detailed for high-traffic retail and ground-floor tenancies.",
     },
     {
         title: "AS/NZS 4284 Performance",
@@ -57,8 +58,8 @@ const aboutBullets = [
 ---
 
 <AdLayout
-    title="Aluminium Facade Systems Sydney | Curtain Wall & Cladding | Aluverse"
-    description="Custom aluminium facade systems for Sydney commercial and architectural projects. Curtain wall, structural glazing, and shop fronts engineered to AS standards by Aluverse."
+    title="Aluminium Facade Systems Sydney | Curtain Wall Installation | Aluverse"
+    description="Aluminium facade systems, facade glazing, curtain wall installation, structural glazing contractors, and shopfront glazing for Sydney commercial projects."
     canonical="/ads/facade"
     ogImage={product.heroImage}
     schema={adSchema}
@@ -87,44 +88,60 @@ const aboutBullets = [
         >
         </div>
         <div class="max-w-7xl mx-auto px-6 py-12 lg:py-20 w-full relative z-10">
-            <div class="max-w-3xl text-shadow-hero">
-                <p
-                    class="text-xs font-semibold tracking-widest uppercase text-anodise mb-6"
-                >
-                    Custom Aluminium Facade Systems in Sydney
-                </p>
-                <h1
-                    class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.08] mb-6"
-                >
-                    Facade Systems <em class="not-italic text-anodise"
-                        >Engineered for Your Build</em
+            <div
+                class="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(380px,480px)] lg:items-center"
+            >
+                <div class="max-w-3xl text-shadow-hero">
+                    <p
+                        class="text-xs font-semibold tracking-widest uppercase text-anodise mb-6"
                     >
-                </h1>
-                <p class="text-lg text-white/90 leading-relaxed max-w-lg mb-10">
-                    Curtain wall, structural glazing, and shop fronts designed
-                    to AS/NZS 4284. One specialist team for design, shop
-                    drawings, fabrication, and install.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a
-                        href={company.phoneHref}
-                        class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase bg-white text-dark hover:bg-anodise hover:text-dark transition-colors inline-flex items-center gap-2"
+                        Facade Glazing, Curtain Wall & Shopfront Contractors
+                    </p>
+                    <h1
+                        class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.08] mb-6"
                     >
-                        Call Now
-                        <svg
-                            viewBox="0 0 24 24"
-                            class="size-4 stroke-current fill-none stroke-2"
-                            ><path
-                                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"
-                            ></path></svg
+                        Aluminium Facade Systems in <em
+                            class="not-italic text-anodise">Sydney</em
                         >
-                    </a>
-                    <a
-                        href="#quote"
-                        class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase border border-white/60 hover:border-white hover:bg-white/15 transition-all"
-                        >Discuss a Project</a
+                    </h1>
+                    <p
+                        class="text-lg text-white/90 leading-relaxed max-w-lg mb-10"
                     >
+                        Curtain wall installation, structural glazing
+                        contractors, facade glazing, and shopfront glazing for
+                        commercial and multi-residential builds. One specialist
+                        Sydney team for design, shop drawings, fabrication, and
+                        on-site installation.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a
+                            href={company.phoneHref}
+                            class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase bg-white text-dark hover:bg-anodise hover:text-dark transition-colors inline-flex items-center gap-2"
+                        >
+                            Call Now
+                            <svg
+                                viewBox="0 0 24 24"
+                                class="size-4 stroke-current fill-none stroke-2"
+                                ><path
+                                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"
+                                ></path></svg
+                            >
+                        </a>
+                        <a
+                            href="#facade-hero-quote"
+                            class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase border border-white/60 hover:border-white hover:bg-white/15 transition-all"
+                            >Discuss a Project</a
+                        >
+                    </div>
                 </div>
+                <AdHeroQuoteForm
+                    tag="Commercial Project Quote"
+                    title="Discuss Facade Glazing & Installation"
+                    text="Send your project details and we will review the facade, curtain wall, structural glazing, or shopfront scope."
+                    formIdPrefix="facade-hero-quote"
+                    defaultInterest="other"
+                    defaultPropertyType="commercial"
+                />
             </div>
         </div>
     </section>
@@ -150,12 +167,13 @@ const aboutBullets = [
                     <p class="text-sm text-text-secondary leading-relaxed mb-6">
                         Aluverse engineers aluminium facade envelopes for
                         commercial, multi-residential, and architectural
-                        projects across Sydney. Curtain wall, structural
-                        silicone glazing, and shop fronts are detailed to suit
+                        projects across Sydney. As facade glazing contractors,
+                        we detail curtain wall, structural silicone glazing,
+                        glass facade installation, and shopfront glazing to suit
                         your structural grid, with thermally broken framing and
                         powder-coat or anodised finishes. We specify both
                         front-glazed (externally retained) and center-glazed
-                        (pocket-set) IGUs — front glazing for the clean external
+                        (pocket-set) IGUs; front glazing for the clean external
                         sightlines of curtain wall and high-rise facades, center
                         glazing for shop fronts and ground-floor facades where
                         the inside trim is on show. Every installation comes
@@ -288,7 +306,7 @@ const aboutBullets = [
     <AdSharedSections
         whyTag="What We Do"
         whyTitle="Why Sydney Specifies Aluverse for Facades"
-        whyText="A specialist aluminium fabricator handling design, shop drawings, fabrication, and on-site install for facade envelopes."
+        whyText="A specialist facade glazing contractor handling design, shop drawings, fabrication, and on-site installation for curtain wall, structural glazing, and shopfront scopes."
         whyItems={whyItems}
         aboutTitle="A Decade of Architectural Aluminium Delivery"
         aboutText="Aluverse delivers facade systems for boutique mixed-use developments through to commercial fitouts and multi-residential builds across Sydney."
