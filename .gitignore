@@ -25,3 +25,7 @@ pnpm-debug.log*
 
 scratch.*
 .vercel
+
+# Google Ads report exports
+ads-reports/*
+!ads-reports/README.md
