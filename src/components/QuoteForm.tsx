@@ -1,7 +1,7 @@
 import { useForm } from "@tanstack/react-form";
 import { quoteSchema } from "../lib/utils";
 import { useMutation } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type z from "zod";
 import { company, propertyTypes, services, timeframes } from "../data/site";
 import { ReactProviders } from "./ReactProviders";
@@ -47,7 +47,33 @@ function Component({
         ? "Brief project details: sizes, quantities, finishes, timing..."
         : "Tell us about your project: sizes, quantities, finishes, timing, or anything else that helps us prepare your quote...";
     const fieldId = (name: string) => `${formIdPrefix}-${name}`;
+    const formVariant = compact ? "compact" : wide ? "wide" : "standard";
+    const hasTrackedStart = useRef(false);
     const [recaptchaError, setRecaptchaError] = useState(false);
+
+    const pushQuoteEvent = (
+        event: string,
+        data: Record<string, string> = {}
+    ) => {
+        globalThis.dataLayer?.push({
+            event,
+            form_type: "quote",
+            form_id: formIdPrefix,
+            form_variant: formVariant,
+            page_path:
+                typeof window === "undefined" ? "" : window.location.pathname,
+            ...data,
+        });
+    };
+
+    const trackFormStart = (fieldName: string) => {
+        if (hasTrackedStart.current) return;
+        hasTrackedStart.current = true;
+        pushQuoteEvent("quote_form_start", {
+            first_field: fieldName,
+        });
+    };
+
     const { mutate, isPending, isSuccess, isError, reset } = useMutation({
         mutationFn: async (data: SubmitPayload) => {
             const res = await fetch("/api/send-quote", {
@@ -59,16 +85,33 @@ function Component({
             }
         },
 
-        onSuccess: () => {
+        onSuccess: (_data, variables) => {
             form.reset();
             setRecaptchaError(false);
 
-            globalThis.dataLayer?.push({
-                event: "form_submission_success",
-                form_type: "quote",
+            pushQuoteEvent("generate_lead", {
+                property_type: variables.propertyType,
+                interest: variables.interest,
+                timeframe: variables.timeframe,
+            });
+            pushQuoteEvent("quote_form_submission_success", {
+                property_type: variables.propertyType,
+                interest: variables.interest,
+                timeframe: variables.timeframe,
+            });
+            pushQuoteEvent("form_submission_success", {
+                legacy_event: "true",
             });
         },
+
+        onError: () => {
+            pushQuoteEvent("quote_form_submission_error");
+        },
     });
+
+    useEffect(() => {
+        pushQuoteEvent("quote_form_view");
+    }, []);
 
     useEffect(() => {
         if (!isSuccess) return;
@@ -98,6 +141,12 @@ function Component({
 
         onSubmit: async ({ value }) => {
             try {
+                pushQuoteEvent("quote_form_validated", {
+                    property_type: value.propertyType,
+                    interest: value.interest,
+                    timeframe: value.timeframe,
+                });
+
                 const token = await executeRecaptcha(
                     recaptchaSiteKey,
                     recaptchaAction
@@ -109,18 +158,29 @@ function Component({
                 });
             } catch {
                 setRecaptchaError(true);
+                pushQuoteEvent("quote_form_recaptcha_error");
             }
         },
     });
+
+    useEffect(() => {
+        if (!form.state.submissionAttempts || form.state.isValid) return;
+        pushQuoteEvent("quote_form_validation_error", {
+            submission_attempts: String(form.state.submissionAttempts),
+        });
+    }, [form.state.submissionAttempts, form.state.isValid]);
 
     return (
         <form
             onSubmit={async e => {
                 e.preventDefault();
                 e.stopPropagation();
+                pushQuoteEvent("quote_form_submit_attempt");
                 await form.handleSubmit();
             }}
             data-static-form
+            data-analytics-form="quote"
+            data-analytics-form-id={formIdPrefix}
         >
             <div className={gridClass}>
                 {/* Name */}
@@ -143,6 +203,7 @@ function Component({
                                     onChange={e =>
                                         field.handleChange(e.target.value)
                                     }
+                                    onFocus={() => trackFormStart(field.name)}
                                     onBlur={field.handleBlur}
                                     placeholder="Your full name"
                                     className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors ${
@@ -190,6 +251,7 @@ function Component({
                                     onChange={e =>
                                         field.handleChange(e.target.value)
                                     }
+                                    onFocus={() => trackFormStart(field.name)}
                                     onBlur={field.handleBlur}
                                     placeholder="Your phone number"
                                     className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors ${
@@ -237,6 +299,7 @@ function Component({
                                     onChange={e =>
                                         field.handleChange(e.target.value)
                                     }
+                                    onFocus={() => trackFormStart(field.name)}
                                     onBlur={field.handleBlur}
                                     placeholder="Your email address"
                                     className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors ${
@@ -286,6 +349,7 @@ function Component({
                                                 .value as SchemaType["propertyType"]
                                         )
                                     }
+                                    onFocus={() => trackFormStart(field.name)}
                                     onBlur={field.handleBlur}
                                     className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors ${
                                         !field.state.meta.isValid &&
@@ -342,6 +406,9 @@ function Component({
                                                 e.target
                                                     .value as SchemaType["interest"]
                                             )
+                                        }
+                                        onFocus={() =>
+                                            trackFormStart(field.name)
                                         }
                                         onBlur={field.handleBlur}
                                         className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors ${
@@ -401,6 +468,7 @@ function Component({
                                                 .value as SchemaType["timeframe"]
                                         )
                                     }
+                                    onFocus={() => trackFormStart(field.name)}
                                     onBlur={field.handleBlur}
                                     className={`w-full py-3 px-4 border border-divider bg-alt text-sm outline-none focus:border-accent transition-colors ${
                                         !field.state.meta.isValid &&
@@ -454,6 +522,7 @@ function Component({
                                     onChange={e =>
                                         field.handleChange(e.target.value)
                                     }
+                                    onFocus={() => trackFormStart(field.name)}
                                     onBlur={field.handleBlur}
                                     placeholder={detailsPlaceholder}
                                     className={detailsClass}

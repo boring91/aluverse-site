@@ -3,6 +3,8 @@ import type { ImageMetadata } from "astro";
 
 import { siteUrl } from "../../site-config.mjs";
 import { productImages } from "../assets/images";
+import TrackingHead from "../components/TrackingHead.astro";
+import TrackingNoScript from "../components/TrackingNoScript.astro";
 import { company } from "../data/site";
 import {
     createAbsoluteImageUrl,
@@ -52,23 +54,7 @@ const year = new Date().getFullYear();
 <!doctype html>
 <html lang="en" class="scroll-smooth bg-page">
     <head>
-        <!-- Google Tag Manager -->
-        <script is:inline>
-            (function (w, d, s, l, i) {
-                w[l] = w[l] || [];
-                w[l].push({
-                    "gtm.start": new Date().getTime(),
-                    event: "gtm.js",
-                });
-                var f = d.getElementsByTagName(s)[0],
-                    j = d.createElement(s),
-                    dl = l != "dataLayer" ? "&l=" + l : "";
-                j.async = true;
-                j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-                f.parentNode.insertBefore(j, f);
-            })(window, document, "script", "dataLayer", "GTM-KQ2K297W");
-        </script>
-        <!-- End Google Tag Manager -->
+        <TrackingHead />
 
         <meta charset="UTF-8" />
         <meta
@@ -132,15 +118,7 @@ const year = new Date().getFullYear();
     <body
         class="font-body text-text-primary bg-page antialiased overflow-x-hidden leading-relaxed"
     >
-        <!-- Google Tag Manager (noscript) -->
-        <noscript
-            ><iframe
-                src="https://www.googletagmanager.com/ns.html?id=GTM-KQ2K297W"
-                height="0"
-                width="0"
-                style="display:none;visibility:hidden"></iframe></noscript
-        >
-        <!-- End Google Tag Manager (noscript) -->
+        <TrackingNoScript />
 
         <header
             class="fixed top-0 left-0 right-0 z-50 bg-header-bg border-b border-header-border backdrop-blur-xl pt-[env(safe-area-inset-top)]"

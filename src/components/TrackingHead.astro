@@ -1,0 +1,148 @@
+---
+type Props = {
+    gtmId?: string;
+};
+
+const { gtmId = import.meta.env.PUBLIC_GTM_ID || "GTM-KQ2K297W" } =
+    Astro.props;
+const pageType = Astro.url.pathname.startsWith("/ads/")
+    ? "ad_landing_page"
+    : "website";
+---
+
+<!-- Google Tag Manager -->
+<script is:inline define:vars={{ gtmId }}>
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            "gtm.start": new Date().getTime(),
+            event: "gtm.js",
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", gtmId);
+</script>
+<!-- End Google Tag Manager -->
+
+<script is:inline define:vars={{ pageType }}>
+    (() => {
+        window.dataLayer = window.dataLayer || [];
+
+        const getClickText = element =>
+            (element.textContent || "")
+                .replace(/\s+/g, " ")
+                .trim()
+                .slice(0, 120);
+
+        const pushEvent = payload => {
+            window.dataLayer.push({
+                page_path: window.location.pathname,
+                page_type: pageType,
+                ...payload,
+            });
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        pushEvent({
+            event: "page_context",
+            page_title: document.title,
+            gclid_present: String(params.has("gclid")),
+            gbraid_present: String(params.has("gbraid")),
+            wbraid_present: String(params.has("wbraid")),
+            utm_source: params.get("utm_source") || "",
+            utm_medium: params.get("utm_medium") || "",
+            utm_campaign: params.get("utm_campaign") || "",
+        });
+
+        const initClickTracking = () => {
+            document.addEventListener("click", event => {
+                const target = event.target;
+                if (!(target instanceof Element)) return;
+
+                const link = target.closest("a[href]");
+                if (!(link instanceof HTMLAnchorElement)) return;
+
+                const href = link.getAttribute("href") || "";
+                const clickText = getClickText(link);
+
+                if (href.startsWith("tel:")) {
+                    pushEvent({
+                        event: "phone_click",
+                        link_url: href,
+                        link_text: clickText,
+                    });
+                    return;
+                }
+
+                if (href.startsWith("mailto:")) {
+                    pushEvent({
+                        event: "email_click",
+                        link_url: href,
+                        link_text: clickText,
+                    });
+                    return;
+                }
+
+                if (href === "#quote" || href === "/quote") {
+                    pushEvent({
+                        event: "quote_cta_click",
+                        link_url: href,
+                        link_text: clickText,
+                    });
+                }
+            });
+        };
+
+        const initScrollTracking = () => {
+            const thresholds = [25, 50, 75, 90];
+            const tracked = new Set();
+
+            const trackScroll = () => {
+                const scrollable =
+                    document.documentElement.scrollHeight -
+                    window.innerHeight;
+                if (scrollable <= 0) return;
+
+                const depth = Math.round(
+                    (window.scrollY / scrollable) * 100
+                );
+
+                thresholds.forEach(threshold => {
+                    if (tracked.has(threshold) || depth < threshold) return;
+                    tracked.add(threshold);
+                    pushEvent({
+                        event: "scroll_depth",
+                        scroll_depth: String(threshold),
+                    });
+                });
+
+                if (tracked.size === thresholds.length) {
+                    window.removeEventListener("scroll", trackScroll);
+                }
+            };
+
+            window.addEventListener("scroll", trackScroll, { passive: true });
+            trackScroll();
+        };
+
+        if (document.readyState === "loading") {
+            document.addEventListener(
+                "DOMContentLoaded",
+                () => {
+                    initClickTracking();
+                    initScrollTracking();
+                },
+                {
+                    once: true,
+                }
+            );
+        } else {
+            initClickTracking();
+            initScrollTracking();
+        }
+    })();
+</script>
