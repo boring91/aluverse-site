@@ -1,7 +1,6 @@
 ---
 import { Image, Picture } from "astro:assets";
 import AdLayout from "../../layouts/AdLayout.astro";
-import AdHeroQuoteForm from "../../components/AdHeroQuoteForm.astro";
 import AdSharedSections from "../../components/AdSharedSections.astro";
 import StatsBar from "../../components/StatsBar.astro";
 import PartnerLogosMarquee from "../../components/PartnerLogosMarquee.astro";
@@ -110,9 +109,7 @@ const aboutBullets = [
         >
         </div>
         <div class="max-w-7xl mx-auto px-6 py-12 lg:py-20 w-full relative z-10">
-            <div
-                class="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(380px,480px)] lg:items-center"
-            >
+            <div>
                 <div class="max-w-3xl text-shadow-hero">
                     <p
                         class="text-xs font-semibold tracking-widest uppercase text-anodise mb-6"
@@ -156,13 +153,6 @@ const aboutBullets = [
                         >
                     </div>
                 </div>
-                <AdHeroQuoteForm
-                    tag="Free Sydney Quote"
-                    title="Get a Sliding Door Installation Quote"
-                    text="Send your details now and we will price your sliding door, stacker door, or replacement project."
-                    formIdPrefix="sliding-doors-hero-quote"
-                    defaultInterest="doors"
-                />
             </div>
         </div>
     </section>

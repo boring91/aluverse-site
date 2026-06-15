@@ -5,7 +5,6 @@ import Layout from "../layouts/Layout.astro";
 import ProductCard from "../components/ProductCard.astro";
 import SocialSection from "../components/SocialSection.astro";
 import StatsBar from "../components/StatsBar.astro";
-import { QuoteForm } from "../components/QuoteForm";
 import { pageImages, productImages } from "../assets/images";
 import {
     company,
@@ -137,26 +136,6 @@ const homeSchema = [
                         class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase border border-white/60 hover:border-white hover:bg-white/15 transition-all"
                         >Get Free Quote</a
                     >
-                </div>
-            </div>
-            <div class="w-full lg:w-[440px] lg:shrink-0">
-                <div
-                    class="hero-form-card relative p-5 md:p-7 bg-white/6 backdrop-blur-2xl border border-white/12 shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
-                >
-                    <div
-                        class="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-anodise/50 to-transparent"
-                    >
-                    </div>
-                    <div class="mb-5">
-                        <h2 class="font-display text-2xl text-white">
-                            Get a Free Quote
-                        </h2>
-                        <p class="text-sm text-white/50 mt-1.5">
-                            Tell us about your project; we'll respond within 24
-                            hours
-                        </p>
-                    </div>
-                    <QuoteForm client:visible />
                 </div>
             </div>
         </div>
@@ -708,62 +687,3 @@ const homeSchema = [
     <!-- Social -->
     <SocialSection />
 </Layout>
-
-<style is:global>
-    .hero-form-card label {
-        color: rgba(255, 255, 255, 0.55) !important;
-    }
-    .hero-form-card input,
-    .hero-form-card select,
-    .hero-form-card textarea {
-        background: rgba(255, 255, 255, 0.07) !important;
-        border-color: rgba(255, 255, 255, 0.12) !important;
-        color: white !important;
-    }
-    .hero-form-card select {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") !important;
-        background-repeat: no-repeat !important;
-        background-position: right 1rem center !important;
-        background-size: 1rem !important;
-    }
-    .hero-form-card input::placeholder,
-    .hero-form-card textarea::placeholder {
-        color: rgba(255, 255, 255, 0.3) !important;
-    }
-    .hero-form-card input:focus,
-    .hero-form-card select:focus,
-    .hero-form-card textarea:focus {
-        border-color: rgba(181, 185, 189, 0.6) !important;
-    }
-    .hero-form-card .border-rose-500 {
-        border-color: #fda4af !important;
-    }
-    .hero-form-card select option {
-        background: #1a1a1a;
-        color: white;
-    }
-    .hero-form-card button[type="submit"] {
-        background: white !important;
-        color: var(--color-accent) !important;
-    }
-    .hero-form-card button[type="submit"]:hover:not(:disabled) {
-        background: var(--color-anodise) !important;
-        color: var(--color-dark) !important;
-    }
-    .hero-form-card button[type="submit"]:disabled {
-        background: rgba(255, 255, 255, 0.2) !important;
-        color: rgba(255, 255, 255, 0.6) !important;
-    }
-    .hero-form-card .text-rose-500 {
-        color: #fda4af !important;
-    }
-    .hero-form-card .text-text-muted {
-        color: rgba(255, 255, 255, 0.4) !important;
-    }
-    .hero-form-card a {
-        color: rgba(255, 255, 255, 0.55) !important;
-    }
-    .hero-form-card a:hover {
-        color: rgba(255, 255, 255, 0.85) !important;
-    }
-</style>
