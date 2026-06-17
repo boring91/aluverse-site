@@ -11,6 +11,9 @@ import bifoldWindowCard from "./bifold-window-card.webp";
 import bifoldWindowHero from "./bifold-window-hero.webp";
 import casementWindowCard from "./casement-window-card.webp";
 import casementWindowHero from "./casement-window-hero.webp";
+import commercialHero from "./commercial-hero.webp";
+import commercialFrameDetail from "./commercial-frame-detail.webp";
+import commercialFabrication from "./commercial-fabrication.webp";
 import fabricMeshCard from "./fabric-mesh-card.webp";
 import fabricMeshHero from "./fabric-mesh-hero.webp";
 import doorsPageHero from "./doors-page-hero.webp";
@@ -107,6 +110,9 @@ export const productImages = {
 
 export const pageImages = {
     aboutPageHero,
+    commercialHero,
+    commercialFrameDetail,
+    commercialFabrication,
     doorsPageHero,
     quotePageHero,
     screensPageHero,

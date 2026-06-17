@@ -1,0 +1,538 @@
+---
+import { Image, Picture } from "astro:assets";
+import AdLayout from "../../layouts/AdLayout.astro";
+import AdSharedSections from "../../components/AdSharedSections.astro";
+import StatsBar from "../../components/StatsBar.astro";
+import PartnerLogosMarquee from "../../components/PartnerLogosMarquee.astro";
+import { pageImages } from "../../assets/images";
+import { company } from "../../data/site";
+import { getFaqSchema } from "../../lib/seo";
+
+const heroWidths = [768, 1024, 1440, 1920];
+const featureImageWidths = [480, 768, 960, 1280];
+const heroQuality = 66;
+const featureImageQuality = 62;
+
+const assurances = [
+    {
+        title: "Fully Insured & Fully Covered",
+        text: "Comprehensive public liability and works insurance on every commercial contract, so your project, your site, and your program are fully covered from fabrication through to installation.",
+    },
+    {
+        title: "Compliance Fabrication & Installation",
+        text: "End-to-end compliance fabrication and installation managed in-house, with QA checkpoints and documentation aligned to your building brief and head contractor requirements.",
+    },
+    {
+        title: "Australian Standards Certified",
+        text: "Windows, doors, and shopfronts engineered, fabricated, and installed to the relevant Australian Standards, AS 2047, AS 1288, and AS/NZS 1170, for code-compliant sign-off.",
+    },
+];
+
+const customisationFeatures = [
+    "Bespoke profiles, sizes, and configurations",
+    "Architect and engineer specification to drawing",
+    "Front-glazed and center-glazed systems",
+    "Single, double, laminated, and toughened glazing",
+    "Full powder-coat and anodised finish range",
+    "Thermally broken framing options",
+];
+
+const commercialSpecs = [
+    { label: "Standards", value: "AS 2047 / AS 1288" },
+    { label: "Structural", value: "AS/NZS 1170" },
+    { label: "Glazing", value: "Double, Laminated & Toughened" },
+    { label: "Finishes", value: "Powder Coat & Anodised" },
+    { label: "Framing", value: "Thermally Broken Available" },
+    { label: "Scope", value: "Fabrication & Installation" },
+    { label: "Capacity", value: "High-Volume Multi-Unit" },
+    { label: "Coverage", value: "Fully Insured & Covered" },
+];
+
+const commercialFaqs = [
+    {
+        question: "Do you work with builders, developers, and head contractors?",
+        answer: "Yes. Our commercial division is structured around builders, developers, and head contractors. We coordinate with your site program, provide shop drawings and compliance documentation, and deliver a single point of accountability across fabrication and installation for the full window, door, and shopfront package.",
+    },
+    {
+        question: "What size projects do you take on?",
+        answer: "We focus exclusively on larger commercial and multi-residential work, including shopfronts, mixed-use developments, fitouts, and high-volume window and door packages. This is a dedicated commercial offering, not a single-window residential service, so our processes, capacity, and insurance are geared to project-scale delivery.",
+    },
+    {
+        question: "Are you fully insured and covered for commercial sites?",
+        answer: "Yes, we are fully insured and fully covered. Every commercial contract carries comprehensive public liability and works insurance, and our installation crews work to site safety and induction requirements so your project and program stay protected end to end.",
+    },
+    {
+        question: "Do your windows and doors comply with Australian Standards?",
+        answer: "All systems are designed, fabricated, and installed to the relevant Australian Standards. Windows and doors are manufactured to AS 2047, glazing to AS 1288, and structural performance to AS/NZS 1170, with documentation provided to support certification and sign-off.",
+    },
+    {
+        question: "Can products be fully customised to our specification?",
+        answer: "Completely. Every commercial job is fabricated to your architectural and engineering specification, including bespoke profiles, sizes, configurations, glazing make-up, thermal performance, and finish. We build to your drawings, not from a fixed catalogue, so the system matches the design intent exactly.",
+    },
+    {
+        question: "Do you handle both fabrication and installation?",
+        answer: "Yes. We provide compliance fabrication and installation as one coordinated scope. Production is controlled in-house, then our own installation teams complete the on-site works, keeping quality, programming, and accountability with a single specialist contractor.",
+    },
+];
+
+const adFaqs = commercialFaqs;
+const adSchema = [getFaqSchema([...adFaqs])];
+
+const whyItems = [
+    {
+        title: "Compliance Fabrication & Installation",
+        text: "One specialist team handling compliance fabrication and installation, with QA checkpoints, documentation, and on-site delivery coordinated to your head contractor's program.",
+    },
+    {
+        title: "Fully Insured & Fully Covered",
+        text: "Comprehensive public liability and works insurance on every commercial contract. Fully insured, fully covered, and inducted to your site safety requirements.",
+    },
+    {
+        title: "Complete Customisation to Specification",
+        text: "Windows, doors, and shopfronts fabricated to your architectural and engineering drawings, with bespoke profiles, glazing, thermal performance, and finishes to match the design intent.",
+    },
+    {
+        title: "Australian Standards Compliance",
+        text: "Engineered and documented to AS 2047, AS 1288, and AS/NZS 1170, so your aluminium package is code-compliant and ready for certification and sign-off.",
+    },
+    {
+        title: "In-House Production Control",
+        text: "Aluminium fabrication is controlled in our own workshop, giving consistent quality, reliable lead times, and capacity for high-volume multi-unit and commercial packages.",
+    },
+    {
+        title: "Single Point of Accountability",
+        text: "Design development, shop drawings, fabrication, and installation managed by one contractor, simplifying coordination and keeping responsibility in one place.",
+    },
+];
+
+const aboutBullets = [
+    "Commercial & multi-residential projects",
+    "Builders, developers & head contractors",
+    "Fully insured, fully covered",
+    "Fabricated to Australian Standards",
+    "In-house production & QA control",
+    "Shop drawings & compliance documents",
+];
+---
+
+<AdLayout
+    title="Commercial Aluminium Windows, Doors & Shopfronts Sydney | Builders & Developers | Aluverse"
+    description="Commercial aluminium windows, doors, and shopfront fabrication and installation for Sydney builders and developers. Fully insured, fully covered, compliance fabrication and installation to Australian Standards."
+    canonical="/ads/commercial"
+    ogImage={pageImages.commercialHero}
+    schema={adSchema}
+>
+    <!-- Hero -->
+    <section
+        class="min-h-[90vh] flex items-center text-white relative pt-16 overflow-hidden"
+    >
+        <Picture
+            src={pageImages.commercialHero}
+            alt="Commercial aluminium window facade on a Sydney mid-rise building at golden hour"
+            formats={["avif", "webp"]}
+            fallbackFormat="webp"
+            widths={heroWidths}
+            sizes="100vw"
+            quality={heroQuality}
+            loading="eager"
+            fetchpriority="high"
+            pictureAttributes={{
+                class: "absolute inset-0 block h-full w-full",
+            }}
+            class="h-full w-full object-cover"
+        />
+        <div
+            class="absolute inset-0 bg-linear-to-r from-black/85 via-black/65 to-black/55"
+        >
+        </div>
+        <div class="max-w-7xl mx-auto px-6 py-12 lg:py-20 w-full relative z-10">
+            <div>
+                <div class="max-w-3xl text-shadow-hero">
+                    <p
+                        class="text-xs font-semibold tracking-widest uppercase text-anodise mb-6"
+                    >
+                        Commercial Fabrication & Installation Contractor
+                    </p>
+                    <h1
+                        class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.08] mb-6"
+                    >
+                        Commercial Aluminium Windows, Doors & Shopfronts in <em
+                            class="not-italic text-anodise">Sydney</em
+                        >
+                    </h1>
+                    <p
+                        class="text-lg text-white/90 leading-relaxed max-w-lg mb-8"
+                    >
+                        Custom aluminium windows, doors, and shopfronts for
+                        builders and developers. Complete customisation to your
+                        specification, compliance fabrication and installation,
+                        and full compliance with Australian Standards, from one
+                        specialist Sydney contractor.
+                    </p>
+                    <div
+                        class="flex flex-wrap items-center gap-x-6 gap-y-2 mb-10 text-sm font-semibold tracking-wide uppercase text-white/85"
+                    >
+                        <span class="inline-flex items-center gap-2">
+                            <svg
+                                class="size-4 stroke-anodise stroke-2 fill-none shrink-0"
+                                viewBox="0 0 24 24"
+                                ><polyline points="20 6 9 17 4 12"></polyline></svg
+                            >
+                            Fully Insured
+                        </span>
+                        <span class="inline-flex items-center gap-2">
+                            <svg
+                                class="size-4 stroke-anodise stroke-2 fill-none shrink-0"
+                                viewBox="0 0 24 24"
+                                ><polyline points="20 6 9 17 4 12"></polyline></svg
+                            >
+                            Fully Covered
+                        </span>
+                        <span class="inline-flex items-center gap-2">
+                            <svg
+                                class="size-4 stroke-anodise stroke-2 fill-none shrink-0"
+                                viewBox="0 0 24 24"
+                                ><polyline points="20 6 9 17 4 12"></polyline></svg
+                            >
+                            Australian Standards
+                        </span>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <a
+                            href={company.phoneHref}
+                            class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase bg-white text-dark hover:bg-anodise hover:text-dark transition-colors inline-flex items-center gap-2"
+                        >
+                            Call Now
+                            <svg
+                                viewBox="0 0 24 24"
+                                class="size-4 stroke-current fill-none stroke-2"
+                                ><path
+                                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"
+                                ></path></svg
+                            >
+                        </a>
+                        <a
+                            href="#quote"
+                            class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase border border-white/60 hover:border-white hover:bg-white/15 transition-all"
+                            >Discuss a Project</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <StatsBar />
+
+    <!-- Assurance band -->
+    <section class="py-20 bg-page">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-2xl mb-10">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Built For Commercial Projects
+                </p>
+                <h2
+                    class="font-display text-3xl md:text-4xl leading-tight mb-3"
+                >
+                    A Commercial Contractor Builders Can Rely On
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                    Aluverse delivers aluminium window, door, and shopfront
+                    packages for large commercial and multi-residential builds
+                    across Sydney, with the insurance, compliance, and capacity
+                    that serious projects demand.
+                </p>
+            </div>
+            <div
+                class="grid grid-cols-1 md:grid-cols-3 gap-px bg-divider border border-divider"
+            >
+                {
+                    assurances.map(item => (
+                        <div class="p-8 bg-white">
+                            <div class="size-12 border border-accent/20 flex items-center justify-center mb-5">
+                                <svg
+                                    class="size-6 stroke-accent stroke-[1.5] fill-none"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </div>
+                            <h3 class="font-display text-xl mb-3">
+                                {item.title}
+                            </h3>
+                            <p class="text-sm text-text-secondary leading-relaxed">
+                                {item.text}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Customisation detail -->
+    <section class="py-20 bg-alt">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <p
+                        class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                    >
+                        Complete Customisation
+                    </p>
+                    <h2
+                        class="font-display text-3xl md:text-4xl leading-tight mb-4"
+                    >
+                        Built Exactly To Your Specification
+                    </h2>
+                    <p class="text-sm text-text-secondary leading-relaxed mb-6">
+                        Every commercial package is fabricated to your
+                        architectural and engineering drawings, not pulled from a
+                        fixed catalogue. We tailor profiles, sizes,
+                        configurations, glazing make-up, thermal performance, and
+                        finish to meet the exact specifications of your project,
+                        from ground-floor shopfronts and entrances through to
+                        full window and door schedules across multi-residential
+                        and mixed-use developments. Whether the brief calls for
+                        slim retail shopfront framing, thermally broken systems
+                        for energy performance, or laminated and toughened
+                        glazing for safety and acoustics, we engineer the
+                        solution to suit and document it for compliance.
+                    </p>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                        {
+                            customisationFeatures.map(item => (
+                                <li class="flex items-start gap-2.5 text-sm text-text-secondary">
+                                    <svg
+                                        class="size-4 stroke-accent stroke-2 fill-none shrink-0 mt-0.5"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    {item}
+                                </li>
+                            ))
+                        }
+                    </ul>
+                    <div class="flex flex-wrap gap-4">
+                        <a
+                            href={company.phoneHref}
+                            class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase bg-accent text-white hover:bg-accent-hover transition-colors inline-flex items-center gap-2"
+                        >
+                            Call {company.phoneDisplay}
+                        </a>
+                        <a
+                            href="#quote"
+                            class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase text-accent border border-divider hover:border-accent hover:bg-accent-light transition-all"
+                        >
+                            Discuss a Project
+                        </a>
+                    </div>
+                </div>
+                <div
+                    class="aspect-6/5 overflow-hidden border-t-[3px] border-t-anodise"
+                >
+                    <Image
+                        src={pageImages.commercialFrameDetail}
+                        alt="Detail of a custom charcoal aluminium window frame corner joint"
+                        widths={featureImageWidths}
+                        sizes="(min-width: 768px) calc((min(100vw, 80rem) - 7.5rem) / 2), calc(100vw - 3rem)"
+                        quality={featureImageQuality}
+                        loading="lazy"
+                        decoding="async"
+                        class="w-full h-full object-cover"
+                    />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Production / fabrication detail -->
+    <section class="py-20 bg-page">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div
+                    class="aspect-6/5 overflow-hidden border-t-[3px] border-t-anodise order-last md:order-first"
+                >
+                    <Image
+                        src={pageImages.commercialFabrication}
+                        alt="In-house aluminium window and door production at the Aluverse Sydney workshop"
+                        widths={featureImageWidths}
+                        sizes="(min-width: 768px) calc((min(100vw, 80rem) - 7.5rem) / 2), calc(100vw - 3rem)"
+                        quality={featureImageQuality}
+                        loading="lazy"
+                        decoding="async"
+                        class="w-full h-full object-cover"
+                    />
+                </div>
+                <div>
+                    <p
+                        class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                    >
+                        Compliance Fabrication & Installation
+                    </p>
+                    <h2
+                        class="font-display text-3xl md:text-4xl leading-tight mb-4"
+                    >
+                        Production & Installation Under One Roof
+                    </h2>
+                    <p class="text-sm text-text-secondary leading-relaxed mb-6">
+                        We control the production of your windows and doors in our
+                        own Sydney workshop, then install them with our own
+                        crews, keeping quality, programming, and accountability
+                        with a single specialist contractor. In-house fabrication
+                        means consistent tolerances, reliable lead times, and the
+                        capacity to deliver high-volume multi-unit packages
+                        without outsourcing risk. Every stage, from cutting and
+                        assembly to glazing and on-site installation, runs to
+                        documented QA checkpoints and the relevant Australian
+                        Standards, so your project is code-compliant, fully
+                        insured, and fully covered from factory floor to handover.
+                    </p>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                        <li
+                            class="flex items-start gap-2.5 text-sm text-text-secondary"
+                        >
+                            <svg
+                                class="size-4 stroke-accent stroke-2 fill-none shrink-0 mt-0.5"
+                                viewBox="0 0 24 24"
+                                ><polyline points="20 6 9 17 4 12"></polyline></svg
+                            >
+                            In-house aluminium fabrication
+                        </li>
+                        <li
+                            class="flex items-start gap-2.5 text-sm text-text-secondary"
+                        >
+                            <svg
+                                class="size-4 stroke-accent stroke-2 fill-none shrink-0 mt-0.5"
+                                viewBox="0 0 24 24"
+                                ><polyline points="20 6 9 17 4 12"></polyline></svg
+                            >
+                            Documented QA checkpoints
+                        </li>
+                        <li
+                            class="flex items-start gap-2.5 text-sm text-text-secondary"
+                        >
+                            <svg
+                                class="size-4 stroke-accent stroke-2 fill-none shrink-0 mt-0.5"
+                                viewBox="0 0 24 24"
+                                ><polyline points="20 6 9 17 4 12"></polyline></svg
+                            >
+                            High-volume project capacity
+                        </li>
+                        <li
+                            class="flex items-start gap-2.5 text-sm text-text-secondary"
+                        >
+                            <svg
+                                class="size-4 stroke-accent stroke-2 fill-none shrink-0 mt-0.5"
+                                viewBox="0 0 24 24"
+                                ><polyline points="20 6 9 17 4 12"></polyline></svg
+                            >
+                            Own installation crews
+                        </li>
+                    </ul>
+                    <div class="flex flex-wrap gap-4">
+                        <a
+                            href="#quote"
+                            class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase bg-accent text-white hover:bg-accent-hover transition-colors inline-flex items-center gap-2"
+                        >
+                            Discuss a Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner logos -->
+    <PartnerLogosMarquee />
+
+    <!-- Specs -->
+    <section class="py-20 bg-alt">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-2xl mb-10">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Compliance & Capability
+                </p>
+                <h2
+                    class="font-display text-3xl md:text-4xl leading-tight mb-3"
+                >
+                    Engineered To Australian Standards
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                    Each commercial package is engineered project-specific. Here
+                    is the technical and compliance envelope our commercial
+                    window, door, and shopfront systems work within.
+                </p>
+            </div>
+            <div
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-divider border border-divider"
+            >
+                {
+                    commercialSpecs.map(spec => (
+                        <div class="p-6 bg-white">
+                            <p class="text-xs font-semibold tracking-widest uppercase text-text-muted mb-2">
+                                {spec.label}
+                            </p>
+                            <p class="font-display text-xl">{spec.value}</p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 bg-white border-y border-divider">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-3xl mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Common Questions
+                </p>
+                <h2
+                    class="font-display text-3xl md:text-4xl leading-tight mb-4"
+                >
+                    Commercial Aluminium in Sydney
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                    Practical answers to the questions builders, developers, and
+                    head contractors ask before awarding an aluminium package.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {
+                    adFaqs.map(faq => (
+                        <article class="p-8 border border-divider bg-page">
+                            <h3 class="font-display text-xl mb-3">
+                                {faq.question}
+                            </h3>
+                            <p class="text-sm text-text-secondary leading-relaxed">
+                                {faq.answer}
+                            </p>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <AdSharedSections
+        whyTag="Why Aluverse"
+        whyTitle="Why Sydney Builders Specify Aluverse"
+        whyText="A specialist commercial contractor handling complete customisation, compliance fabrication, and installation for window, door, and shopfront packages, fully insured and fully covered."
+        whyItems={whyItems}
+        aboutTitle="A Decade of Commercial Aluminium Delivery"
+        aboutText="Aluverse delivers aluminium window, door, and shopfront packages for commercial fitouts, multi-residential developments, and mixed-use builds across Sydney, with the insurance, compliance, and production capacity that large projects demand."
+        aboutBullets={aboutBullets}
+        quoteTag="Get Started"
+        quoteTitle="Have a Commercial Project To Quote?"
+        quoteText="Share your drawings, schedule, or specification. We'll review your requirements and quote a fully customised, Australian Standards-compliant aluminium package."
+    />
+</AdLayout>
