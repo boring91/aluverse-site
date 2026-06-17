@@ -122,6 +122,40 @@ const aboutBullets = [
     ogImage={pageImages.commercialHero}
     schema={adSchema}
 >
+    <!-- Mobile phone block: this landing page is desktop/tablet only -->
+    <div class="mobile-unavailable">
+        <div class="max-w-sm mx-auto px-6 text-center">
+            <p
+                class="text-xs font-semibold tracking-widest uppercase text-anodise mb-4"
+            >
+                Commercial Enquiries
+            </p>
+            <h1 class="font-display text-3xl leading-tight mb-4">
+                Please view this page on a desktop
+            </h1>
+            <p class="text-sm text-text-secondary leading-relaxed mb-8">
+                Our commercial fabrication and installation page is built for a
+                larger screen. Open it on a desktop or tablet, or get in touch
+                with us directly and we'll take you through your project.
+            </p>
+            <div class="flex flex-col gap-3">
+                <a
+                    href={company.phoneHref}
+                    class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase bg-accent text-white hover:bg-accent-hover transition-colors inline-flex items-center justify-center gap-2"
+                >
+                    Call {company.phoneDisplay}
+                </a>
+                <a
+                    href={company.emailHref}
+                    class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase text-accent border border-divider hover:border-accent hover:bg-accent-light transition-all inline-flex items-center justify-center"
+                >
+                    Email Us
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="commercial-page-content">
     <!-- Hero -->
     <section
         class="min-h-[90vh] flex items-center text-white relative pt-16 overflow-hidden"
@@ -535,4 +569,29 @@ const aboutBullets = [
         quoteTitle="Have a Commercial Project To Quote?"
         quoteText="Share your drawings, schedule, or specification. We'll review your requirements and quote a fully customised, Australian Standards-compliant aluminium package."
     />
+    </div>
 </AdLayout>
+
+<style>
+    /* The mobile notice is hidden by default (desktop/tablet) and the page
+       content is shown. On phones (≤767px) this is flipped: the page content
+       is hidden and the notice is shown so the landing page does not open. */
+    .mobile-unavailable {
+        display: none;
+    }
+
+    @media (max-width: 767px) {
+        .commercial-page-content {
+            display: none;
+        }
+
+        .mobile-unavailable {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            min-height: 100svh;
+            padding-top: 4rem;
+        }
+    }
+</style>
