@@ -45,6 +45,21 @@ import keelerLogo from "./partners/keeler.webp";
 import pressMetalLogo from "./partners/press-metal.webp";
 import whitcoLogo from "./partners/whitco.webp";
 
+import configCommercialAwning from "./configurations/commercial-awning.webp";
+import configFivePanelStackerDoor from "./configurations/five-panel-stacker-door.webp";
+import configFourPanelStackerDoor from "./configurations/four-panel-stacker-door.webp";
+import configFrenchDoor from "./configurations/french-door.webp";
+import configFssfSlidingWindow from "./configurations/fssf-sliding-window.webp";
+import configHighlightSlidingDoor from "./configurations/highlight-sliding-door.webp";
+import configHighlightSlidingWindow from "./configurations/highlight-sliding-window.webp";
+import configLouvres from "./configurations/louvres.webp";
+import configSfSlidingWindow from "./configurations/sf-sliding-window.webp";
+import configSfsSlidingWindow from "./configurations/sfs-sliding-window.webp";
+import configSixPanelStackerDoor from "./configurations/six-panel-stacker-door.webp";
+import configStackerDoor from "./configurations/stacker-door.webp";
+import configStackerWindow from "./configurations/stacker-window.webp";
+import configTopHungDoor from "./configurations/top-hung-door.webp";
+
 type ProductImageSet = {
     card: ImageMetadata;
     hero: ImageMetadata;
@@ -134,4 +149,30 @@ export const partnerLogos: PartnerLogo[] = [
     { name: "Darley", image: darleyLogo, aspectHint: "wide" },
     { name: "Keeler Hardware", image: keelerLogo, aspectHint: "wide" },
     { name: "Whitco", image: whitcoLogo, aspectHint: "wide" },
+];
+
+export type ProductConfiguration = {
+    name: string;
+    code?: string;
+    image: ImageMetadata;
+};
+
+export const windowConfigurations: ProductConfiguration[] = [
+    { name: "Sliding Window", code: "SF", image: configSfSlidingWindow },
+    { name: "Sliding Window", code: "SFS", image: configSfsSlidingWindow },
+    { name: "Sliding Window", code: "FSSF", image: configFssfSlidingWindow },
+    { name: "Highlight Sliding Window", image: configHighlightSlidingWindow },
+    { name: "Stacker Window", image: configStackerWindow },
+    { name: "Commercial Awning", image: configCommercialAwning },
+    { name: "Louvre Window", image: configLouvres },
+];
+
+export const doorConfigurations: ProductConfiguration[] = [
+    { name: "Stacker Door", image: configStackerDoor },
+    { name: "Stacker Door", code: "4-Panel", image: configFourPanelStackerDoor },
+    { name: "Stacker Door", code: "5-Panel", image: configFivePanelStackerDoor },
+    { name: "Stacker Door", code: "6-Panel", image: configSixPanelStackerDoor },
+    { name: "Highlight Sliding Door", image: configHighlightSlidingDoor },
+    { name: "French Door", image: configFrenchDoor },
+    { name: "Top-Hung Door", image: configTopHungDoor },
 ];

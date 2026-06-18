@@ -4,7 +4,11 @@ import AdLayout from "../../layouts/AdLayout.astro";
 import AdSharedSections from "../../components/AdSharedSections.astro";
 import StatsBar from "../../components/StatsBar.astro";
 import PartnerLogosMarquee from "../../components/PartnerLogosMarquee.astro";
-import { pageImages } from "../../assets/images";
+import {
+    pageImages,
+    windowConfigurations,
+    doorConfigurations,
+} from "../../assets/images";
 import { company } from "../../data/site";
 import { getFaqSchema } from "../../lib/seo";
 
@@ -476,6 +480,123 @@ const aboutBullets = [
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Typical configurations & systems -->
+    <section class="py-20 bg-alt border-t border-divider">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-2xl mb-12">
+                <p
+                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
+                >
+                    Configurations & Systems
+                </p>
+                <h2
+                    class="font-display text-3xl md:text-4xl leading-tight mb-3"
+                >
+                    Our Typical Configurations & Systems
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                    Specify from our standard commercial range of window and door
+                    systems, each one custom-fabricated to your sizes, glazing,
+                    and finish. The most common configurations are shown below,
+                    and bespoke layouts are built to your drawings.
+                </p>
+            </div>
+
+            <!-- Window systems -->
+            <div class="flex items-center gap-4 mb-6">
+                <h3
+                    class="text-xs font-semibold tracking-widest uppercase text-text-muted"
+                >
+                    Window Systems
+                </h3>
+                <span class="h-px flex-1 bg-divider"></span>
+            </div>
+            <div
+                class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-14"
+            >
+                {
+                    windowConfigurations.map(cfg => (
+                        <div class="group border border-divider bg-white p-5 flex flex-col items-center text-center transition-colors hover:border-accent/40">
+                            <div class="aspect-square w-full overflow-hidden">
+                                <Image
+                                    src={cfg.image}
+                                    alt={`${cfg.name}${cfg.code ? ` ${cfg.code}` : ""} configuration diagram`}
+                                    widths={[200, 300, 420]}
+                                    sizes="(min-width: 1024px) 290px, (min-width: 640px) 30vw, 45vw"
+                                    quality={80}
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="w-full h-full object-contain"
+                                />
+                            </div>
+                            <div class="mt-4 flex items-center justify-center gap-2 flex-wrap">
+                                <p class="text-sm font-semibold text-accent">
+                                    {cfg.name}
+                                </p>
+                                {cfg.code && (
+                                    <span class="text-[10px] font-semibold tracking-wider uppercase text-text-muted border border-divider px-1.5 py-0.5">
+                                        {cfg.code}
+                                    </span>
+                                )}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <!-- Door systems -->
+            <div class="flex items-center gap-4 mb-6">
+                <h3
+                    class="text-xs font-semibold tracking-widest uppercase text-text-muted"
+                >
+                    Door Systems
+                </h3>
+                <span class="h-px flex-1 bg-divider"></span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                {
+                    doorConfigurations.map(cfg => (
+                        <div class="group border border-divider bg-white p-5 flex flex-col items-center text-center transition-colors hover:border-accent/40">
+                            <div class="aspect-square w-full overflow-hidden">
+                                <Image
+                                    src={cfg.image}
+                                    alt={`${cfg.name}${cfg.code ? ` ${cfg.code}` : ""} configuration diagram`}
+                                    widths={[200, 300, 420]}
+                                    sizes="(min-width: 1024px) 290px, (min-width: 640px) 30vw, 45vw"
+                                    quality={80}
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="w-full h-full object-contain"
+                                />
+                            </div>
+                            <div class="mt-4 flex items-center justify-center gap-2 flex-wrap">
+                                <p class="text-sm font-semibold text-accent">
+                                    {cfg.name}
+                                </p>
+                                {cfg.code && (
+                                    <span class="text-[10px] font-semibold tracking-wider uppercase text-text-muted border border-divider px-1.5 py-0.5">
+                                        {cfg.code}
+                                    </span>
+                                )}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <p class="mt-12 text-sm text-text-secondary leading-relaxed">
+                Don't see your configuration?{" "}
+                <a
+                    href="#quote"
+                    class="font-semibold text-accent underline underline-offset-4 decoration-divider hover:decoration-accent"
+                >
+                    Send us your drawings
+                </a>{" "}
+                — we fabricate to your exact specification.
+            </p>
         </div>
     </section>
 
