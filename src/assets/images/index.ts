@@ -38,6 +38,7 @@ import stackingDoorHero from "./stacking-door-hero.webp";
 import windowsPageHero from "./windows-page-hero.webp";
 import workshopPhoto from "./workshop-photo.webp";
 
+import aGradeLogo from "./partners/a-grade.webp";
 import alspecLogo from "./partners/alspec.webp";
 import darleyLogo from "./partners/darley.webp";
 import keelerLogo from "./partners/keeler.webp";
@@ -127,6 +128,7 @@ export type PartnerLogo = {
 };
 
 export const partnerLogos: PartnerLogo[] = [
+    { name: "A Grade Aluminium & Glass", image: aGradeLogo, aspectHint: "wide" },
     { name: "Alspec", image: alspecLogo, aspectHint: "wide" },
     { name: "Press Metal", image: pressMetalLogo, aspectHint: "wide" },
     { name: "Darley", image: darleyLogo, aspectHint: "wide" },
