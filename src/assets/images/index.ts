@@ -36,7 +36,6 @@ import slidingWindowHero from "./sliding-window-hero.webp";
 import stackingDoorCard from "./stacking-door-card.webp";
 import stackingDoorHero from "./stacking-door-hero.webp";
 import windowsPageHero from "./windows-page-hero.webp";
-import workshopPhoto from "./workshop-photo.webp";
 
 import aGradeLogo from "./partners/a-grade.webp";
 import alspecLogo from "./partners/alspec.webp";
@@ -133,7 +132,6 @@ export const pageImages = {
     quotePageHero,
     screensPageHero,
     windowsPageHero,
-    workshopPhoto,
 } as const;
 
 export type PartnerLogo = {
