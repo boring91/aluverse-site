@@ -44,6 +44,14 @@ export const company = {
     shortHours: "6:00 AM - 9:00 PM",
     serviceArea: "Sydney & Surrounding Areas",
     location: "Sydney, NSW",
+    compliance: [
+        { label: "Director", value: "Ahmed Al-Matari" },
+        { label: "ABN", value: "43 695 732 935" },
+        { label: "Glazing Licence No.", value: "483635C" },
+        { label: "Workers Compensation Policy No.", value: "260917801" },
+        { label: "Public Liability Insurance", value: "Active" },
+        { label: "Public Liability Policy No.", value: "GL-0009874" },
+    ],
     socials: [
         {
             id: "hipages",

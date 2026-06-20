@@ -6,7 +6,6 @@ import StatsBar from "../../components/StatsBar.astro";
 import PartnerLogosMarquee from "../../components/PartnerLogosMarquee.astro";
 import { productImages } from "../../assets/images";
 import { company, getProductBySlug } from "../../data/site";
-import { getFaqSchema } from "../../lib/seo";
 
 const product = getProductBySlug("aluminium-facade-systems");
 if (!product) throw new Error("aluminium-facade-systems product missing");
@@ -15,9 +14,6 @@ const heroWidths = [768, 1024, 1440, 1920];
 const featureImageWidths = [480, 768, 960, 1280];
 const heroQuality = 66;
 const featureImageQuality = 62;
-
-const adFaqs = product.seoFaqs;
-const adSchema = [getFaqSchema([...adFaqs])];
 
 const whyItems = [
     {
@@ -46,14 +42,6 @@ const whyItems = [
     },
 ];
 
-const aboutBullets = [
-    "Mid-rise commercial expertise",
-    "Multi-residential developments",
-    "Architectural refurbishments",
-    "Designed to AS/NZS 4284",
-    "Coordinated with head contractor",
-    "Shop drawings & compliance docs",
-];
 ---
 
 <AdLayout
@@ -61,7 +49,6 @@ const aboutBullets = [
     description="Aluminium facade systems, facade glazing, curtain wall installation, structural glazing contractors, and shopfront glazing for Sydney commercial projects."
     canonical="/ads/facade"
     ogImage={product.heroImage}
-    schema={adSchema}
 >
     <!-- Hero -->
     <section
@@ -256,50 +243,11 @@ const aboutBullets = [
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="py-20 bg-white border-y border-divider">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="max-w-3xl mb-12">
-                <p
-                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
-                >
-                    Common Questions
-                </p>
-                <h2
-                    class="font-display text-3xl md:text-4xl leading-tight mb-4"
-                >
-                    Aluminium Facade Systems in Sydney
-                </h2>
-                <p class="text-sm text-text-secondary leading-relaxed">
-                    Practical answers to the questions architects, builders, and
-                    developers ask before specifying a facade system.
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {
-                    adFaqs.map(faq => (
-                        <article class="p-8 border border-divider bg-page">
-                            <h3 class="font-display text-xl mb-3">
-                                {faq.question}
-                            </h3>
-                            <p class="text-sm text-text-secondary leading-relaxed">
-                                {faq.answer}
-                            </p>
-                        </article>
-                    ))
-                }
-            </div>
-        </div>
-    </section>
-
     <AdSharedSections
         whyTag="What We Do"
         whyTitle="Why Sydney Specifies Aluverse for Facades"
         whyText="A specialist facade glazing contractor handling design, shop drawings, fabrication, and on-site installation for curtain wall, structural glazing, and shopfront scopes."
         whyItems={whyItems}
-        aboutTitle="A Decade of Architectural Aluminium Delivery"
-        aboutText="Aluverse delivers facade systems for boutique mixed-use developments through to commercial fitouts and multi-residential builds across Sydney."
-        aboutBullets={aboutBullets}
         quoteTag="Get Started"
         quoteTitle="Ready To Discuss Your Facade?"
         quoteText="Share your drawings and performance brief; we'll review and quote a system tailored to your project."

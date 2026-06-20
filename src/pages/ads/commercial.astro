@@ -10,7 +10,6 @@ import {
     doorConfigurations,
 } from "../../assets/images";
 import { company } from "../../data/site";
-import { getFaqSchema } from "../../lib/seo";
 
 const heroWidths = [768, 1024, 1440, 1920];
 const featureImageWidths = [480, 768, 960, 1280];
@@ -51,36 +50,6 @@ const commercialSpecs = [
     { label: "Coverage", value: "Fully Insured & Covered" },
 ];
 
-const commercialFaqs = [
-    {
-        question: "Do you work with builders, developers, and head contractors?",
-        answer: "Yes. Our commercial division is structured around builders, developers, and head contractors. We coordinate with your site program, provide shop drawings and compliance documentation, and deliver a single point of accountability across fabrication and installation for the full window, door, and shopfront package.",
-    },
-    {
-        question: "What size projects do you take on?",
-        answer: "We focus exclusively on larger commercial and multi-residential work, including shopfronts, mixed-use developments, fitouts, and high-volume window and door packages. This is a dedicated commercial offering, not a single-window residential service, so our processes, capacity, and insurance are geared to project-scale delivery.",
-    },
-    {
-        question: "Are you fully insured and covered for commercial sites?",
-        answer: "Yes, we are fully insured and fully covered. Every commercial contract carries comprehensive public liability and works insurance, and our installation crews work to site safety and induction requirements so your project and program stay protected end to end.",
-    },
-    {
-        question: "Do your windows and doors comply with Australian Standards?",
-        answer: "All systems are designed, fabricated, and installed to the relevant Australian Standards. Windows and doors are manufactured to AS 2047, glazing to AS 1288, and structural performance to AS/NZS 1170, with documentation provided to support certification and sign-off.",
-    },
-    {
-        question: "Can products be fully customised to our specification?",
-        answer: "Completely. Every commercial job is fabricated to your architectural and engineering specification, including bespoke profiles, sizes, configurations, glazing make-up, and finish. We build to your drawings, not from a fixed catalogue, so the system matches the design intent exactly.",
-    },
-    {
-        question: "Do you handle both fabrication and installation?",
-        answer: "Yes. We provide compliance fabrication and installation as one coordinated scope. Production is controlled in-house, then our own installation teams complete the on-site works, keeping quality, programming, and accountability with a single specialist contractor.",
-    },
-];
-
-const adFaqs = commercialFaqs;
-const adSchema = [getFaqSchema([...adFaqs])];
-
 const whyItems = [
     {
         title: "Compliance Fabrication & Installation",
@@ -108,14 +77,6 @@ const whyItems = [
     },
 ];
 
-const aboutBullets = [
-    "Commercial & multi-residential projects",
-    "Builders, developers & head contractors",
-    "Fully insured, fully covered",
-    "Fabricated to Australian Standards",
-    "In-house production & QA control",
-    "Shop drawings & compliance documents",
-];
 ---
 
 <AdLayout
@@ -123,7 +84,6 @@ const aboutBullets = [
     description="Commercial aluminium windows, doors, and shopfront fabrication and installation for Sydney builders and developers. Fully insured, fully covered, compliance fabrication and installation to Australian Standards."
     canonical="/ads/commercial"
     ogImage={pageImages.commercialHero}
-    schema={adSchema}
 >
     <!-- Hero -->
     <section
@@ -606,50 +566,11 @@ const aboutBullets = [
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="py-20 bg-white border-y border-divider">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="max-w-3xl mb-12">
-                <p
-                    class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
-                >
-                    Common Questions
-                </p>
-                <h2
-                    class="font-display text-3xl md:text-4xl leading-tight mb-4"
-                >
-                    Commercial Aluminium in Sydney
-                </h2>
-                <p class="text-sm text-text-secondary leading-relaxed">
-                    Practical answers to the questions builders, developers, and
-                    head contractors ask before awarding an aluminium package.
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {
-                    adFaqs.map(faq => (
-                        <article class="p-8 border border-divider bg-page">
-                            <h3 class="font-display text-xl mb-3">
-                                {faq.question}
-                            </h3>
-                            <p class="text-sm text-text-secondary leading-relaxed">
-                                {faq.answer}
-                            </p>
-                        </article>
-                    ))
-                }
-            </div>
-        </div>
-    </section>
-
     <AdSharedSections
         whyTag="Why Aluverse"
         whyTitle="Why Sydney Builders Specify Aluverse"
         whyText="A specialist commercial contractor handling complete customisation, compliance fabrication, and installation for window, door, and shopfront packages, fully insured and fully covered."
         whyItems={whyItems}
-        aboutTitle="A Decade of Commercial Aluminium Delivery"
-        aboutText="Aluverse delivers aluminium window, door, and shopfront packages for commercial fitouts, multi-residential developments, and mixed-use builds across Sydney, with the insurance, compliance, and production capacity that large projects demand."
-        aboutBullets={aboutBullets}
         quoteTag="Get Started"
         quoteTitle="Have a Commercial Project To Quote?"
         quoteText="Share your drawings, schedule, or specification. We'll review your requirements and quote a fully customised, Australian Standards-compliant aluminium package."
