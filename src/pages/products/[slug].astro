@@ -29,7 +29,7 @@ const categoryMap = {
     windows: { href: "/windows", label: "Windows", related: "Other Window Systems" },
     doors: { href: "/doors", label: "Doors", related: "Other Door Systems" },
     screens: { href: "/screens", label: "Screens", related: "Other Screen Systems" },
-    facades: { href: null, label: "Facades", related: "Pairs Well With" },
+    shopfronts: { href: null, label: "Shop Fronts", related: "Pairs Well With" },
 } as const;
 const categoryHref = categoryMap[product.category].href;
 const categoryLabel = categoryMap[product.category].label;
@@ -44,7 +44,7 @@ const productCategory =
           ? "Custom Aluminium Doors"
           : product.category === "screens"
             ? "Custom Aluminium Screens"
-            : "Custom Aluminium Facade Systems";
+            : "Custom Aluminium Shop Fronts";
 const breadcrumbTrail = categoryHref
     ? [
           { label: "Home", href: "/" },

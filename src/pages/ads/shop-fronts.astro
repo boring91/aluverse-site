@@ -7,8 +7,8 @@ import PartnerLogosMarquee from "../../components/PartnerLogosMarquee.astro";
 import { productImages } from "../../assets/images";
 import { company, getProductBySlug } from "../../data/site";
 
-const product = getProductBySlug("aluminium-facade-systems");
-if (!product) throw new Error("aluminium-facade-systems product missing");
+const product = getProductBySlug("shop-fronts");
+if (!product) throw new Error("shop-fronts product missing");
 
 const heroWidths = [768, 1024, 1440, 1920];
 const featureImageWidths = [480, 768, 960, 1280];
@@ -17,37 +17,37 @@ const featureImageQuality = 62;
 
 const whyItems = [
     {
-        title: "Curtain Wall Installation",
-        text: "Stick-built and unitised curtain wall installation with front-glazed (externally retained) and center-glazed (pocket-set) options, captive or silicone-bonded to your structural grid and architect intent.",
+        title: "Shopfront Glazing",
+        text: "Slim-framed aluminium shopfront glazing and fixed display windows that maximise the glass, frame the products inside, and give your tenancy a clean, modern street presence.",
     },
     {
-        title: "Thermally Broken Framing",
-        text: "Aluminium framing with thermal breaks for energy performance, condensation control, and compliance with modern building briefs.",
+        title: "Entrance Doors",
+        text: "Framed and frameless aluminium entrance doors with commercial-grade closers and multi-point locking, built for the foot traffic of busy retail and hospitality venues.",
     },
     {
-        title: "Shopfront Glazing Contractors",
-        text: "Commercial shopfront glazing with slim aluminium framing, toughened glass, and entrance doors detailed for high-traffic retail and ground-floor tenancies.",
+        title: "Toughened & Laminated Glass",
+        text: "Safety glass glazed to AS 1288, with toughened or laminated options specified for security, acoustic comfort, and compliance at street level.",
     },
     {
-        title: "AS/NZS 4284 Performance",
-        text: "Systems designed and documented to AS/NZS 4284 with structural, thermal, and weatherproofing performance verified for your project.",
+        title: "Measured & Installed On Site",
+        text: "Every shop front is measured on site, fabricated to the exact opening, and installed by our own team with minimal disruption to your trading hours.",
     },
     {
         title: "Single Point of Accountability",
-        text: "Design development, shop drawings, fabrication, and on-site installation managed by one team, coordinated with your head contractor.",
+        text: "Design, shop drawings, fabrication, and installation managed by one team, coordinated with your builder, shopfitter, and tenant.",
     },
     {
         title: "Powder-Coat & Anodised Finishes",
-        text: "Full powder-coat colour range and anodised finish options to match the architect's palette across mid-rise and high-rise builds.",
+        text: "Full powder-coat colour range and anodised finish options to match your brand, signage, and the surrounding building.",
     },
 ];
 
 ---
 
 <AdLayout
-    title="Aluminium Facade Systems Sydney | Curtain Wall Installation | Aluverse"
-    description="Aluminium facade systems, facade glazing, curtain wall installation, structural glazing contractors, and shopfront glazing for Sydney commercial projects."
-    canonical="/ads/facade"
+    title="Aluminium Shop Fronts Sydney | Commercial Shopfront Glazing | Aluverse"
+    description="Aluminium shop fronts, shopfront glazing, and commercial entrance doors for Sydney retail and hospitality projects. Slim-framed glazing and toughened glass, fabricated and installed."
+    canonical="/ads/shop-fronts"
     ogImage={product.heroImage}
 >
     <!-- Hero -->
@@ -56,7 +56,7 @@ const whyItems = [
     >
         <Picture
             src={product.heroImage}
-            alt="Aluminium facade system on a Sydney commercial building"
+            alt="Aluminium shop front on a Sydney commercial tenancy"
             formats={["avif", "webp"]}
             fallbackFormat="webp"
             widths={heroWidths}
@@ -79,23 +79,22 @@ const whyItems = [
                     <p
                         class="text-xs font-semibold tracking-widest uppercase text-anodise mb-6"
                     >
-                        Facade Glazing, Curtain Wall & Shopfront Contractors
+                        Shopfront Glazing & Entrance Contractors
                     </p>
                     <h1
                         class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.08] mb-6"
                     >
-                        Aluminium Facade Systems in <em
+                        Aluminium Shop Fronts in <em
                             class="not-italic text-anodise">Sydney</em
                         >
                     </h1>
                     <p
                         class="text-lg text-white/90 leading-relaxed max-w-lg mb-10"
                     >
-                        Curtain wall installation, structural glazing
-                        contractors, facade glazing, and shopfront glazing for
-                        commercial and multi-residential builds. One specialist
-                        Sydney team for design, shop drawings, fabrication, and
-                        on-site installation.
+                        Slim-framed shopfront glazing, display windows, and
+                        commercial entrance doors for retail and hospitality
+                        tenancies. One specialist Sydney team for design,
+                        fabrication, and on-site installation.
                     </p>
                     <div class="flex flex-wrap gap-4">
                         <a
@@ -133,28 +132,26 @@ const whyItems = [
                     <p
                         class="text-xs font-semibold tracking-widest uppercase text-accent mb-3"
                     >
-                        Architectural Facade Solutions
+                        Commercial Shopfront Solutions
                     </p>
                     <h2
                         class="font-display text-3xl md:text-4xl leading-tight mb-4"
                     >
-                        Curtain Wall, Structural Glazing & Cladding
+                        Shopfront Glazing, Display Windows & Entrances
                     </h2>
                     <p class="text-sm text-text-secondary leading-relaxed mb-6">
-                        Aluverse engineers aluminium facade envelopes for
-                        commercial, multi-residential, and architectural
-                        projects across Sydney. As facade glazing contractors,
-                        we detail curtain wall, structural silicone glazing,
-                        glass facade installation, and shopfront glazing to suit
-                        your structural grid, with thermally broken framing and
-                        powder-coat or anodised finishes. We specify both
-                        front-glazed (externally retained) and center-glazed
-                        (pocket-set) IGUs; front glazing for the clean external
-                        sightlines of curtain wall and high-rise facades, center
-                        glazing for shop fronts and ground-floor facades where
-                        the inside trim is on show. Every installation comes
-                        with shop drawings, AS/NZS performance documentation,
-                        and on-site coordination.
+                        Aluverse designs, fabricates, and installs aluminium shop
+                        fronts for retail, hospitality, and commercial tenancies
+                        across Sydney. As shopfront glazing contractors, we
+                        detail slim-framed glazing, fixed display windows, and
+                        framed or frameless entrance doors to suit your opening,
+                        with toughened or laminated safety glass and powder-coat
+                        or anodised finishes. Glazing is specified to AS 1288 and
+                        framing to AS 2047 where applicable, with commercial-grade
+                        hardware and multi-point locking sized for foot traffic
+                        and security. Every shop front is measured on site,
+                        fabricated to the exact opening, and installed by our own
+                        team with minimal disruption to trading.
                     </p>
                     <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                         {
@@ -190,8 +187,8 @@ const whyItems = [
                     class="aspect-6/5 overflow-hidden border-t-[3px] border-t-anodise"
                 >
                     <Image
-                        src={productImages.aluminiumFacades.card}
-                        alt="Aluminium facade panels and curtain wall framing"
+                        src={productImages.aluminiumShopFronts.card}
+                        alt="Aluminium shop front glazing and entrance doors"
                         widths={featureImageWidths}
                         sizes="(min-width: 768px) calc((min(100vw, 80rem) - 7.5rem) / 2), calc(100vw - 3rem)"
                         quality={featureImageQuality}
@@ -222,8 +219,8 @@ const whyItems = [
                     Engineered to Australian Standards
                 </h2>
                 <p class="text-sm text-text-secondary leading-relaxed">
-                    Each facade is engineered project-specific. Here is the
-                    technical envelope our standard facade systems work within.
+                    Each shop front is engineered project-specific. Here is the
+                    technical envelope our shopfront systems work within.
                 </p>
             </div>
             <div
@@ -245,11 +242,11 @@ const whyItems = [
 
     <AdSharedSections
         whyTag="What We Do"
-        whyTitle="Why Sydney Specifies Aluverse for Facades"
-        whyText="A specialist facade glazing contractor handling design, shop drawings, fabrication, and on-site installation for curtain wall, structural glazing, and shopfront scopes."
+        whyTitle="Why Sydney Chooses Aluverse for Shop Fronts"
+        whyText="A specialist shopfront glazing contractor handling design, fabrication, and on-site installation for shopfront glazing, display windows, and entrance scopes."
         whyItems={whyItems}
         quoteTag="Get Started"
-        quoteTitle="Ready To Discuss Your Facade?"
-        quoteText="Share your drawings and performance brief; we'll review and quote a system tailored to your project."
+        quoteTitle="Ready To Discuss Your Shop Front?"
+        quoteText="Share your opening sizes, drawings, or photos; we'll review and quote a shop front tailored to your tenancy."
     />
 </AdLayout>

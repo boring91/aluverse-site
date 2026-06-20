@@ -9,7 +9,7 @@ import { pageImages, productImages } from "../assets/images";
 import {
     company,
     doorProducts,
-    facadeProducts,
+    shopFrontProducts,
     getProductHref,
     screenProducts,
     testimonials,
@@ -21,11 +21,11 @@ const heroWidths = [768, 1024, 1440, 1920];
 const featureImageWidths = [480, 768, 960, 1280];
 const heroQuality = 66;
 const featureImageQuality = 62;
-const facadeProduct = facadeProducts[0];
-const facadeFeatureHighlights = [
-    "Curtain wall & structural glazing",
-    "Rainscreen & cladding systems",
-    "Designed to AS/NZS 4284",
+const shopFrontProduct = shopFrontProducts[0];
+const shopFrontFeatureHighlights = [
+    "Slim-framed shopfront glazing",
+    "Framed & frameless entrances",
+    "Toughened & laminated safety glass",
     "Powder-coat & anodised finishes",
     "Shop drawings & compliance docs",
 ] as const;
@@ -266,29 +266,28 @@ const homeSchema = [
         </div>
     </section>
 
-    <!-- Facades -->
+    <!-- Shop fronts -->
     {
-        facadeProduct && (
+        shopFrontProduct && (
             <section class="py-20 bg-alt">
                 <div class="max-w-7xl mx-auto px-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                         <div>
                             <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-3">
-                                Architectural Solutions
+                                Commercial Solutions
                             </p>
                             <h2 class="font-display text-3xl md:text-4xl leading-tight mb-4">
-                                Aluminium Facade Systems
+                                Aluminium Shop Fronts
                             </h2>
                             <p class="text-sm text-text-secondary max-w-lg leading-relaxed mb-8">
-                                For commercial, multi-residential, and
-                                architectural projects, Aluverse engineers full
-                                aluminium facade envelopes; curtain wall,
-                                structural glazing, and shop fronts designed to
-                                Australian standards and detailed to architect
-                                intent.
+                                For retail, hospitality, and commercial
+                                tenancies, Aluverse designs and installs slim-framed
+                                aluminium shop fronts; shopfront glazing, framed
+                                and frameless entrances, and toughened glass built
+                                to Australian standards and to suit your business.
                             </p>
                             <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                                {facadeFeatureHighlights.map(item => (
+                                {shopFrontFeatureHighlights.map(item => (
                                     <li class="flex items-start gap-2.5 text-sm text-text-secondary">
                                         <svg
                                             class="size-4 stroke-accent stroke-2 fill-none shrink-0 mt-0.5"
@@ -302,10 +301,10 @@ const homeSchema = [
                             </ul>
                             <div class="flex flex-wrap gap-4">
                                 <a
-                                    href={getProductHref(facadeProduct.slug)}
+                                    href={getProductHref(shopFrontProduct.slug)}
                                     class="px-8 py-3.5 text-sm font-semibold tracking-wide uppercase bg-accent text-white hover:bg-accent-hover transition-colors inline-flex items-center gap-2"
                                 >
-                                    Explore Facade Systems
+                                    Explore Shop Fronts
                                     <svg
                                         viewBox="0 0 24 24"
                                         class="size-4 stroke-current fill-none stroke-2"
@@ -323,8 +322,8 @@ const homeSchema = [
                         </div>
                         <div class="aspect-6/5 overflow-hidden order-first md:order-last border-t-[3px] border-t-anodise">
                             <Image
-                                src={facadeProduct.heroImage}
-                                alt={facadeProduct.imageAlt}
+                                src={shopFrontProduct.heroImage}
+                                alt={shopFrontProduct.imageAlt}
                                 widths={featureImageWidths}
                                 sizes="(min-width: 768px) calc((min(100vw, 80rem) - 7.5rem) / 2), calc(100vw - 3rem)"
                                 quality={featureImageQuality}

@@ -2,7 +2,7 @@ import type { ImageMetadata } from "astro";
 
 import { productImages } from "../assets/images";
 
-export type ProductCategory = "windows" | "doors" | "screens" | "facades";
+export type ProductCategory = "windows" | "doors" | "screens" | "shopfronts";
 
 export type ProductSpec = {
     label: string;
@@ -107,11 +107,11 @@ export const products: Product[] = [
         heroImage: productImages.slidingWindows.hero,
         imageAlt: "Sliding windows",
         detailDescription:
-            "Sliding windows offer smooth horizontal operation along precision-engineered aluminium tracks, delivering reliable day-to-day ventilation without any outward projection into walkways or landscaping. Their streamlined profile maximises natural light and maintains clean sightlines across wide openings, making them one of the most versatile window types for Sydney properties. Because the sashes glide within the frame rather than swinging open, sliding windows are particularly well suited to bedrooms, living areas, kitchens, and any opening that sits beside a deck, path, or balcony. For larger residential and commercial projects, multiple sliding panels can be configured side by side to cover expansive openings while keeping operation simple and low-maintenance. Every sliding window from Aluverse is custom fabricated to the exact dimensions of the opening, with weather seals engineered for Sydney's coastal and suburban conditions and a full powder-coat colour range to match any facade.",
+            "Sliding windows offer smooth horizontal operation along precision-engineered aluminium tracks, delivering reliable day-to-day ventilation without any outward projection into walkways or landscaping. Their streamlined profile maximises natural light and maintains clean sightlines across wide openings, making them one of the most versatile window types for Sydney properties. Because the sashes glide within the frame rather than swinging open, sliding windows are particularly well suited to bedrooms, living areas, kitchens, and any opening that sits beside a deck, path, or balcony. For larger residential and commercial projects, multiple sliding panels can be configured side by side to cover expansive openings while keeping operation simple and low-maintenance. Every sliding window from Aluverse is custom fabricated to the exact dimensions of the opening, with weather seals engineered for Sydney's coastal and suburban conditions and a full powder-coat colour range to match any exterior.",
         idealFor: [
             "Bedrooms, kitchens, and living rooms that need easy day-to-day ventilation. Sliding windows let occupants control airflow with one hand, and the horizontal action is intuitive for all ages and abilities.",
             "Openings beside decks, walkways, or landscaping where an outward-swinging sash would obstruct foot traffic or garden beds. The sashes stay within the frame at all times, keeping exterior clearances free.",
-            "Large-scale residential and commercial projects that need wide glass areas with simple, low-maintenance operation. Multiple panels can span broad openings while maintaining a consistent, minimal profile across the facade.",
+            "Large-scale residential and commercial projects that need wide glass areas with simple, low-maintenance operation. Multiple panels can span broad openings while maintaining a consistent, minimal profile across the building exterior.",
         ],
         features: [
             "Easy single-hand operation",
@@ -148,7 +148,7 @@ export const products: Product[] = [
             {
                 question:
                     "What colours are available for aluminium sliding windows?",
-                answer: "Aluverse offers the full powder-coat colour range, so frames can be matched to virtually any facade. Popular choices for Sydney projects include matt black, surfmist, monument, and a range of anodised-look finishes.",
+                answer: "Aluverse offers the full powder-coat colour range, so frames can be matched to virtually any exterior. Popular choices for Sydney projects include matt black, surfmist, monument, and a range of anodised-look finishes.",
             },
             {
                 question:
@@ -175,7 +175,7 @@ export const products: Product[] = [
         idealFor: [
             "Bathrooms, laundries, and kitchens where secure everyday ventilation is essential. The partially open sash limits external access while still allowing moisture and cooking odours to escape.",
             "Openings that need fresh air even during light rain. The top-hinged canopy design deflects water away from the interior, so windows can stay open through passing Sydney showers.",
-            "Pairing with fixed glass panels on larger facades to bring in more natural light without sacrificing operable ventilation sections. This combination is popular in multi-storey residential and commercial projects.",
+            "Pairing with fixed glass panels on larger openings to bring in more natural light without sacrificing operable ventilation sections. This combination is popular in multi-storey residential and commercial projects.",
         ],
         features: [
             "Ventilation during rain",
@@ -242,7 +242,7 @@ export const products: Product[] = [
         heroImage: productImages.casementWindows.hero,
         imageAlt: "Casement windows",
         detailDescription:
-            "Casement windows are side-hinged and swing outward, providing a full 100 percent clear opening that delivers the strongest natural airflow of any standard window type. The outward sash acts like a scoop, catching side breezes and directing them into the room, which makes casement windows an excellent choice for cross-ventilation in bedrooms, living areas, and upper-storey spaces across Sydney. When closed, the sash compresses tightly against the frame through multi-point locking, creating a weather-tight seal that performs well against wind-driven rain and temperature extremes. This combination of generous airflow when open and strong sealing when closed makes casement windows popular on projects that prioritise both comfort and performance. For larger developments, casement windows can be ganged together or paired with fixed panels to create consistent ventilation strategies across a facade. Every casement window from Aluverse is custom fabricated to suit the opening size, glazing requirements, and colour preferences of the project.",
+            "Casement windows are side-hinged and swing outward, providing a full 100 percent clear opening that delivers the strongest natural airflow of any standard window type. The outward sash acts like a scoop, catching side breezes and directing them into the room, which makes casement windows an excellent choice for cross-ventilation in bedrooms, living areas, and upper-storey spaces across Sydney. When closed, the sash compresses tightly against the frame through multi-point locking, creating a weather-tight seal that performs well against wind-driven rain and temperature extremes. This combination of generous airflow when open and strong sealing when closed makes casement windows popular on projects that prioritise both comfort and performance. For larger developments, casement windows can be ganged together or paired with fixed panels to create consistent ventilation strategies across a building exterior. Every casement window from Aluverse is custom fabricated to suit the opening size, glazing requirements, and colour preferences of the project.",
         idealFor: [
             "Rooms that need strong cross-ventilation and maximum airflow. The full clear opening catches breezes more effectively than sliding or awning alternatives, making casement windows ideal for bedrooms and living areas that rely on natural cooling.",
             "Projects where architects or builders want a clean opening without a central mullion blocking the breeze. Casement sashes swing clear of the frame, giving an uninterrupted path for air movement across the full width of the window.",
@@ -374,7 +374,7 @@ export const products: Product[] = [
         heroImage: productImages.doubleGlazingWindows.hero,
         imageAlt: "Double glazed windows",
         detailDescription:
-            "Double glazed windows feature two panes of glass separated by an insulating gas-filled gap, delivering measurably better thermal and acoustic performance than single-pane alternatives. The sealed air space, typically filled with argon gas, slows heat transfer in both directions, helping keep interiors cooler in Sydney's summer and warmer through winter without relying as heavily on mechanical heating and cooling. At the same time, the dual-pane construction significantly reduces the transmission of external noise, which is particularly valuable for properties near busy roads, flight paths, schools, or commercial precincts. Low-E coatings on the glass can be specified to further improve performance by reflecting radiant heat while still allowing natural light through. Double glazing can be applied across virtually every aluminium window type Aluverse offers, including sliding, awning, casement, bi-fold, and double hung systems, so there is no need to compromise on window style to gain the performance benefits. For large-scale developments and multi-unit projects, double glazing is often specified across entire facades to deliver consistent comfort and acoustic separation between units.",
+            "Double glazed windows feature two panes of glass separated by an insulating gas-filled gap, delivering measurably better thermal and acoustic performance than single-pane alternatives. The sealed air space, typically filled with argon gas, slows heat transfer in both directions, helping keep interiors cooler in Sydney's summer and warmer through winter without relying as heavily on mechanical heating and cooling. At the same time, the dual-pane construction significantly reduces the transmission of external noise, which is particularly valuable for properties near busy roads, flight paths, schools, or commercial precincts. Low-E coatings on the glass can be specified to further improve performance by reflecting radiant heat while still allowing natural light through. Double glazing can be applied across virtually every aluminium window type Aluverse offers, including sliding, awning, casement, bi-fold, and double hung systems, so there is no need to compromise on window style to gain the performance benefits. For large-scale developments and multi-unit projects, double glazing is often specified across entire buildings to deliver consistent comfort and acoustic separation between units.",
         idealFor: [
             "Homes and developments near busy roads, schools, flight paths, or commercial areas where outside noise is an issue. The dual-pane construction creates a measurable reduction in sound transmission compared to single glazing.",
             "Projects focused on energy efficiency and year-round comfort. Double glazing limits heat gain in summer and heat loss in winter, reducing reliance on air conditioning and heating across the building.",
@@ -435,14 +435,14 @@ export const products: Product[] = [
             "Classic vertical sliding design with both upper and lower sashes operable for versatile ventilation.",
         metaTitle: "Aluminium Double Hung Windows Sydney | Custom | Aluverse",
         metaDescription:
-            "Custom aluminium double hung windows for Sydney projects. Dual-sash vertical sliding for versatile ventilation and a classic facade look. Free quotes from Aluverse.",
+            "Custom aluminium double hung windows for Sydney projects. Dual-sash vertical sliding for versatile ventilation and a classic exterior look. Free quotes from Aluverse.",
         cardImage: productImages.doubleHungWindows.card,
         heroImage: productImages.doubleHungWindows.hero,
         imageAlt: "Double hung windows",
         detailDescription:
-            "Double hung windows feature both an upper and lower sash that slide vertically within the frame, offering the most versatile ventilation control of any traditional window style. Opening the top sash releases warm air that has risen to ceiling height, while opening the bottom draws in cooler air at floor level. Running both sashes at once creates a natural stack effect that moves air through the room without any mechanical assistance. The vertical sliding action means no part of the window projects outward, keeping pathways, decks, and landscaping clear. Double hung windows are a natural fit for heritage-style homes, Federation facades, and Hamptons-inspired designs across Sydney, but their clean proportions also work well in contemporary projects that want a more structured window rhythm. Tilt-in sash options simplify cleaning on upper floors, and the full powder-coat colour range lets frames match any exterior palette. For larger developments, double hung windows provide a consistent, repeatable look across multiple storeys.",
+            "Double hung windows feature both an upper and lower sash that slide vertically within the frame, offering the most versatile ventilation control of any traditional window style. Opening the top sash releases warm air that has risen to ceiling height, while opening the bottom draws in cooler air at floor level. Running both sashes at once creates a natural stack effect that moves air through the room without any mechanical assistance. The vertical sliding action means no part of the window projects outward, keeping pathways, decks, and landscaping clear. Double hung windows are a natural fit for heritage-style homes, Federation homes, and Hamptons-inspired designs across Sydney, but their clean proportions also work well in contemporary projects that want a more structured window rhythm. Tilt-in sash options simplify cleaning on upper floors, and the full powder-coat colour range lets frames match any exterior palette. For larger developments, double hung windows provide a consistent, repeatable look across multiple storeys.",
         idealFor: [
-            "Heritage-style homes and traditional facades that need a window with familiar vertical proportions. Double hung windows are one of the most heritage-sympathetic aluminium options available, making them a strong choice for renovations and restorations across Sydney's older suburbs.",
+            "Heritage-style homes and traditional exteriors that need a window with familiar vertical proportions. Double hung windows are one of the most heritage-sympathetic aluminium options available, making them a strong choice for renovations and restorations across Sydney's older suburbs.",
             "Rooms facing pathways, decks, or narrow side passages where an outward-opening sash would obstruct foot traffic. Both sashes slide within the frame, so there is no external projection at any point during operation.",
             "Homeowners and project managers who want precise control over top and bottom ventilation. The dual-sash design allows warm air to exhaust through the top while cooler air enters through the bottom, creating natural airflow without fans or mechanical systems.",
         ],
@@ -464,7 +464,7 @@ export const products: Product[] = [
         seoFaqs: [
             {
                 question:
-                    "Are double hung windows a good fit for traditional facades?",
+                    "Are double hung windows a good fit for traditional homes?",
                 answer: "Yes. Double hung windows are often chosen for heritage and classic homes because they retain a familiar vertical sash look while still offering modern aluminium durability and weather sealing.",
             },
             {
@@ -578,7 +578,7 @@ export const products: Product[] = [
         idealFor: [
             "Large entertaining areas that need the biggest possible opening to a deck, garden, or alfresco zone. Bi-fold doors can clear up to 90 percent of the opening width, giving the room a near-open-air feel when the panels are folded back.",
             "Homes, restaurants, and commercial venues that want a strong indoor-outdoor connection. The folding action creates a dramatic transition that is as much an architectural feature as it is a functional door system.",
-            "Architectural and design-driven projects where the door system itself is part of the visual statement. With up to eight panels, full-height glazing, and slim aluminium frames, bi-fold doors create a commanding focal point on any facade.",
+            "Architectural and design-driven projects where the door system itself is part of the visual statement. With up to eight panels, full-height glazing, and slim aluminium frames, bi-fold doors create a commanding focal point on any exterior.",
         ],
         features: [
             "Maximum opening width up to 90%",
@@ -639,7 +639,7 @@ export const products: Product[] = [
         heroImage: productImages.frenchDoors.hero,
         imageAlt: "French doors",
         detailDescription:
-            "French doors bring timeless double-door elegance to any property, with a classic symmetrical design that swings open to create a wide, welcoming entry point. Aluminium framing delivers the strength, weather resistance, and dimensional stability that timber alternatives struggle to maintain in Sydney's climate, while slim profiles keep the focus on the glazing and the view beyond. French doors are a natural fit for balconies, patios, courtyards, and garden entries where a traditional door profile adds character and presence to the facade. They are equally at home in heritage renovations, Hamptons-inspired builds, and contemporary projects that want a softer design accent alongside more modern elements. For larger residential developments and commercial heritage conversions, aluminium French doors provide a consistent, low-maintenance alternative to timber that retains the classic proportions architects and homeowners expect. Every pair from Aluverse is custom fabricated to the opening dimensions, fitted with multi-point locking hardware, and finished in the client's choice from the full powder-coat colour range.",
+            "French doors bring timeless double-door elegance to any property, with a classic symmetrical design that swings open to create a wide, welcoming entry point. Aluminium framing delivers the strength, weather resistance, and dimensional stability that timber alternatives struggle to maintain in Sydney's climate, while slim profiles keep the focus on the glazing and the view beyond. French doors are a natural fit for balconies, patios, courtyards, and garden entries where a traditional door profile adds character and presence to the exterior. They are equally at home in heritage renovations, Hamptons-inspired builds, and contemporary projects that want a softer design accent alongside more modern elements. For larger residential developments and commercial heritage conversions, aluminium French doors provide a consistent, low-maintenance alternative to timber that retains the classic proportions architects and homeowners expect. Every pair from Aluverse is custom fabricated to the opening dimensions, fitted with multi-point locking hardware, and finished in the client's choice from the full powder-coat colour range.",
         idealFor: [
             "Classic, Hamptons-inspired, and heritage-style homes that want a traditional double-door profile. Aluminium French doors deliver the proportions and character of timber without the ongoing maintenance, swelling, or warping that can occur in Sydney's humid conditions.",
             "Balconies, patios, and feature openings where symmetry and visual impact matter. The twin-leaf design creates a balanced, inviting entry point that enhances both the interior room and the outdoor space it connects to.",
@@ -962,42 +962,42 @@ export const products: Product[] = [
         related: ["stainless-steel-mesh"],
     },
     {
-        slug: "aluminium-facade-systems",
-        category: "facades",
-        title: "Aluminium Facade Systems",
+        slug: "shop-fronts",
+        category: "shopfronts",
+        title: "Aluminium Shop Fronts",
         summary:
-            "Engineered aluminium curtain wall and cladding systems for commercial, multi-residential, and architectural projects across Sydney.",
+            "Custom aluminium shop fronts and commercial entrance systems for retail, hospitality, and ground-floor projects across Sydney.",
         metaTitle:
-            "Aluminium Facade Systems Sydney | Curtain Wall & Cladding | Aluverse",
+            "Aluminium Shop Fronts Sydney | Commercial Shopfront Glazing | Aluverse",
         metaDescription:
-            "Custom aluminium facade systems for Sydney commercial and architectural projects. Curtain wall, structural glazing, and cladding engineered to AS standards by Aluverse.",
-        cardImage: productImages.aluminiumFacades.card,
-        heroImage: productImages.aluminiumFacades.hero,
-        imageAlt: "Aluminium facade system",
+            "Custom aluminium shop fronts for Sydney retail and commercial projects. Slim-framed shopfront glazing, entrance doors, and toughened glass fabricated and installed by Aluverse.",
+        cardImage: productImages.aluminiumShopFronts.card,
+        heroImage: productImages.aluminiumShopFronts.hero,
+        imageAlt: "Aluminium shop front",
         detailDescription:
-            "Aluminium facade systems form the architectural envelope of modern commercial and multi-residential buildings, combining structural performance with the visual language of contemporary Sydney design. Aluverse fabricates curtain wall, structural glazing, and shop front systems engineered to handle wind loads, thermal movement, and water penetration across mid-rise and high-rise applications. Each system is detailed to suit the project's structural grid, with thermally broken framing, captive or silicone-bonded glazing, and powder-coat or anodised finishes specified to architect intent. Because facade work sits at the intersection of architecture, structure, and building services, every installation is documented with shop drawings, AS/NZS-compliant performance data, and on-site coordination with the head contractor. From boutique mixed-use developments in the inner suburbs through to commercial fitouts and refurbishments, our facade division delivers a single point of accountability for design, fabrication, and installation.",
+            "Aluminium shop fronts give retail, hospitality, and commercial tenancies a clean, durable, and inviting street presence. Aluverse fabricates slim-framed shopfront glazing, framed and frameless entrance doors, and fixed display windows engineered for high-traffic ground-floor use across Sydney. Each shop front is detailed to suit the tenancy opening, with toughened or laminated safety glass, multi-point locking entrances, and powder-coat or anodised finishes specified to suit the brand and building. Because shopfront work has to balance security, accessibility, and kerb appeal, every installation is measured on site, fabricated to the exact opening, and installed by our own team with minimal disruption to trading. From single-shop refits through to multi-tenancy retail and commercial fitouts, we deliver a single point of accountability for design, fabrication, and installation.",
         idealFor: [
-            "Mid-rise commercial and mixed-use developments where the facade defines the building's identity and must meet wind, water, and thermal performance to AS/NZS 4284.",
-            "Multi-residential apartment projects requiring thermally broken curtain wall, balcony glazing, and consistent powder-coat finishes across multiple levels.",
-            "Architectural refurbishments and re-cladding projects where an existing facade is being upgraded for compliance, energy performance, or visual refresh.",
+            "Retail and hospitality tenancies that need a slim-framed, glazed street frontage with a welcoming, secure entrance.",
+            "Commercial fitouts and multi-tenancy developments requiring consistent shopfront glazing and entrance systems across multiple units.",
+            "Refurbishments and re-fits where an existing shop front is being upgraded for security, accessibility, or a visual refresh.",
         ],
         features: [
-            "Stick-built and unitised curtain wall options",
-            "Structural silicone and captive glazing details",
+            "Slim-framed aluminium shopfront glazing",
+            "Framed and frameless entrance door options",
+            "Toughened and laminated safety glass",
+            "Multi-point locking and commercial hardware",
             "Powder-coat and anodised finish range",
-            "Shop drawings and AS/NZS performance documentation",
-            "Coordinated on-site installation with head contractors",
         ],
         specs: [
             {
                 label: "System Types",
-                value: "Curtain wall, structural glazing, shop fronts",
+                value: "Shopfront glazing & entrances",
             },
-            { label: "Framing", value: "Thermally broken aluminium" },
-            { label: "Glazing", value: "Front- or center-glazed IGUs" },
-            { label: "Performance", value: "Designed to AS/NZS 4284" },
+            { label: "Framing", value: "Slim aluminium, thermally broken options" },
+            { label: "Glazing", value: "Toughened & laminated safety glass" },
+            { label: "Hardware", value: "Multi-point locking entrances" },
             { label: "Finish", value: "Powder-coat or anodised" },
-            { label: "Project Scale", value: "Commercial & multi-residential" },
+            { label: "Project Scale", value: "Retail & commercial" },
             {
                 label: "Documentation",
                 value: "Shop drawings & compliance data",
@@ -1010,35 +1010,35 @@ export const products: Product[] = [
         seoFaqs: [
             {
                 question:
-                    "What types of aluminium facade systems does Aluverse supply?",
-                answer: "Aluverse supplies stick-built and unitised curtain wall, structural silicone glazing, captive glazing, and shop fronts. Each project is engineered to suit the building's structural grid, performance requirements, and the architect's visual intent.",
+                    "What types of aluminium shop fronts does Aluverse supply?",
+                answer: "Aluverse supplies slim-framed shopfront glazing, fixed display windows, and framed or frameless aluminium entrance doors. Each shop front is engineered to suit the tenancy opening, security needs, and the look of the business.",
             },
             {
                 question:
-                    "Are your facade systems compliant with Australian standards?",
-                answer: "Yes. Our facade systems are designed and documented to AS/NZS 4284 for facade performance, with structural, thermal, and weatherproofing details verified by the project engineer. Compliance documentation is supplied with every project.",
+                    "Are your shop fronts compliant with Australian standards?",
+                answer: "Yes. Our shop fronts are glazed to AS 1288 with toughened or laminated safety glass, and aluminium framing is fabricated to AS 2047 where applicable. Compliance documentation is supplied with every project.",
             },
             {
                 question:
                     "Can you handle the design and installation as a single package?",
-                answer: "Yes. Aluverse provides a single point of accountability across design development, shop drawing, fabrication, and on-site installation. We coordinate directly with the head contractor, structural engineer, and architect throughout the build.",
+                answer: "Yes. Aluverse provides a single point of accountability across design, shop drawing, fabrication, and on-site installation. We coordinate directly with the builder, shopfitter, and tenant throughout the project.",
             },
             {
                 question:
-                    "What project scale do facade systems typically suit?",
-                answer: "Aluminium facade systems are most often specified for mid-rise commercial buildings, multi-residential developments, and architectural refurbishments. Smaller residential projects are usually better served by our standard window and door product range.",
+                    "What project scale do shop fronts typically suit?",
+                answer: "Aluminium shop fronts are most often specified for retail tenancies, hospitality venues, and commercial fitouts. We handle single-shop refits through to multi-tenancy developments, with capacity to suit the program.",
             },
             {
                 question:
-                    "Do you supply front-glazed and center-glazed facade systems?",
-                answer: "Yes. Aluverse fabricates both front-glazed (externally retained) and center-glazed (pocket-set) configurations. Front glazing is typical for curtain wall and high-rise facades where clean external sightlines drive the aesthetic, while center glazing suits shop fronts and ground-floor facades where the inside trim is visible to occupants and customers.",
+                    "Do you supply framed and frameless shopfront entrances?",
+                answer: "Yes. Aluverse fabricates both framed aluminium entrance doors and frameless glass entrances, with commercial-grade hardware and multi-point locking specified to suit foot traffic and security requirements.",
             },
             {
-                question: "How is pricing calculated for an aluminium facade?",
-                answer: "Facade pricing is project specific and depends on system type, performance requirements, glazing specification, finish, and site access. We quote on enquiry following a review of architectural drawings and the project performance brief.",
+                question: "How is pricing calculated for an aluminium shop front?",
+                answer: "Shop front pricing is project specific and depends on opening size, glazing specification, entrance and hardware selection, finish, and site access. We quote on enquiry following a site measure or review of drawings.",
             },
         ],
-        related: ["bifold-windows", "stacking-doors", "double-glazing-windows"],
+        related: ["bifold-doors", "sliding-doors", "french-doors"],
     },
 ];
 
@@ -1051,8 +1051,8 @@ export const doorProducts = products.filter(
 export const screenProducts = products.filter(
     product => product.category === "screens"
 );
-export const facadeProducts = products.filter(
-    product => product.category === "facades"
+export const shopFrontProducts = products.filter(
+    product => product.category === "shopfronts"
 );
 
 export const footerProductSlugs = [

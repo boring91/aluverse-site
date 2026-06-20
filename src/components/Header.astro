@@ -2,7 +2,7 @@
 import {
     company,
     doorProducts,
-    facadeProducts,
+    shopFrontProducts,
     getProductHref,
     screenProducts,
     windowProducts,
@@ -10,10 +10,10 @@ import {
 import Logo from "./Logo.astro";
 
 type Props = {
-    activeNav?: "home" | "windows" | "doors" | "screens" | "facades" | "about";
+    activeNav?: "home" | "windows" | "doors" | "screens" | "shopfronts" | "about";
 };
 
-const facadeProduct = facadeProducts[0];
+const shopFrontProduct = shopFrontProducts[0];
 
 const { activeNav } = Astro.props;
 ---
@@ -162,17 +162,17 @@ const { activeNav } = Astro.props;
             </div>
 
             {
-                facadeProduct && (
+                shopFrontProduct && (
                     <a
-                        href={getProductHref(facadeProduct.slug)}
+                        href={getProductHref(shopFrontProduct.slug)}
                         class:list={[
                             "text-xs font-medium tracking-widest uppercase transition-colors",
-                            activeNav === "facades"
+                            activeNav === "shopfronts"
                                 ? "text-white"
                                 : "text-white/60 hover:text-white",
                         ]}
                     >
-                        Facades
+                        Shop Fronts
                     </a>
                 )
             }
@@ -327,12 +327,12 @@ const { activeNav } = Astro.props;
             </div>
         </div>
         {
-            facadeProduct && (
+            shopFrontProduct && (
                 <a
-                    href={getProductHref(facadeProduct.slug)}
+                    href={getProductHref(shopFrontProduct.slug)}
                     class="block py-3 text-sm text-white/70 border-b border-white/5 uppercase tracking-wide"
                 >
-                    Facades
+                    Shop Fronts
                 </a>
             )
         }
