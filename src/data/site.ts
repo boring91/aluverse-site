@@ -40,8 +40,8 @@ export const company = {
     phoneHref: "tel:+61403422401",
     emailDisplay: "Info@aluverse.com.au",
     emailHref: "mailto:Info@aluverse.com.au",
-    hours: "6:00 AM - 9:00 PM, 7 Days a Week",
-    shortHours: "6:00 AM - 9:00 PM",
+    hours: "6:00 AM - 6:00 PM, 6 Days a Week",
+    shortHours: "6:00 AM - 6:00 PM",
     serviceArea: "Sydney & Surrounding Areas",
     location: "Sydney, NSW",
     compliance: [
@@ -72,7 +72,7 @@ export const stats = [
     { target: 500, label: "Projects Completed" },
     { target: 10, label: "Years Experience" },
     { target: 100, label: "Australian Standards" },
-    { target: 7, label: "Days a Week Service" },
+    { target: 6, label: "Days a Week Service" },
 ] as const;
 
 export const testimonials = [

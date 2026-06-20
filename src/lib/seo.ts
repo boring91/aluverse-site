@@ -41,7 +41,6 @@ const dayNames = [
     "Thursday",
     "Friday",
     "Saturday",
-    "Sunday",
 ] as const;
 
 export const createAbsoluteUrl = (path: string) =>
@@ -93,7 +92,7 @@ export const getBaseSchemas = ({
                 "@type": "OpeningHoursSpecification",
                 dayOfWeek: day,
                 opens: "06:00",
-                closes: "21:00",
+                closes: "18:00",
             })),
             sameAs: company.socials.map(social => social.href),
             serviceType: [

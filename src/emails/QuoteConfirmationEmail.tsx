@@ -217,7 +217,7 @@ export function QuoteConfirmationEmail({
                         >
                             {company.name} — {company.serviceArea}
                             <br />
-                            {company.shortHours}, 7 days a week
+                            {company.shortHours}, 6 days a week
                         </Text>
                     </Section>
                 </Container>
